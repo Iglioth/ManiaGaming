@@ -9,4 +9,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Context\IContext\" />
+    <Folder Include="Context\MemoryContext\" />
+    <Folder Include="Context\MSSQLContext\" />
+    <Folder Include="Context\Authentication\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
