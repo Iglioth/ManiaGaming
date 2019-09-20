@@ -7,5 +7,7 @@ namespace ManiaGaming.Models.Data
 {
     public class Bestelling
     {
+        int BestellingId { get; set; }
+        DateTime Datum { get; set; }
     }
 }

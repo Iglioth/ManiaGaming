@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Models.Data
 {
-    public class Order
+    public class DetailProduct
     {
-        int OrderId { get; set; }
-        DateTime Datum { get; set; }
+       int DetailProductId { get; set; }
+
     }
 }

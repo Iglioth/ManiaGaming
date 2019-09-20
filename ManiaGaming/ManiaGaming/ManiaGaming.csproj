@@ -12,7 +12,6 @@
   <ItemGroup>
     <Folder Include="Context\IContext\" />
     <Folder Include="Context\MemoryContext\" />
-    <Folder Include="Context\MSSQLContext\" />
     <Folder Include="Context\Authentication\" />
     <Folder Include="Converters\" />
     <Folder Include="Repositories\" />

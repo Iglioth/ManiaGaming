@@ -7,5 +7,6 @@ namespace ManiaGaming.Models.Data
 {
     public class Werknemer
     {
+        int WerknemerId { get; set; }
     }
 }

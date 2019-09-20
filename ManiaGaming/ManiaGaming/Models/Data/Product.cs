@@ -7,5 +7,11 @@ namespace ManiaGaming.Models.Data
 {
     public class Product
     {
+        int ProductId { get; set; }
+        int Aantal { get; set; }
+        string Naam { get; set; }
+        string Soort { get; set; }
+        string Omschrijving { get; set; }
+        int Prijs { get; set; }
     }
 }
