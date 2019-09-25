@@ -47,34 +47,5 @@ namespace ManiaGaming.Context.MSSQLContext
                 throw;
             }
         }
-
-        public DataSet ExecuteStoredProcedure(string Procedurename, long id = 0)
-        {
-            DataSet ds = new DataSet();
-            try
-            {
-                SqlConnection conn = new SqlConnection(connectionString);
-                SqlDataAdapter da = new SqlDataAdapter();
-                SqlCommand cmd = new SqlCommand(Procedurename)
-                {
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = conn,
-                };
-                if (id != 0)
-                {
-                    cmd.Parameters.Add("@GebruikerId", SqlDbType.VarChar).Value = id;
-                }
-                da.SelectCommand = cmd;
-
-                conn.Open();
-                da.Fill(ds);
-                conn.Close();
-                return ds;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
     }
 }

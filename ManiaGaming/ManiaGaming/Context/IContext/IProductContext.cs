@@ -9,5 +9,7 @@ namespace ManiaGaming.Context.IContext
     public interface IProductContext
     {
         List<Product> GetProducts();
+
+        bool UpdateProduct();
     }
 }
