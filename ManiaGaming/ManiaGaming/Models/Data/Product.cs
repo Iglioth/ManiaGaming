@@ -10,7 +10,7 @@ namespace ManiaGaming.Models.Data
         int ProductId { get; set; }
         int Aantal { get; set; }
         string Naam { get; set; }
-        string Soort { get; set; }
+        string Categorie { get; set; }
         string Omschrijving { get; set; }
         int Prijs { get; set; }
     }
