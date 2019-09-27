@@ -57,6 +57,19 @@ namespace ManiaGaming.Context.MSSQLContext
             return klant;
         }
 
+        public Klant getPunten(int punten)
+        {
+            Database database = new Database("yo");
+            DataSetParser parser = new DataSetParser();
 
+            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+            int RowNummer = 0;
+            string query = "SELECT * FROM Klant WHERE punten = @Punten";
+            parameters.Add(new KeyValuePair<string, string>("punten", punten.ToString()));
+            DataSet dataset = database.ExecuteSql(query, parameters);
+            Klant klant = DataSetParser.DataSetToKlant(dataset, RowNummer);
+
+            return klant;
+        }
     }
 }

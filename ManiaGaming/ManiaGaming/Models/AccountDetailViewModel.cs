@@ -7,5 +7,6 @@ namespace ManiaGaming.Models
 {
     public class AccountDetailViewModel
     {
+
     }
 }
