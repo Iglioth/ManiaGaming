@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Models
 {
-    public class FiliaalViewModel
+    public class WerknemerViewModel
     {
-        public List<FiliaalDetailViewModel> filiaalDetailViewModels;
+        List<WerknemerDetailViewModel> Werknemers { get; set; }
     }
 }

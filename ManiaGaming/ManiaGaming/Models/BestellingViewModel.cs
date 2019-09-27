@@ -7,6 +7,6 @@ namespace ManiaGaming.Models
 {
     public class BestellingViewModel
     {
-        List<BestellingDetailViewModel> bestellingen;
+        public List<BestellingDetailViewModel> bestellingen;
     }
 }

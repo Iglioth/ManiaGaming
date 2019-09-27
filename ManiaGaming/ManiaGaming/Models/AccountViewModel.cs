@@ -7,6 +7,6 @@ namespace ManiaGaming.Models
 {
     public class AccountViewModel
     {
-        public List<AccountDetailViewModel> accountDetailViewModels { get; set; }
+        public List<AccountDetailViewModel> Accounts { get; set; }
     }
 }

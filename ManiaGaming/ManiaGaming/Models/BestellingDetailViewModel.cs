@@ -7,8 +7,9 @@ namespace ManiaGaming.Models
 {
     public class BestellingDetailViewModel
     {
-        int Bestellingid { get; set; }
-        DateTime datum { get; set; }
-
+        public int BestellingId { get; set; }
+        public DateTime Datum { get; set; }
+        public int BestelNummer { get; set; }
+        public int Aantal { get; set; }
     }
-}
+}   
