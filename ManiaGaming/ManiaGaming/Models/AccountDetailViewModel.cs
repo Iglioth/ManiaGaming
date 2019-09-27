@@ -7,7 +7,7 @@ namespace ManiaGaming.Models
 {
     public class AccountDetailViewModel
     {
-        public long AccountId { get; set; }
+        public int AccountId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         // public string NormalizedEmail { get; set; }

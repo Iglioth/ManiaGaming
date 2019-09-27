@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Models
 {
-    public class WerknemerDetailViewModel
+    public class WerknemerDetailViewModel : AccountDetailViewModel
     {
         public int WerknemerId { get; set; }
         public string functie { get; set; }

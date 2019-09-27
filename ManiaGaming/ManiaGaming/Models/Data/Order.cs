@@ -7,7 +7,7 @@ namespace ManiaGaming.Models.Data
 {
     public class Order
     {
-        int OrderId { get; set; }
-        DateTime Datum { get; set; }
+        public int OrderId { get; set; }
+        public DateTime Datum { get; set; }
     }
 }
