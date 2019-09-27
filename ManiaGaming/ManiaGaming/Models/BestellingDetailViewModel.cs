@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Models
 {
-    public class AccountViewModel
+    public class BestellingDetailViewModel
     {
-        public List<AccountDetailViewModel> accountDetailViewModels { get; set; }
+        int Bestellingid { get; set; }
+        DateTime datum { get; set; }
+
     }
 }
