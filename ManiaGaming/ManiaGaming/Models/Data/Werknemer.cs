@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Models.Data
 {
-    public class Werknemer
+    public class Werknemer : Account
     {
-        int WerknemerId { get; set; }
+        public int WerknemerId { get; set; }
+        public string functie { get; set; }
     }
 }
