@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Models
 {
-    public class ProductViewModel
+    public class AccountDetailViewModel
     {
-        public List<ProductDetailViewModel> productDetailViewModels { get; set; }
     }
 }
