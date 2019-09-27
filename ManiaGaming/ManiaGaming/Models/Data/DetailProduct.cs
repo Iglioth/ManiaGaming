@@ -7,10 +7,10 @@ namespace ManiaGaming.Models.Data
 {
     public class DetailProduct
     {
-        int DetailProductId { get; set; }
-        int ProductId { get; set; }
-        int FiliaalId { get; set; }
-        bool Retour { get; set; }
-        bool Verkocht { get; set; }
+        public int DetailProductId { get; set; }
+        public int ProductId { get; set; }
+        public int FiliaalId { get; set; }
+        public bool Retour { get; set; }
+        public bool Verkocht { get; set; }
     }
 }
