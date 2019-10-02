@@ -1,8 +1,10 @@
 ﻿using ManiaGaming.Context.IContext;
+using ManiaGaming.Context.Parsers;
 using ManiaGaming.Models.Data;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,7 +23,14 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public Werknemer GetById(long id)
         {
-            throw new NotImplementedException();
+            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+            int RowNummer = 0;
+            string query = "SELECT * FROM Werknemer WHERE werknemerID = @werknemerID";
+            parameters.Add(new KeyValuePair<string, string>("werknemerID", id.ToString()));
+            DataSet dataset = ExecuteSql(query, parameters);
+            Werknemer werknemer = DataSetParser.DataSetToWerknemer(dataset, RowNummer);
+
+            return werknemer;
         }
 
         public long Insert(Werknemer obj)
