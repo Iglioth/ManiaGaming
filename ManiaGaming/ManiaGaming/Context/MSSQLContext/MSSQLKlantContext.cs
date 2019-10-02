@@ -58,18 +58,29 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public bool Update(Klant obj)
         {
-            DataSetParser parser = new DataSetParser();
+            Klant klant = new Klant();
+            try
+            {
+                string sql = "UPDATE (Naam, Achternaam, Email, Postcode, Huisnummer, Geboortedatum) VALUES(@naam, @achternaam, @email, @postcode, @huisnummer, @geboortedatum) ";
 
-            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-            int RowNummer = 0;
-            string query = "";
-            //parameters.Add(new KeyValuePair<string, string>(""));
-            //DataSet dataset = database.ExecuteSql(query, parameters);
-            //Klant klant = DataSetParser.DataSetToKlant(dataset, RowNummer);
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("naam", klant.Naam),
+                    new KeyValuePair<string, string>("achternaam", klant.AchterNaam),
+                    new KeyValuePair<string, string>("email", klant.Email),
+                    new KeyValuePair<string, string>("postcode", klant.Postcode),
+                    new KeyValuePair<string, string>("huisnummer", klant.Huisnummer),
+                    new KeyValuePair<string, string>("geboortedatum", klant.Geboortedatum.ToString()),
+                };
 
-            return true;
+                ExecuteSql(sql, parameters);
 
-            throw new NotImplementedException();
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         /*public Klant getAdres(string postCode, string huisNummer)
