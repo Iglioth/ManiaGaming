@@ -9,5 +9,8 @@ namespace ManiaGaming.Models.Data
     {
         public int OrderId { get; set; }
         public DateTime Datum { get; set; }
+        public int ProductNummer { get; set; }
+        public string ProductNaam { get; set; }
+        public int Aantal { get; set; }
     }
 }

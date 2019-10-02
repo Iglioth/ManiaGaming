@@ -48,7 +48,7 @@ namespace ManiaGaming.Controllers
                 BestellingId = (int)set.Tables[0].Rows[rowIndex][0],
                 Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
                 BestelNummer = (int)set.Tables[0].Rows[rowIndex][2],
-                Aantal = (int)set.Tables[0].Rows[rowIndex][3],
+                Aantal = (int)set.Tables[0].Rows[rowIndex][3]
 
             };
         }
@@ -61,7 +61,7 @@ namespace ManiaGaming.Controllers
                 ProductId = (int)set.Tables[0].Rows[rowIndex][1],
                 FiliaalId = (int)set.Tables[0].Rows[rowIndex][2],
                 Retour = (bool)set.Tables[0].Rows[rowIndex][3],
-                Verkocht = (bool)set.Tables[0].Rows[rowIndex][4],
+                Verkocht = (bool)set.Tables[0].Rows[rowIndex][4]
 
             };
         }
@@ -87,6 +87,29 @@ namespace ManiaGaming.Controllers
                 Huisnummer = (string)set.Tables[0].Rows[rowIndex][2],
                 Telefoonnummer = (int)set.Tables[0].Rows[rowIndex][3],
                 
+
+            };
+        }
+        public static Order DataSetToOrder(DataSet set, int rowIndex)
+        {
+            return new Order()
+            {
+                OrderId = (int)set.Tables[0].Rows[rowIndex][0],
+                Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
+                ProductNummer = (int)set.Tables[0].Rows[rowIndex][2],
+                ProductNaam = (string)set.Tables[0].Rows[rowIndex][3],
+                Aantal = (int)set.Tables[0].Rows[rowIndex][3],
+
+            };
+        }
+        public static ProductFoto DataSetToProductFoto(DataSet set, int rowIndex)
+        {
+            return new ProductFoto()
+            {
+                ProductFotoId = (int)set.Tables[0].Rows[rowIndex][0],
+                Foto = (Byte[])set.Tables[0].Rows[rowIndex][1]
+               
+
 
             };
         }
