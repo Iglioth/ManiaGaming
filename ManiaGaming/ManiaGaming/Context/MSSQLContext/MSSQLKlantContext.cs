@@ -61,7 +61,7 @@ namespace ManiaGaming.Context.MSSQLContext
             DataSetParser parser = new DataSetParser();
 
             List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-            int RowNummer = 0;
+            int Rownummer = 0;
             string query = "";
             //parameters.Add(new KeyValuePair<string, string>(""));
             //DataSet dataset = database.ExecuteSql(query, parameters);

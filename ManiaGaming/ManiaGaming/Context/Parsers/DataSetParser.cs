@@ -18,7 +18,12 @@ namespace ManiaGaming.Context.Parsers
                 Huisnummer = (string)set.Tables[0].Rows[rowIndex][2],
                 Geboortedatum = (DateTime)set.Tables[0].Rows[rowIndex][3],
                 Punten = (int)set.Tables[0].Rows[rowIndex][4],
-                AccountId = (int)set.Tables[0].Rows[rowIndex][5]
+                
+                AccountId = (int)set.Tables[0].Rows[rowIndex][5],
+                Email = (string)set.Tables[0].Rows[rowIndex][6],
+                Password = (string)set.Tables[0].Rows[rowIndex][7],
+                Naam = (string)set.Tables[0].Rows[rowIndex][8],
+                AchterNaam = (string)set.Tables[0].Rows[rowIndex][9]
             };
         }
         public static Account DataSetToAccount(DataSet set, int rowIndex)
@@ -38,7 +43,12 @@ namespace ManiaGaming.Context.Parsers
             {
                 WerknemerId = (int)set.Tables[0].Rows[rowIndex][0],
                 functie = (string)set.Tables[0].Rows[rowIndex][1],
-                AccountId = (int)set.Tables[0].Rows[rowIndex][2]
+
+                AccountId = (int)set.Tables[0].Rows[rowIndex][2],
+                Email = (string)set.Tables[0].Rows[rowIndex][3],
+                Password = (string)set.Tables[0].Rows[rowIndex][4],
+                Naam = (string)set.Tables[0].Rows[rowIndex][5],
+                AchterNaam = (string)set.Tables[0].Rows[rowIndex][6]
             };
         }
         public static Bestelling DataSetToBestelling(DataSet set, int rowIndex)
