@@ -19,8 +19,6 @@
     </environment>
 </head>
 <body>
-
-    
        <div class="header">
            <div class="inner-header">
                <div class="logo-container">
@@ -33,16 +31,17 @@
                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Accessoires</a></li>
                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Merchandise</a></li>
                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-               </ul> 
-               
-           </div>  
-           
-         
+               </ul>
+           </div>           
        </div>
+  
 
-    @RenderBody()
-    @RenderSection("Scripts", required: false)
-      
+
+
+            @RenderBody()
+          
+        @RenderSection("Scripts", required: false)
+  
     <div class="container">
         <div class="main">
 
