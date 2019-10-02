@@ -19,6 +19,29 @@ namespace ManiaGaming.Context.MSSQLContext
 
         }
 
+        public List<Klant> GetAll(int klantID)
+        {
+            List<Klant> klantList = new List<Klant>();
+            Klant klant = new Klant();
+            try
+            {
+                string sql = "SELECT Naam, Achternaam, Email, Postcode, Huisnummer, Geboortedatum, Punten, AccountID FROM Klant INNER JOIN Account ON klant.klantID = account.AccountID WHERE klantID = @klantID";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("klantID", klantID.ToString()),
+                };
+
+                ExecuteSql(sql, parameters);
+
+                return klantList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public List<Klant> GetAll()
         {
             throw new NotImplementedException();
