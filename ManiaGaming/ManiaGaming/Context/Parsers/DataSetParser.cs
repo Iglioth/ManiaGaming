@@ -42,7 +42,7 @@ namespace ManiaGaming.Context.Parsers
             return new Werknemer()
             {
                 WerknemerId = (int)set.Tables[0].Rows[rowIndex][0],
-                functie = (string)set.Tables[0].Rows[rowIndex][1],
+                Functie = (string)set.Tables[0].Rows[rowIndex][1],
 
                 AccountId = (int)set.Tables[0].Rows[rowIndex][2],
                 Email = (string)set.Tables[0].Rows[rowIndex][3],

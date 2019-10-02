@@ -31,7 +31,27 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public bool Update(Werknemer obj)
         {
-            throw new NotImplementedException();
+            Werknemer werknemer = new Werknemer();
+            try
+            {
+                string sql = "UPDATE (Naam, Achternaam, Functie) VALUES(@naam, @achternaam, @functie) ";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("naam", werknemer.Naam),
+                    new KeyValuePair<string, string>("achternaam", werknemer.AchterNaam),
+                    new KeyValuePair<string, string>("functie", werknemer.Functie),
+                    
+                };
+
+                ExecuteSql(sql, parameters);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }
