@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Data;
 using ManiaGaming.Models.Data;
 
-namespace ManiaGaming.Controllers
+namespace ManiaGaming.Context.Parsers
 {
     public class DataSetParser
     {

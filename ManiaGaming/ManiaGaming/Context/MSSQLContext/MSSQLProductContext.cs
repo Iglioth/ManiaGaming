@@ -14,17 +14,32 @@ namespace ManiaGaming.Context.MSSQLContext
         {
         }
 
-        public List<Product> GetProducts()
+        public bool AddStock(Product product)
         {
             throw new NotImplementedException();
         }
 
-        public bool MaakProduct(Product product)
+        public List<Product> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public bool UpdateProduct(Product product)
+        public Product GetById(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public long Insert(Product obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool RemoveStock(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(Product obj)
         {
             throw new NotImplementedException();
         }
