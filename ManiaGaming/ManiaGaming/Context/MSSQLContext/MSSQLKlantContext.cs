@@ -19,21 +19,25 @@ namespace ManiaGaming.Context.MSSQLContext
 
         }
 
-        public List<Klant> GetAll(int klantID)
+        public List<Klant> GetAll()
         {
             List<Klant> klantList = new List<Klant>();
-            Klant klant = new Klant();
             try
             {
-                string sql = "SELECT Naam, Achternaam, Email, Postcode, Huisnummer, Geboortedatum, Punten, AccountID FROM Klant INNER JOIN Account ON klant.klantID = account.AccountID WHERE klantID = @klantID";
+                string sql = "SELECT Naam, Achternaam, Email, Postcode, Huisnummer, Geboortedatum, Punten, AccountID FROM Klant INNER JOIN Account ON klant.klantID = account.AccountID";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("klantID", klantID.ToString()),
+
                 };
 
-                ExecuteSql(sql, parameters);
+                DataSet results = ExecuteSql(sql, parameters);
 
+                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+                {
+                    Klant k = DataSetParser.DataSetToKlant(results, x);
+                    klantList.Add(k);
+                }
                 return klantList;
             }
             catch (Exception e)
@@ -42,31 +46,21 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
-        public List<Klant> GetAll()
-        {
-            throw new NotImplementedException();
-        }
 
         public Klant GetById(long id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Klant getKlant(int klantID)
-        {
-            Klant klant = new Klant();
              try
             {
                 string sql = "SELECT Naam, Achternaam, Email, Postcode, Huisnummer, Geboortedatum, Punten, AccountID FROM Klant INNER JOIN Account ON klant.klantID = account.AccountID WHERE klantID = @klantID";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("klantID", klantID.ToString()),
+                    new KeyValuePair<string, string>("klantID", id.ToString()),
                 };
 
-                ExecuteSql(sql, parameters);
-
-                return klant;
+                DataSet results = ExecuteSql(sql, parameters);
+                Klant k = DataSetParser.DataSetToKlant(results, 0);
+                return k;
             }
             catch (Exception e)
             {
@@ -81,19 +75,18 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public bool Update(Klant obj)
         {
-            Klant klant = new Klant();
             try
             {
                 string sql = "UPDATE (Naam, Achternaam, Email, Postcode, Huisnummer, Geboortedatum) VALUES(@naam, @achternaam, @email, @postcode, @huisnummer, @geboortedatum) ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("naam", klant.Naam),
-                    new KeyValuePair<string, string>("achternaam", klant.AchterNaam),
-                    new KeyValuePair<string, string>("email", klant.Email),
-                    new KeyValuePair<string, string>("postcode", klant.Postcode),
-                    new KeyValuePair<string, string>("huisnummer", klant.Huisnummer),
-                    new KeyValuePair<string, string>("geboortedatum", klant.Geboortedatum.ToString()),
+                    new KeyValuePair<string, string>("naam", obj.Naam),
+                    new KeyValuePair<string, string>("achternaam", obj.AchterNaam),
+                    new KeyValuePair<string, string>("email", obj.Email),
+                    new KeyValuePair<string, string>("postcode", obj.Postcode),
+                    new KeyValuePair<string, string>("huisnummer", obj.Huisnummer),
+                    new KeyValuePair<string, string>("geboortedatum", obj.Geboortedatum.ToString()),
                 };
 
                 ExecuteSql(sql, parameters);
@@ -105,51 +98,5 @@ namespace ManiaGaming.Context.MSSQLContext
                 throw e;
             }
         }
-
-        /*public Klant getAdres(string postCode, string huisNummer)
-        {
-            Database database = new Database("yo");
-            DataSetParser parser = new DataSetParser();
-
-            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-            int RowNummer = 0;
-            string query = "SELECT * FROM Klant WHERE postCode = @Postcode, huisNummer = @Huisnummer";
-            parameters.Add(new KeyValuePair<string, string>("postCode", postCode.ToString()));
-            parameters.Add(new KeyValuePair<string, string>("huisNumm   er", huisNummer.ToString()));
-            DataSet dataset = database.ExecuteSql(query, parameters);
-            Klant klant = DataSetParser.DataSetToKlant(dataset, RowNummer);
-
-            return klant;
-        }
-
-        public Klant getGeboorteDatum(DateTime datum)
-        {
-            Database database = new Database("yo");
-            DataSetParser parser = new DataSetParser();
-
-            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-            int RowNummer = 0;
-            string query = "SELECT * FROM Klant WHERE datum = @Geboortedatum";
-            parameters.Add(new KeyValuePair<string, string>("datum", datum.ToString()));
-            DataSet dataset = database.ExecuteSql(query, parameters);
-            Klant klant = DataSetParser.DataSetToKlant(dataset, RowNummer);
-
-            return klant;
-        }
-
-        public Klant getPunten(int punten)
-        {
-            Database database = new Database("yo");
-            DataSetParser parser = new DataSetParser();
-
-            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-            int RowNummer = 0;
-            string query = "SELECT * FROM Klant WHERE punten = @Punten";
-            parameters.Add(new KeyValuePair<string, string>("punten", punten.ToString()));
-            DataSet dataset = database.ExecuteSql(query, parameters);
-            Klant klant = DataSetParser.DataSetToKlant(dataset, RowNummer);
-
-            return klant;
-        }*/
     }
 }

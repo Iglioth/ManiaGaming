@@ -6,6 +6,7 @@ using ManiaGaming.Models.Data;
 using System.Data.SqlClient;
 using ManiaGaming.Controllers;
 using System.Data;
+using ManiaGaming.Context.Parsers;
 
 namespace ManiaGaming.Context.MSSQLContext
 {
@@ -13,15 +14,12 @@ namespace ManiaGaming.Context.MSSQLContext
     {
         public Account getAccount(int accountID)
         {
-            Database database = new Database("yo");
-            DataSetParser parser = new DataSetParser();
-
             List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
             int RowNummer = 0;
             string query = "SELECT * FROM Account WHERE accountID = @accountID";
             parameters.Add(new KeyValuePair<string, string>("accountID", accountID.ToString()));
-            DataSet dataset = database.ExecuteSql(query, parameters);
-            Klant klant = DataSetParser.DataSetToKlant(dataset, RowNummer);
+            DataSet dataset = BaseMSSQLContext.ExecuteSql(query, parameters);
+            Klant klant = DataSetParser.DataSetToAccount(dataset, RowNummer);
 
             return klant;
         }
