@@ -41,7 +41,7 @@ namespace ManiaGaming.Controllers
                 da.Fill(ds);
                 conn.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

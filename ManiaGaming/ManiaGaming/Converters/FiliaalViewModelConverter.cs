@@ -38,7 +38,7 @@ namespace ManiaGaming.Converters
                 Telefoonnummer = viewModel.Telefoonnummer
             };
 
-            return f
+            return f;
         }
     }
 }
