@@ -6,24 +6,70 @@ using System.Data.SqlClient;
 using ManiaGaming.Models.Data;
 using ManiaGaming.Controllers;
 using System.Data;
+using ManiaGaming.Context.IContext;
+using ManiaGaming.Context.Parsers;
+using Microsoft.Extensions.Configuration;
 
 namespace ManiaGaming.Context.MSSQLContext
 {
-    public class klantMSSQL
+    public class MSSQLKlantContext : BaseMSSQLContext , IKlantContext
     {
+        public MSSQLKlantContext(IConfiguration config) : base(config)
+        {
+
+        }
+
+        public List<Klant> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Klant GetById(long id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Klant getKlant(int klantID)
         {
-            Database database = new Database("yo");
+            Klant klant = new Klant();
+             try
+            {
+                string sql = "SELECT Naam, Achternaam, Email, Postcode, Huisnummer, Geboortedatum, Punten, AccountID FROM Klant INNER JOIN Account ON klant.klantID = account.AccountID WHERE klantID = @klantID";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("klantID", klantID.ToString()),
+                };
+
+                ExecuteSql(sql, parameters);
+
+                return klant;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public long Insert(Klant obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(Klant obj)
+        {
             DataSetParser parser = new DataSetParser();
-            
+
             List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
             int RowNummer = 0;
-            string query = "SELECT Naam, Achternaam, Email, Postcode, Huisnummer, Geboortedatum, Punten, AccountID FROM Klant WHERE klantID = @klantID";
-            parameters.Add(new KeyValuePair<string, string>("klantID", klantID.ToString()));
-            DataSet dataset = database.ExecuteSql(query, parameters);
-            Klant klant = DataSetParser.DataSetToKlant(dataset, RowNummer);
-            
-            return klant;
+            string query = "";
+            //parameters.Add(new KeyValuePair<string, string>(""));
+            //DataSet dataset = database.ExecuteSql(query, parameters);
+            //Klant klant = DataSetParser.DataSetToKlant(dataset, RowNummer);
+
+            return true;
+
+            throw new NotImplementedException();
         }
 
         /*public Klant getAdres(string postCode, string huisNummer)
