@@ -26,7 +26,7 @@ namespace ManiaGaming.Context.MSSQLContext
             return klant;
         }
 
-        public Klant getAdres(string postCode, string huisNummer)
+        /*public Klant getAdres(string postCode, string huisNummer)
         {
             Database database = new Database("yo");
             DataSetParser parser = new DataSetParser();
@@ -70,6 +70,6 @@ namespace ManiaGaming.Context.MSSQLContext
             Klant klant = DataSetParser.DataSetToKlant(dataset, RowNummer);
 
             return klant;
-        }
+        }*/
     }
 }
