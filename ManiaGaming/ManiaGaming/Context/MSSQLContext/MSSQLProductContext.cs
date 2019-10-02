@@ -31,6 +31,30 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public long Insert(Product obj)
         {
+            /*
+            try
+            {
+                string sql = "INSERT INTO Product(Naam, Prijs, Grootte, Kleur, Beschrijving, Categorie) VALUES(@naam, @prijs, @grootte, @kleur, @beschrijving, @categorie)";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("naam", product.Naam),
+                    new KeyValuePair<string, string>("prijs", product.Prijs),
+                    new KeyValuePair<string, string>("grootte", product.Grootte),
+                    new KeyValuePair<string, string>("kleur", product.Kleur),
+                    new KeyValuePair<string, string>("beschrijving", product.Beschrijving),
+                    new KeyValuePair<string, string>("categorie", product.Categorie)
+                };
+
+                ExecuteSql(sql, parameters);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            */
             throw new NotImplementedException();
         }
 
