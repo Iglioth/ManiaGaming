@@ -1,4 +1,5 @@
 ﻿using ManiaGaming.Context.IContext;
+using ManiaGaming.Models.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,16 @@ namespace ManiaGaming.Repositories
 
         public ProductRepository(IProductContext context)
         {
-            this.context = context ?? throw new NullReferenceException("De commentaarContext is leeg.");
+            this.context = context ?? throw new NullReferenceException("De ProductContext is leeg.");
+        }
+
+        bool MaakProduct(Product product)
+        {
+            if (product == null)
+            {
+                throw new NullReferenceException("Het product is leeg.");
+            }
+            return context.MaakProduct(product);
         }
     }
 }

@@ -19,7 +19,12 @@ namespace ManiaGaming.Context.MSSQLContext
             throw new NotImplementedException();
         }
 
-        public bool UpdateProduct()
+        public bool MaakProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateProduct(Product product)
         {
             throw new NotImplementedException();
         }

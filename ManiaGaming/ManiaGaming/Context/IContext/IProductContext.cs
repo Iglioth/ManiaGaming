@@ -10,6 +10,8 @@ namespace ManiaGaming.Context.IContext
     {
         List<Product> GetProducts();
 
-        bool UpdateProduct();
+        bool UpdateProduct(Product product);
+
+        bool MaakProduct(Product product);
     }
 }
