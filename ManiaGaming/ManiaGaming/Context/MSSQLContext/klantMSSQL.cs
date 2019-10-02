@@ -18,7 +18,7 @@ namespace ManiaGaming.Context.MSSQLContext
             
             List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
             int RowNummer = 0;
-            string query = "SELECT * FROM Klant WHERE klantID = @klantID";
+            string query = "SELECT Naam, Achternaam, Email, Postcode, Huisnummer, Geboortedatum, Punten, AccountID FROM Klant WHERE klantID = @klantID";
             parameters.Add(new KeyValuePair<string, string>("klantID", klantID.ToString()));
             DataSet dataset = database.ExecuteSql(query, parameters);
             Klant klant = DataSetParser.DataSetToKlant(dataset, RowNummer);
@@ -35,7 +35,7 @@ namespace ManiaGaming.Context.MSSQLContext
             int RowNummer = 0;
             string query = "SELECT * FROM Klant WHERE postCode = @Postcode, huisNummer = @Huisnummer";
             parameters.Add(new KeyValuePair<string, string>("postCode", postCode.ToString()));
-            parameters.Add(new KeyValuePair<string, string>("huisNummer", huisNummer.ToString()));
+            parameters.Add(new KeyValuePair<string, string>("huisNumm   er", huisNummer.ToString()));
             DataSet dataset = database.ExecuteSql(query, parameters);
             Klant klant = DataSetParser.DataSetToKlant(dataset, RowNummer);
 
