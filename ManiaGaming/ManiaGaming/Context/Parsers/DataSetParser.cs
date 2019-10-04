@@ -120,5 +120,13 @@ namespace ManiaGaming.Context.Parsers
                 Foto = (Byte[])set.Tables[0].Rows[rowIndex][1]
             };
         }
+        public static Categorie DataSetToCategorie(DataSet set, int rowIndex)
+        {
+            return new Categorie()
+            {
+                CategorieID = (int)set.Tables[0].Rows[rowIndex][0],
+                Naam = (string)set.Tables[0].Rows[rowIndex][1],
+            };
+        }
     }
 }

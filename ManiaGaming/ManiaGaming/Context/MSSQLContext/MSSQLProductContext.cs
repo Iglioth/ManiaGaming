@@ -1,8 +1,10 @@
 ﻿using ManiaGaming.Context.IContext;
+using ManiaGaming.Context.Parsers;
 using ManiaGaming.Models.Data;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,7 +28,23 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public Product GetById(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string sql = "SELECT Omschrijving, Naam, Aantal, Prijs, CategorieID FROM Product INNER JOIN Categorie ON product.CategorieID = categorie.CategorieID WHERE ProductID = @productID";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("productID", id.ToString()),
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+                Product p = DataSetParser.DataSetToProduct(results, 0);
+                return p;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public long Insert(Product obj)
