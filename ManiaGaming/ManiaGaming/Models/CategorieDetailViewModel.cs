@@ -8,6 +8,6 @@ namespace ManiaGaming.Models
     public class CategorieDetailViewModel
     {
         public int CategorieID { get; set; }
-        public string CategorieNaam { get; set; }
+        public string Naam { get; set; }
     }
 }
