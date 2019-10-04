@@ -21,41 +21,89 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public List<Categorie> GetAll()
         {
-            throw new NotImplementedException();
+            List<Categorie> categorieList = new List<Categorie>();
+            try
+            {
+                string sql = "SELECT categorieNaam FROM Categorie";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+
+                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+                {
+                    Categorie c = DataSetParser.DataSetToCategorie(results, x);
+                    categorieList.Add(c);
+                }
+                return categorieList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public Categorie GetById(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string sql = "SELECT CategorieNaam FROM Categorie WHERE CategorieID = @categorieID";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("categorieID", id.ToString()),
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+                Categorie c = DataSetParser.DataSetToCategorie(results, 0);
+                return c;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public long Insert(Categorie obj)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string sql = "INSERT (Naam) VALUES (@naam) ";
 
-            //try
-            //{
-            //    string sql = "INSERT (Naam) VALUES (@naam) ";
-
-            //    List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
-            //    {
-            //        new KeyValuePair<string, string>("naam", obj.Naam),
-            //    };
-            //    DataSet results = ExecuteSql(sql, parameters);
-            //    Categorie c = DataSetParser.DataSetToCategorie(results, 0);
-            //    ExecuteSql(sql, parameters);
-
-            //    return true;
-            //}
-            //catch (Exception e)
-            //{
-            //    throw e;
-            //}
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("naam", obj.Naam),
+                };
+                long result = ExecuteInsert(sql, parameters);
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public bool Update(Categorie obj)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string sql = "UPDATE (CategorieNaam) VALUES(@categorieNaam)";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("categorieNaam", obj.Naam),
+                };
+
+                ExecuteSql(sql, parameters);
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }
