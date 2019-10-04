@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Repositories
 {
-    public class ProductRepository
+    public class AccountRepository
     {
-        protected readonly IProductContext context;
+        public readonly IAccountContext context ;
 
-        public ProductRepository(IProductContext context)
+        public AccountRepository()
         {
-            this.context = context ?? throw new NullReferenceException("De ProductContext is leeg.");
+            this.context = context ?? throw new NullReferenceException("De AccountContext is leeg.");
         }
 
         public List<Account> GetAll()
@@ -26,24 +26,9 @@ namespace ManiaGaming.Repositories
             return GetById(id);
         }
 
-        long Insert(Product product)
-        {
-            if (product == null)
-            {
-                throw new NullReferenceException("Het product is leeg.");
-            }
-            return context.Insert(product);
-        }
-
         public bool Update(Account obj)
         {
             return Update(obj);
         }
-
-
-
-
-
-
     }
 }
