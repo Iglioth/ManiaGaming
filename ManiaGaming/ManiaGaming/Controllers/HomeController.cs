@@ -15,7 +15,7 @@ namespace ManiaGaming.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Accessoires()
         {
             ViewData["Message"] = "Your application description page.";
 
@@ -30,6 +30,16 @@ namespace ManiaGaming.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult GamesConsoles()
+        {
+            return View();
+        }
+
+        public IActionResult Merchandise()
         {
             return View();
         }
