@@ -17,13 +17,13 @@ namespace ManiaGaming.Repositories
             this.context = context ?? throw new NullReferenceException("De ProductContext is leeg.");
         }
 
-        bool MaakProduct(Product product)
+        long Insert(Product product)
         {
             if (product == null)
             {
                 throw new NullReferenceException("Het product is leeg.");
             }
-            return context.MaakProduct(product);
+            return context.Insert(product);
         }
     }
 }

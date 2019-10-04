@@ -10,6 +10,5 @@ namespace ManiaGaming.Context.IContext
     public interface IAccountContext : IGenericQueries<Account>
     {
 
-        Account GetById(long id);
     }
 }
