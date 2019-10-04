@@ -21,7 +21,29 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public List<Account> GetAll()
         {
-            throw new NotImplementedException();
+            List<Account> accountList = new List<Account>();
+            try
+            {
+                string sql = "SELECT Naam, Achternaam, Email FROM Account";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+
+                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+                {
+                    Account a = DataSetParser.DataSetToAccount(results, x);
+                    accountList.Add(a);
+                }
+                return accountList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public Account GetById(long id)
@@ -43,7 +65,24 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public bool Update(Account obj)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string sql = "UPDATE (Naam, Achternaam, Email) VALUES(@Naam, @achternaam, @email) ";
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("naam", obj.Naam),
+                    new KeyValuePair<string, string>("achternaam", obj.AchterNaam),
+                    new KeyValuePair<string, string>("email", obj.Email.ToString()),
+                };
+
+                ExecuteSql(sql, parameters);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

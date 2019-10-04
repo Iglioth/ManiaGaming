@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Controllers
 {
-    public class ProductController : Controller
-    {
+    public class GamesController : Controller 
+    { 
         // Repos
         private readonly ProductRepository productRepository;
 
         // Converter 
         //private readonly ProductViewModelConverter converter = new ProductViewModelConverter();
 
-        public ProductController
+        public GamesController
             (
                 ProductRepository productRepository
             )
@@ -34,6 +34,5 @@ namespace ManiaGaming.Controllers
 
             return View();
         }
-
     }
 }

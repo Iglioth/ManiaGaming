@@ -77,13 +77,10 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "UPDATE (Naam, Achternaam, Email, Postcode, Huisnummer, Geboortedatum) VALUES(@naam, @achternaam, @email, @postcode, @huisnummer, @geboortedatum) ";
+                string sql = "UPDATE (Postcode, Huisnummer, Geboortedatum) VALUES(@postcode, @huisnummer, @geboortedatum) ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
-                {
-                    new KeyValuePair<string, string>("naam", obj.Naam),
-                    new KeyValuePair<string, string>("achternaam", obj.AchterNaam),
-                    new KeyValuePair<string, string>("email", obj.Email),
+                { 
                     new KeyValuePair<string, string>("postcode", obj.Postcode),
                     new KeyValuePair<string, string>("huisnummer", obj.Huisnummer),
                     new KeyValuePair<string, string>("geboortedatum", obj.Geboortedatum.ToString()),
