@@ -47,5 +47,35 @@ namespace ManiaGaming.Context.MSSQLContext
                 throw;
             }
         }
+
+        public long ExecuteInsert(string sql, List<KeyValuePair<string, string>> parameters)
+        {
+            long id = new long();
+            try
+            {
+                SqlConnection conn = new SqlConnection(connectionString);
+                SqlCommand cmd = conn.CreateCommand();
+
+                foreach (KeyValuePair<string, string> kvp in parameters)
+                {
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@" + kvp.Key;
+                    param.Value = kvp.Value;
+                    cmd.Parameters.Add(param);
+                }
+
+                cmd.CommandText = sql;
+
+                conn.Open();
+                id = (long)cmd.ExecuteScalar();
+                conn.Close();
+
+                return id;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }
