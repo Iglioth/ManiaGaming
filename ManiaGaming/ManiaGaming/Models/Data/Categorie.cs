@@ -9,5 +9,6 @@ namespace ManiaGaming.Models.Data
     {
         public int CategorieID { get; set; }
         public string Naam { get; set; }
+
     }
 }
