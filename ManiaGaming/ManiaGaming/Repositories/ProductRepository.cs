@@ -9,7 +9,6 @@ namespace ManiaGaming.Repositories
 {
     public class ProductRepository
     {
-        //global instances
         protected readonly IProductContext context;
 
         public ProductRepository(IProductContext context)

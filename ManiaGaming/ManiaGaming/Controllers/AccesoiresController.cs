@@ -15,7 +15,7 @@ namespace ManiaGaming.Controllers
         // Converter 
         //private readonly ProductViewModelConverter converter = new ProductViewModelConverter();
 
-        public AccesoireController
+        public AccesoiresController
             (
                 ProductRepository productRepository
             )

@@ -16,7 +16,7 @@ namespace ManiaGaming.Converters
             {
                 ProductId = p.ProductId,
                 Aantal = p.Aantal,
-                Categorie = p.Categorie,
+                //Categorie = p.Categorie,
                 Prijs = p.Prijs,
                 Naam = p.Naam,
                 Omschrijving = p.Omschrijving
@@ -31,7 +31,7 @@ namespace ManiaGaming.Converters
             {
                 ProductId = vm.ProductId,
                 Aantal = vm.Aantal,
-                Categorie = vm.Categorie,
+                //Categorie = vm.Categorie,
                 Naam = vm.Naam,
                 Omschrijving = vm.Omschrijving,
                 Prijs = vm.Prijs

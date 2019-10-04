@@ -82,7 +82,7 @@ namespace ManiaGaming.Context.Parsers
                 ProductId = (int)set.Tables[0].Rows[rowIndex][0],
                 Aantal = (int)set.Tables[0].Rows[rowIndex][1],
                 Naam = (string)set.Tables[0].Rows[rowIndex][2],
-                Categorie = (string)set.Tables[0].Rows[rowIndex][3],
+                //Categorie = (string)set.Tables[0].Rows[rowIndex][3],
                 Omschrijving = (string)set.Tables[0].Rows[rowIndex][4],
                 Prijs = (int)set.Tables[0].Rows[rowIndex][5]
 
@@ -118,9 +118,6 @@ namespace ManiaGaming.Context.Parsers
             {
                 ProductFotoId = (int)set.Tables[0].Rows[rowIndex][0],
                 Foto = (Byte[])set.Tables[0].Rows[rowIndex][1]
-               
-
-
             };
         }
     }
