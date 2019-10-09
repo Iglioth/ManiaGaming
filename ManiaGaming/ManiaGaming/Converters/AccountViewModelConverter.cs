@@ -10,6 +10,11 @@ namespace ManiaGaming.Converters
 {
     public class AccountViewModelConverter : IViewModelConverter<Account, AccountDetailViewModel>
     {
+        public List<AccountDetailViewModel> ModelsToViewModels(List<Account> models)
+        {
+            throw new NotImplementedException();
+        }
+
         public AccountDetailViewModel ModelToViewModel(Account a)
         {
             AccountDetailViewModel vm = new AccountDetailViewModel()
@@ -22,6 +27,11 @@ namespace ManiaGaming.Converters
             };
             
             return vm;
+        }
+
+        public List<Account> ViewModelsToModels(List<AccountDetailViewModel> viewModels)
+        {
+            throw new NotImplementedException();
         }
 
         public Account ViewModelToModel(AccountDetailViewModel vm)
