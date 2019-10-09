@@ -24,7 +24,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Categorie> categorieList = new List<Categorie>();
             try
             {
-                string sql = "SELECT categorieNaam FROM Categorie";
+                string sql = "SELECT Naam FROM Categorie";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -50,11 +50,11 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "SELECT CategorieNaam FROM Categorie WHERE CategorieID = @categorieID";
+                string sql = "SELECT Naam FROM Categorie WHERE CategorieId = @categorieId";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("categorieID", id.ToString()),
+                    new KeyValuePair<string, string>("categorieId", id.ToString()),
                 };
 
                 DataSet results = ExecuteSql(sql, parameters);
@@ -71,14 +71,14 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "INSERT (Naam) VALUES (@naam) ";
+                string sql = "INSERT INTO Categorie (Naam) VALUES (@naam) ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("naam", obj.Naam),
                 };
-                long result = ExecuteInsert(sql, parameters);
-                return result;
+                ExecuteSql(sql, parameters);
+                return 1;
             }
             catch (Exception e)
             {
@@ -90,11 +90,11 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "UPDATE (CategorieNaam) VALUES(@categorieNaam)";
+                string sql = "UPDATE (Naam) VALUES(@Naam)";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("categorieNaam", obj.Naam),
+                    new KeyValuePair<string, string>("Naam", obj.Naam),
                 };
 
                 ExecuteSql(sql, parameters);

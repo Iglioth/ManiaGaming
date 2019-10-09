@@ -1,0 +1,26 @@
+﻿ @model ManiaGaming.Models.CategorieDetailViewModel
+
+@{
+    ViewData["Title"] = "Creëer";
+}
+
+<h2>Aanmaken</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Aanmaken">
+            <div class="form-group">
+                <label asp-for="Naam" class="control-label"></label>
+                <input asp-for="Naam" class="form-control" />
+                <span asp-validation-for="Naam" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Opslaan" class="btn btn-default" />
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Terug naar lijst</a>
+</div>
+

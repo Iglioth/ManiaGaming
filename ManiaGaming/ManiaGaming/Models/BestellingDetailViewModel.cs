@@ -9,7 +9,6 @@ namespace ManiaGaming.Models
     {
         public int BestellingId { get; set; }
         public DateTime Datum { get; set; }
-        public int BestelNummer { get; set; }
-        public int Aantal { get; set; }
+        public int KlantID { get; set; }
     }
 }   

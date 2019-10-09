@@ -11,7 +11,7 @@ namespace ManiaGaming.Repositories
     {
         public readonly IAccountContext context ;
 
-        public AccountRepository()
+        public AccountRepository(IAccountContext context)
         {
             this.context = context ?? throw new NullReferenceException("De AccountContext is leeg.");
         }

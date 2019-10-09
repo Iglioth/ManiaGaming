@@ -11,7 +11,7 @@ namespace ManiaGaming.Repositories
     {
         protected ICategorieContext context;
 
-        public CategorieRepository()
+        public CategorieRepository(ICategorieContext context)
         {
             this.context = context ?? throw new NullReferenceException("De CategorieContext is leeg. ");
         }

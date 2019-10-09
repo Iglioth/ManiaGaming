@@ -12,10 +12,10 @@ using ManiaGaming.Context.Parsers;
 
 namespace ManiaGaming.Context.MSSQLContext
 {
-    public class AccountMSSQL : BaseMSSQLContext, IAccountContext
+    public class MSSQLAccountContext : BaseMSSQLContext, IAccountContext
     {
 
-        public AccountMSSQL(IConfiguration config) : base(config)
+        public MSSQLAccountContext(IConfiguration config) : base(config)
         {
         }
 
@@ -48,14 +48,22 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public Account GetById(long id)
         {
-            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-            int RowNummer = 0;
-            string query = "SELECT * FROM Account WHERE accountID = @accountID";
-            parameters.Add(new KeyValuePair<string, string>("accountID", id.ToString()));
-            DataSet dataset = ExecuteSql(query, parameters);
-            Account account = DataSetParser.DataSetToAccount(dataset, RowNummer);
+            try
+            {
+                string sql = "SELECT Email, Naam, Achternaam FROM Account WHERE AccountID = @AccountID";
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("accountID", id.ToString())
+                };
 
-            return account;
+                DataSet results = ExecuteSql(sql, parameters);
+                Account a = DataSetParser.DataSetToAccount(results, 0);
+                return a;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         public long Insert(Account obj)
