@@ -16,14 +16,14 @@ namespace ManiaGaming.Repositories
             this.context = context ?? throw new NullReferenceException("De ProductContext is leeg.");
         }
 
-        public List<Account> GetAll()
+        public List<Product> GetAll()
         {
-            return GetAll();
+            return context.GetAll();
         }
 
-        public Account GetById(long id)
+        public Product GetById(long id)
         {
-            return GetById(id);
+            return context.GetById(id);
         }
 
         long Insert(Product product)
@@ -35,9 +35,9 @@ namespace ManiaGaming.Repositories
             return context.Insert(product);
         }
 
-        public bool Update(Account obj)
+        public bool Update(Product obj)
         {
-            return Update(obj);
+            return context.Update(obj);
         }
 
 

@@ -7,37 +7,32 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Repositories
 {
-    public class OrderRepository
+    public class BestellingRepository
     {
-        protected IOrderContext context;
+        protected IBestellingContext context;
 
-        public OrderRepository(IOrderContext context)
+        public BestellingRepository(IBestellingContext context)
         {
-            this.context = context ?? throw new NullReferenceException("De AccountContext is leeg");
-                    
+            this.context = context ?? throw new NotImplementedException("IBestellingContext is leeg");
         }
 
-        public List<Order> GetAll()
+        public List<Bestelling> GetAll()
         {
             return context.GetAll();
         }
-
-        public Order GetById(long id)
+        public Bestelling GetById(long id)
         {
             return context.GetById(id);
         }
 
-        public long Insert(Order obj)
+        public long Insert(Bestelling obj)
         {
             return context.Insert(obj);
         }
 
-        public bool Update(Order obj)
+        public bool Update(Bestelling obj)
         {
             return context.Update(obj);
         }
-
-
-
     }
 }
