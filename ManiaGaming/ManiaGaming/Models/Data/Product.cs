@@ -13,5 +13,6 @@ namespace ManiaGaming.Models.Data
         public Categorie Categorie { get; set; }
         public string Omschrijving { get; set; }
         public int Prijs { get; set; }
+        public string soort { get; set; }
     }
 }

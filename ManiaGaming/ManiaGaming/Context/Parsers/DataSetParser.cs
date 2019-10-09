@@ -57,8 +57,7 @@ namespace ManiaGaming.Context.Parsers
             {
                 BestellingId = (int)set.Tables[0].Rows[rowIndex][0],
                 Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
-                BestelNummer = (int)set.Tables[0].Rows[rowIndex][2],
-                Aantal = (int)set.Tables[0].Rows[rowIndex][3]
+                klantID = (int)set.Tables[0].Rows[rowIndex][2]
 
             };
         }
@@ -106,10 +105,8 @@ namespace ManiaGaming.Context.Parsers
             {
                 OrderId = (int)set.Tables[0].Rows[rowIndex][0],
                 Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
-                ProductNummer = (int)set.Tables[0].Rows[rowIndex][2],
-                ProductNaam = (string)set.Tables[0].Rows[rowIndex][3],
-                Aantal = (int)set.Tables[0].Rows[rowIndex][3],
-
+                werknemerID = (int)set.Tables[0].Rows[rowIndex][2],
+                filiaalID = (int)set.Tables[0].Rows[rowIndex][3]
             };
         }
         public static ProductFoto DataSetToProductFoto(DataSet set, int rowIndex)

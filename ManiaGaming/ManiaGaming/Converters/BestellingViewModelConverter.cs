@@ -15,9 +15,8 @@ namespace ManiaGaming.Converters
             BestellingDetailViewModel vm = new BestellingDetailViewModel()
             {
                 BestellingId = b.BestellingId,
-                Aantal = b.Aantal,
-                BestelNummer = b.BestelNummer,
-                Datum = b.Datum
+                Datum = b.Datum,
+                KlantID = b.klantID
             };
 
             return vm;
@@ -28,9 +27,8 @@ namespace ManiaGaming.Converters
             Bestelling b = new Bestelling()
             {
                 BestellingId = vm.BestellingId,
-                BestelNummer = vm.BestelNummer,
-                Aantal = vm.Aantal,
-                Datum = vm.Datum
+                Datum = vm.Datum,
+                klantID = vm.KlantID
             };
 
             return b;
