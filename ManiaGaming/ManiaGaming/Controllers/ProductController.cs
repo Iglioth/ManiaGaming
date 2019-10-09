@@ -1,4 +1,5 @@
-﻿using ManiaGaming.Repositories;
+﻿using ManiaGaming.Models;
+using ManiaGaming.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -35,5 +36,12 @@ namespace ManiaGaming.Controllers
             return View();
         }
 
+        /*[HttpPost]
+        public IActionResult Aanmaken(ProductDetailViewModel vm)
+        {
+            ViewData["Message"] = "Your application description page.";
+
+            return View();
+        }*/
     }
 }

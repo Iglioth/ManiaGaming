@@ -124,7 +124,7 @@ namespace ManiaGaming.Context.Parsers
         {
             return new Categorie()
             {
-                CategorieID = (int)set.Tables[0].Rows[rowIndex][0],
+                CategorieId = (int)set.Tables[0].Rows[rowIndex][0],
                 Naam = (string)set.Tables[0].Rows[rowIndex][1],
             };
         }
