@@ -10,7 +10,10 @@ namespace ManiaGaming.Converters
 {
     public class FiliaalViewModelConverter : IViewModelConverter<Filiaal, FiliaalDetailViewModel>
     {
-
+        public List<FiliaalDetailViewModel> ModelsToViewModels(List<Filiaal> models)
+        {
+            throw new NotImplementedException();
+        }
 
         public FiliaalDetailViewModel ModelToViewModel(Filiaal f)
         {
@@ -26,7 +29,10 @@ namespace ManiaGaming.Converters
             return vm;
         }
 
-
+        public List<Filiaal> ViewModelsToModels(List<FiliaalDetailViewModel> viewModels)
+        {
+            throw new NotImplementedException();
+        }
 
         public Filiaal ViewModelToModel(FiliaalDetailViewModel viewModel)
         {

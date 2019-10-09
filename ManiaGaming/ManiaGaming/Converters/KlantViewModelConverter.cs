@@ -10,7 +10,11 @@ namespace ManiaGaming.Converters
 {
     public class KlantViewModelConverter : IViewModelConverter<Klant, KlantDetailViewModel>
     {
-     
+        public List<KlantDetailViewModel> ModelsToViewModels(List<Klant> models)
+        {
+            throw new NotImplementedException();
+        }
+
         public KlantDetailViewModel ModelToViewModel(Klant k)
         {
             KlantDetailViewModel vm = new KlantDetailViewModel()
@@ -29,6 +33,11 @@ namespace ManiaGaming.Converters
             };
 
             return vm;
+        }
+
+        public List<Klant> ViewModelsToModels(List<KlantDetailViewModel> viewModels)
+        {
+            throw new NotImplementedException();
         }
 
         public Klant ViewModelToModel(KlantDetailViewModel vm)

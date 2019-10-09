@@ -10,6 +10,11 @@ namespace ManiaGaming.Converters
 {
     public class BestellingViewModelConverter : IViewModelConverter<Bestelling, BestellingDetailViewModel>
     {
+        public List<BestellingDetailViewModel> ModelsToViewModels(List<Bestelling> models)
+        {
+            throw new NotImplementedException();
+        }
+
         public BestellingDetailViewModel ModelToViewModel(Bestelling b)
         {
             BestellingDetailViewModel vm = new BestellingDetailViewModel()
@@ -20,6 +25,11 @@ namespace ManiaGaming.Converters
             };
 
             return vm;
+        }
+
+        public List<Bestelling> ViewModelsToModels(List<BestellingDetailViewModel> viewModels)
+        {
+            throw new NotImplementedException();
         }
 
         public Bestelling ViewModelToModel(BestellingDetailViewModel vm)

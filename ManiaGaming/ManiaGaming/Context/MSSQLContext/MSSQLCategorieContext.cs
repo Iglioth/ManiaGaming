@@ -24,7 +24,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Categorie> categorieList = new List<Categorie>();
             try
             {
-                string sql = "SELECT Naam FROM Categorie";
+                string sql = "SELECT * FROM Categorie";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {

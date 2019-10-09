@@ -30,6 +30,7 @@ namespace ManiaGaming.Converters
             CategorieViewModel vm = new CategorieViewModel();
             List<Categorie> categories = new List<Categorie>();
             categories = categorieRepository.GetAll();
+            vm.CategorieDetailViewModels = converter.ModelsToViewModels(categories);
             return View(vm);
         }
 
