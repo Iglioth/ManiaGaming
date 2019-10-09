@@ -18,7 +18,7 @@ namespace ManiaGaming.Repositories
         }
 
         public List<Order> GetAll()
-            {
+        {
             return context.GetAll();
         }
 
@@ -31,6 +31,7 @@ namespace ManiaGaming.Repositories
         {
             return context.Insert(obj);
         }
+
         public bool Update(Order obj)
         {
             return context.Update(obj);

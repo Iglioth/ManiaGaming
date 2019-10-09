@@ -38,7 +38,12 @@ namespace ManiaGaming
             services.AddScoped<IProductContext, MSSQLProductContext>();
 
             // Repositories
+            services.AddScoped<AccountRepository>();
+            services.AddScoped<CategorieRepository>();
+            services.AddScoped<KlantRepository>();
+            services.AddScoped<OrderRepository>();
             services.AddScoped<ProductRepository>();
+            services.AddScoped<WerknemerRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
