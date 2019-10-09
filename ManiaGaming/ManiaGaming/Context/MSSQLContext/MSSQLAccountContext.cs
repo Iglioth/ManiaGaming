@@ -12,10 +12,10 @@ using ManiaGaming.Context.Parsers;
 
 namespace ManiaGaming.Context.MSSQLContext
 {
-    public class AccountMSSQL : BaseMSSQLContext, IAccountContext
+    public class MSSQLAccountContext : BaseMSSQLContext, IAccountContext
     {
 
-        public AccountMSSQL(IConfiguration config) : base(config)
+        public MSSQLAccountContext(IConfiguration config) : base(config)
         {
         }
 

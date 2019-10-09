@@ -15,32 +15,10 @@ namespace ManiaGaming.Controllers
             return View();
         }
 
-        public IActionResult Accessoires()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
 
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult GamesConsoles()
-        {
-            return View();
-        }
-
-        public IActionResult Merchandise()
-        {
             return View();
         }
 

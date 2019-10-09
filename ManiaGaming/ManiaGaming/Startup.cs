@@ -36,6 +36,11 @@ namespace ManiaGaming
 
             // Sql contexts
             services.AddScoped<IProductContext, MSSQLProductContext>();
+            services.AddScoped<IAccountContext, MSSQLAccountContext>();
+            services.AddScoped<ICategorieContext, MSSQLCategorieContext>();
+            services.AddScoped<IKlantContext, MSSQLKlantContext>();
+            services.AddScoped<IOrderContext, MSSQLOrderContext>();
+            services.AddScoped<IWerknemerContext, MSSQLWerknemerContext>();
 
             // Repositories
             services.AddScoped<AccountRepository>();
