@@ -7,6 +7,6 @@ namespace ManiaGaming.Models
 {
     public class CategorieViewModel
     {
-        List<CategorieDetailViewModel> categorieDetailViewModels = new List<CategorieDetailViewModel>();
+        public List<CategorieDetailViewModel> CategorieDetailViewModels { get; set; } = new List<CategorieDetailViewModel>();
     }
 }

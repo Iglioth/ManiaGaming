@@ -27,7 +27,11 @@ namespace ManiaGaming.Converters
 
         public IActionResult Index()
         {
-            return View("Index");
+            CategorieViewModel vm = new CategorieViewModel();
+            List<Categorie> categories = new List<Categorie>();
+            categories = categorieRepository.GetAll();
+            vm.CategorieDetailViewModels = converter.ModelsToViewModels(categories);
+            return View(vm);
         }
 
         public IActionResult Aanmaken()

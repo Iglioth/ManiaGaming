@@ -1,7 +1,76 @@
-﻿
+﻿@model ManiaGaming.Models.CategorieViewModel
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Categorie Lijst</h2>
+
+@if (User.IsInRole("admin"))
+{
+    <p>
+        <a asp-action="Create">Nieuwe toevoegen</a>
+    </p>
+}
+<div class="hidden" id="categorieContainer">
+    <table class="table table-striped table-hover" id="categorieTable" style="width:100%;">
+        <thead>
+            <tr>
+                <th>Naam</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CategorieDetailViewModel item in Model.CategorieDetailViewModels)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+                    <td>
+                        @if (User.IsInRole("admin"))
+                        {
+                            @Html.ActionLink("Details", "Details", new { id = item.CategorieId })
+                            @: | @Html.ActionLink("Aanpassen", "Edit", new { id = item.CategorieId }) |
+                            @Html.ActionLink("Verwijderen", "Delete", new { id = item.CategorieId })
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section Scripts {
+    <script>
+        $("document").ready(function () {
+            initDataTable();
+            $("#doctorContainer").removeClass("hidden");
+        });
+
+        function initDataTable() {
+            $("#doctorTable").DataTable({
+                "language": {
+                    "sProcessing": "Bezig...",
+                    "sLengthMenu": "_MENU_ resultaten weergeven",
+                    "sZeroRecords": "Geen resultaten gevonden",
+                    "sInfo": "_START_ tot _END_ van _TOTAL_ resultaten",
+                    "sInfoEmpty": "Geen resultaten om weer te geven",
+                    "sInfoFiltered": " (gefilterd uit _MAX_ resultaten)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Zoeken:",
+                    "sEmptyTable": "Geen resultaten aanwezig in de tabel",
+                    "sInfoThousands": ".",
+                    "sLoadingRecords": "Een moment geduld aub - bezig met laden...",
+                    "oPaginate": {
+                        "sFirst": "Eerste",
+                        "sLast": "Laatste",
+                        "sNext": "Volgende",
+                        "sPrevious": "Vorige"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": activeer om kolom oplopend te sorteren",
+                        "sSortDescending": ": activeer om kolom aflopend te sorteren"
+                    }
+                }
+            });
+        }
+    </script>
+}
 

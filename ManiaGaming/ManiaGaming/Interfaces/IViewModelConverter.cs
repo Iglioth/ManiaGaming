@@ -9,5 +9,8 @@ namespace ManiaGaming.Interfaces
     {
         TViewModel ModelToViewModel(TModel model);
         TModel ViewModelToModel(TViewModel viewModel);
+
+        List<TViewModel> ModelsToViewModels(List<TModel> models);
+        List<TModel> ViewModelsToModels(List<TViewModel> viewModels);
     }
 }
