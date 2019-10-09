@@ -9,6 +9,5 @@ namespace ManiaGaming.Context.IContext
 {
     public interface IBestellingContext : IGenericQueries<Bestelling>
     {
-
     }
 }

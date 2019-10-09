@@ -90,7 +90,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "UPDATE (Naam) VALUES(@Naam)";
+                string sql = "UPDATE Categorie SET Naam = @Naam";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {

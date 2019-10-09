@@ -9,8 +9,7 @@ namespace ManiaGaming.Context.IContext
 {
     public interface IProductContext : IGenericQueries<Product>
     {
-        bool AddStock(Product product);
-
-        bool RemoveStock(Product product);
+        bool RemoveStock(long id, Product obj);
+        bool AddStock(long id, Product obj);
     }
 }

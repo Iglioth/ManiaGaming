@@ -77,7 +77,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "UPDATE (Postcode, Huisnummer, Geboortedatum) VALUES(@postcode, @huisnummer, @geboortedatum) ";
+                string sql = "UPDATE Klant SET Postcode = @postcode, Huisnummer = @huisnummer, Geboordedatum = @geboortedatum";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 { 

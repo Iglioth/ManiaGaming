@@ -67,7 +67,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "INSERT (Functie, FiliaalID) VALUES(@functie, @FiliaalID)";
+                string sql = "INSERT INTO Werknemer (Functie, FiliaalID) VALUES(@functie, @FiliaalID)";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
@@ -88,7 +88,7 @@ namespace ManiaGaming.Context.MSSQLContext
             Werknemer werknemer = new Werknemer();
             try
             {
-                string sql = "UPDATE (Functie, FiliaalID) VALUES(@functie, @FiliaalID) ";
+                string sql = "UPDATE Werknemer SET Functie = @Functie, FiliaalID = @FiliaalID";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
