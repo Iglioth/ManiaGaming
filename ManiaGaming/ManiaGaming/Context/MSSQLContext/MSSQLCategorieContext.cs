@@ -19,11 +19,6 @@ namespace ManiaGaming.Context.MSSQLContext
             
         }
 
-        public bool AddStock(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Categorie> GetAll()
         {
             List<Categorie> categorieList = new List<Categorie>();

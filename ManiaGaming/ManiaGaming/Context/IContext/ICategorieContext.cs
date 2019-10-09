@@ -9,6 +9,5 @@ namespace ManiaGaming.Context.IContext
 {
     public interface ICategorieContext : IGenericQueries<Categorie>
     {
-        bool AddStock(Product product);
     }
 }
