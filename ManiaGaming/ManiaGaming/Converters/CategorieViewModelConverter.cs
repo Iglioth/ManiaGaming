@@ -10,6 +10,11 @@ namespace ManiaGaming.Converters
 {
     public class CategorieViewModelConverter : IViewModelConverter<Categorie, CategorieDetailViewModel>
     {
+        public List<CategorieDetailViewModel> ModelsToViewModels(List<Categorie> model)
+        {
+            throw new NotImplementedException();
+        }
+
         public CategorieDetailViewModel ModelToViewModel(Categorie model)
         {
             CategorieDetailViewModel vm = new CategorieDetailViewModel()
@@ -19,6 +24,11 @@ namespace ManiaGaming.Converters
             };
 
             return vm;
+        }
+
+        public List<Categorie> ViewModelsToModels(List<CategorieDetailViewModel> viewModels)
+        {
+            throw new NotImplementedException();
         }
 
         public Categorie ViewModelToModel(CategorieDetailViewModel viewModel)
