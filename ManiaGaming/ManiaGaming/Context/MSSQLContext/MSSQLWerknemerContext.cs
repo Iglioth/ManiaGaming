@@ -18,24 +18,69 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public List<Werknemer> GetAll()
         {
-            throw new NotImplementedException();
+            List<Werknemer> werknemerList = new List<Werknemer>();
+            try
+            {
+                string sql = "SELECT Functie, FiliaalID FROM Werknemer";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+
+                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+                {
+                    Werknemer w = DataSetParser.DataSetToWerknemer(results, x);
+                    werknemerList.Add(w);
+                }
+                return werknemerList;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         public Werknemer GetById(long id)
         {
-            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-            int RowNummer = 0;
-            string query = "SELECT * FROM Werknemer WHERE werknemerID = @werknemerID";
-            parameters.Add(new KeyValuePair<string, string>("werknemerID", id.ToString()));
-            DataSet dataset = ExecuteSql(query, parameters);
-            Werknemer werknemer = DataSetParser.DataSetToWerknemer(dataset, RowNummer);
+            try
+            {
+                string sql = "SELECT Functie, FiliaalID FROM Werknemer WHERE WerknemerID = @WerknemerID";
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("WerknemerID", id.ToString())
+                };
 
-            return werknemer;
+                DataSet results = ExecuteSql(sql, parameters);
+                Werknemer w = DataSetParser.DataSetToWerknemer(results, 0);
+                return w;
+            }
+            catch(Exception e)
+            {
+                throw;
+            }
         }
 
         public long Insert(Werknemer obj)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string sql = "INSERT (Functie, FiliaalID) VALUES(@functie, @FiliaalID)";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("Functie", obj.Functie),
+                    new KeyValuePair<string, string>("FiliaalID", obj.filiaalID.ToString())
+                };
+                long result = ExecuteInsert(sql, parameters);
+                return result;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         public bool Update(Werknemer obj)
@@ -43,13 +88,12 @@ namespace ManiaGaming.Context.MSSQLContext
             Werknemer werknemer = new Werknemer();
             try
             {
-                string sql = "UPDATE (Naam, Achternaam, Functie) VALUES(@naam, @achternaam, @functie) ";
+                string sql = "UPDATE (Functie, FiliaalID) VALUES(@functie, @FiliaalID) ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("naam", werknemer.Naam),
-                    new KeyValuePair<string, string>("achternaam", werknemer.AchterNaam),
-                    new KeyValuePair<string, string>("functie", werknemer.Functie),
+                    new KeyValuePair<string, string>("Functie", obj.Functie),
+                    new KeyValuePair<string, string>("FiliaalID", obj.filiaalID.ToString())
                     
                 };
 
