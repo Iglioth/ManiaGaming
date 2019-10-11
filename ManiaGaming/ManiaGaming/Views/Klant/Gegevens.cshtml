@@ -1,29 +1,78 @@
 ﻿@model ManiaGaming.Models.KlantDetailViewModel
+
 @{
     ViewData["Title"] = "Gegevens";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Gegevens</h2>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Gegevens">
-            <div class="form-group">
-                <label asp-for="Naam" class="control-label"></label>
-            </div>
-            <div class="form-group">
-                <label asp-for="AchterNaam" class="control-label"></label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Postcode" class="control-label"></label>
-            </div>
-            <div class="form-group">
-                <input type ="submit" name="Aanpassen" />
-            </div>
-        </form>
-    </div>
+<div>
+    <h4>KlantDetailViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KlantId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KlantId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Postcode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Postcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Huisnummer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Huisnummer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Geboortedatum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Geboortedatum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Punten)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Punten)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AccountId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AchterNaam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AchterNaam)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Aanpassen", "Aanpassen", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
 </div>

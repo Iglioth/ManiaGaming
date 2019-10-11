@@ -51,6 +51,11 @@ namespace ManiaGaming.Controllers
             return View("Bestellen");
         }
 
+        public IActionResult Aanpassen()
+        {
+            return View("Aanpassen");
+        }
+
 
     }
 }
