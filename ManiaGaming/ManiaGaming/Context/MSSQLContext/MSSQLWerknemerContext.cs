@@ -59,7 +59,7 @@ namespace ManiaGaming.Context.MSSQLContext
             }
             catch(Exception e)
             {
-                throw;
+                throw e;
             }
         }
 

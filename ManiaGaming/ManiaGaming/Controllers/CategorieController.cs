@@ -25,6 +25,7 @@ namespace ManiaGaming.Converters
             this.categorieRepository = categorieRepository;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             CategorieViewModel vm = new CategorieViewModel();
@@ -34,11 +35,18 @@ namespace ManiaGaming.Converters
             return View(vm);
         }
 
+        [HttpGet]
         public IActionResult Aanmaken()
-        {
-            ViewData["Message"] = "Your application description page.";
-
+        { 
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Aanpassen(long id)
+        {
+            Categorie categorie = categorieRepository.GetById(id);
+            CategorieDetailViewModel vm = converter.ModelToViewModel(categorie);
+            return View(vm);
         }
 
         [HttpPost]
@@ -49,6 +57,22 @@ namespace ManiaGaming.Converters
             {
                 Categorie categorie = converter.ViewModelToModel(vm);
                 long id = categorieRepository.Insert(categorie);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Aanpassen(CategorieDetailViewModel vm)
+        {
+            // Check if model is valid
+            if (ModelState.IsValid)
+            {
+                Categorie categorie = converter.ViewModelToModel(vm);
+                bool Update = categorieRepository.Update(categorie);
                 return RedirectToAction("Index");
             }
             else

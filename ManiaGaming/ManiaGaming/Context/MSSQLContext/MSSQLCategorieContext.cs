@@ -50,7 +50,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "SELECT Naam FROM Categorie WHERE CategorieId = @categorieId";
+                string sql = "SELECT * FROM Categorie WHERE CategorieId = @categorieId";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -90,11 +90,12 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "UPDATE Categorie SET Naam = @Naam";
+                string sql = "UPDATE Categorie SET Naam = @naam WHERE CategorieId = @id";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Naam", obj.Naam),
+                    new KeyValuePair<string, string>("naam", obj.Naam),
+                    new KeyValuePair<string, string>("id", Convert.ToString(obj.CategorieId)),
                 };
 
                 ExecuteSql(sql, parameters);
