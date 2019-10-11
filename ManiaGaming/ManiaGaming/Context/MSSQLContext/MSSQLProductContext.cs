@@ -42,7 +42,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "SELECT Aantal, Naam, Soort, Categorie, Omschrijving, Prijs FROM Product";
+                string sql = "SELECT ProductId, Aantal, Naam, CategorieId, Omschrijving, Prijs  FROM Product";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {

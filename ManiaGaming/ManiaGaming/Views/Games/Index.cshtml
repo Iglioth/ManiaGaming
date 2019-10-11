@@ -1,15 +1,43 @@
-﻿@model ManiaGaming.Models.ProductViewModel;
-@{
-    ViewData["Title"] = "Index";
-    
+﻿
+<!DOCTYPE html>
+<html>
 
-    
-}
+<head>
+    @model ManiaGaming.Models.ProductViewModel;
+    @{
+        ViewData["Title"] = "Index";
+    }
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <title></title>
 
-<h2>Index</h2>
-<ul id="myList" runat="server" class="myClass">
-    <li class="myItemClass">Super mario galaxy</li>
-    <img src="~/images/Super-Mario-Galaxy.jpg" alt="Sample Photo" />
-    <li class="myItemClass">Item 2</li>
-</ul>
+
+</head>
+
+
+<body>
+    
+    <div class="container-product">
+        @{ 
+            foreach (ProductDetailViewModel item in Model.productDetailViewModels)
+            {
+                List<ProductDetailViewModel> ThreeDVMs = new List<ProductDetailViewModel>();
+
+                for (int x = 0; x < ThreeDVMs.Count(); x++)
+                {
+                    <div class="container-products">
+                        <p>@Html.DisplayFor(modelItem => item.Naam)</p>
+                    </div>
+
+                }
+            }
+        }
+    </div>
+
+</body>
+
+</html>
+
+
+
 

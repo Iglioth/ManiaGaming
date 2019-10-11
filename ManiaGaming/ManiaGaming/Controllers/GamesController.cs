@@ -1,4 +1,6 @@
 ﻿using ManiaGaming.Converters;
+using ManiaGaming.Models;
+using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,7 +28,10 @@ namespace ManiaGaming.Controllers
 
         public IActionResult Index()
         {
-            return View("Index");
+            ProductViewModel productViewModel = new ProductViewModel();
+            productViewModel.productDetailViewModels = converter.ModelsToViewModels(productRepository.GetAll());
+
+            return View("Index", productViewModel);
         }
 
         public IActionResult Detail()

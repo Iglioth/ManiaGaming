@@ -12,7 +12,24 @@ namespace ManiaGaming.Converters
     {
         public List<ProductDetailViewModel> ModelsToViewModels(List<Product> models)
         {
-            throw new NotImplementedException();
+            List<ProductDetailViewModel> productDetailViewModels = new List<ProductDetailViewModel>();
+
+            foreach(Product p in models)
+            {
+                ProductDetailViewModel vm = new ProductDetailViewModel()
+                {
+                    ProductId = p.ProductId,
+                    Aantal = p.Aantal,
+                    Soort = p.Soort,
+                    CategorieId = p.CategorieId,
+                    Prijs = p.Prijs,
+                    Naam = p.Naam,
+                    Omschrijving = p.Omschrijving
+                };
+                productDetailViewModels.Add(vm);
+            }
+
+            return productDetailViewModels;
         }
 
         public ProductDetailViewModel ModelToViewModel(Product p)
