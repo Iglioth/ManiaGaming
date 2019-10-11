@@ -1,4 +1,4 @@
-﻿
+﻿@model ManiaGaming.Models.KlantDetailViewModel
 @{
     ViewData["Title"] = "Gegevens";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,3 +6,24 @@
 
 <h2>Gegevens</h2>
 
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Gegevens">
+            <div class="form-group">
+                <label asp-for="Naam" class="control-label"></label>
+            </div>
+            <div class="form-group">
+                <label asp-for="AchterNaam" class="control-label"></label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Postcode" class="control-label"></label>
+            </div>
+            <div class="form-group">
+                <input type ="submit" name="Aanpassen" />
+            </div>
+        </form>
+    </div>
+</div>
