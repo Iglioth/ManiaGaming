@@ -97,7 +97,7 @@ namespace ManiaGaming.Context.MSSQLContext
                     new KeyValuePair<string, string>("aantal", obj.Aantal.ToString()),
                     new KeyValuePair<string, string>("naam", obj.Naam),
                     new KeyValuePair<string, string>("soort", obj.Soort.ToString()),
-                    new KeyValuePair<string, string>("Categorie", obj.Categorie.ToString()),
+                    new KeyValuePair<string, string>("Categorie", obj.CategorieId.ToString()),
                     new KeyValuePair<string, string>("Omschrijving", obj.Omschrijving),
                     new KeyValuePair<string, string>("Prijs", obj.Prijs.ToString())
                 };
@@ -143,7 +143,7 @@ namespace ManiaGaming.Context.MSSQLContext
                     new KeyValuePair<string, string>("aantal", obj.Aantal.ToString()),
                     new KeyValuePair<string, string>("naam", obj.Naam),
                     new KeyValuePair<string, string>("soort", obj.Soort.ToString()),
-                    new KeyValuePair<string, string>("categorie", obj.Categorie.ToString()),
+                    new KeyValuePair<string, string>("categorie", obj.CategorieId.ToString()),
                     new KeyValuePair<string, string>("omschrijving", obj.Omschrijving),
                     new KeyValuePair<string, string>("prijs", obj.Prijs.ToString()),
                 };

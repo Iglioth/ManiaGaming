@@ -32,7 +32,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Naam)</td>
                 <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
                 <td>
-                    @Html.ActionLink("Detail", "Detail", new { id = item.Id })
+                    @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |
                     @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id }) |
                     @Html.ActionLink("Verwijderen", "Verwijderen", new { id = item.Id })
                 </td>

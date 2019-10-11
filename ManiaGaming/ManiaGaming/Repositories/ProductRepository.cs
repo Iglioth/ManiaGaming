@@ -26,7 +26,7 @@ namespace ManiaGaming.Repositories
             return context.GetById(id);
         }
 
-        long Insert(Product product)
+        public long Insert(Product product)
         {
             if (product == null)
             {

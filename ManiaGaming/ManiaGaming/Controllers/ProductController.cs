@@ -1,4 +1,6 @@
-﻿using ManiaGaming.Models;
+﻿using ManiaGaming.Converters;
+using ManiaGaming.Models;
+using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,36 +14,54 @@ namespace ManiaGaming.Controllers
     {
         // Repos
         private readonly ProductRepository productRepository;
+        private readonly CategorieRepository categorieRepository;
 
         // Converter 
-        //private readonly ProductViewModelConverter converter = new ProductViewModelConverter();
+        private readonly ProductViewModelConverter productConverter = new ProductViewModelConverter();
+        private readonly CategorieViewModelConverter categorieConverter = new CategorieViewModelConverter();
 
         public ProductController
             (
-                ProductRepository productRepository
+                ProductRepository productRepository,
+                CategorieRepository categorieRepository
             )
         {
             this.productRepository = productRepository;
+            this.categorieRepository = categorieRepository;
         }
 
-        public IActionResult Index()
-        {
-            return View("Index");
-        }
-
+        [HttpGet]
         public IActionResult Aanmaken()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            ProductDetailViewModel vm = new ProductDetailViewModel
+            {
+                CategorieList = categorieConverter.ModelsToViewModels(categorieRepository.GetAll())
+            };
+            return View(vm);
         }
 
-        /*[HttpPost]
-        public IActionResult Aanmaken(ProductDetailViewModel vm)
+        [HttpGet]
+        public IActionResult Index()
         {
-            ViewData["Message"] = "Your application description page.";
+            ProductViewModel vm = new ProductViewModel();
 
-            return View();
-        }*/
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult Creëer(ProductDetailViewModel vm)
+        {
+            // Check if model is valid
+            if (ModelState.IsValid)
+            {
+                Product product = productConverter.ViewModelToModel(vm);
+                long Id = productRepository.Insert(product);
+                return RedirectToAction("Aanpassen", new { Id });
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
     }
 }

@@ -21,22 +21,26 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public List<Categorie> GetAll()
         {
-            List<Categorie> categorieList = new List<Categorie>();
             try
             {
-                string sql = "SELECT * FROM Categorie";
+                string sql = "SELECT * From Categorie";
+                List<Categorie> categorieList = new List<Categorie>();
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-
                 };
 
-                DataSet results = ExecuteSql(sql, parameters);
+                ExecuteSql(sql, parameters);
 
-                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+                DataSet result = ExecuteSql(sql, parameters);
+
+                if (result != null && result.Tables[0].Rows.Count > 0)
                 {
-                    Categorie c = DataSetParser.DataSetToCategorie(results, x);
-                    categorieList.Add(c);
+                    for (int x = 0; x < result.Tables[0].Rows.Count; x++)
+                    {
+                        Categorie c = DataSetParser.DataSetToCategorie(result, x);
+                        categorieList.Add(c);
+                    }
                 }
                 return categorieList;
             }
