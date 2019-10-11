@@ -25,7 +25,8 @@ namespace ManiaGaming.Converters
                 CategorieId = p.CategorieId,
                 Prijs = p.Prijs,
                 Naam = p.Naam,
-                Omschrijving = p.Omschrijving
+                Omschrijving = p.Omschrijving,
+                SoortList = GetSoorten(),
             };
 
             return vm;
@@ -51,5 +52,16 @@ namespace ManiaGaming.Converters
             return p;
         }
 
+        public List<string> GetSoorten()
+        {
+            List<string> soort = new List<string>()
+            {
+                "Spel",
+                "Spelcomputer",
+                "Accesoire",
+                "Merchandise"
+            };
+            return soort;
+        }
     }
 }
