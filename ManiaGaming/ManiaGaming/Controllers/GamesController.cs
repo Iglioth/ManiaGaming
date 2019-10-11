@@ -29,11 +29,12 @@ namespace ManiaGaming.Controllers
             return View("Index");
         }
 
-        public IActionResult Aanmaken()
+        public IActionResult Detail()
         {
             ViewData["Message"] = "Your application description page.";
 
-            return View();
+            return View("Detail");
         }
+
     }
 }
