@@ -7,6 +7,6 @@ namespace ManiaGaming.Models
 {
     public class ProductViewModel
     {
-        public List<ProductDetailViewModel> productDetailViewModels { get; set; }
+        public List<ProductDetailViewModel> ProductDetailViewModels { get; set; }
     }
 }

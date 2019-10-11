@@ -8,12 +8,13 @@ namespace ManiaGaming.Models
 {
     public class ProductDetailViewModel
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         public int Aantal { get; set; }
         public string Naam { get; set; }
         public int Soort { get; set; }
-        public Categorie Categorie { get; set; }
+        public int CategorieId { get; set; }
         public string Omschrijving { get; set; }
+        public List<CategorieDetailViewModel> CategorieList { get; set; }
         public int Prijs { get; set; }
     }
 }
