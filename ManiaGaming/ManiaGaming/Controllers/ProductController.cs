@@ -35,7 +35,8 @@ namespace ManiaGaming.Controllers
         {
             ProductDetailViewModel vm = new ProductDetailViewModel
             {
-                CategorieList = categorieConverter.ModelsToViewModels(categorieRepository.GetAll())
+                CategorieList = categorieConverter.ModelsToViewModels(categorieRepository.GetAll()),
+                SoortList = productConverter.GetSoorten()
             };
             return View(vm);
         }
@@ -49,8 +50,9 @@ namespace ManiaGaming.Controllers
         }
 
         [HttpPost]
-        public IActionResult Creëer(ProductDetailViewModel vm)
+        public IActionResult Aanmaken(ProductDetailViewModel vm)
         {
+            vm.CategorieList = new List<CategorieDetailViewModel>();
             // Check if model is valid
             if (ModelState.IsValid)
             {

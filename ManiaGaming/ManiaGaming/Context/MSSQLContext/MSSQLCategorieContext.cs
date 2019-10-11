@@ -30,8 +30,6 @@ namespace ManiaGaming.Context.MSSQLContext
                 {
                 };
 
-                ExecuteSql(sql, parameters);
-
                 DataSet result = ExecuteSql(sql, parameters);
 
                 if (result != null && result.Tables[0].Rows.Count > 0)

@@ -13,6 +13,6 @@ namespace ManiaGaming.Models.Data
         public int Soort { get; set; }
         public int CategorieId { get; set; }
         public string Omschrijving { get; set; }
-        public int Prijs { get; set; }
+        public decimal Prijs { get; set; }
     }
 }

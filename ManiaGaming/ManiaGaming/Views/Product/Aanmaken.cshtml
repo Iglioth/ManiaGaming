@@ -1,7 +1,7 @@
 ﻿ @model ManiaGaming.Models.ProductDetailViewModel
 
 @{
-    ViewData["Title"] = "Creëer";
+    ViewData["Title"] = "Aanmaken";
 }
 
 <h2>Aanmaken</h2>
@@ -34,6 +34,16 @@
                     }
                 </select>
                 <span asp-validation-for="CategorieId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Soort</label>
+                <select asp-for="Soort" class="form-control">
+                    @for (int i = 0; i < Model.SoortList.Count(); i++)
+                    {
+                        <option value="@Model.SoortList[i]">@Model.SoortList[i]</option>
+                    }
+                </select>
+                <span asp-validation-for="Soort" class="text-danger"></span>
             </div>
             <input type="submit" value="Opslaan" class="btn btn-default" />
         </form>

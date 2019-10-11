@@ -15,6 +15,7 @@ namespace ManiaGaming.Models
         public int CategorieId { get; set; }
         public string Omschrijving { get; set; }
         public List<CategorieDetailViewModel> CategorieList { get; set; }
-        public int Prijs { get; set; }
+        public List<string> SoortList { get; set; }
+        public decimal Prijs { get; set; }
     }
 }
