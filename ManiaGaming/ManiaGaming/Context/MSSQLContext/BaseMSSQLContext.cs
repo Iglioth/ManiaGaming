@@ -50,9 +50,9 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
-        public long ExecuteInsert(string sql, List<KeyValuePair<string, string>> parameters)
+        public int ExecuteInsert(string sql, List<KeyValuePair<string, string>> parameters)
         {
-            long id = new long();
+            int id = new int();
             try
             {
                 SqlConnection conn = new SqlConnection(connectionString);
@@ -71,12 +71,12 @@ namespace ManiaGaming.Context.MSSQLContext
                 cmd.CommandText = sql;
 
                 conn.Open();
-                id = (long)cmd.ExecuteScalar();
+                id = (int)cmd.ExecuteScalar();
                 conn.Close();
 
                 return id;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }

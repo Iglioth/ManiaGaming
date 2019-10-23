@@ -90,20 +90,19 @@ namespace ManiaGaming.Context.MSSQLContext
             
             try
             {
-                string sql = "INSERT INTO Product(Aantal, Naam, Soort, CategorieId, Omschrijving, Prijs) VALUES(0, @naam, @soort, @categorieId, @omschrijving, @prijs)";
+                string sql = "INSERT INTO Product(Aantal, Naam, Soort, CategorieId, Omschrijving, Prijs) OUTPUT INSERTED.ProductId VALUES(0, @naam, @soort, @categorieId, @omschrijving, @prijs)";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("aantal", obj.Aantal.ToString()),
                     new KeyValuePair<string, string>("naam", obj.Naam),
-                    new KeyValuePair<string, string>("soort", obj.Soort.ToString()),
+                    new KeyValuePair<string, string>("soort", obj.Soort),
                     new KeyValuePair<string, string>("CategorieId", obj.CategorieId.ToString()),
                     new KeyValuePair<string, string>("Omschrijving", obj.Omschrijving),
-                    new KeyValuePair<string, string>("Prijs", obj.Prijs.ToString())
+                    new KeyValuePair<string, string>("Prijs", obj.Prijs)
                 };
 
-                long results = ExecuteInsert(sql, parameters);
-                return results;
+                int result = ExecuteInsert(sql, parameters);
+                return result;
             }
             catch (Exception e)
             {
