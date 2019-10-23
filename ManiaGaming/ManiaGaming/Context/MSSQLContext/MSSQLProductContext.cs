@@ -68,7 +68,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "SELECT Omschrijving, Naam, Aantal, Prijs, CategorieID FROM Product INNER JOIN Categorie ON product.CategorieID = categorie.CategorieID WHERE ProductID = @productID";
+                string sql = "SELECT * FROM Product INNER JOIN Categorie ON product.CategorieID = categorie.CategorieID WHERE ProductID = @productID";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {

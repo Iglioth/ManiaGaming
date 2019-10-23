@@ -55,9 +55,13 @@ namespace ManiaGaming.Controllers
         [HttpGet]
         public IActionResult Aanpassen(long id)
         {
-            ProductDetailViewModel vm = new ProductDetailViewModel();
+            ProductDetailViewModel vm = new ProductDetailViewModel
+            {
+                SoortList = productConverter.GetSoorten()
+            };
             Product product = productRepository.GetById(id);
             vm = productConverter.ModelToViewModel(product);
+            vm.CategorieList = categorieConverter.ModelsToViewModels(categorieRepository.GetAll());
             return View(vm);
         }
 
