@@ -2,9 +2,9 @@
 
 <head>
     @{
-        ViewData["Title"] = "Index";
+        ViewData["Title"] = "Table";
     }
-    <link href="~/css/Index.css" rel="stylesheet">
+    <link href="~/css/Table.css" rel="stylesheet">
     <title></title>
 
 
@@ -31,15 +31,15 @@
         <tbody>
             @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
             {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Naam)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
-                    <td>
-                        @Html.ActionLink("Detail", "Detail", new { id = item.ProductId }) |
-                        @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.ProductId }) |
-                        @Html.ActionLink("Verwijderen", "Verwijderen", new { id = item.ProductId })
-                    </td>
-                </tr>
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+                <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
+                <td>
+                    @Html.ActionLink("Detail", "Detail", new { id = item.ProductId }) |
+                    @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.ProductId }) |
+                    @Html.ActionLink("Verwijderen", "Verwijderen", new { id = item.ProductId })
+                </td>
+            </tr>
             }
         </tbody>
     </table>
