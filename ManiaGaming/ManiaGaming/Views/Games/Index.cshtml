@@ -17,21 +17,27 @@
 
 <body>
     
-    <div class="container-product">
-        @{ 
-            foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
-            {
-                List<ProductDetailViewModel> ThreeDVMs = new List<ProductDetailViewModel>();
-
-                for (int x = 0; x < ThreeDVMs.Count(); x++)
+    <div id="productContainer">
+        <table class="table table-striped table-hover" id="productTable" style="width:100%;">
+            <thead>
+                <tr>
+                    <th>Naam</th>
+                    <th>Prijs</th>
+                    <th>Acties</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
                 {
-                    <div class="container-products">
-                        <p>@Html.DisplayFor(modelItem => item.Naam)</p>
-                    </div>
-
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
+                        <td>
+                            @Html.ActionLink("Detail", "Detail", new { id = item.ProductId }) 
+                    </tr>
                 }
-            }
-        }
+            </tbody>
+        </table>
     </div>
 
 </body>

@@ -17,6 +17,7 @@ namespace ManiaGaming.Controllers
 
         // Converter 
         private readonly ProductViewModelConverter converter = new ProductViewModelConverter();
+       
 
         public GamesController
             (
@@ -34,11 +35,16 @@ namespace ManiaGaming.Controllers
             return View(vm);
         }
 
-        public IActionResult Detail()
+        public IActionResult Detail(long id)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View("Detail");
+            ProductDetailViewModel vm = new ProductDetailViewModel
+            {
+                SoortList = converter.GetSoorten()
+            };
+            Product product = productRepository.GetById(id);
+            vm = converter.ModelToViewModel(product);
+            
+            return View(vm);
         }
 
     }
