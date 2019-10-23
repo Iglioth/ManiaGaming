@@ -79,10 +79,10 @@ namespace ManiaGaming.Context.Parsers
             return new Product()
             {
                 ProductId = (int)set.Tables[0].Rows[rowIndex][0],
-                Aantal = (int)set.Tables[0].Rows[rowIndex][1],
-                Naam = (string)set.Tables[0].Rows[rowIndex][2],
-                CategorieId = (int)set.Tables[0].Rows[rowIndex][3],
-                Omschrijving = (string)set.Tables[0].Rows[rowIndex][4],
+                Aantal = (int)set.Tables[0].Rows[rowIndex][4],
+                Naam = (string)set.Tables[0].Rows[rowIndex][3],
+                CategorieId = (int)set.Tables[0].Rows[rowIndex][1],
+                Omschrijving = (string)set.Tables[0].Rows[rowIndex][2],
                 Prijs = (string)set.Tables[0].Rows[rowIndex][5],
                 Soort = (string)set.Tables[0].Rows[rowIndex][6]
             };

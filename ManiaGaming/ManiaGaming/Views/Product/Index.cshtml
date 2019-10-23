@@ -14,6 +14,9 @@
 
 <p>
     <a asp-action="Aanmaken">Nieuwe toevoegen</a>
+    <div align="right">
+        <a asp-area="" asp-controller="Categorie" asp-action="Index">Categorie</a>
+    </div>
 </p>
 
 <div id="productContainer">
@@ -28,15 +31,15 @@
         <tbody>
             @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
             {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.Naam)</td>
-                <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
-                <td>
-                    @Html.ActionLink("Detail", "Detail", new { id = item.ProductId }) |
-                    @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.ProductId }) |
-                    @Html.ActionLink("Verwijderen", "Verwijderen", new { id = item.ProductId })
-                </td>
-            </tr>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
+                    <td>
+                        @Html.ActionLink("Detail", "Detail", new { id = item.ProductId }) |
+                        @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.ProductId }) |
+                        @Html.ActionLink("Verwijderen", "Verwijderen", new { id = item.ProductId })
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

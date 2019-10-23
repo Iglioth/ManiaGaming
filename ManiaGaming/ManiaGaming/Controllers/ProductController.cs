@@ -45,6 +45,9 @@ namespace ManiaGaming.Controllers
         public IActionResult Index()
         {
             ProductViewModel vm = new ProductViewModel();
+            List<Product> products = new List<Product>();
+            products = productRepository.GetAll();
+            vm.ProductDetailViewModels = productConverter.ModelsToViewModels(products);
 
             return View(vm);
         }
