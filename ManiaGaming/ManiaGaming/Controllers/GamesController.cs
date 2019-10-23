@@ -28,10 +28,10 @@ namespace ManiaGaming.Controllers
 
         public IActionResult Index()
         {
-            ProductViewModel productViewModel = new ProductViewModel();
-            productViewModel.productDetailViewModels = converter.ModelsToViewModels(productRepository.GetAll());
+            ProductViewModel vm = new ProductViewModel();
+            vm.ProductDetailViewModels = converter.ModelsToViewModels(productRepository.GetAll());
 
-            return View("Index", productViewModel);
+            return View(vm);
         }
 
         public IActionResult Detail()
