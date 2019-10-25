@@ -12,5 +12,6 @@ namespace ManiaGaming.Models.Data
         public string Password { get; set; }
         public string Naam { get; set; }
         public string AchterNaam { get; set; }
+        public bool Actief { get; set; }
     }
 }

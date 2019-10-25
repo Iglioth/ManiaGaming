@@ -19,6 +19,28 @@ namespace ManiaGaming.Context.MSSQLContext
 
         }
 
+        public bool Actief(Klant obj, long id)
+        {
+            try
+            {
+                string sql = "UPDATE Klant SET Actief = @actief WHERE KlantID = @klantID";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("Actief", obj.Actief.ToString()),
+                    new KeyValuePair<string, string>("ProductID", obj.KlantId.ToString())
+                };
+                ExecuteSql(sql, parameters);
+
+                return obj.Actief;
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public List<Klant> GetAll()
         {
             List<Klant> klantList = new List<Klant>();

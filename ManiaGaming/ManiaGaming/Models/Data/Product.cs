@@ -14,5 +14,6 @@ namespace ManiaGaming.Models.Data
         public int CategorieId { get; set; }
         public string Omschrijving { get; set; }
         public string Prijs { get; set; }
+        public bool Actief { get; set; }
     }
 }

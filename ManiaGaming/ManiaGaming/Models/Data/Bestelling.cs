@@ -10,5 +10,6 @@ namespace ManiaGaming.Models.Data
         public int BestellingId { get; set; }
         public DateTime Datum { get; set; }
         public int klantID { get; set; }
+        public bool Actief { get; set; }
     }
 }

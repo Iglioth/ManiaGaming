@@ -12,5 +12,6 @@ namespace ManiaGaming.Models.Data
         public string Huisnummer { get; set; }
         public DateTime Geboortedatum { get; set; }
         public int Punten { get; set; }
+        public bool Actief { get; set; }
     }
 }

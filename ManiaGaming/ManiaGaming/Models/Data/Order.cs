@@ -11,5 +11,6 @@ namespace ManiaGaming.Models.Data
         public DateTime Datum { get; set; }
         public int werknemerID { get; set; }
         public int filiaalID { get; set; }
+        public bool Actief { get; set; }
     }
 }
