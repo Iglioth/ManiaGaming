@@ -129,43 +129,54 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 /* game/index */
-.container-product 
-{
-    border:solid;
-    margin: 70px;
-    height: 350px;
+/*.container-product {
+    border: solid;
+    margin: 7px;
+    height: 300px;
+    width: 250px;
     border-color: red;
-    display:flex;
+    display: flex;
+    flex-direction: row;
 }
-.container-products {
+
+.container-product-text {
+    text-align: center;
+}*/
+
+
+.container-product {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: mediumspringgreen;
+    width: 72%;
+    margin:auto;
+    margin-top: 80px;
+
+}
+.containers-products {
+    background-color: #f1f1f1;
+    width: 340px;
+    height:290px;
+    margin: 10px;
+    text-align: center;
+
+    /line-height: 75px;
+    /font-size: 30px;
+}
+.containers-products img{
+    width: 250px;
+    height: 225px;
+}
+.product-font {
+    font-size: 19px;
+    font-family: 'Permanent Marker', cursive;
+}
+/*.container-products p {
     border: solid;
     border-color: red;
-    width: 250px;
-    height:270px;
-    flex:1;
-
-    justify-content: space-between;
-    
+    text-align: center;
+    top: 270px;
 }
-
-    .container-products p {
-        border: solid;
-        border-color: red;
-        text-align:center;
-        top:270px;
-    }
-
-    /* games details*/
-
-.mario {
-    margin-left:300px;
-}
-
-/* align="left" Simply Easy Learning width="200"
-height="200" style="border: solid 5px #00ff90; "
-
-
-style="border: solid 5px #00ff90; white-space:pre; width: 500px" align="left"
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
