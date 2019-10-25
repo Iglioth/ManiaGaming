@@ -154,6 +154,18 @@ for details on configuring this project to bundle and minify static web assets. 
         text-align:center;
         top:270px;
     }
+
+    /* games details*/
+
+.mario {
+    margin-left:300px;
+}
+
+/* align="left" Simply Easy Learning width="200"
+height="200" style="border: solid 5px #00ff90; "
+
+
+style="border: solid 5px #00ff90; white-space:pre; width: 500px" align="left"
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
