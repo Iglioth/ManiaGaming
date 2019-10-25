@@ -81,5 +81,17 @@ namespace ManiaGaming.Controllers
                 return RedirectToAction("Index");
             }
         }
+        [HttpGet]
+        public IActionResult Deactiveren(long id)
+        {
+            ProductDetailViewModel vm = new ProductDetailViewModel()
+            {
+                SoortList = productConverter.GetSoorten()
+            };
+            Product product = productRepository.GetById(id);
+            vm = productConverter.ModelToViewModel(product);
+            vm.CategorieList = categorieConverter.ModelsToViewModels(categorieRepository.GetAll());
+            return View(vm);
+        }
     }
 }

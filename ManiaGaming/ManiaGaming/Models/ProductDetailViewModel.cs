@@ -17,5 +17,6 @@ namespace ManiaGaming.Models
         public List<CategorieDetailViewModel> CategorieList { get; set; }
         public List<string> SoortList { get; set; }
         public string Prijs { get; set; }
+        public bool Deactiveren { get; set; }
     }
 }
