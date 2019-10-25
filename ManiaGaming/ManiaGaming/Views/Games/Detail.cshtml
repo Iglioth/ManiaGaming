@@ -3,7 +3,7 @@
     ViewData["Title"] = "Detail";
 }
 <body>
-<h2>Game Details</h2>
+    <h2>Game Details</h2>
 </body>
 <!DOCTYPE html>
 <html>
@@ -13,20 +13,23 @@
 
 <body>
     <div class="container" style="width: 465px">
-        <h3 style="white-space:pre">super mario galaxy</h3>
+       
+        <h3><input asp-for="Naam" class="form-control" readonly/></h3>
 
         <img src="~/images/super mario galaxy.jpg" Simply Easy Learning" width="200"
              height="200">
         <p style="float:right; white-space:pre">
-        <strong>Beschrijving</strong>
-        Dit is een spel van de
-        nintendo wii. Ga op avontuur met  
-        mario in de ruimte.
+            <strong>Beschrijving</strong>
+            Dit is een spel van de
+            nintendo wii. Ga op avontuur met
+            mario in de ruimte.
 
-        <strong>Prijs:</strong>3,45
+            <strong>Prijs:</strong>3,45
         </p>
-        </div>
-        
-    
+    </div>
+    <div>
+        <a asp-action="Index">Terug naar lijst</a>
+    </div>
+
 </body>
 </html>
