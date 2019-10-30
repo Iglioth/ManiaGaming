@@ -26,6 +26,7 @@
                 <th>Naam</th>
                 <th>Prijs</th>
                 <th>Acties</th>
+                <th>Aantal</th>
             </tr>
         </thead>
         <tbody>
@@ -38,6 +39,10 @@
                     @Html.ActionLink("Detail", "Detail", new { id = item.ProductId }) |
                     @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.ProductId }) |
                     @Html.ActionLink("Deactiveren", "Deactiveren", new { id = item.ProductId })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aantal)
+                    <a asp-area="" asp-controller="Product" asp-action="Addstock">Add stock</a>
                 </td>
             </tr>
             }

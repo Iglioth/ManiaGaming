@@ -93,5 +93,14 @@ namespace ManiaGaming.Controllers
             vm.CategorieList = categorieConverter.ModelsToViewModels(categorieRepository.GetAll());
             return View(vm);
         }
+        [HttpPost]
+        public IActionResult Addstock(long id, Product obj)
+        {
+            ProductDetailViewModel vm = new ProductDetailViewModel();
+            bool addstock = productRepository.AddStock(id, obj);
+            Product product = productRepository.GetById(id);
+            vm = productConverter.ModelToViewModel(product);
+            return View(vm);
+        }
     }
 }
