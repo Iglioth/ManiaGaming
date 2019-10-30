@@ -227,8 +227,10 @@ footer {
     float: left;
     height: 100%;
     padding: 30px 450px;
-    margin-top: 18px;  
+    margin-top: 18px;
     font-weight: 600;
+    width: 70%;
+    margin: auto;
 }
 
  .footer-navigation li {

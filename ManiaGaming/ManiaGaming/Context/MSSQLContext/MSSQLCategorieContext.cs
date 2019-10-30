@@ -19,25 +19,37 @@ namespace ManiaGaming.Context.MSSQLContext
             
         }
 
-        public bool Actief(Categorie obj, long id)
+        public bool Actief(long id, bool active)
         {
-            try
+            if (active == true)
             {
-                string sql = "UPDATE Categorie SET Actief = @actief WHERE CategorieID = @categorieID";
+                string sql = "UPDATE Categorie SET Actief = 0 WHERE id = @id";
 
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Actief", obj.Actief.ToString()),
-                    new KeyValuePair<string, string>("ProductID", obj.CategorieId.ToString())
+                    new KeyValuePair<string, string>("id", id.ToString()),
                 };
+
                 ExecuteSql(sql, parameters);
 
-                return obj.Actief;
-
+                return true;
             }
-            catch (Exception e)
+            else if (active == false)
             {
-                throw e;
+                string sql = "UPDATE Categorie SET Actief = 1 WHERE id = @id";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("id", id.ToString()),
+                };
+
+                ExecuteSql(sql, parameters);
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

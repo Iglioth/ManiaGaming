@@ -1,14 +1,8 @@
 ﻿@model ManiaGaming.Models.ProductViewModel
 
-<head>
-    @{
-        ViewData["Title"] = "Table";
-    }
-    <link href="~/css/Table.css" rel="stylesheet">
-    <title></title>
-
-
-</head>
+@{
+    ViewData["Title"] = "Productenlijst";
+}
 
 <h2>Product Lijst</h2>
 
@@ -32,56 +26,23 @@
         <tbody>
             @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
             {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.Naam)</td>
-                <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
-                <td>
-                    @Html.ActionLink("Detail", "Detail", new { id = item.ProductId }) |
-                    @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.ProductId }) |
-                    @Html.ActionLink("Deactiveren", "Deactiveren", new { id = item.ProductId })
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Aantal)
-                    <a asp-area="" asp-controller="Product" asp-action="Addstock">Add stock</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
+                    <td>
+                        @Html.ActionLink("Detail", "Detail", new { id = item.ProductId }) |
+                        @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.ProductId }) |
+                        @if (item.Actief == false)
+                        {
+                            @Html.ActionLink("Activeren", "Activeren", new { id = item.ProductId })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Deactiveren", "Activeren", new { id = item.ProductId })
+                        }
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
 </div>
-@section Scripts {
-    <script>
-        $("document").ready(function () {
-            initDataTable();
-            $("#productContainer").removeClass("hidden");
-        });
-
-        function initDataTable() {
-            $("#productTable").DataTable({
-                "language": {
-                    "sProcessing": "Bezig...",
-                    "sLengthMenu": "_MENU_ resultaten weergeven",
-                    "sZeroRecords": "Geen resultaten gevonden",
-                    "sInfo": "_START_ tot _END_ van _TOTAL_ resultaten",
-                    "sInfoEmpty": "Geen resultaten om weer te geven",
-                    "sInfoFiltered": " (gefilterd uit _MAX_ resultaten)",
-                    "sInfoPostFix": "",
-                    "sSearch": "Zoeken:",
-                    "sEmptyTable": "Geen resultaten aanwezig in de tabel",
-                    "sInfoThousands": ".",
-                    "sLoadingRecords": "Een moment geduld aub - bezig met laden...",
-                    "oPaginate": {
-                        "sFirst": "Eerste",
-                        "sLast": "Laatste",
-                        "sNext": "Volgende",
-                        "sPrevious": "Vorige"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": activeer om kolom oplopend te sorteren",
-                        "sSortDescending": ": activeer om kolom aflopend te sorteren"
-                    }
-                }
-            });
-        }
-    </script>
-}
