@@ -45,7 +45,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Order> orderList = new List<Order>();
             try
             {
-                string sql = "SELECT datum, werknemerID, filiaalID FROM Order";
+                string sql = "SELECT * FROM Order";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
                 {
