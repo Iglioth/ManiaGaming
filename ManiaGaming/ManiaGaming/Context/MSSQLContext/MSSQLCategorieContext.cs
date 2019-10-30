@@ -20,7 +20,11 @@ namespace ManiaGaming.Context.MSSQLContext
         }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         public bool Actief(long id, bool active)
+=======
+        public bool Activation(long id, bool active)
+>>>>>>> Stashed changes
 =======
         public bool Activation(long id, bool active)
 >>>>>>> Stashed changes
