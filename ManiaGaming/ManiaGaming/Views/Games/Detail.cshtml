@@ -17,25 +17,29 @@
 
     <div class="homepage-img"></div>
 
-    <h3>@Model.Naam</h3>
+    <h3 style="float:right; width:69%; margin-left:1.5%;">@Model.Naam</h3>
     
-
-    <div style="width:30%; margin-left:30%; float:left; position:absolute">
-        <img style:"picture" src="~/images/super mario galaxy.jpg" width="200" height="250">
+    
+    <div style="float:left; width:50%; margin-left:1.5%;">
+        <img style="float:right; width:200px; height:250px"  src="~/images/super mario galaxy.jpg">
     </div>
-    <div style="width:60%; margin-left:50%; float:right; position:absolute">
+    <div style="float:right; width:45%; margin-left:1.5%; position:center;">
         <p style="white-space:pre-line">
 
             <strong>Beschrijving</strong>
             @Model.Omschrijving
 
             <strong>Prijs:</strong>@Model.Prijs
+            <button>Kopen</button>
         </p>
     </div>
-
-    <div>
-        <a asp-action="Index">Terug naar lijst</a>
+   
+    <div style="height:100%; margin-top:35%;">
+        <button><a asp-action="Index">Terug naar lijst</a></button>
     </div>
+    
+     
+    
 
 </body>
 </html>
