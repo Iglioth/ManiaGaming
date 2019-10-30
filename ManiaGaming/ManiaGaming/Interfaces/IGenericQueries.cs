@@ -12,6 +12,6 @@ namespace ManiaGaming.Interfaces
 
         long Insert(T obj);
         bool Update(T obj);
-        bool Actief(T obj, long id);
+        bool Actief(long id, bool actief);
     }
 }
