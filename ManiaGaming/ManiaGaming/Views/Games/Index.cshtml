@@ -21,32 +21,32 @@
 
     <div class="container-product">
         @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
-<<<<<<< Updated upstream
+
         {
             if (item.Actief == true)
             {
-        <div>
-            <a href='@Html.ActionLink("Detail", "Detail", new { id = item.ProductId })'>
-=======
-         {
-            <div>
->>>>>>> Stashed changes
-                <div class="containers-products">
+                <div>
+                    <a href='@Html.ActionLink("Detail", "Detail", new { id = item.ProductId })'>
+
+                        {
 
 
-                    <img src="~/images/Games.png" alt="Paris">
+                        <div class="containers-products">
 
-                    <p class="product-font"> @Html.DisplayFor(modelItem => item.Naam)  </p><p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
+
+                            <img src="~/images/Games.png" alt="Paris">
+
+                            <p class="product-font"> @Html.DisplayFor(modelItem => item.Naam)  </p><p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
+
+                        </div>
+                    </a>
 
                 </div>
-            </a>
-
-        </div>
             }
         }
     </div>
-    
- 
+
+
 </body>
 
 </html>
