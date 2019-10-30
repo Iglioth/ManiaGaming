@@ -21,18 +21,25 @@
 
     <div class="container-product">
         @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
-         {
-            <div>
-                @Html.ActionLink("Detail", "Detail", new { id = item.ProductId })
+        {
+        <div>
+            <a href='@Html.ActionLink("Detail", "Detail", new { id = item.ProductId })'>
                 <div class="containers-products">
-                    <img src="~/images/Games.png" alt="Paris">
-                    <p class="product-font"> @Html.DisplayFor(modelItem => item.Naam)  @Html.DisplayFor(modelItem => item.Prijs),- </p>
-                </div>
-            </div>
-         }
-    </div>
 
-    </body>
+
+                    <img src="~/images/Games.png" alt="Paris">
+
+                    <p class="product-font"> @Html.DisplayFor(modelItem => item.Naam)  </p><p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
+
+                </div>
+            </a>
+
+        </div>
+        }
+    </div>
+    
+ 
+</body>
 
 </html>
 
