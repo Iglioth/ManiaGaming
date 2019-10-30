@@ -21,11 +21,16 @@
 
     <div class="container-product">
         @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
+<<<<<<< Updated upstream
         {
             if (item.Actief == true)
             {
         <div>
             <a href='@Html.ActionLink("Detail", "Detail", new { id = item.ProductId })'>
+=======
+         {
+            <div>
+>>>>>>> Stashed changes
                 <div class="containers-products">
 
 
