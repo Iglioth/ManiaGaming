@@ -102,5 +102,12 @@ namespace ManiaGaming.Controllers
             vm = productConverter.ModelToViewModel(product);
             return View(vm);
         }
+        [HttpGet]
+        public IActionResult VeranderStock(long id)
+        {
+            Product product = productRepository.GetById(id);
+            ProductDetailViewModel vm = productConverter.ModelToViewModel(product);
+            return View(vm);
+        }
     }
 }
