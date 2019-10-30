@@ -34,5 +34,10 @@ namespace ManiaGaming.Controllers
 
             return View();
         }
+
+        public IActionResult Detail()
+        {
+            return View("Detail");
+        }
     }
 }
