@@ -7,23 +7,31 @@
 </body>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Game Details</title>
+    <link rel="stylesheet" href="site.css">
 </head>
 
 <body>
-    <!--<div class="games-container"></div>-->
+
+    <div class="homepage-img"></div>
 
     <h3>@Model.Naam</h3>
+    
 
-    <img class="mario" src="~/images/super mario galaxy.jpg">
-    <p>
-        <strong>Beschrijving</strong>
-        @Model.Omschrijving
+    <div style="width:30%; margin-left:30%; float:left; position:absolute">
+        <img style:"picture" src="~/images/super mario galaxy.jpg" width="200" height="250">
+    </div>
+    <div style="width:60%; margin-left:50%; float:right; position:absolute">
+        <p style="white-space:pre-line">
 
-        <strong>Prijs:</strong>@Model.Prijs
-    </p>
+            <strong>Beschrijving</strong>
+            @Model.Omschrijving
 
+            <strong>Prijs:</strong>@Model.Prijs
+        </p>
+    </div>
 
     <div>
         <a asp-action="Index">Terug naar lijst</a>
