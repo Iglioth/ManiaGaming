@@ -179,8 +179,14 @@ for details on configuring this project to bundle and minify static web assets. 
 .picture {
     width: 200px;
     height: 250px;
+
 }
+.hheader {
+    float: right;
+    width: 69%;
+    margin-left: 1.5%;
 }
+
 /*.container-products p {
     border: solid;
     border-color: red;

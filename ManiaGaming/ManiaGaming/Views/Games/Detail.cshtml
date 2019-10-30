@@ -15,17 +15,17 @@
 
 <body>
 
-    <div class="homepage-img"></div>
 
-    <h3 style="float:right; width:69%; margin-left:1.5%;">@Model.Naam</h3>
     
-    
-    <div style="float:left; width:50%; margin-left:1.5%;">
-        <img style="float:right; width:200px; height:250px"  src="~/images/super mario galaxy.jpg">
+
+    <h3 class="hheader">@Model.Naam</h3>
+
+
+    <div style="float:left; width:45%; margin-left:1.5%;">
+        <img style="float:right; width:200px; height:250px" src="~/images/super mario galaxy.jpg">
     </div>
-    <div style="float:right; width:45%; margin-left:1.5%; position:center;">
-        <p style="white-space:pre-line">
-
+    <div style="float:right; width:20%; margin-left:1.5%; margin-right:30%; position:center; border-style:solid; border-color:mediumspringgreen;">
+        <p style="white-space:pre-line; margin-left:1.5%">
             <strong>Beschrijving</strong>
             @Model.Omschrijving
 
@@ -33,13 +33,14 @@
             <button>Kopen</button>
         </p>
     </div>
-   
+
     <div style="height:100%; margin-top:35%;">
         <button><a asp-action="Index">Terug naar lijst</a></button>
     </div>
+
     
-     
-    
+
+
 
 </body>
 </html>
