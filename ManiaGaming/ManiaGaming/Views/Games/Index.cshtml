@@ -22,6 +22,8 @@
     <div class="container-product">
         @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
         {
+            if (item.Actief == true)
+            {
         <div>
             <a href='@Html.ActionLink("Detail", "Detail", new { id = item.ProductId })'>
                 <div class="containers-products">
@@ -35,6 +37,7 @@
             </a>
 
         </div>
+            }
         }
     </div>
     

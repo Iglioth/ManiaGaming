@@ -35,5 +35,9 @@ namespace ManiaGaming.Repositories
             return context.Update(obj);
         }
 
+        public bool Actief(long id, bool active)
+        {
+            return context.Actief(id, active);
+        }
     }
 }

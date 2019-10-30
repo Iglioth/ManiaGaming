@@ -53,6 +53,14 @@ namespace ManiaGaming.Controllers
         }
 
         [HttpGet]
+        public IActionResult Activeren(long id)
+        {
+            Product product = productRepository.GetById(id);
+            productRepository.Actief(id, product.Actief);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
         public IActionResult Aanpassen(long id)
         {
             ProductDetailViewModel vm = new ProductDetailViewModel

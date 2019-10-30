@@ -18,26 +18,9 @@ namespace ManiaGaming.Context.MSSQLContext
         {
         }
 
-        public bool Actief(Order obj, long id)
+        public bool Actief(long id, bool actief)
         {
-            try
-            {
-                string sql = "UPDATE Order SET Actief = @actief WHERE OrderID = @OrderID";
-
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
-                {
-                    new KeyValuePair<string, string>("Actief", obj.Actief.ToString()),
-                    new KeyValuePair<string, string>("ProductID", obj.OrderId.ToString())
-                };
-                ExecuteSql(sql, parameters);
-
-                return obj.Actief;
-
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            throw new NotImplementedException();
         }
 
         public List<Order> GetAll()

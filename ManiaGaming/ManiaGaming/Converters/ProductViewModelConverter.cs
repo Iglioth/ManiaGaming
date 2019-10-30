@@ -24,7 +24,8 @@ namespace ManiaGaming.Converters
                     CategorieId = p.CategorieId,
                     Prijs = p.Prijs,
                     Naam = p.Naam,
-                    Omschrijving = p.Omschrijving
+                    Omschrijving = p.Omschrijving,
+                    Actief = p.Actief
                 };
                 productDetailViewModels.Add(vm);
             }
@@ -44,6 +45,7 @@ namespace ManiaGaming.Converters
                 Naam = p.Naam,
                 Omschrijving = p.Omschrijving,
                 SoortList = GetSoorten(),
+                Actief = p.Actief
             };
 
             return vm;
@@ -64,7 +66,8 @@ namespace ManiaGaming.Converters
                 CategorieId = vm.CategorieId,
                 Naam = vm.Naam,
                 Omschrijving = vm.Omschrijving,
-                Prijs = vm.Prijs
+                Prijs = vm.Prijs,
+                Actief = vm.Actief
             };
             return p;
         }
