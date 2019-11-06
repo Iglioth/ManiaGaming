@@ -7,7 +7,10 @@ namespace ManiaGaming.Models
 {
     public class OrderDetailViewModel
     {
-        public int Orderid { get; set; }
+        public int OrderId { get; set; }
         public DateTime Datum { get; set; }
+        public int werknemerID { get; set; }
+        public int filiaalID { get; set; }
+        public bool Ontvangen { get; set; }
     }
 }

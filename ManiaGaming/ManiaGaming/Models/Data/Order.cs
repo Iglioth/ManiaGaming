@@ -9,8 +9,8 @@ namespace ManiaGaming.Models.Data
     {
         public int OrderId { get; set; }
         public DateTime Datum { get; set; }
-        public int werknemerID { get; set; }
-        public int filiaalID { get; set; }
-        public bool Actief { get; set; }
+        public int WerknemerID { get; set; }
+        public int FiliaalID { get; set; }
+        public bool Ontvangen { get; set; }
     }
 }
