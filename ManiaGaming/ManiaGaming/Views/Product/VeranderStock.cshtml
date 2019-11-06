@@ -3,7 +3,24 @@
     ViewData["Title"] = "VeranderStock";
 }
 
-<h2>VeranderStock</h2>
+<h2>Verander Stock</h2>
 
 <hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="VeranderStock">
+            <div class="form-group">
+                <label asp-for="Aantal" class="control-label"></label>
+                <input asp-for="Aantal" class="form-control" />
+                <span asp-validation-for="Aantal" class="text-danger"></span>
+                </div>
+            <input type="submit" value="Bijwerken" class="btn btn-default" />
+            </form>
+        </div>
+    </div>
+<div>
+    <a asp-action="Index">Terug naar lijst</a>
+</div>
+
+
 
