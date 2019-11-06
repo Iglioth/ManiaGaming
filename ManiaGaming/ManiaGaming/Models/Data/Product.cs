@@ -15,5 +15,6 @@ namespace ManiaGaming.Models.Data
         public string Omschrijving { get; set; }
         public string Prijs { get; set; }
         public bool Actief { get; set; }
+        public object Tweedehands { get; internal set; }
     }
 }

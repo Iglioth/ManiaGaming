@@ -18,5 +18,6 @@ namespace ManiaGaming.Models
         public List<string> SoortList { get; set; }
         public string Prijs { get; set; }
         public bool Actief { get; set; }
+        public bool Tweedehands { get; set; }
     }
 }

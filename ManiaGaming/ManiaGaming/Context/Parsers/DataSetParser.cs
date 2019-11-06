@@ -69,7 +69,6 @@ namespace ManiaGaming.Context.Parsers
                 DetailProductId = (int)set.Tables[0].Rows[rowIndex][0],
                 ProductId = (int)set.Tables[0].Rows[rowIndex][1],
                 FiliaalId = (int)set.Tables[0].Rows[rowIndex][2],
-                Retour = (bool)set.Tables[0].Rows[rowIndex][3],
                 Verkocht = (bool)set.Tables[0].Rows[rowIndex][4]
 
             };
@@ -85,7 +84,8 @@ namespace ManiaGaming.Context.Parsers
                 Aantal = (int)set.Tables[0].Rows[rowIndex][4],
                 Prijs = (string)set.Tables[0].Rows[rowIndex][5],
                 Soort = (string)set.Tables[0].Rows[rowIndex][6],
-                Actief = (bool)set.Tables[0].Rows[rowIndex][7]
+                Actief = (bool)set.Tables[0].Rows[rowIndex][7],
+                Tweedehands = (bool)set.Tables[0].Rows[rowIndex][8]
             };
         }
         public static Filiaal DataSetToFiliaal(DataSet set, int rowIndex)
