@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Context.IContext
 {
-    public interface IProductContext : IGenericQueries<Product>
+    public interface IFiliaalContext : IGenericQueries<Filiaal>
     {
-        bool VeranderStock(long id, Product obj);
     }
 }

@@ -25,7 +25,7 @@ namespace ManiaGaming.Converters
         {
             CategorieDetailViewModel vm = new CategorieDetailViewModel()
             {
-                Id = model.CategorieId,
+                Id = model.Id,
                 Naam = model.Naam
             };
 
@@ -42,7 +42,7 @@ namespace ManiaGaming.Converters
             Categorie c = new Categorie()
             {
                 Naam = viewModel.Naam,
-                CategorieId = viewModel.Id
+                Id = viewModel.Id
             };
 
             return c;

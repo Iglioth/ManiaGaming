@@ -8,7 +8,7 @@ namespace ManiaGaming.Models
 {
     public class ProductDetailViewModel
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         public int Aantal { get; set; }
         public string Naam { get; set; }
         public string Soort { get; set; }

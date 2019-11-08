@@ -18,7 +18,7 @@ namespace ManiaGaming.Converters
             {
                 ProductDetailViewModel vm = new ProductDetailViewModel()
                 {
-                    ProductId = p.ProductId,
+                    Id = p.Id,
                     Aantal = p.Aantal,
                     Soort = p.Soort,
                     CategorieId = p.CategorieId,
@@ -37,7 +37,7 @@ namespace ManiaGaming.Converters
         {
             ProductDetailViewModel vm = new ProductDetailViewModel()
             {
-                ProductId = p.ProductId,
+                Id = p.Id,
                 Aantal = p.Aantal,
                 Soort = p.Soort,
                 CategorieId = p.CategorieId,
@@ -60,7 +60,7 @@ namespace ManiaGaming.Converters
         {
             Product p = new Product()
             {
-                ProductId = vm.ProductId,
+                Id = vm.Id,
                 Aantal = vm.Aantal,
                 Soort = vm.Soort,
                 CategorieId = vm.CategorieId,

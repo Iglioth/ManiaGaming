@@ -19,7 +19,7 @@ namespace ManiaGaming.Converters
         {
             AccountDetailViewModel vm = new AccountDetailViewModel()
             {
-                AccountId = a.AccountId,
+                Id = a.Id,
                 Email = a.Email,
                 Password = a.Password,
                 Naam = a.Naam,
@@ -38,7 +38,7 @@ namespace ManiaGaming.Converters
         {
             Account ac = new Account()
             {
-                AccountId = vm.AccountId,
+                Id = vm.Id,
                 Email = vm.Email,
                 Password = vm.Password,
                 Naam = vm.Naam,

@@ -134,7 +134,7 @@ namespace ManiaGaming.Context.MSSQLContext
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("naam", obj.Naam),
-                    new KeyValuePair<string, string>("id", Convert.ToString(obj.CategorieId)),
+                    new KeyValuePair<string, string>("id", Convert.ToString(obj.Id)),
                 };
 
                 ExecuteSql(sql, parameters);

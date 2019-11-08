@@ -9,7 +9,7 @@ namespace ManiaGaming.Models.Data
 {
     public class ProductFoto
     {
-        public int ProductFotoId { get; set; }
+        public int Id { get; set; }
         public byte[] Foto  { get; set; }
     }
 }

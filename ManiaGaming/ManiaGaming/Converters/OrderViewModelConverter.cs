@@ -18,7 +18,7 @@ namespace ManiaGaming.Converters
             {
                 OrderDetailViewModel vm = new OrderDetailViewModel()
                 {
-                    OrderId = p.OrderId,
+                    Id = p.Id,
                     Datum = p.Datum,
                     filiaalID = p.FiliaalID,
                     Ontvangen = p.Ontvangen,
@@ -36,7 +36,7 @@ namespace ManiaGaming.Converters
         {
             OrderDetailViewModel vm = new OrderDetailViewModel()
             {
-                OrderId = o.OrderId,
+                Id = o.Id,
                 Datum = o.Datum
             };
 
@@ -52,7 +52,7 @@ namespace ManiaGaming.Converters
         {
             Order o = new Order()
             {
-                OrderId = vm.OrderId,
+                Id = vm.Id,
                 Datum = vm.Datum
             };
             return o;

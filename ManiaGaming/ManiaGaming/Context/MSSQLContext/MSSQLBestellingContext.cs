@@ -78,7 +78,7 @@ namespace ManiaGaming.Context.MSSQLContext
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
                 {
                     new KeyValuePair<string, string>("Datum", obj.Datum.ToString());
-                    new KeyValuePair<string, string>("klantID", obj.klantID.ToString());
+                    new KeyValuePair<string, string>("klantID", obj.Id.ToString());
                 }
                 long results = ExecuteInsert(sql, parameters);
                 return results;
