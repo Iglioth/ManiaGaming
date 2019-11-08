@@ -28,9 +28,9 @@
             <div class="form-group">
                 <label>Categorie</label>
                 <select asp-for="CategorieId" class="form-control">
-                    @for (int i = 1; i-1 < Model.CategorieList.Count(); i++)
+                    @for (int i = 1; i - 1 < Model.CategorieList.Count(); i++)
                     {
-                        <option value="@i">@Model.CategorieList[i-1].Naam</option>
+                        <option value="@i">@Model.CategorieList[i - 1].Naam</option>
                     }
                 </select>
                 <span asp-validation-for="CategorieId" class="text-danger"></span>
@@ -44,6 +44,11 @@
                     }
                 </select>
                 <span asp-validation-for="Soort" class="text-danger"></span>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input asp-for="Tweedehands" /> @Html.DisplayNameFor(model => model.Tweedehands)
+                </label>
             </div>
             <input type="submit" value="Opslaan" class="btn btn-default" />
         </form>

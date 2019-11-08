@@ -85,7 +85,8 @@ namespace ManiaGaming.Context.Parsers
                 Prijs = (string)set.Tables[0].Rows[rowIndex][5],
                 Soort = (string)set.Tables[0].Rows[rowIndex][6],
                 Actief = (bool)set.Tables[0].Rows[rowIndex][7],
-                Tweedehands = (bool)set.Tables[0].Rows[rowIndex][8]
+                Tweedehands = (bool)set.Tables[0].Rows[rowIndex][8],
+                CategorieNaam = (string)set.Tables[0].Rows[rowIndex][10]
             };
         }
         public static Filiaal DataSetToFiliaal(DataSet set, int rowIndex)

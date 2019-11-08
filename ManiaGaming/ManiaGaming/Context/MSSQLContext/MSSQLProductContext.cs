@@ -56,7 +56,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "SELECT * FROM Product";
+                string sql = "SELECT * FROM Product as P INNER JOIN Categorie as C ON P.CategorieId = C.CategorieId";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -104,7 +104,7 @@ namespace ManiaGaming.Context.MSSQLContext
             
             try
             {
-                string sql = "INSERT INTO Product(Aantal, Naam, Soort, CategorieId, Omschrijving, Prijs) OUTPUT INSERTED.ProductId VALUES(0, @naam, @soort, @categorieId, @omschrijving, @prijs)";
+                string sql = "INSERT INTO Product(Aantal, Naam, Soort, CategorieId, Omschrijving, Prijs, Tweedehands, Actief) OUTPUT INSERTED.ProductId VALUES(0, @naam, @soort, @categorieId, @omschrijving, @prijs, @tweedehands, 1)";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -112,7 +112,8 @@ namespace ManiaGaming.Context.MSSQLContext
                     new KeyValuePair<string, string>("soort", obj.Soort),
                     new KeyValuePair<string, string>("CategorieId", obj.CategorieId.ToString()),
                     new KeyValuePair<string, string>("Omschrijving", obj.Omschrijving),
-                    new KeyValuePair<string, string>("Prijs", obj.Prijs)
+                    new KeyValuePair<string, string>("Prijs", obj.Prijs),
+                    new KeyValuePair<string, string>("Tweedehands", obj.Tweedehands.ToString())
                 };
 
                 int result = ExecuteInsert(sql, parameters);

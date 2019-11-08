@@ -21,8 +21,7 @@ namespace ManiaGaming.Context.MSSQLContext
 
 
         public bool Actief(long id, bool active)
-
-
+           
         {
             if (active == true)
             {
