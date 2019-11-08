@@ -169,16 +169,17 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "UPDATE Product SET aantal = @aantal, naam = @naam, soort = @soort, categorie = @categorie, omschrijving = @omschrijving, prijs = @prijs ";
+                string sql = "UPDATE Product SET aantal = @aantal, naam = @naam, soort = @soort, CategorieID = @categorieID, omschrijving = @omschrijving, prijs = @prijs WHERE productid = @productID ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("aantal", obj.Aantal.ToString()),
                     new KeyValuePair<string, string>("naam", obj.Naam),
                     new KeyValuePair<string, string>("soort", obj.Soort.ToString()),
-                    new KeyValuePair<string, string>("categorie", obj.CategorieId.ToString()),
+                    new KeyValuePair<string, string>("categorieID", obj.CategorieId.ToString()),
                     new KeyValuePair<string, string>("omschrijving", obj.Omschrijving),
                     new KeyValuePair<string, string>("prijs", obj.Prijs.ToString()),
+                    new KeyValuePair<string, string>("productID", obj.ProductId.ToString()),
                 };
 
                 ExecuteSql(sql, parameters);
