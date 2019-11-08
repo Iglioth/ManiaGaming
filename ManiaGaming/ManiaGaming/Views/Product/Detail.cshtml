@@ -56,7 +56,7 @@
 <div>
     @if (User.IsInRole("beheerder"))
     {
-        @Html.ActionLink("Aanpassen", "Aanpassen", new { id = Model.ProductId }) @: |
+        @Html.ActionLink("Aanpassen", "Aanpassen", new { id = Model.Id }) @: |
     }
     <a asp-action="Index">Terug naar lijst</a>
 </div>
