@@ -47,6 +47,16 @@ namespace ManiaGaming.Controllers
         }
 
         [HttpGet]
+        public IActionResult Create(OrderDetailViewModel vm)
+        {
+            Order o = new Order();
+            o = orderConverter.ViewModelToModel(vm);
+            repo.Insert(o);
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
         public IActionResult Ontvangen(int id)
         {
             Order order = repo.GetById(id);
@@ -54,7 +64,10 @@ namespace ManiaGaming.Controllers
             {
                 //Show that there has been an error
             }
+            else
+            {
 
+            }
             return RedirectToAction("Index");
         }
 
