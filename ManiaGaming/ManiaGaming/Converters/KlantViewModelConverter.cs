@@ -19,12 +19,11 @@ namespace ManiaGaming.Converters
         {
             KlantDetailViewModel vm = new KlantDetailViewModel()
             {
-                KlantId = k.KlantId,
+                Id = k.Id,
                 Geboortedatum = k.Geboortedatum,
                 Huisnummer = k.Huisnummer,
                 Postcode = k.Postcode,
                 Punten = k.Punten,
-                AccountId = k.AccountId,
                 AchterNaam = k.AchterNaam,
                 Email = k.Email,
                 Naam = k.Naam,
@@ -44,8 +43,7 @@ namespace ManiaGaming.Converters
         {
             Klant k = new Klant()
             {
-                KlantId = vm.KlantId,
-                AccountId = vm.AccountId,
+                Id = vm.Id,
                 AchterNaam = vm.AchterNaam,
                 Email = vm.Email,
                 Geboortedatum = vm.Geboortedatum,

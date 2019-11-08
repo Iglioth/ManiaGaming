@@ -42,6 +42,7 @@ namespace ManiaGaming
             services.AddScoped<IOrderContext, MSSQLOrderContext>();
             services.AddScoped<IWerknemerContext, MSSQLWerknemerContext>();
             services.AddScoped<IBestellingContext, MSSQLBestellingContext>();
+            services.AddScoped<IFiliaalContext, MSSQLFiliaalContext>();
 
             // Repositories
             services.AddScoped<AccountRepository>();
@@ -51,6 +52,7 @@ namespace ManiaGaming
             services.AddScoped<ProductRepository>();
             services.AddScoped<WerknemerRepository>();
             services.AddScoped<BestellingRepository>();
+            services.AddScoped<FiliaalRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

@@ -18,14 +18,16 @@ namespace ManiaGaming.Converters
             {
                 ProductDetailViewModel vm = new ProductDetailViewModel()
                 {
-                    ProductId = p.ProductId,
+                    Id = p.Id,
                     Aantal = p.Aantal,
                     Soort = p.Soort,
                     CategorieId = p.CategorieId,
                     Prijs = p.Prijs,
                     Naam = p.Naam,
                     Omschrijving = p.Omschrijving,
-                    Actief = p.Actief
+                    Actief = p.Actief,
+                    CategorieNaam = p.CategorieNaam,
+                    Tweedehands = p.Tweedehands
                 };
                 productDetailViewModels.Add(vm);
             }
@@ -37,7 +39,7 @@ namespace ManiaGaming.Converters
         {
             ProductDetailViewModel vm = new ProductDetailViewModel()
             {
-                ProductId = p.ProductId,
+                Id = p.Id,
                 Aantal = p.Aantal,
                 Soort = p.Soort,
                 CategorieId = p.CategorieId,
@@ -45,7 +47,9 @@ namespace ManiaGaming.Converters
                 Naam = p.Naam,
                 Omschrijving = p.Omschrijving,
                 SoortList = GetSoorten(),
-                Actief = p.Actief
+                Actief = p.Actief,
+                CategorieNaam = p.CategorieNaam,
+                Tweedehands = p.Tweedehands
             };
 
             return vm;
@@ -60,14 +64,16 @@ namespace ManiaGaming.Converters
         {
             Product p = new Product()
             {
-                ProductId = vm.ProductId,
+                Id = vm.Id,
                 Aantal = vm.Aantal,
                 Soort = vm.Soort,
                 CategorieId = vm.CategorieId,
                 Naam = vm.Naam,
                 Omschrijving = vm.Omschrijving,
                 Prijs = vm.Prijs,
-                Actief = vm.Actief
+                Actief = vm.Actief,
+                CategorieNaam = vm.CategorieNaam,
+                Tweedehands = vm.Tweedehands
             };
             return p;
         }

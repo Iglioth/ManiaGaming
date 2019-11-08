@@ -19,7 +19,7 @@ namespace ManiaGaming.Context.Parsers
                 Geboortedatum = (DateTime)set.Tables[0].Rows[rowIndex][3],
                 Punten = (int)set.Tables[0].Rows[rowIndex][4],
                 
-                AccountId = (int)set.Tables[0].Rows[rowIndex][5],
+                Id = (int)set.Tables[0].Rows[rowIndex][5],
                 Email = (string)set.Tables[0].Rows[rowIndex][6],
                 Password = (string)set.Tables[0].Rows[rowIndex][7],
                 Naam = (string)set.Tables[0].Rows[rowIndex][8],
@@ -30,7 +30,7 @@ namespace ManiaGaming.Context.Parsers
         {
             return new Account()
             {
-                AccountId = (int)set.Tables[0].Rows[rowIndex][0],
+                Id = (int)set.Tables[0].Rows[rowIndex][0],
                 Email = (string)set.Tables[0].Rows[rowIndex][1],
                 Password = (string)set.Tables[0].Rows[rowIndex][2],
                 Naam = (string)set.Tables[0].Rows[rowIndex][3],
@@ -44,7 +44,7 @@ namespace ManiaGaming.Context.Parsers
                 WerknemerId = (int)set.Tables[0].Rows[rowIndex][0],
                 Functie = (string)set.Tables[0].Rows[rowIndex][1],
 
-                AccountId = (int)set.Tables[0].Rows[rowIndex][2],
+                Id = (int)set.Tables[0].Rows[rowIndex][2],
                 Email = (string)set.Tables[0].Rows[rowIndex][3],
                 Password = (string)set.Tables[0].Rows[rowIndex][4],
                 Naam = (string)set.Tables[0].Rows[rowIndex][5],
@@ -55,7 +55,7 @@ namespace ManiaGaming.Context.Parsers
         {
             return new Bestelling()
             {
-                BestellingId = (int)set.Tables[0].Rows[rowIndex][0],
+                Id = (int)set.Tables[0].Rows[rowIndex][0],
                 Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
                 klantID = (int)set.Tables[0].Rows[rowIndex][2]
 
@@ -66,7 +66,7 @@ namespace ManiaGaming.Context.Parsers
         {
             return new DetailProduct()
             {
-                DetailProductId = (int)set.Tables[0].Rows[rowIndex][0],
+                Id = (int)set.Tables[0].Rows[rowIndex][0],
                 ProductId = (int)set.Tables[0].Rows[rowIndex][1],
                 FiliaalId = (int)set.Tables[0].Rows[rowIndex][2],
                 Verkocht = (bool)set.Tables[0].Rows[rowIndex][4]
@@ -77,7 +77,7 @@ namespace ManiaGaming.Context.Parsers
         {
             return new Product()
             {
-                ProductId = (int)set.Tables[0].Rows[rowIndex][0],
+                Id = (int)set.Tables[0].Rows[rowIndex][0],
                 CategorieId = (int)set.Tables[0].Rows[rowIndex][1],
                 Omschrijving = (string)set.Tables[0].Rows[rowIndex][2],
                 Naam = (string)set.Tables[0].Rows[rowIndex][3],
@@ -85,17 +85,19 @@ namespace ManiaGaming.Context.Parsers
                 Prijs = (string)set.Tables[0].Rows[rowIndex][5],
                 Soort = (string)set.Tables[0].Rows[rowIndex][6],
                 Actief = (bool)set.Tables[0].Rows[rowIndex][7],
-                Tweedehands = (bool)set.Tables[0].Rows[rowIndex][8]
+                Tweedehands = (bool)set.Tables[0].Rows[rowIndex][8],
+                CategorieNaam = (string)set.Tables[0].Rows[rowIndex][10]
             };
         }
         public static Filiaal DataSetToFiliaal(DataSet set, int rowIndex)
         {
             return new Filiaal()
             {
-                FiliaalId = (int)set.Tables[0].Rows[rowIndex][0],
-                Postcode = (string)set.Tables[0].Rows[rowIndex][1],
-                Huisnummer = (string)set.Tables[0].Rows[rowIndex][2],
-                Telefoonnummer = (int)set.Tables[0].Rows[rowIndex][3],
+                Id = (int)set.Tables[0].Rows[rowIndex][0],
+                stad = (string)set.Tables[0].Rows[rowIndex][1],
+                Postcode = (string)set.Tables[0].Rows[rowIndex][2],
+                Huisnummer = (string)set.Tables[0].Rows[rowIndex][3],
+                Telefoonnummer = (string)set.Tables[0].Rows[rowIndex][4],
                 
 
             };
@@ -104,7 +106,7 @@ namespace ManiaGaming.Context.Parsers
         {
             return new Order()
             {
-                OrderId = (int)set.Tables[0].Rows[rowIndex][0],
+                Id = (int)set.Tables[0].Rows[rowIndex][0],
                 Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
                 FiliaalID = (int)set.Tables[0].Rows[rowIndex][2],
                 WerknemerID = (int)set.Tables[0].Rows[rowIndex][3],
@@ -115,7 +117,7 @@ namespace ManiaGaming.Context.Parsers
         {
             return new ProductFoto()
             {
-                ProductFotoId = (int)set.Tables[0].Rows[rowIndex][0],
+                Id = (int)set.Tables[0].Rows[rowIndex][0],
                 Foto = (Byte[])set.Tables[0].Rows[rowIndex][1]
             };
         }
@@ -123,7 +125,7 @@ namespace ManiaGaming.Context.Parsers
         {
             return new Categorie()
             {
-                CategorieId = (int)set.Tables[0].Rows[rowIndex][0],
+                Id = (int)set.Tables[0].Rows[rowIndex][0],
                 Naam = (string)set.Tables[0].Rows[rowIndex][1],
             };
         }

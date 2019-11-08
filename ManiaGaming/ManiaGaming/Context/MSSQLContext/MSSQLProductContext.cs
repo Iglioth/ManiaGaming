@@ -50,33 +50,13 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
-        public bool AddStock(long id, Product obj)
-        {
-            try
-            {
-                string sql = "UPDATE Product SET Aantal = @aantal WHERE productid = @productid";
-
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
-                {
-                    new KeyValuePair<string, string>("productid", id.ToString()),
-                    new KeyValuePair<string, string>("aantal", obj.Aantal.ToString())
-                };
-                ExecuteSql(sql, parameters);
-                return true;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-        }
 
         public List<Product> GetAll()
         {
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "SELECT * FROM Product";
+                string sql = "SELECT * FROM Product as P INNER JOIN Categorie as C ON P.CategorieId = C.CategorieId";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -124,7 +104,7 @@ namespace ManiaGaming.Context.MSSQLContext
             
             try
             {
-                string sql = "INSERT INTO Product(Aantal, Naam, Soort, CategorieId, Omschrijving, Prijs) OUTPUT INSERTED.ProductId VALUES(0, @naam, @soort, @categorieId, @omschrijving, @prijs)";
+                string sql = "INSERT INTO Product(Aantal, Naam, Soort, CategorieId, Omschrijving, Prijs, Tweedehands, Actief) OUTPUT INSERTED.ProductId VALUES(0, @naam, @soort, @categorieId, @omschrijving, @prijs, @tweedehands, 1)";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -132,7 +112,8 @@ namespace ManiaGaming.Context.MSSQLContext
                     new KeyValuePair<string, string>("soort", obj.Soort),
                     new KeyValuePair<string, string>("CategorieId", obj.CategorieId.ToString()),
                     new KeyValuePair<string, string>("Omschrijving", obj.Omschrijving),
-                    new KeyValuePair<string, string>("Prijs", obj.Prijs)
+                    new KeyValuePair<string, string>("Prijs", obj.Prijs),
+                    new KeyValuePair<string, string>("Tweedehands", obj.Tweedehands.ToString())
                 };
 
                 int result = ExecuteInsert(sql, parameters);
@@ -144,7 +125,34 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
-        public bool RemoveStock(long id, Product obj)
+        public bool Update(Product obj)
+        {
+            try
+            {
+                string sql = "UPDATE Product SET Naam = @naam, Soort = @soort, CategorieID = @categorieID, Omschrijving = @omschrijving, Prijs = @prijs WHERE Productid = @productID ";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("naam", obj.Naam),
+                    new KeyValuePair<string, string>("soort", obj.Soort.ToString()),
+                    new KeyValuePair<string, string>("categorieID", obj.CategorieId.ToString()),
+                    new KeyValuePair<string, string>("omschrijving", obj.Omschrijving),
+                    new KeyValuePair<string, string>("prijs", obj.Prijs.ToString()),
+                    new KeyValuePair<string, string>("productID", obj.Id.ToString()),
+                };
+
+                ExecuteSql(sql, parameters);
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+
+        public bool VeranderStock(long id, Product obj)
         {
             try
             {
@@ -158,35 +166,7 @@ namespace ManiaGaming.Context.MSSQLContext
                 ExecuteSql(sql, parameters);
                 return true;
             }
-            catch(Exception e)
-            {
-                throw e;
-            }
-
-        }
-
-        public bool Update(Product obj)
-        {
-            try
-            {
-                string sql = "UPDATE Product SET aantal = @aantal, naam = @naam, soort = @soort, CategorieID = @categorieID, omschrijving = @omschrijving, prijs = @prijs WHERE productid = @productID ";
-
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
-                {
-                    new KeyValuePair<string, string>("aantal", obj.Aantal.ToString()),
-                    new KeyValuePair<string, string>("naam", obj.Naam),
-                    new KeyValuePair<string, string>("soort", obj.Soort.ToString()),
-                    new KeyValuePair<string, string>("categorieID", obj.CategorieId.ToString()),
-                    new KeyValuePair<string, string>("omschrijving", obj.Omschrijving),
-                    new KeyValuePair<string, string>("prijs", obj.Prijs.ToString()),
-                    new KeyValuePair<string, string>("productID", obj.ProductId.ToString()),
-                };
-
-                ExecuteSql(sql, parameters);
-
-                return true;
-            }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }

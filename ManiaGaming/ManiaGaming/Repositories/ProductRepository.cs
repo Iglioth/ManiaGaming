@@ -39,13 +39,9 @@ namespace ManiaGaming.Repositories
         {
             return context.Update(obj);
         }
-        public bool RemoveStock(long id, Product obj)
+        public bool VeranderStock(long id, Product obj)
         {
-            return context.RemoveStock(id, obj);
-        }
-        public bool AddStock(long id, Product obj)
-        {
-            return context.AddStock(id, obj);
+            return context.VeranderStock(id, obj);
         }
 
         public bool Actief(long id, bool active)

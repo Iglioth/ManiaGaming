@@ -7,10 +7,11 @@ namespace ManiaGaming.Models.Data
 {
     public class Filiaal
     {
-        public int FiliaalId { get; set; }
+        public int Id { get; set; }
+        public string stad { get; set; }
         public string Postcode { get; set; }
         public string Huisnummer { get; set; }
-        public int Telefoonnummer { get; set; }
+        public string Telefoonnummer { get; set; }
         public bool Actief { get; set; }
     }
 }

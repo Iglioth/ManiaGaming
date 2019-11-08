@@ -7,7 +7,7 @@ namespace ManiaGaming.Models.Data
 {
     public class Categorie
     {
-        public int CategorieId { get; set; }
+        public int Id { get; set; }
         public string Naam { get; set; }
         public bool Actief { get; set; }
 

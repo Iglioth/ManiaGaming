@@ -31,14 +31,14 @@
             @foreach (OrderDetailViewModel item in Model.Orders)
             {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => item.OrderId)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
                     <td>@Html.DisplayFor(modelItem => item.Datum)</td>
                     <td>
-                        @Html.ActionLink("Detail", "Detail", new { id = item.OrderId }) |
-                        @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.OrderId }) |
+                        @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |
+                        @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id }) |
                         @if (item.Ontvangen == false)
                         {
-                            @Html.ActionLink("Ontvangen", "Ontvangen", new { id = item.OrderId })
+                            @Html.ActionLink("Ontvangen", "Ontvangen", new { id = item.Id })
                         }
                     </td>
                 </tr>

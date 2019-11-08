@@ -8,7 +8,7 @@ namespace ManiaGaming.Models
 {
     public class ProductDetailViewModel
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
         public int Aantal { get; set; }
         public string Naam { get; set; }
         public string Soort { get; set; }
@@ -18,6 +18,7 @@ namespace ManiaGaming.Models
         public List<string> SoortList { get; set; }
         public string Prijs { get; set; }
         public bool Actief { get; set; }
+        public string CategorieNaam { get; set; }
         public bool Tweedehands { get; set; }
     }
 }

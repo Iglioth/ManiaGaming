@@ -1,0 +1,42 @@
+﻿@model ManiaGaming.Models.FiliaalViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+  
+
+    <div class="table-products">
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th>Locatie</th>
+                    <th>Telefoonnummer</th>
+                    <th>Postcode</th>
+                    <th>Huisnummer</th>
+                </tr>
+
+            </thead>
+            @foreach (FiliaalDetailViewModel item in Model.filiaalDetailViewModels)
+            {
+                <tbody>
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.stad)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Telefoonnummer)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Postcode)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Huisnummer)</td>
+
+                    </tr>
+                </tbody>
+            }
+        </table>
+
+        <a asp-area="" asp-controller="Filiaal" asp-action="Insert">Filiaal Toevoegen</a>
+
+    </div>
+   
+
