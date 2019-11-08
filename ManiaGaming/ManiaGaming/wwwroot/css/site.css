@@ -162,8 +162,8 @@ for details on configuring this project to bundle and minify static web assets. 
     margin: 10px;
     text-align: center;
 
-    /line-height: 75px;
-    /font-size: 30px;
+   -line-height: 75px;
+   -font-size: 30px;
 }
 .containers-products img{
     width: 250px;
@@ -224,6 +224,53 @@ for details on configuring this project to bundle and minify static web assets. 
     }
 }
 
+/*  Beheerder index*/
+
+.table-products {
+    width: 100%;
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin: 0px auto;
+    width: 80%;
+}
+
+    .content-table thead tr {
+        background-color: #00cc66;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .content-table th,
+    .content-table td {
+        padding: 15px 50px;
+    }
+
+
+    .content-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+        .content-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .content-table tbody tr:last-of-type {
+            border-bottom: 2px solid #00cc66;
+        }
+
+        .content-table tbody tr.active-row {
+            font-weight: bold;
+            color: #ccffff;
+        }
 
 /*Footer*/
 

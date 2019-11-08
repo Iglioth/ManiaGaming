@@ -93,9 +93,10 @@ namespace ManiaGaming.Context.Parsers
             return new Filiaal()
             {
                 FiliaalId = (int)set.Tables[0].Rows[rowIndex][0],
-                Postcode = (string)set.Tables[0].Rows[rowIndex][1],
-                Huisnummer = (string)set.Tables[0].Rows[rowIndex][2],
-                Telefoonnummer = (int)set.Tables[0].Rows[rowIndex][3],
+                stad = (string)set.Tables[0].Rows[rowIndex][1],
+                Postcode = (string)set.Tables[0].Rows[rowIndex][2],
+                Huisnummer = (string)set.Tables[0].Rows[rowIndex][3],
+                Telefoonnummer = (string)set.Tables[0].Rows[rowIndex][4],
                 
 
             };

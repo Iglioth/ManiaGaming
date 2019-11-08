@@ -12,7 +12,17 @@ namespace ManiaGaming.Converters
     {
         public List<FiliaalDetailViewModel> ModelsToViewModels(List<Filiaal> models)
         {
-            throw new NotImplementedException();
+           
+
+            List<FiliaalDetailViewModel> fdvm = new List<FiliaalDetailViewModel>();
+            
+            foreach(Filiaal a in models)
+            {
+                fdvm.Add(ModelToViewModel(a));
+            }
+            
+        return fdvm;
+
         }
 
         public FiliaalDetailViewModel ModelToViewModel(Filiaal f)
@@ -20,6 +30,7 @@ namespace ManiaGaming.Converters
             FiliaalDetailViewModel vm = new FiliaalDetailViewModel()
             {
                 Filiaalid = f.FiliaalId,
+                stad = f.stad,
                 Huisnummer = f.Huisnummer,
                 Postcode = f.Postcode,
                 Telefoonnummer = f.Telefoonnummer
@@ -39,6 +50,7 @@ namespace ManiaGaming.Converters
             Filiaal f = new Filiaal()
             {
                 FiliaalId = viewModel.Filiaalid,
+                stad = viewModel.stad,
                 Huisnummer = viewModel.Huisnummer,
                 Postcode = viewModel.Postcode,
                 Telefoonnummer = viewModel.Telefoonnummer
