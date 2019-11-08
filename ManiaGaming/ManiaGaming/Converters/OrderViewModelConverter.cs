@@ -12,14 +12,31 @@ namespace ManiaGaming.Converters
     {
         public List<OrderDetailViewModel> ModelsToViewModels(List<Order> models)
         {
-            throw new NotImplementedException();
+            List<OrderDetailViewModel> orderDetailViewModels = new List<OrderDetailViewModel>();
+
+            foreach (Order p in models)
+            {
+                OrderDetailViewModel vm = new OrderDetailViewModel()
+                {
+                    OrderId = p.OrderId,
+                    Datum = p.Datum,
+                    filiaalID = p.FiliaalID,
+                    Ontvangen = p.Ontvangen,
+                    werknemerID = p.WerknemerID
+                };
+                orderDetailViewModels.Add(vm);
+            }
+
+            return orderDetailViewModels;
         }
+
+    
 
         public OrderDetailViewModel ModelToViewModel(Order o)
         {
             OrderDetailViewModel vm = new OrderDetailViewModel()
             {
-                Orderid = o.OrderId,
+                OrderId = o.OrderId,
                 Datum = o.Datum
             };
 
@@ -35,7 +52,7 @@ namespace ManiaGaming.Converters
         {
             Order o = new Order()
             {
-                OrderId = vm.Orderid,
+                OrderId = vm.OrderId,
                 Datum = vm.Datum
             };
             return o;

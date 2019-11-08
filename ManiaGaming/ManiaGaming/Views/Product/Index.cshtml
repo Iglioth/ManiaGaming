@@ -26,22 +26,37 @@
         <tbody>
             @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
             {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Naam)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
-                    <td>
-                        @Html.ActionLink("Detail", "Detail", new { id = item.ProductId }) |
-                        @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.ProductId }) |
-                        @if (item.Actief == false)
-                        {
-                            @Html.ActionLink("Activeren", "Activeren", new { id = item.ProductId })
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Deactiveren", "Activeren", new { id = item.ProductId })
-                        }
-                    </td>
-                </tr>
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+                <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
+                <td>
+                    @Html.ActionLink("Detail", "Detail", new { id = item.ProductId }) |
+                    @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.ProductId }) |
+                    @if (item.Actief == false)
+                    {
+                        @Html.ActionLink("Activeren", "Activeren", new { id = item.ProductId })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Deactiveren", "Activeren", new { id = item.ProductId })
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aantal)
+                @Html.ActionLink("Verander Stock", "VeranderStock", new { id = item.ProductId })
+            </td>
+
+            @*<td><form asp-action="VeranderStock">
+        <input type="number" name="Aantal" value="@Html.DisplayFor(modelItem => item.Aantal)">
+        <div class="form-group">
+            <input asp-for="Aantal" class="form-control"/>
+            <span asp-validation-for="Aantal" class="text-danger"></span>
+        </div>
+    <input type="submit" value="Bijwerken" class="btn btn-default"/>
+        </form>
+        </td>*@
+
+            </tr>
             }
         </tbody>
     </table>

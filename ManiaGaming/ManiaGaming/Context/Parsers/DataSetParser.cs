@@ -106,8 +106,9 @@ namespace ManiaGaming.Context.Parsers
             {
                 OrderId = (int)set.Tables[0].Rows[rowIndex][0],
                 Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
-                werknemerID = (int)set.Tables[0].Rows[rowIndex][2],
-                filiaalID = (int)set.Tables[0].Rows[rowIndex][3]
+                FiliaalID = (int)set.Tables[0].Rows[rowIndex][2],
+                WerknemerID = (int)set.Tables[0].Rows[rowIndex][3],
+                Ontvangen = (bool)set.Tables[0].Rows[rowIndex][4]
             };
         }
         public static ProductFoto DataSetToProductFoto(DataSet set, int rowIndex)

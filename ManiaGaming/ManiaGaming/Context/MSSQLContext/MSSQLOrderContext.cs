@@ -20,7 +20,24 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public bool Actief(long id, bool actief)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string sql = "UPDATE Order SET Ontvangen = 1 WHERE productid = @id";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("id", id.ToString()),
+                };
+
+                ExecuteSql(sql, parameters);
+
+                return true;
+            }
+
+            catch
+            {
+                return false;
+            }
         }
 
         public List<Order> GetAll()
@@ -28,23 +45,21 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Order> orderList = new List<Order>();
             try
             {
-                string sql = "SELECT * FROM Order";
+                string sql = "SELECT * FROM [Order]";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-                {
 
-                }
 
                 DataSet results = ExecuteSql(sql, parameters);
 
-                for(int x = 0; x < results.Tables[0].Rows.Count; x++)
+                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
                 {
                     Order o = DataSetParser.DataSetToOrder(results, x);
                     orderList.Add(o);
                 }
                 return orderList;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -54,16 +69,16 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "SELECT datum, filiaalID, medewerkerID FROM order WHERE orderID = @orderID";
+                string sql = "SELECT * FROM [Order] WHERE OrderID = @OrderID";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-                {
-                    new KeyValuePair<string, string>("orderID", id.ToString());
-                };
+
+                parameters.Add(new KeyValuePair<string, string>("OrderID", id.ToString()));
+
                 DataSet results = ExecuteSql(sql, parameters);
                 Order O = DataSetParser.DataSetToOrder(results, 0);
                 return O;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -73,17 +88,17 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "INSERT INTO Order(Datum, werknemerID, filiaalID) VALUES (@Datum, @werknemerID, @filiaalID)";
+                string sql = "INSERT INTO [Order](Datum, WerknemerID, FiliaalID) VALUES (@Datum, @werknemerID, @filiaalID)";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
                 {
                     new KeyValuePair<string, string>("Datum", obj.Datum.ToString());
-                    new KeyValuePair<string, string>("werknemerID", obj.werknemerID.ToString());
-                    new KeyValuePair<string, string>("filiaalID", obj.filiaalID.ToString());
+                    new KeyValuePair<string, string>("werknemerID", obj.WerknemerID.ToString());
+                    new KeyValuePair<string, string>("filiaalID", obj.FiliaalID.ToString());
                 }
                 long results = ExecuteInsert(sql, parameters);
                 return results;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
