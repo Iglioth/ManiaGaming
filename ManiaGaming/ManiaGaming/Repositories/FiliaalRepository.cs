@@ -17,9 +17,9 @@ namespace ManiaGaming.Repositories
         }
 
 
-        public bool Actief(Filiaal obj, long id)
+        public bool Actief(long id, bool Actief)
         {
-            return context.Actief(obj,id);
+            return context.Actief(id, Actief);
         }
 
         public List<Filiaal> GetAll()

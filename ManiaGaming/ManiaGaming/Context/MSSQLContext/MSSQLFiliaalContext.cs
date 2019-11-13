@@ -17,7 +17,7 @@ namespace ManiaGaming.Context.MSSQLContext
 
         }
 
-        public bool Actief(Filiaal obj, long id)
+        public bool Actief(long id, bool Actief)
         {
             throw new NotImplementedException();
         }
