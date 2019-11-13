@@ -51,7 +51,45 @@ namespace ManiaGaming.Controllers
            
         }
 
-        
+        //public IActionResult Delete(long id)
+        //{
+        //    Filiaal f = repo.GetById(id);
+        //    repo.Delete(f);
+        //    return RedirectToAction("Index");
+        //}
+
+        [HttpGet]
+        public IActionResult Aanpassen(long id)
+        {
+            FiliaalDetailViewModel vm = new FiliaalDetailViewModel();
+            Filiaal f = repo.GetById(id);
+            vm = converter.ModelToViewModel(f);
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult Aanpassen(FiliaalDetailViewModel vm)
+        {
+            Filiaal f = converter.ViewModelToModel(vm);
+            repo.Update(f);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Activeren(long id)
+        {
+            Filiaal f = repo.GetById(id);
+            repo.Actief(id, f.Actief);
+            return RedirectToAction("Index");
+
+          
+        }
+
+        //public IActionResult DeActiveren()
+        //{
+            
+        //}return;
+
+
 
     }
 }

@@ -95,9 +95,10 @@ namespace ManiaGaming.Context.Parsers
             {
                 Id = (int)set.Tables[0].Rows[rowIndex][0],
                 stad = (string)set.Tables[0].Rows[rowIndex][1],
-                Postcode = (string)set.Tables[0].Rows[rowIndex][2],
-                Huisnummer = (string)set.Tables[0].Rows[rowIndex][3],
+                Postcode = (string)set.Tables[0].Rows[rowIndex][3],
+                Huisnummer = (string)set.Tables[0].Rows[rowIndex][2],
                 Telefoonnummer = (string)set.Tables[0].Rows[rowIndex][4],
+                Actief = (bool)set.Tables[0].Rows[0][5]
                 
 
             };
