@@ -12,5 +12,15 @@ namespace ManiaGaming.Models.Data
         public int WerknemerID { get; set; }
         public int FiliaalID { get; set; }
         public bool Ontvangen { get; set; }
+
+        public Order(int id, DateTime datum, int werknermerid, int filiaalid, bool ontvangen)
+        {
+            this.Id = id;
+            this.Datum = datum;
+            this.WerknemerID = werknermerid;
+            this.FiliaalID = filiaalid;
+            this.Ontvangen = ontvangen;
+        } 
+
     }
 }
