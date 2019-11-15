@@ -83,6 +83,7 @@ namespace ManiaGaming.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Aanpassen(ProductDetailViewModel vm, long Id)
         {           
             vm.CategorieList = new List<CategorieDetailViewModel>();     
