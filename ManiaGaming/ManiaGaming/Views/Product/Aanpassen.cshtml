@@ -9,7 +9,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Aanpassen">
+        <form asp-action="Aanpassen" asp-antiforgery="true">
             <div class="form-group">
                 <label asp-for="Naam" class="control-label"></label>
                 <input asp-for="Naam" class="form-control" />

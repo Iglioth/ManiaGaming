@@ -26,37 +26,43 @@
         <tbody>
             @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
             {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.Naam)</td>
-                <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
-                <td>
-                    @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |
-                    @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id }) |
-                    @if (item.Actief == false)
-                    {
-                        @Html.ActionLink("Activeren", "Activeren", new { id = item.Id })
-                    }
-                    else
-                    {
-                        @Html.ActionLink("Deactiveren", "Activeren", new { id = item.Id })
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Aantal)
-                @Html.ActionLink("Verander Stock", "VeranderStock", new { id = item.Id })
-            </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Naam)
+                        @if (item.Tweedehands == true)
+                        {
+                            
+                        }
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
+                    <td>
+                        @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |
+                        @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id }) |
+                        @if (item.Actief == false)
+                        {
+                            @Html.ActionLink("Activeren", "Activeren", new { id = item.Id })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Deactiveren", "Activeren", new { id = item.Id })
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aantal)
+                        @Html.ActionLink("Verander Stock", "VeranderStock", new { id = item.Id })
+                    </td>
 
-            @*<td><form asp-action="VeranderStock">
-        <input type="number" name="Aantal" value="@Html.DisplayFor(modelItem => item.Aantal)">
-        <div class="form-group">
-            <input asp-for="Aantal" class="form-control"/>
-            <span asp-validation-for="Aantal" class="text-danger"></span>
-        </div>
-    <input type="submit" value="Bijwerken" class="btn btn-default"/>
-        </form>
-        </td>*@
+                    @*<td><form asp-action="VeranderStock">
+                            <input type="number" name="Aantal" value="@Html.DisplayFor(modelItem => item.Aantal)">
+                            <div class="form-group">
+                                <input asp-for="Aantal" class="form-control"/>
+                                <span asp-validation-for="Aantal" class="text-danger"></span>
+                            </div>
+                        <input type="submit" value="Bijwerken" class="btn btn-default"/>
+                            </form>
+                            </td>*@
 
-            </tr>
+                </tr>
             }
         </tbody>
     </table>

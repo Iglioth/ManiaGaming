@@ -112,7 +112,7 @@ namespace ManiaGaming.Context.MSSQLContext
                     new KeyValuePair<string, string>("soort", obj.Soort),
                     new KeyValuePair<string, string>("CategorieId", obj.CategorieId.ToString()),
                     new KeyValuePair<string, string>("Omschrijving", obj.Omschrijving),
-                    new KeyValuePair<string, string>("Prijs", obj.Prijs),
+                    new KeyValuePair<string, string>("Prijs", obj.Prijs.ToString()),
                     new KeyValuePair<string, string>("Tweedehands", obj.Tweedehands.ToString())
                 };
 
