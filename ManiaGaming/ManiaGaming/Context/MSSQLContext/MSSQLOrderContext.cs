@@ -101,12 +101,28 @@ namespace ManiaGaming.Context.MSSQLContext
             catch (Exception e)
             {
                 throw e;
+                
             }
         }
 
         public bool Update(Order obj)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string sql = "SET(Datum, Werknemer, FiliaalID) Values(@Datum, @werknermerID,@filiaalID)";
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+                {
+                    new KeyValuePair<string, string>("Datum", obj.Datum.ToString());
+                    new KeyValuePair<string, string>("werknemerID", obj.WerknemerID.ToString());
+                    new KeyValuePair<string, string>("filiaalID", obj.FiliaalID.ToString());
+                }
+                long results = ExecuteInsert(sql, parameters);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

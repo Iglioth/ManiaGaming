@@ -1,0 +1,59 @@
+﻿@model ManiaGaming.Models.OrderDetailViewModel
+
+@{
+    ViewData["Title"] = "Aanmaken";
+}
+
+<h2>Create</h2>
+
+<h4>OrderDetailViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Aanmaken">
+            <div class="form-group">
+                <label>Product</label>
+                <select asp-for="ProductId" class="form-control">
+                    @for (int i = 1; i - 1 < Model.producten.Count(); i++)
+                    {
+                    <option value="@i">@Model.producten[i - 1].Naam</option>
+                    }
+                </select>
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="aantal" class="control-label"></label>
+                <input asp-for="aantal" class="form-control" />
+                <span asp-validation-for="aantal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Filiaal</label>
+                <select asp-for="filiaalID" class="form-control">
+                    @for (int i = 1; i - 1 < Model.filialen.Count(); i++)
+                    {
+                    <option value="@i">@Model.filialen[i - 1].stad</option>
+                    }
+                </select>
+                <span asp-validation-for="filiaalID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Ontvangen" /> @Html.DisplayNameFor(model => model.Ontvangen)
+                    </label>
+                </div> 
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Aanmaken" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

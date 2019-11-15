@@ -22,7 +22,11 @@ namespace ManiaGaming.Converters
                     Datum = p.Datum,
                     filiaalID = p.FiliaalID,
                     Ontvangen = p.Ontvangen,
-                    werknemerID = p.WerknemerID
+                    werknemerID = p.WerknemerID,
+                    filialen = p.Filialen,
+                    aantal = p.aantal,
+                    producten = p.producten,
+                    ProductId = p.ProductID
                 };
                 orderDetailViewModels.Add(vm);
             }
@@ -37,7 +41,14 @@ namespace ManiaGaming.Converters
             OrderDetailViewModel vm = new OrderDetailViewModel()
             {
                 Id = o.Id,
-                Datum = o.Datum
+                Datum = o.Datum,
+                werknemerID = o.WerknemerID,
+                filiaalID = o.FiliaalID,
+                Ontvangen = o.Ontvangen,
+                filialen = o.Filialen,
+                producten = o.producten,
+                ProductId = o.ProductID
+
             };
 
             return vm;

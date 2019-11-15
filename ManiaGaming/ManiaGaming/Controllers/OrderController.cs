@@ -14,14 +14,17 @@ namespace ManiaGaming.Controllers
     {
         //repos
         private readonly OrderRepository repo;
-
+        private readonly FiliaalRepository frepo;
+        private readonly ProductRepository prepo;
 
         //converters
         private readonly OrderViewModelConverter orderConverter = new OrderViewModelConverter();
 
-        public OrderController(OrderRepository orderRepository)
+        public OrderController(OrderRepository orderRepository, FiliaalRepository filiaalRepository, ProductRepository productRepository)
         {
             this.repo = orderRepository;
+            this.frepo = filiaalRepository;
+            this.prepo = productRepository;
         }
 
 
@@ -46,8 +49,8 @@ namespace ManiaGaming.Controllers
             return View(vm);
         }
 
-        [HttpGet]
-        public IActionResult Create(OrderDetailViewModel vm)
+        [HttpPost]
+        public IActionResult Aanmaken(OrderDetailViewModel vm, long id)
         {
             Order o = new Order();
             o = orderConverter.ViewModelToModel(vm);
@@ -55,12 +58,21 @@ namespace ManiaGaming.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult Aanmaken(OrderDetailViewModel vm)
+        {
+            Order o = new Order();
+            o.Filialen = frepo.GetAll();
+            o.producten = prepo.GetAll();
+            vm = orderConverter.ModelToViewModel(o);
+            return View(vm);
+        }
 
         [HttpGet]
         public IActionResult Ontvangen(int id)
         {
             Order order = repo.GetById(id);
-            if(repo.Actief(id, order.Ontvangen) == false)
+            if(!repo.Actief(id, order.Ontvangen))
             {
                 //Show that there has been an error
             }
