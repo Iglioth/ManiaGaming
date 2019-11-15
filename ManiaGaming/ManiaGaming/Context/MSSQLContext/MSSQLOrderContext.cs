@@ -42,47 +42,57 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public List<Order> GetAll()
         {
-            List<Order> orderList = new List<Order>();
-            try
-            {
-                string sql = "SELECT * FROM [Order]";
-
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-
-
-                DataSet results = ExecuteSql(sql, parameters);
-
-                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
-                {
-                    Order o = DataSetParser.DataSetToOrder(results, x);
-                    orderList.Add(o);
-                }
-                return orderList;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            throw new NotImplementedException();
         }
 
         public Order GetById(long id)
         {
-            try
-            {
-                string sql = "SELECT * FROM [Order] WHERE OrderID = @OrderID";
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-
-                parameters.Add(new KeyValuePair<string, string>("OrderID", id.ToString()));
-
-                DataSet results = ExecuteSql(sql, parameters);
-                Order O = DataSetParser.DataSetToOrder(results, 0);
-                return O;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            throw new NotImplementedException();
         }
+
+        //public List<Order> GetAll()
+        //{
+        //    List<Order> orderList = new List<Order>();
+        //    try
+        //    {
+        //        string sql = "SELECT * FROM [Order]";
+
+        //        List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+
+
+        //        DataSet results = ExecuteSql(sql, parameters);
+
+        //        for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+        //        {
+        //            Order o = DataSetParser.DataSetToOrder(results, x);
+        //            orderList.Add(o);
+        //        }
+        //        return orderList;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw e;
+        //    }
+        //}
+
+        //public Order GetById(long id)
+        //{
+        //    try
+        //    {
+        //        string sql = "SELECT * FROM [Order] WHERE OrderID = @OrderID";
+        //        List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+
+        //        parameters.Add(new KeyValuePair<string, string>("OrderID", id.ToString()));
+
+        //        DataSet results = ExecuteSql(sql, parameters);
+        //        Order O = DataSetParser.DataSetToOrder(results, 0);
+        //        return O;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw e;
+        //    }
+        //}
 
         public long Insert(Order obj)
         {

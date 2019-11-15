@@ -75,19 +75,27 @@ namespace ManiaGaming.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public IActionResult Activeren(long id)
         {
+
             Filiaal f = repo.GetById(id);
             repo.Actief(id, f.Actief);
+
             return RedirectToAction("Index");
-
-          
         }
-
-        //public IActionResult DeActiveren()
+        //[HttpGet]
+        //public IActionResult Deactiveren(long id)
         //{
             
-        //}return;
+
+        //    FiliaalDetailViewModel vm = new FiliaalDetailViewModel();
+        //    Filiaal f = repo.GetById(id);
+        //    vm = converter.ModelToViewModel(f);
+        //    return View(vm);
+        //}
+
+     
 
 
 

@@ -40,14 +40,14 @@ namespace ManiaGaming.Controllers
         }
 
         [HttpGet]
-        public IActionResult Detail(int id)
-        {
-            OrderDetailViewModel vm = new OrderDetailViewModel();
-            Order o = new Order();
-            o = repo.GetById(id);
-            vm = orderConverter.ModelToViewModel(o);
-            return View(vm);
-        }
+        //public IActionResult Detail(int id)
+        //{
+        //    OrderDetailViewModel vm = new OrderDetailViewModel();
+        //    Order o = new Order();
+        //    o = repo.GetById(id);
+        //    vm = orderConverter.ModelToViewModel(o);
+        //    return View(vm);
+        //}
 
         [HttpPost]
         public IActionResult Aanmaken(OrderDetailViewModel vm, long id)

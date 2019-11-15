@@ -99,21 +99,19 @@ namespace ManiaGaming.Context.Parsers
                 Huisnummer = (string)set.Tables[0].Rows[rowIndex][2],
                 Telefoonnummer = (string)set.Tables[0].Rows[rowIndex][4],
                 Actief = (bool)set.Tables[0].Rows[0][5]
-                
-
             };
         }
-        public static Order DataSetToOrder(DataSet set, int rowIndex)
-        {
-            return new Order()
-            {
-                Id = (int)set.Tables[0].Rows[rowIndex][0],
-                Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
-                FiliaalID = (int)set.Tables[0].Rows[rowIndex][2],
-                WerknemerID = (int)set.Tables[0].Rows[rowIndex][3],
-                Ontvangen = (bool)set.Tables[0].Rows[rowIndex][4]
-            };
-        }
+        //public static Order DataSetToOrder(DataSet set, int rowIndex)
+        //{
+        //    return new Order()
+        //    {
+        //        Id = (int)set.Tables[0].Rows[rowIndex][0],
+        //        Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
+        //        FiliaalID = (int)set.Tables[0].Rows[rowIndex][2],
+        //        WerknemerID = (int)set.Tables[0].Rows[rowIndex][3],
+        //        Ontvangen = (bool)set.Tables[0].Rows[rowIndex][4]
+        //    };
+        //}
         public static ProductFoto DataSetToProductFoto(DataSet set, int rowIndex)
         {
             return new ProductFoto()
