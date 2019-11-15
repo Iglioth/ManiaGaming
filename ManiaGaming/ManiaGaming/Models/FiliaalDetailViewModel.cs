@@ -12,5 +12,6 @@ namespace ManiaGaming.Models
         public string Postcode { get; set; }
         public string Huisnummer { get; set; }
         public string Telefoonnummer { get; set; }
+        public bool Actief { get; set; }
     }
 }

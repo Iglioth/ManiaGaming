@@ -19,8 +19,34 @@ namespace ManiaGaming.Context.MSSQLContext
 
         public bool Actief(long id, bool Actief)
         {
-            throw new NotImplementedException();
+            if (Actief == true)
+            {
+                string sql = "UPDATE Filiaal SET Actief = 0 WHERE FiliaalID = @id";
+                List<KeyValuePair<string, string>> parameter = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("id",id.ToString())
+                };
+                ExecuteSql(sql, parameter);
+                return true;
+            }
+            else if (Actief == false)
+            {
+                string sql = "UPDATE Filiaal SET Actief = 1 WHERE FiliaalID = @id";
+
+                List<KeyValuePair<string, string>> parameter = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("id",id.ToString())
+                };
+                ExecuteSql(sql, parameter);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
+            
 
         public List<Filiaal> GetAll()
         {
@@ -96,9 +122,49 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
+        public void Delete(Filiaal filiaal)
+        {
+            try
+            {
+                string sql = "Delete from Filiaal where FiliaalID = @FiliaalID";
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                  new KeyValuePair<string, string>("FiliaalID",filiaal.Id.ToString())
+                };
+                ExecuteSql(sql, parameters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool Update(Filiaal obj)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string sql = "UPDATE Filiaal SET stad = @stad, Huisnummer = @Huisnummer, Postcode = @Postcode, Telefoonnummer = @Telefoonnummer WHERE FiliaalID = @FiliaalID ";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("stad", obj.stad),
+                    new KeyValuePair<string, string>("Huisnummer", obj.Huisnummer.ToString()),
+                    new KeyValuePair<string, string>("Postcode", obj.Postcode),
+                    new KeyValuePair<string, string>("Telefoonnummer", obj.Telefoonnummer.ToString()),
+                    new KeyValuePair<string, string>("FiliaalID", obj.Id.ToString()),
+                };
+
+                ExecuteSql(sql, parameters);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
+
+  
+        
     }
 }

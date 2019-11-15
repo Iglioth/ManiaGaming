@@ -41,6 +41,10 @@ namespace ManiaGaming.Repositories
         {
             return context.Update(obj);
         }
+        public void Delete(Filiaal filiaal)
+        {
+            context.Delete(filiaal);
+        }
 
     }
 }
