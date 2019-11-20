@@ -82,7 +82,7 @@ namespace ManiaGaming.Context.Parsers
                 Omschrijving = (string)set.Tables[0].Rows[rowIndex][2],
                 Naam = (string)set.Tables[0].Rows[rowIndex][3],
                 Aantal = (int)set.Tables[0].Rows[rowIndex][4],
-                Prijs = (string)set.Tables[0].Rows[rowIndex][5],
+                Prijs = (double)set.Tables[0].Rows[rowIndex][5],
                 Soort = (string)set.Tables[0].Rows[rowIndex][6],
                 Actief = (bool)set.Tables[0].Rows[rowIndex][7],
                 Tweedehands = (bool)set.Tables[0].Rows[rowIndex][8],

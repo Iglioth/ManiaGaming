@@ -10,5 +10,6 @@ namespace ManiaGaming.Context.IContext
     public interface IProductContext : IGenericQueries<Product>
     {
         bool VeranderStock(long id, Product obj);
+        bool UpdateVoorraad(int id, int aantal);
     }
 }

@@ -48,5 +48,9 @@ namespace ManiaGaming.Repositories
         {
             return context.Actief(id, active);
         }
+        public bool UpdateVoorraad(int id, int aantal)
+        {
+            return context.UpdateVoorraad(id,aantal);
+        }
     }
 }

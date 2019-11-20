@@ -59,19 +59,18 @@ namespace ManiaGaming.Converters
             throw new NotImplementedException();
         }
 
-        public Order ViewModelToModel(OrderDetailViewModel viewModel)
+       
+        public Order ViewModelToModel(OrderDetailViewModel vm)
         {
-            throw new NotImplementedException();
-        }
+            Order o = new Order()
+            {
+                Id = vm.Id,
+                FiliaalID = vm.filiaalID,
+                WerknemerID = vm.werknemerID,
 
-        //public Order ViewModelToModel(OrderDetailViewModel vm)
-        //{
-        //    Order o = new Order()
-        //    {
-        //        Id = vm.Id,
-        //        Datum = vm.Datum
-        //    };
-        //    return o;
-        //}
+                Datum = vm.Datum
+            };
+            return o;
+        }
     }
 }

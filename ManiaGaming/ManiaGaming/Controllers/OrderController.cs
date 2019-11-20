@@ -65,10 +65,7 @@ namespace ManiaGaming.Controllers
             order = orderConverter.ViewModelToModel(vm);
             orderRepository.Insert(order); // DE INSERT KLOPT VOOR GEEN METER
             return RedirectToAction("Index");
-
-
-          
-
+            
         }
 
         [HttpGet]
@@ -115,8 +112,25 @@ namespace ManiaGaming.Controllers
             }
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public IActionResult Aanpassen(OrderDetailViewModel vm)
+        {
+            Order o = orderConverter.ViewModelToModel(vm);
+            orderRepository.Update(o);
 
-        
+            return RedirectToAction("Index"); 
+        }
+
+        [HttpGet]
+        public IActionResult Aanpassen(long id)
+        {
+            OrderDetailViewModel vm = new OrderDetailViewModel();
+            Order o = orderRepository.GetById(id);
+            vm = orderConverter.ModelToViewModel(o);
+
+            return View(vm); 
+        }
+
     }
 }  
 
