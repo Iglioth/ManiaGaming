@@ -112,7 +112,7 @@ namespace ManiaGaming.Context.MSSQLContext
                     new KeyValuePair<string, string>("soort", obj.Soort),
                     new KeyValuePair<string, string>("CategorieId", obj.CategorieId.ToString()),
                     new KeyValuePair<string, string>("Omschrijving", obj.Omschrijving),
-                    new KeyValuePair<string, string>("Prijs", obj.Prijs.ToString()),
+                    new KeyValuePair<string, string>("Prijs", obj.Prijs),
                     new KeyValuePair<string, string>("Tweedehands", obj.Tweedehands.ToString())
                 };
 
@@ -169,6 +169,26 @@ namespace ManiaGaming.Context.MSSQLContext
             catch (Exception e)
             {
                 throw e;
+            }
+        }
+        public bool UpdateVoorraad(int id, int aantal)
+        {
+            try
+            {
+                //UPDATE Product SET Product.Aantal = (Product.Aantal + 3) where Product.ProductID = 1
+                string sql = "UPDATE Product SET Product.Aantal = (Product.Aantal + @aantal) where  Product.ProductID = @Productid";
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("Productid", id.ToString()),
+                    new KeyValuePair<string, string>("aantal", aantal.ToString())
+
+                };
+                ExecuteSql(sql, parameters);
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
     }
