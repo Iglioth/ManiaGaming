@@ -75,6 +75,7 @@ namespace ManiaGaming.Context.Parsers
         }
         public static Product DataSetToProduct(DataSet set, int rowIndex)
         {
+            decimal PrijsD = (decimal)set.Tables[0].Rows[rowIndex][5];
             return new Product()
             {
                 Id = (int)set.Tables[0].Rows[rowIndex][0],
@@ -82,7 +83,7 @@ namespace ManiaGaming.Context.Parsers
                 Omschrijving = (string)set.Tables[0].Rows[rowIndex][2],
                 Naam = (string)set.Tables[0].Rows[rowIndex][3],
                 Aantal = (int)set.Tables[0].Rows[rowIndex][4],
-                Prijs = (string)set.Tables[0].Rows[rowIndex][5],
+                Prijs = (double)PrijsD,
                 Soort = (string)set.Tables[0].Rows[rowIndex][6],
                 Actief = (bool)set.Tables[0].Rows[rowIndex][7],
                 Tweedehands = (bool)set.Tables[0].Rows[rowIndex][8],

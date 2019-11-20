@@ -26,38 +26,72 @@
         <tbody>
             @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
             {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.Naam)</td>
-                <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
-                <td>
-                    @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |
-                    @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id }) |
-                    @if (item.Actief == false)
-                    {
-                        @Html.ActionLink("Activeren", "Activeren", new { id = item.Id })
-                    }
-                    else
-                    {
-                        @Html.ActionLink("Deactiveren", "Activeren", new { id = item.Id })
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Aantal)
-                @Html.ActionLink("Verander Stock", "VeranderStock", new { id = item.Id })
-            </td>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
+                    <td>
+                        @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |                        
+                        @if (item.Actief == false)
+                        {
+                            @Html.ActionLink("Activeren", "Activeren", new { id = item.Id })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Deactiveren", "Activeren", new { id = item.Id })
+                        }
+                    </td>
+                    <td>
+                        <!-- Trigger/Open The Modal -->
+                        <button id="myBtn">Aanpassen</button>
 
-            @*<td><form asp-action="VeranderStock">
-        <input type="number" name="Aantal" value="@Html.DisplayFor(modelItem => item.Aantal)">
-        <div class="form-group">
-            <input asp-for="Aantal" class="form-control"/>
-            <span asp-validation-for="Aantal" class="text-danger"></span>
-        </div>
-    <input type="submit" value="Bijwerken" class="btn btn-default"/>
-        </form>
-        </td>*@
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
 
-            </tr>
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p> @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id })</p>
+                            </div>
+
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aantal)
+                        @Html.ActionLink("Verander Stock", "VeranderStock", new { id = item.Id })
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
 </div>
+
+@section Scripts {
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+}
