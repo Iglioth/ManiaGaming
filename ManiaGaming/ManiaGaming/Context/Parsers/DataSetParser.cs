@@ -70,11 +70,11 @@ namespace ManiaGaming.Context.Parsers
                 ProductId = (int)set.Tables[0].Rows[rowIndex][1],
                 FiliaalId = (int)set.Tables[0].Rows[rowIndex][2],
                 Verkocht = (bool)set.Tables[0].Rows[rowIndex][4]
+
             };
         }
         public static Product DataSetToProduct(DataSet set, int rowIndex)
         {
-            decimal PrijsD = (decimal)set.Tables[0].Rows[rowIndex][5];
             return new Product()
             {
                 Id = (int)set.Tables[0].Rows[rowIndex][0],
@@ -82,7 +82,7 @@ namespace ManiaGaming.Context.Parsers
                 Omschrijving = (string)set.Tables[0].Rows[rowIndex][2],
                 Naam = (string)set.Tables[0].Rows[rowIndex][3],
                 Aantal = (int)set.Tables[0].Rows[rowIndex][4],
-                Prijs = (double)PrijsD,
+                Prijs = (string)set.Tables[0].Rows[rowIndex][5],
                 Soort = (string)set.Tables[0].Rows[rowIndex][6],
                 Actief = (bool)set.Tables[0].Rows[rowIndex][7],
                 Tweedehands = (bool)set.Tables[0].Rows[rowIndex][8],
@@ -109,7 +109,9 @@ namespace ManiaGaming.Context.Parsers
                 Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
                 FiliaalID = (int)set.Tables[0].Rows[rowIndex][2],
                 WerknemerID = (int)set.Tables[0].Rows[rowIndex][3],
-                Ontvangen = (bool)set.Tables[0].Rows[rowIndex][4]
+                Ontvangen = (bool)set.Tables[0].Rows[rowIndex][4],
+                aantal = (int)set.Tables[0].Rows[rowIndex][5],
+                ProductID = (int)set.Tables[0].Rows[rowIndex][6]
             };
         }
         public static ProductFoto DataSetToProductFoto(DataSet set, int rowIndex)
@@ -125,7 +127,7 @@ namespace ManiaGaming.Context.Parsers
             return new Categorie()
             {
                 Id = (int)set.Tables[0].Rows[rowIndex][0],
-                Naam = (string)set.Tables[0].Rows[rowIndex][1]
+                Naam = (string)set.Tables[0].Rows[rowIndex][1],
             };
         }
     }

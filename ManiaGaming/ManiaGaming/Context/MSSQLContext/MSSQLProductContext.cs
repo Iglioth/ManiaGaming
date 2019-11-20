@@ -180,7 +180,7 @@ namespace ManiaGaming.Context.MSSQLContext
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("Productid", id.ToString()),
-                    new KeyValuePair<string, string>("aantal", aantal.ToString())
+                    new KeyValuePair<string, string>("aantal", aantal.ToString()),
 
                 };
                 ExecuteSql(sql, parameters);

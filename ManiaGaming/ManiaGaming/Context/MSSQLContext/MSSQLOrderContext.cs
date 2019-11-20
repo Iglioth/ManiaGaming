@@ -22,7 +22,8 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "UPDATE Order SET Ontvangen = 1 WHERE productid = @id";
+                
+                string sql = "UPDATE [Order] SET Ontvangen = 1 WHERE OrderID = @id";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -40,15 +41,14 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
-       
+      
 
-        
         public List<Order> GetAll()
         {
             List<Order> orderList = new List<Order>();
             try
             {
-                string sql = "SELECT * FROM [Order]";
+                string sql = "SELECT * FROM [Order] where Ontvangen = 0";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
 
@@ -127,5 +127,7 @@ namespace ManiaGaming.Context.MSSQLContext
                 return false;
             }
         }
+
+        
     }
 }
