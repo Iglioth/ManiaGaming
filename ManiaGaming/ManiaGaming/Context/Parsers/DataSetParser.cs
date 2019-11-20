@@ -70,7 +70,6 @@ namespace ManiaGaming.Context.Parsers
                 ProductId = (int)set.Tables[0].Rows[rowIndex][1],
                 FiliaalId = (int)set.Tables[0].Rows[rowIndex][2],
                 Verkocht = (bool)set.Tables[0].Rows[rowIndex][4]
-
             };
         }
         public static Product DataSetToProduct(DataSet set, int rowIndex)
@@ -100,8 +99,6 @@ namespace ManiaGaming.Context.Parsers
                 Huisnummer = (string)set.Tables[0].Rows[rowIndex][2],
                 Telefoonnummer = (string)set.Tables[0].Rows[rowIndex][4],
                 Actief = (bool)set.Tables[0].Rows[0][5]
-                
-
             };
         }
         public static Order DataSetToOrder(DataSet set, int rowIndex)
@@ -128,7 +125,7 @@ namespace ManiaGaming.Context.Parsers
             return new Categorie()
             {
                 Id = (int)set.Tables[0].Rows[rowIndex][0],
-                Naam = (string)set.Tables[0].Rows[rowIndex][1],
+                Naam = (string)set.Tables[0].Rows[rowIndex][1]
             };
         }
     }
