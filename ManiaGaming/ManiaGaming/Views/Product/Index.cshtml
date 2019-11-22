@@ -31,7 +31,7 @@
                     <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
                     <td>
                         @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |                        
-                        @if (item.Actief == false)
+                        @if (!item.Actief)
                         {
                             @Html.ActionLink("Activeren", "Activeren", new { id = item.Id })
                         }
