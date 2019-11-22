@@ -65,8 +65,8 @@ namespace ManiaGaming.Converters
             Order o = new Order()
             {
                 Id = vm.Id,
-                FiliaalID = vm.filiaalID,
-                WerknemerID = vm.werknemerID,
+                FiliaalID = vm.FiliaalID,
+                WerknemerID = vm.WerknemerID,
 
                 Datum = vm.Datum
             };

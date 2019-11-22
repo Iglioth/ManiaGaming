@@ -84,7 +84,7 @@ namespace ManiaGaming.Controllers
                 }
             }
 
-            o.producten = filterproducts;
+            o.Producten = filterproducts;
 
             vm = orderConverter.ModelToViewModel(o);
             return View(vm);
@@ -97,7 +97,7 @@ namespace ManiaGaming.Controllers
             if(orderRepository.Actief(id, order.Ontvangen) == true)
             {
                 //Product is ontvangen.Hier de producten toevoegen aan voorraad
-                if(productRepository.UpdateVoorraad(order.ProductID,order.aantal) == true)
+                if(productRepository.UpdateVoorraad(order.ProductID,order.Aantal) == true)
                 {
                     return RedirectToAction("Index");
                 }

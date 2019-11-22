@@ -110,7 +110,7 @@ namespace ManiaGaming.Context.Parsers
                 FiliaalID = (int)set.Tables[0].Rows[rowIndex][2],
                 WerknemerID = (int)set.Tables[0].Rows[rowIndex][3],
                 Ontvangen = (bool)set.Tables[0].Rows[rowIndex][4],
-                aantal = (int)set.Tables[0].Rows[rowIndex][5],
+                Aantal = (int)set.Tables[0].Rows[rowIndex][5],
                 ProductID = (int)set.Tables[0].Rows[rowIndex][6]
             };
         }
