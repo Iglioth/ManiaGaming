@@ -57,7 +57,7 @@ namespace ManiaGaming.Context.Parsers
             {
                 Id = (int)set.Tables[0].Rows[rowIndex][0],
                 Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
-                klantID = (int)set.Tables[0].Rows[rowIndex][2]
+                KlantID = (int)set.Tables[0].Rows[rowIndex][2]
 
             };
         }
@@ -82,7 +82,7 @@ namespace ManiaGaming.Context.Parsers
                 Omschrijving = (string)set.Tables[0].Rows[rowIndex][2],
                 Naam = (string)set.Tables[0].Rows[rowIndex][3],
                 Aantal = (int)set.Tables[0].Rows[rowIndex][4],
-                Prijs = (double)set.Tables[0].Rows[rowIndex][5],
+                Prijs = (decimal)set.Tables[0].Rows[rowIndex][5],
                 Soort = (string)set.Tables[0].Rows[rowIndex][6],
                 Actief = (bool)set.Tables[0].Rows[rowIndex][7],
                 Tweedehands = (bool)set.Tables[0].Rows[rowIndex][8],
@@ -94,7 +94,7 @@ namespace ManiaGaming.Context.Parsers
             return new Filiaal()
             {
                 Id = (int)set.Tables[0].Rows[rowIndex][0],
-                stad = (string)set.Tables[0].Rows[rowIndex][1],
+                Stad = (string)set.Tables[0].Rows[rowIndex][1],
                 Postcode = (string)set.Tables[0].Rows[rowIndex][3],
                 Huisnummer = (string)set.Tables[0].Rows[rowIndex][2],
                 Telefoonnummer = (string)set.Tables[0].Rows[rowIndex][4],

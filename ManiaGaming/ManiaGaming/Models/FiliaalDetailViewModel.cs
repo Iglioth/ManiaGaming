@@ -7,8 +7,8 @@ namespace ManiaGaming.Models
 {
     public class FiliaalDetailViewModel
     {
-        public int id { get; set; }
-        public string stad { get; set; }
+        public int Id { get; set; }
+        public string Stad { get; set; }
         public string Postcode { get; set; }
         public string Huisnummer { get; set; }
         public string Telefoonnummer { get; set; }

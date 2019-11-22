@@ -21,7 +21,7 @@ namespace ManiaGaming.Converters
             {
                 Id = b.Id,
                 Datum = b.Datum,
-                KlantID = b.klantID
+                KlantID = b.KlantID
             };
 
             return vm;
@@ -38,7 +38,7 @@ namespace ManiaGaming.Converters
             {
                 Id = vm.Id,
                 Datum = vm.Datum,
-                klantID = vm.KlantID
+                KlantID = vm.KlantID
             };
 
             return b;

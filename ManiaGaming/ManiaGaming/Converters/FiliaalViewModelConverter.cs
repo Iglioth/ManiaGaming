@@ -29,8 +29,8 @@ namespace ManiaGaming.Converters
         {
             FiliaalDetailViewModel vm = new FiliaalDetailViewModel()
             {
-                id = f.Id,
-                stad = f.stad,
+                Id = f.Id,
+                Stad = f.Stad,
                 Huisnummer = f.Huisnummer,
                 Postcode = f.Postcode,
                 Telefoonnummer = f.Telefoonnummer,
@@ -49,8 +49,8 @@ namespace ManiaGaming.Converters
         {
             Filiaal f = new Filiaal()
             {
-                Id = vm.id,
-                stad = vm.stad,
+                Id = vm.Id,
+                Stad = vm.Stad,
                 Huisnummer = vm.Huisnummer,
                 Postcode = vm.Postcode,
                 Telefoonnummer = vm.Telefoonnummer,

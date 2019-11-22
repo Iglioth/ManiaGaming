@@ -139,7 +139,7 @@ namespace ManiaGaming.Context.MSSQLContext
                     new KeyValuePair<string, string>("omschrijving", obj.Omschrijving),
                     new KeyValuePair<string, string>("prijs", obj.Prijs.ToString()),
                     new KeyValuePair<string, string>("productID", obj.Id.ToString()),
-                };
+                }; 
 
                 ExecuteSql(sql, parameters);
 

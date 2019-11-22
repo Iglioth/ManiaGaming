@@ -20,12 +20,12 @@ namespace ManiaGaming.Converters
                 {
                     Id = p.Id,
                     Datum = p.Datum,
-                    filiaalID = p.FiliaalID,
+                    FiliaalID = p.FiliaalID,
                     Ontvangen = p.Ontvangen,
-                    werknemerID = p.WerknemerID,
-                    filialen = p.Filialen,
-                    aantal = p.aantal,
-                    producten = p.producten,
+                    WerknemerID = p.WerknemerID,
+                    Filialen = p.Filialen,
+                    Aantal = p.Aantal,
+                    Producten = p.Producten,
                     ProductId = p.ProductID
                 };
                 orderDetailViewModels.Add(vm);
@@ -42,11 +42,11 @@ namespace ManiaGaming.Converters
             {
                 Id = o.Id,
                 Datum = o.Datum,
-                werknemerID = o.WerknemerID,
-                filiaalID = o.FiliaalID,
+                WerknemerID = o.WerknemerID,
+                FiliaalID = o.FiliaalID,
                 Ontvangen = o.Ontvangen,
-                filialen = o.Filialen,
-                producten = o.producten,
+                Filialen = o.Filialen,
+                Producten = o.Producten,
                 ProductId = o.ProductID
 
             };

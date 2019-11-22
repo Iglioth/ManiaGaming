@@ -13,8 +13,8 @@ namespace ManiaGaming.Models.Data
         public int FiliaalID { get; set; }
         public bool Ontvangen { get; set; }
         public List<Filiaal> Filialen { get; set; }
-        public List<Product> producten { get; set; }
-        public int aantal { get; set; }
+        public List<Product> Producten { get; set; }
+        public int Aantal { get; set; }
         public int ProductID { get; set; }
 
         public Order(int id, DateTime datum, int werknermerid, int filiaalid, bool ontvangen)

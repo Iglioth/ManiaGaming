@@ -34,6 +34,8 @@ namespace ManiaGaming
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddSession();
+
             // Sql contexts
             services.AddScoped<IProductContext, MSSQLProductContext>();
             services.AddScoped<IAccountContext, MSSQLAccountContext>();
@@ -73,6 +75,8 @@ namespace ManiaGaming
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
