@@ -32,9 +32,9 @@
             <strong>Prijs:</strong>@Model.Prijs
 
         </p>
-        <a href='@Url.Action("Index", "Winkelwagen", new { id = @Model.Id })'>
+        @Html.ActionLink("Voeg toe aan winkelwagen","AddWinkelwagen", "Winkelwagen", new { id = @Model.Id })
             <button>Kopen</button>
-        </a>
+        
     </div>
 
     <div style="height:100%; margin-top:35%;">
