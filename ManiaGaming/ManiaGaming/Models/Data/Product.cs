@@ -17,5 +17,9 @@ namespace ManiaGaming.Models.Data
         public bool Actief { get; set; }
         public string CategorieNaam { get; set; }
         public bool Tweedehands { get; set; }
+
+        public int Quantity { get; set; }
+
+        
     }
 }

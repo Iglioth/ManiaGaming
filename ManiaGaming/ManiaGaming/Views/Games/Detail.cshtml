@@ -30,8 +30,11 @@
             @Model.Omschrijving
 
             <strong>Prijs:</strong>@Model.Prijs
-            <button>Kopen</button>
+
         </p>
+        @Html.ActionLink("Voeg toe aan winkelwagen","AddWinkelwagen", "Winkelwagen", new { id = @Model.Id })
+            <button>Kopen</button>
+        
     </div>
 
     <div style="height:100%; margin-top:35%;">
