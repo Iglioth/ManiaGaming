@@ -47,16 +47,17 @@
                         }
                     </td>
                     <td>
-                        <!-- Trigger/Open The Modal -->
-                        <button id="myBtn">Aanpassen</button>
-
-                        <!-- The Modal -->
-                        <div id="myModal" class="modal">
-
                             <!-- Modal content -->
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <p> @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id })</p>
+                        <div class="modal-content">
+
+                            <!-- Trigger/Open The Modal -->
+                            <button id="buttonId-@item.Id">Aanpassen</button>
+
+                            <!-- The Modal -->
+                            <div id="modalId-@item.Id" class="modal">
+                                <span id="closeId-@item.Id">&times;</span>
+                                
+                                <p> @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id })</p>                          
                             </div>
 
                         </div>
@@ -71,33 +72,36 @@
     </table>
 </div>
 
-@section Scripts {
+
     <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+        @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
+                {
+                    <text>
+                    // Get the modal
+                    var modal = document.getElementById("modalId-@item.Id");
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
+                    // Get the button that opens the modal
+                    var btn = document.getElementById("buttonId-@item.Id");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+                    // Get the <span> element that closes the modal
+                    var span = document.getElementById("closeId-@item.Id");
+                    // When the user clicks on the button, open the modal
+                    btn.onclick = function() {
+                        modal.style.display = "block";
+                    }
 
-        // When the user clicks on the button, open the modal
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                    }
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function(event) {
+                if (event.target == modal) {
                 modal.style.display = "none";
             }
         }
+        </text>
+        }
     </script>
 
-}
