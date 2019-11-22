@@ -39,6 +39,7 @@ namespace ManiaGaming.Controllers
 
         public IActionResult Detail(long id)
         {
+            
             ProductDetailViewModel vm = new ProductDetailViewModel
             {
                 SoortList = converter.GetSoorten()
