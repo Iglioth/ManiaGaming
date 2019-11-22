@@ -8,6 +8,6 @@ namespace ManiaGaming.Models
     public class WerknemerDetailViewModel : AccountDetailViewModel
     {
         public int WerknemerId { get; set; }
-        public string functie { get; set; }
+        public string Functie { get; set; }
     }
 }

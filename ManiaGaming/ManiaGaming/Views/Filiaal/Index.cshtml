@@ -8,8 +8,6 @@
 
 <a asp-area="" asp-controller="Filiaal" asp-action="Insert">Filiaal Toevoegen</a>
 <div>
-  
-
     <div class="table-products">
         <table class="content-table">
             <thead>
@@ -27,28 +25,24 @@
             {
                 <tbody>
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.stad)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Stad)</td>
                         <td>@Html.DisplayFor(modelItem => item.Telefoonnummer)</td>
                         <td>@Html.DisplayFor(modelItem => item.Postcode)</td>
                         <td>@Html.DisplayFor(modelItem => item.Huisnummer)</td>
                         <td>
                             @if (item.Actief == false)
                             {
-                                @Html.ActionLink("Activeren", "Activeren", new { id = item.id })
+                                @Html.ActionLink("Activeren", "Activeren", new { id = item.Id })
                             }
                             else
                             {
-                                @Html.ActionLink("Deactiveren", "Activeren", new { id = item.id })
+                                @Html.ActionLink("Deactiveren", "Activeren", new { id = item.Id })
                             }
                         </td>
-                        <td>@Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.id})</td>
+                        <td>@Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id})</td>
                     </tr>
                 </tbody>
             }
         </table>
-
-       
-
     </div>
-   
-
+</div>

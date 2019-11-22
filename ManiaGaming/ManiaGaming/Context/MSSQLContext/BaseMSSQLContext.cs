@@ -28,9 +28,11 @@ namespace ManiaGaming.Context.MSSQLContext
 
                 foreach (KeyValuePair<string, string> kvp in parameters)
                 {
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@" + kvp.Key;
-                    param.Value = kvp.Value;
+                    SqlParameter param = new SqlParameter
+                    {
+                        ParameterName = "@" + kvp.Key,
+                        Value = kvp.Value
+                    };
                     cmd.Parameters.Add(param);
                 }
 
@@ -58,10 +60,12 @@ namespace ManiaGaming.Context.MSSQLContext
 
                 foreach (KeyValuePair<string, string> kvp in parameters)
                 {
-                    SqlParameter param = new SqlParameter();
-                        param.ParameterName = "@" + kvp.Key;
-                        param.Value = kvp.Value;
-                        cmd.Parameters.Add(param);
+                    SqlParameter param = new SqlParameter
+                    {
+                        ParameterName = "@" + kvp.Key,
+                        Value = kvp.Value
+                    };
+                    cmd.Parameters.Add(param);
                 }
 
                 cmd.CommandText = sql;

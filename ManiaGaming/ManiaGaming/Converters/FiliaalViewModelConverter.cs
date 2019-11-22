@@ -29,12 +29,12 @@ namespace ManiaGaming.Converters
         {
             FiliaalDetailViewModel vm = new FiliaalDetailViewModel()
             {
-                id = f.Id,
-                stad = f.stad,
+                Id = f.Id,
+                Stad = f.Stad,
                 Huisnummer = f.Huisnummer,
                 Postcode = f.Postcode,
-                Telefoonnummer = f.Telefoonnummer
-
+                Telefoonnummer = f.Telefoonnummer,
+                Actief = f.Actief
             };
 
             return vm;
@@ -45,15 +45,16 @@ namespace ManiaGaming.Converters
             throw new NotImplementedException();
         }
 
-        public Filiaal ViewModelToModel(FiliaalDetailViewModel viewModel)
+        public Filiaal ViewModelToModel(FiliaalDetailViewModel vm)
         {
             Filiaal f = new Filiaal()
             {
-                Id = viewModel.id,
-                stad = viewModel.stad,
-                Huisnummer = viewModel.Huisnummer,
-                Postcode = viewModel.Postcode,
-                Telefoonnummer = viewModel.Telefoonnummer
+                Id = vm.Id,
+                Stad = vm.Stad,
+                Huisnummer = vm.Huisnummer,
+                Postcode = vm.Postcode,
+                Telefoonnummer = vm.Telefoonnummer,
+                Actief = vm.Actief
             };
 
             return f;

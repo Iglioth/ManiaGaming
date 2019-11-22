@@ -108,7 +108,7 @@ namespace ManiaGaming.Context.MSSQLContext
                 string sql = "insert into Filiaal (stad,Huisnummer,Postcode,Telefoonnummer) values (@stad,@Huisnummer,@Postcode,@Telefoonnummer)";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("stad",obj.stad),
+                    new KeyValuePair<string, string>("stad",obj.Stad),
                     new KeyValuePair<string, string>("Huisnummer",obj.Huisnummer),
                     new KeyValuePair<string, string>("Postcode",obj.Postcode),
                     new KeyValuePair<string, string>("Telefoonnummer",obj.Telefoonnummer.ToString())
@@ -147,7 +147,7 @@ namespace ManiaGaming.Context.MSSQLContext
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string, string>("stad", obj.stad),
+                    new KeyValuePair<string, string>("stad", obj.Stad),
                     new KeyValuePair<string, string>("Huisnummer", obj.Huisnummer.ToString()),
                     new KeyValuePair<string, string>("Postcode", obj.Postcode),
                     new KeyValuePair<string, string>("Telefoonnummer", obj.Telefoonnummer.ToString()),

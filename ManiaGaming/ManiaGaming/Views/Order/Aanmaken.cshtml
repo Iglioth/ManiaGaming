@@ -14,27 +14,27 @@
             <div class="form-group">
                 <label>Product</label>
                 <select asp-for="ProductId" class="form-control">
-                    @for (int i = 1; i - 1 < Model.producten.Count(); i++)
+                    @for (int i = 1; i - 1 < Model.Producten.Count(); i++)
                     {
-                    <option value="@i">@Model.producten[i - 1].Naam</option>
+                    <option value="@i">@Model.Producten[i - 1].Naam</option>
                     }
                 </select>
                 <span asp-validation-for="ProductId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="aantal" class="control-label"></label>
-                <input asp-for="aantal" class="form-control" />
-                <span asp-validation-for="aantal" class="text-danger"></span>
+                <label asp-for="Aantal" class="control-label"></label>
+                <input asp-for="Aantal" class="form-control" />
+                <span asp-validation-for="Aantal" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>Filiaal</label>
-                <select asp-for="filiaalID" class="form-control">
-                    @for (int i = 1; i - 1 < Model.filialen.Count(); i++)
+                <select asp-for="FiliaalID" class="form-control">
+                    @for (int i = 1; i - 1 < Model.Filialen.Count(); i++)
                     {
-                    <option value="@i">@Model.filialen[i - 1].stad</option>
+                    <option value="@i">@Model.Filialen[i - 1].Stad</option>
                     }
                 </select>
-                <span asp-validation-for="filiaalID" class="text-danger"></span>
+                <span asp-validation-for="FiliaalID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <div class="checkbox">

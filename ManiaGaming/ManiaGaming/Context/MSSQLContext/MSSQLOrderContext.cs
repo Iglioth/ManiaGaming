@@ -22,7 +22,8 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "UPDATE Order SET Ontvangen = 1 WHERE productid = @id";
+                
+                string sql = "UPDATE [Order] SET Ontvangen = 1 WHERE OrderID = @id";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -40,12 +41,14 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
+      
+
         public List<Order> GetAll()
         {
             List<Order> orderList = new List<Order>();
             try
             {
-                string sql = "SELECT * FROM [Order]";
+                string sql = "SELECT * FROM [Order] where Ontvangen = 0";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
 
@@ -70,9 +73,10 @@ namespace ManiaGaming.Context.MSSQLContext
             try
             {
                 string sql = "SELECT * FROM [Order] WHERE OrderID = @OrderID";
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-
-                parameters.Add(new KeyValuePair<string, string>("OrderID", id.ToString()));
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("OrderID", id.ToString())
+                };
 
                 DataSet results = ExecuteSql(sql, parameters);
                 Order O = DataSetParser.DataSetToOrder(results, 0);
@@ -110,13 +114,13 @@ namespace ManiaGaming.Context.MSSQLContext
             try
             {
                 string sql = "SET(Datum, Werknemer, FiliaalID) Values(@Datum, @werknermerID,@filiaalID)";
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string, string>("Datum", obj.Datum.ToString());
-                    new KeyValuePair<string, string>("werknemerID", obj.WerknemerID.ToString());
-                    new KeyValuePair<string, string>("filiaalID", obj.FiliaalID.ToString());
-                }
-                long results = ExecuteInsert(sql, parameters);
+                    new KeyValuePair<string, string>("Datum", obj.Datum.ToString()),
+                    new KeyValuePair<string, string>("werknemerID", obj.WerknemerID.ToString()),
+                    new KeyValuePair<string, string>("filiaalID", obj.FiliaalID.ToString()),
+                };
+                ExecuteInsert(sql, parameters);
                 return true;
             }
             catch
@@ -124,5 +128,7 @@ namespace ManiaGaming.Context.MSSQLContext
                 return false;
             }
         }
+
+        
     }
 }
