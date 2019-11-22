@@ -73,9 +73,10 @@ namespace ManiaGaming.Context.MSSQLContext
             try
             {
                 string sql = "SELECT * FROM [Order] WHERE OrderID = @OrderID";
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
-
-                parameters.Add(new KeyValuePair<string, string>("OrderID", id.ToString()));
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("OrderID", id.ToString())
+                };
 
                 DataSet results = ExecuteSql(sql, parameters);
                 Order O = DataSetParser.DataSetToOrder(results, 0);

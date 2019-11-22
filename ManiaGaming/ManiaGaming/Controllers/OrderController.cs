@@ -71,8 +71,10 @@ namespace ManiaGaming.Controllers
         [HttpGet]
         public IActionResult Aanmaken(OrderDetailViewModel vm)
         {
-            Order o = new Order();
-            o.Filialen = filiaalRepository.GetAll();
+            Order o = new Order
+            {
+                Filialen = filiaalRepository.GetAll()
+            };
             List<Product> products = productRepository.GetAll();
             List<Product> filterproducts = new List<Product>();
             foreach (Product p in products)
