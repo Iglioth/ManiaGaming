@@ -34,12 +34,13 @@ namespace ManiaGaming.Models.Data
             NormalizedEmail = email.ToUpper();
         }
 
-        public Account(int id, string userName, string email)
+        public Account(int id, string naam, string achternaam, string email)
         {
             Id = id;
-            Naam = userName;
+            Naam = naam;
+            AchterNaam = achternaam;
             Email = email;
-            NormalizedUserName = userName.ToUpper();
+            NormalizedUserName = naam.ToUpper();
             NormalizedEmail = email.ToUpper();
         }
 

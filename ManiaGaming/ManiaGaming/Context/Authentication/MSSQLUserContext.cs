@@ -17,7 +17,7 @@ namespace ManiaGaming.Context.Authentication
         private readonly string _connectionString;
         public MSSQLUserContext(IConfiguration config) : base(config)
         {
-            _connectionString = config.GetConnectionString("DefaultConnection");
+            _connectionString = config.GetConnectionString("Development");
         }
 
 
@@ -36,17 +36,16 @@ namespace ManiaGaming.Context.Authentication
                 var connection = new SqlConnection(_connectionString);
 
                 string query = "exec InsertKlant " +
-                               "@Username = @username, " +
+                               "@Naam = @naam, " +
+                               "@Achternaam = @achternaam, " +
                                "@Password = @password, " +
                                "@Email = @email ";
 
                 SqlCommand sqlCommand = new SqlCommand(query, connection);
-                sqlCommand.Parameters.AddWithValue("@username", user.Naam);
-                sqlCommand.Parameters.AddWithValue("@password", user.Password);
-                sqlCommand.Parameters.AddWithValue("@email", user.Email);
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("username", user.Naam),
+                    new KeyValuePair<string, string>("naam", user.Naam),
+                    new KeyValuePair<string, string>("achternaam", user.AchterNaam),
                     new KeyValuePair<string, string>("email", user.Email),
                     new KeyValuePair<string, string>("password", user.Password),
                 };
@@ -90,14 +89,14 @@ namespace ManiaGaming.Context.Authentication
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand sqlCommand = new SqlCommand("SELECT id, username, email FROM [Account] WHERE email=@email", connection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT accountid, naam, achternaam, email FROM [Account] WHERE email=@email", connection);
                 sqlCommand.Parameters.AddWithValue("@email", normalizedEmail);
                 using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                 {
                     Account user = default(Account);
                     if (sqlDataReader.Read())
                     {
-                        user = new Account(Convert.ToInt32(sqlDataReader["id"].ToString()), sqlDataReader["username"].ToString(), sqlDataReader["email"].ToString());
+                        user = new Account(Convert.ToInt32(sqlDataReader["accountid"].ToString()), sqlDataReader["naam"].ToString(), sqlDataReader["achternaam"].ToString(), sqlDataReader["email"].ToString());
                     }
                     return Task.FromResult(user);
                 }
@@ -119,14 +118,14 @@ namespace ManiaGaming.Context.Authentication
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    SqlCommand sqlCommand = new SqlCommand("SELECT id, username, email FROM [Account] WHERE id=@id", connection);
+                    SqlCommand sqlCommand = new SqlCommand("SELECT accountid, naam, achternaam, email FROM [Account] WHERE accountid=@id", connection);
                     sqlCommand.Parameters.AddWithValue("@id", userId);
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
                         Account user = default(Account);
                         if (sqlDataReader.Read())
                         {
-                            user = new Account(Convert.ToInt32(sqlDataReader["id"].ToString()), sqlDataReader["username"].ToString(), sqlDataReader["email"].ToString());
+                            user = new Account(Convert.ToInt32(sqlDataReader["accountid"].ToString()), sqlDataReader["naam"].ToString(), sqlDataReader["achternaam"].ToString(), sqlDataReader["email"].ToString());
                         }
                         return Task.FromResult(user);
                     }
@@ -147,14 +146,14 @@ namespace ManiaGaming.Context.Authentication
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    SqlCommand sqlCommand = new SqlCommand("SELECT id, username, email, password, roleid FROM [Account] WHERE email=@email", connection);
+                    SqlCommand sqlCommand = new SqlCommand("SELECT accountid, naam, email, wachtwoord, roleid FROM [Account] WHERE email=@email", connection);
                     sqlCommand.Parameters.AddWithValue("@email", normalizedAccountName);
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
                         Account user = default(Account);
                         if (sqlDataReader.Read())
                         {
-                            user = new Account(Convert.ToInt32(sqlDataReader["id"].ToString()), sqlDataReader["username"].ToString(), sqlDataReader["email"].ToString(), sqlDataReader["password"].ToString(), Convert.ToInt32(sqlDataReader["roleid"].ToString()));
+                            user = new Account(Convert.ToInt32(sqlDataReader["accountid"].ToString()), sqlDataReader["naam"].ToString(), sqlDataReader["email"].ToString(), sqlDataReader["wachtwoord"].ToString(), Convert.ToInt32(sqlDataReader["roleid"].ToString()));
                         }
                         return Task.FromResult(user);
                     }

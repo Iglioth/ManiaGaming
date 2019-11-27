@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ManiaGaming.Context.Authentication;
 using ManiaGaming.Context.IContext;
 using ManiaGaming.Context.MSSQLContext;
+using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -60,6 +63,12 @@ namespace ManiaGaming
             services.AddScoped<BestellingRepository>();
             services.AddScoped<FiliaalRepository>();
 
+            //Useraccounts and roles
+            services.AddTransient<IUserStore<Account>, MSSQLUserContext>();
+            services.AddTransient<IRoleStore<Role>, MSSQLRoleContext>();
+            services.AddIdentity<Account, Role>()
+                .AddDefaultTokenProviders();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSession();
         }
@@ -73,7 +82,7 @@ namespace ManiaGaming
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Home/Index");
                 app.UseHsts();
             }
 
