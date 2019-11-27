@@ -1,46 +1,53 @@
-﻿
+﻿@model ManiaGaming.Models.WinkelwagenDetailViewModel;
+@using ManiaGaming.Models.Data;
+@using Microsoft.AspNetCore.Http;
 @{
     ViewData["Title"] = "Index";
 }
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+ 
 </head>
 <body>
 
     <h3>Cart Page</h3>
-    <table cellpadding="2" cellspacing="2" border="1">
-        <tr>
-            <th>Option</th>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Photo</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Sub Total</th>
-        </tr>
-        @foreach (var item in ViewBag.cart)
-        {
-            <tr>
-                <td><a asp-controller="cart" asp-action="remove" asp-route-id="@item.Product.Id">Remove</a></td>
-                <td>@item.Product.Id</td>
-                <td>@item.Product.Naam</td>
-                <td>@item.Product.Prijs</td>
-                <td>@item.Quanity</td>
-                
-            </tr>
-        }
-        <tr>
-            <td align="right" colspan="6">Sum</td>
-            <td>
-                
-            </td>
-        </tr>
-    </table>
-    <br>
-    <a asp-controller="product" asp-action="index">Continue Shopping</a>
+    <div class="table-products">
+        <table class="content-table">
+            <thead>
+                <tr>
+
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    @*<th>Total</th>*@
+                    <th>Delete</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Product p in Model.producten)
+                {
+
+                <tr>
+                  
+                    <td>@p.Id</td>
+                    <td>@p.Naam</td>
+                    <td>@p.Prijs</td>
+                    <td>@p.Aantal</td>
+                    @*<td>@(p.Prijs * p.Aantal)</td>*@
+                    <td>@Html.ActionLink("Delete", "Delete", "Winkelwagen", new { id = p.Id })</td>
+
+
+                </tr>
+                }
+              
+            </tbody>
+        </table>
+        </div>
+        <br>
+        <a asp-controller="Games" asp-action="index">Continue Shopping</a>
 
 </body>
 </html>
