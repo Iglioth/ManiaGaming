@@ -53,11 +53,14 @@ namespace ManiaGaming.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ProductViewModel vm = new ProductViewModel();
+            ProductViewModel vm = new ProductViewModel()
+            {
+                SoortList = productConverter.GetSoorten()
+            };
             List<Product> products = new List<Product>();
             products = productRepository.GetAll();
             vm.ProductDetailViewModels = productConverter.ModelsToViewModels(products);
-
+            vm.CategorieList = categorieConverter.ModelsToViewModels(categorieRepository.GetAll());
             return View(vm);
         }
 
@@ -69,7 +72,7 @@ namespace ManiaGaming.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public IActionResult Aanpassen(long id)
         {
             ProductDetailViewModel vm = new ProductDetailViewModel
@@ -80,16 +83,14 @@ namespace ManiaGaming.Controllers
             vm = productConverter.ModelToViewModel(product);
             vm.CategorieList = categorieConverter.ModelsToViewModels(categorieRepository.GetAll());
             return View(vm);
-        }
+        }*/
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Aanpassen(ProductDetailViewModel vm, long Id)
+        public IActionResult Aanpassen(long Id)
         {           
-            vm.CategorieList = new List<CategorieDetailViewModel>();     
-            Product product = productConverter.ViewModelToModel(vm);
+            Product product = productRepository.GetById(Id);
             bool check = productRepository.Update(product);
-            return RedirectToAction("Aanpassen", new { Id });           
+            return RedirectToAction("Index", new { Id });           
         }
 
         [HttpPost]

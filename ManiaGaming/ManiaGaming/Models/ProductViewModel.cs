@@ -8,5 +8,7 @@ namespace ManiaGaming.Models
     public class ProductViewModel
     {
         public List<ProductDetailViewModel> ProductDetailViewModels { get; set; } = new List<ProductDetailViewModel>();
+        public List<CategorieDetailViewModel> CategorieList { get; set; }
+        public List<string> SoortList { get; set; }
     }
 }

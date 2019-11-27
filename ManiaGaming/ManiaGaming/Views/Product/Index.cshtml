@@ -47,19 +47,75 @@
                         }
                     </td>
                     <td>
-                            <!-- Modal content -->
-                        <div class="modal-content">
-
-                            <!-- Trigger/Open The Modal -->
-                            <button id="buttonId-@item.Id">Aanpassen</button>
+                        <!-- Trigger/Open The Modal -->
+                        <button id="buttonId-@item.Id">Aanpassen</button>
 
                             <!-- The Modal -->
-                            <div id="modalId-@item.Id" class="modal">
-                                <span id="closeId-@item.Id">&times;</span>
-                                
-                                <p> @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id })</p>                          
-                            </div>
+                        <div id="modalId-@item.Id" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
 
+                                <span id="closeId-@item.Id">&times;</span>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <form asp-action="Aanpassen">
+
+                                            <div class="form-group">
+                                                <label asp-for="@item.Naam" class="control-label"></label>
+                                                <input asp-for="@item.Naam" class="form-control" />
+                                                <span asp-validation-for="@item.Naam" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="@item.Omschrijving" class="control-label"></label>
+                                                <input asp-for="@item.Omschrijving" class="form-control" />
+                                                <span asp-validation-for="@item.Omschrijving" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="@item.Prijs" class="control-label"></label>
+                                                <input asp-for="@item.Prijs" class="form-control" />
+                                                <span asp-validation-for="@item.Prijs" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Categorie</label>
+                                                <select asp-for="@item.CategorieId" class="form-control">
+                                                    @for (int i = 0; i < Model.CategorieList.Count(); i++)
+                                                    {
+                                                        if (i == @item.CategorieId)
+                                                        {
+                                                            <option selected value="@i">@Model.CategorieList[i].Naam</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@i">@Model.CategorieList[i].Naam</option>
+                                                        }
+                                                    }
+                                                </select>
+                                                <span asp-validation-for="@item.CategorieId" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="@item.Soort" class="control-label"></label>
+                                                <select asp-for="@item.Soort" class="form-control">
+                                                    @for (int i = 0; i < Model.SoortList.Count(); i++)
+                                                    {
+                                                        if (Model.SoortList[i] == @item.Soort)
+                                                        {
+                                                            <option selected value="@i">@Model.SoortList[i]</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@i">@Model.SoortList[i]</option>
+                                                        }
+                                                    }
+                                                </select>
+                                                <span asp-validation-for="@item.Soort" class="text-danger"></span>
+                                            </div>
+                                            <input type="submit" value="Opslaan" class="btn btn-default" itemscope itemid="@item.Id"/>
+                                    
+                                            </form>
+                                    </div>
+                                </div>
+                                @*<p> @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id })</p>*@
+                            </div>
                         </div>
                     </td>
                     <td>
