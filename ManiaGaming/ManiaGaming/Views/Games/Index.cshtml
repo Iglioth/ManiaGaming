@@ -20,30 +20,25 @@
 
 
     @*<div class="container-product">
-        @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
+            @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
 
-        {
-            if (item.Actief == true)
             {
-                <div>
-                    <a href='@Url.Action("Detail", "Games", new { id = item.Id })'>
-                        <div class="containers-products">
-                            <img src="~/images/Games.png" alt="Paris">
-                            <p class="product-font"> @Html.DisplayFor(modelItem => item.Naam)  </p><p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
-                        </div>
-                    </a>
+                if (item.Actief == true)
+                {
+                    <div>
+                        <a href='@Url.Action("Detail", "Games", new { id = item.Id })'>
+                            <div class="containers-products">
+                                <img src="~/images/Games.png" alt="Paris">
+                                <p class="product-font"> @Html.DisplayFor(modelItem => item.Naam)  </p><p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
+                            </div>
+                        </a>
 
-                </div>
+                    </div>
+                }
             }
-        }
-    </div>*@
-    
-        <div id="carouselExampleSlidesOnly" class="carousel slide bg-dark" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
+        </div>*@
+    <div class="container">
+        <div id="carouselGames" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
 
@@ -55,7 +50,7 @@
                             <div class="carousel-item active">
                                 <a href='@Url.Action("Detail", "Games", new { id = item.Id })'>
 
-                                    <img src="~/images/Games.png" class="d-block w-100 align-middle" alt="Paris">
+                                    <img src="~/images/Games.png" class="d-block w-100" alt="Paris">
                                     <div class="carousel-caption d-none d-md-block">
                                         <p> @Html.DisplayFor(modelItem => item.Naam)  </p><p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
                                     </div>
@@ -80,18 +75,24 @@
 
 
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#carouselGames" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#carouselGames" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
+
+            <script>
+                $("#carouselGames").carousel(
+                    {
+                        interval: 2000
+                    });
+            </script>
         </div>
+    </div>
     
-
-
 </body>
 
 </html>
