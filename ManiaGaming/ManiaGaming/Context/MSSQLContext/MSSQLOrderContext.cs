@@ -113,12 +113,12 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "SET(Datum, Werknemer, FiliaalID) Values(@Datum, @werknermerID,@filiaalID)";
+                string sql = "UPDATE [Order] SET Datum = @Datum   where OrderID = @OrderID";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
+                    new KeyValuePair<string, string>("OrderID",obj.Id.ToString()),
                     new KeyValuePair<string, string>("Datum", obj.Datum.ToString()),
-                    new KeyValuePair<string, string>("werknemerID", obj.WerknemerID.ToString()),
-                    new KeyValuePair<string, string>("filiaalID", obj.FiliaalID.ToString()),
+                    
                 };
                 ExecuteInsert(sql, parameters);
                 return true;
