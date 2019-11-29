@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ManiaGaming</title>
     <link href="https://fonts.googleapis.com/css?family=Notable&display=swap" rel="stylesheet">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap-4.3.1-dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
@@ -19,11 +19,30 @@
     </environment>
 </head>
 <body>
-       <div class="header">
-           <div class="inner-header">
-               <div class="logo-container">
-                   <a asp-area="" asp-controller="Home" asp-action="Index"><h1>Mania Gaming</h1></a>
-               </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="logo-container">
+            <a asp-area="" asp-controller="Home" asp-action="Index"><h1>Mania Gaming</h1></a>
+        </div>
+        <div>
+            <form class="form-inline my-2 my-lg-0" style="margin-left:20px">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Games" asp-action="Index">Games</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Consoles" asp-action="Index">Consoles</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Accesoires" asp-action="Index">Accessoires</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Merchandise" asp-action="Index">Merchandise</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Detail">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>
+            </ul>
+        </div>
+    </nav>
 
                <ul class="navigation">
                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
@@ -64,34 +83,35 @@
 
 
 
-            @RenderBody()
-          
-        @RenderSection("Scripts", required: false)
-  
-    <div class="container">
-        <div class="main">
+    @RenderBody()
 
-        </div>
-    </div>
-   
-    <footer>  
-        <ul class="footer-navigation">
-            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-            <li><a asp-area="" asp-controller="Games" asp-action="Index">Games</a></li>
-            <li><a asp-area="" asp-controller="Consoles" asp-action="Index">Consoles</a></li>
-            <li><a asp-area="" asp-controller="Accesoires" asp-action="Index">Accessoires</a></li>
-            <li><a asp-area="" asp-controller="Merchandise" asp-action="Index">Merchandise</a></li>
-            <li><a asp-area="" asp-controller="Contact" asp-action="Index">Contact</a></li>
-            <li><a asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>
-        </ul>
-
-         <div class="copyrights">
-                <p>&copy; 2019 - ManiaGaming</p>
-         </div>
-       
-    </footer>
+    @RenderSection("Scripts", required: false)
 
     
+
+    
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Games" asp-action="Index">Games</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Consoles" asp-action="Index">Consoles</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Accesoires" asp-action="Index">Accessoires</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Merchandise" asp-action="Index">Merchandise</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Detail">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>
+                </ul>
+            </div>
+            <div class="copyrights">
+                <p>&copy; 2019 - ManiaGaming</p>
+            </div>
+        </nav>
+
+        
+
+    
+
+
 
 </body>
 </html>

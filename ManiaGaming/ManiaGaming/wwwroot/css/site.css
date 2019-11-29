@@ -3,16 +3,16 @@ for details on configuring this project to bundle and minify static web assets. 
 
 .header {
     width: 100%;
-    height: 50px;
-    /*margin-top: px;*/
+    height: 150px;
     display: block;
-    background: linear-gradient(to right, #00cc66 0%, #ccffff 10%);
+    background: black;
 }
 
 .inner-header {
     width: 1300px;
-    height: 100%;
-    background: linear-gradient(to right, #00cc66 0%, #ccffff 99%);
+    height: 100%;    
+    background: black;
+
 }
 .logo-container {
     float: left;
@@ -43,15 +43,15 @@ for details on configuring this project to bundle and minify static web assets. 
 {
     float:left;
     height:100%;
-    margin-top: 18px;
+    margin-top: 40px;
     font-weight:700;
 }
 
 .navigation li{
-    display:block;
-    float:left;
-    padding: 0px 20px;
     
+    float:left;
+    padding: 50px 20px; 
+    bottom: auto;
 }
 
 .navigation li a 
@@ -59,7 +59,7 @@ for details on configuring this project to bundle and minify static web assets. 
     color: white;
     text-decoration: none;
     font-size: 15px;
-    
+    margin-top: auto
 }
 
 
