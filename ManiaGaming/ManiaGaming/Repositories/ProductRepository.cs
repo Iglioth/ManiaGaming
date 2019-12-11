@@ -52,5 +52,6 @@ namespace ManiaGaming.Repositories
         {
             return context.UpdateVoorraad(id,aantal);
         }
+
     }
 }

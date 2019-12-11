@@ -9,5 +9,6 @@ namespace ManiaGaming.Context.IContext
 {
     public interface IOrderContext : IGenericQueries<Order>
     {
+     
     }
 }

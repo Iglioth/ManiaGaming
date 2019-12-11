@@ -37,7 +37,7 @@
                     <td>@p.Prijs</td>
                     <td>@p.Aantal</td>
                     @*<td>@(p.Prijs * p.Aantal)</td>*@
-                    <td>@Html.ActionLink("Delete", "Delete", "Winkelwagen", new { id = p.Id })</td>
+                    <td>@Html.ActionLink("Delete", "Remove", "Winkelwagen", new { id = p.Id })</td>
 
 
                 </tr>

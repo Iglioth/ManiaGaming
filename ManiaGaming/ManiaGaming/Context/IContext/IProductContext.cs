@@ -11,5 +11,7 @@ namespace ManiaGaming.Context.IContext
     {
         bool VeranderStock(long id, Product obj);
         bool UpdateVoorraad(int id, int aantal);
+
+
     }
 }

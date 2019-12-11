@@ -3,6 +3,7 @@ using ManiaGaming.Models;
 using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace ManiaGaming.Controllers
@@ -50,7 +51,7 @@ namespace ManiaGaming.Controllers
             else
             {
                 List<Product> cart = SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart");
-                int index = Exist(cart, id);
+                int index = Exist( id);
                 if (index  != -1)
                 {
                     cart[index].Aantal++;
@@ -69,32 +70,30 @@ namespace ManiaGaming.Controllers
             return RedirectToAction("Index");
         }
 
-        private int Exist(List<Product> cart, int id)
-        {
-            
+     
 
-            for(int i = 0; i < cart.Count ; i++)
+        public IActionResult Remove(long id)
+        {
+            List<Product> cart = GetSession();
+            int index = Exist(Convert.ToInt32(id));
+            cart.RemoveAt(index);
+            SetSession(cart);
+            
+            return RedirectToAction("Index");
+        }
+
+
+        private int Exist(int id)
+        {
+            List<Product> cart = SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart");
+            for (int i = 0; i < cart.Count; i++)
             {
                 if (cart[i].Id.Equals(id))
                 {
-                      return i;
+                    return i;
                 }
             }
-       
             return -1;
-        }
-        [HttpPost]
-        public IActionResult Delete(long id)
-        {
-            List<Product> cart = GetSession();
-            for(int i = 0; i < cart.Count; i++)
-            {
-                if(cart[i].Id == id)
-                {
-                    cart.RemoveAt(i);
-                }
-            }
-            return RedirectToAction("Index");
         }
 
         private void SetSession(List<Product> cart)
@@ -104,8 +103,8 @@ namespace ManiaGaming.Controllers
 
         private List<Product>  GetSession()
         {
-            List<Product> cart = SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart");
-            return cart;
+            return  SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart");
+           
         }
 
 

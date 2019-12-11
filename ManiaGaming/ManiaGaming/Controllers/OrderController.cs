@@ -60,12 +60,16 @@ namespace ManiaGaming.Controllers
         [HttpPost]
         public IActionResult Aanmaken(OrderDetailViewModel vm, long id)
         {
-            Product product = new Product();
+            
             Order order = new Order();
             order = orderConverter.ViewModelToModel(vm);
-            orderRepository.Insert(order); // DE INSERT KLOPT VOOR GEEN METER
+            order.FiliaalID = 9; // Graag ontvangen via Session
+            order.WerknemerID = 4; // Graag ontvangen via Session
+            order.Datum = DateTime.Now;
+            orderRepository.Insert(order);
             return RedirectToAction("Index");
-            
+            //int OrderID = (int)orderRepository.Insert(order);
+            //return RedirectToAction("Detail",OrderID ); Werkt niet want id wordt niet door detail ontvangen      
         }
 
         [HttpGet]
