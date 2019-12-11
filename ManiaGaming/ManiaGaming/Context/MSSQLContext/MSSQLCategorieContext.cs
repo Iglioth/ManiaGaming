@@ -109,7 +109,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "INSERT INTO Categorie (Naam) VALUES (@naam) ";
+                string sql = "INSERT INTO Categorie (Naam , Actief) VALUES (@naam , 1) ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {

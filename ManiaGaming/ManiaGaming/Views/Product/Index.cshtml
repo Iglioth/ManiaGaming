@@ -47,12 +47,12 @@
                         }
                     </td>
                     <td>
-
+                        
                         <!-- Trigger/Open The Modal -->
-                        <button id="buttonId-@item.Id - 1">Aanpassen</button>
+                        <button id="buttonId-@item.Id">Aanpassen</button>
 
                             <!-- The Modal -->
-                        <div id="modalId-@item.Id - 1" class="modal">
+                        <div id="modalId-@item.Id" class="modal">
                             <!-- Modal content -->
                             <div class="modal-content">
 
@@ -155,18 +155,18 @@
             var span = spans[-1 + @item.Id];
             // When the user clicks on the button, open the modal
             btn.onclick = function () {
-                modals[@item.Id].style.display = "block";
+                modals[-1 + @item.Id].style.display = "block";
             }
 
             // When the user clicks on <span> (x), close the modal
             span.onclick = function () {
-                modals[@item.Id].style.display = "none";
+                modals[-1 + @item.Id].style.display = "none";
             }
 
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function (event) {
                 if (event.target == modal) {
-                    modals[@item.Id].style.display = "none";
+                    modals[-1 + @item.Id].style.display = "none";
                 }
             }
         </text>
