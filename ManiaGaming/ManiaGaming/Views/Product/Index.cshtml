@@ -47,11 +47,12 @@
                         }
                     </td>
                     <td>
+
                         <!-- Trigger/Open The Modal -->
-                        <button id="buttonId-@item.Id">Aanpassen</button>
+                        <button id="buttonId-@item.Id - 1">Aanpassen</button>
 
                             <!-- The Modal -->
-                        <div id="modalId-@item.Id" class="modal">
+                        <div id="modalId-@item.Id - 1" class="modal">
                             <!-- Modal content -->
                             <div class="modal-content">
 
@@ -59,25 +60,29 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <form asp-action="Aanpassen">
-
+                                            <div class="form-group">
+                                                <label asp-for="@item.Id" hidden="hidden" class="control-label"></label>
+                                                <input asp-for="@item.Id" hidden="hidden" class="form-control" name="Id" />
+                                                <span asp-validation-for="@item.Id" hidden="hidden" class="text-danger"></span>
+                                            </div>
                                             <div class="form-group">
                                                 <label asp-for="@item.Naam" class="control-label"></label>
-                                                <input asp-for="@item.Naam" class="form-control" />
+                                                <input asp-for="@item.Naam" class="form-control" name="Naam"/>
                                                 <span asp-validation-for="@item.Naam" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="@item.Omschrijving" class="control-label"></label>
-                                                <input asp-for="@item.Omschrijving" class="form-control" />
+                                                <input asp-for="@item.Omschrijving" class="form-control" name="Omschrijving"/>
                                                 <span asp-validation-for="@item.Omschrijving" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="@item.Prijs" class="control-label"></label>
-                                                <input asp-for="@item.Prijs" class="form-control" />
+                                                <input asp-for="@item.Prijs" class="form-control" name="Prijs"/>
                                                 <span asp-validation-for="@item.Prijs" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label>Categorie</label>
-                                                <select asp-for="@item.CategorieId" class="form-control">
+                                                <select asp-for="@item.CategorieId" class="form-control" name="CategorieId">
                                                     @for (int i = 0; i < Model.CategorieList.Count(); i++)
                                                     {
                                                         if (i == @item.CategorieId)
@@ -94,7 +99,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="@item.Soort" class="control-label"></label>
-                                                <select asp-for="@item.Soort" class="form-control">
+                                                <select asp-for="@item.Soort" class="form-control" name="Soort">
                                                     @for (int i = 0; i < Model.SoortList.Count(); i++)
                                                     {
                                                         if (Model.SoortList[i] == @item.Soort)
@@ -109,7 +114,7 @@
                                                 </select>
                                                 <span asp-validation-for="@item.Soort" class="text-danger"></span>
                                             </div>
-                                            <input type="submit" value="Opslaan" class="btn btn-default" itemscope itemid="@item.Id"/>
+                                            <input type="submit" value="Opslaan" class="btn btn-default"/>
                                     
                                             </form>
                                     </div>
@@ -130,34 +135,42 @@
 
 
     <script>
+        var modals = [];
+        var btns = [];
+        var spans = [];
+        window.onload = function(){
         @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
                 {
                     <text>
-                    // Get the modal
-                    var modal = document.getElementById("modalId-@item.Id");
+            // Get the modal
+            modals.push(document.getElementById("modalId-@item.Id"));
+            var modal = modals[-1 + @item.Id];
 
-                    // Get the button that opens the modal
-                    var btn = document.getElementById("buttonId-@item.Id");
-
-                    // Get the <span> element that closes the modal
-                    var span = document.getElementById("closeId-@item.Id");
-                    // When the user clicks on the button, open the modal
-                    btn.onclick = function() {
-                        modal.style.display = "block";
-                    }
-
-                    // When the user clicks on <span> (x), close the modal
-                    span.onclick = function() {
-                        modal.style.display = "none";
-                    }
-
-                    // When the user clicks anywhere outside of the modal, close it
-                    window.onclick = function(event) {
-                if (event.target == modal) {
-                modal.style.display = "none";
+            // Get the button that opens the modal
+            btns.push(document.getElementById("buttonId-@item.Id"));
+            var btn = btns[-1 + @item.Id];
+         
+            // Get the <span> element that closes the modal
+            spans.push(document.getElementById("closeId-@item.Id"));
+            var span = spans[-1 + @item.Id];
+            // When the user clicks on the button, open the modal
+            btn.onclick = function () {
+                modals[@item.Id].style.display = "block";
             }
-        }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modals[@item.Id].style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modals[@item.Id].style.display = "none";
+                }
+            }
         </text>
         }
+            }
     </script>
 
