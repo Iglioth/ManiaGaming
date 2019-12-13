@@ -30,7 +30,7 @@
                         <td>@Html.DisplayFor(modelItem => item.Postcode)</td>
                         <td>@Html.DisplayFor(modelItem => item.Huisnummer)</td>
                         <td>
-                            @if (item.Actief == false)
+                            @if (!item.Actief)
                             {
                                 @Html.ActionLink("Activeren", "Activeren", new { id = item.Id })
                             }

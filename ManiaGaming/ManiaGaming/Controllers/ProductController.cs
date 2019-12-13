@@ -86,11 +86,11 @@ namespace ManiaGaming.Controllers
         }*/
 
         [HttpPost]
-        public IActionResult Aanpassen(long Id)
+        public IActionResult Aanpassen(ProductDetailViewModel vm)
         {           
-            Product product = productRepository.GetById(Id);
+            Product product = productConverter.ViewModelToModel(vm);
             bool check = productRepository.Update(product);
-            return RedirectToAction("Index", new { Id });           
+            return RedirectToAction("Index", new { vm.Id });           
         }
 
         [HttpPost]

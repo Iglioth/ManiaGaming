@@ -75,19 +75,26 @@ namespace ManiaGaming.Context.Parsers
         }
         public static Product DataSetToProduct(DataSet set, int rowIndex)
         {
-            return new Product()
+            if (set.Tables[0].Rows.Count > 0)
             {
-                Id = (int)set.Tables[0].Rows[rowIndex][0],
-                CategorieId = (int)set.Tables[0].Rows[rowIndex][1],
-                Omschrijving = (string)set.Tables[0].Rows[rowIndex][2],
-                Naam = (string)set.Tables[0].Rows[rowIndex][3],
-                Aantal = (int)set.Tables[0].Rows[rowIndex][4],
-                Prijs = (string)set.Tables[0].Rows[rowIndex][5],
-                Soort = (string)set.Tables[0].Rows[rowIndex][6],
-                Actief = (bool)set.Tables[0].Rows[rowIndex][7],
-                Tweedehands = (bool)set.Tables[0].Rows[rowIndex][8],
-                CategorieNaam = (string)set.Tables[0].Rows[rowIndex][9]
-            };
+                return new Product()
+                {
+                    Id = (int)set.Tables[0].Rows[rowIndex][0],
+                    CategorieId = (int)set.Tables[0].Rows[rowIndex][1],
+                    Omschrijving = (string)set.Tables[0].Rows[rowIndex][2],
+                    Naam = (string)set.Tables[0].Rows[rowIndex][3],
+                    Aantal = (int)set.Tables[0].Rows[rowIndex][4],
+                    Prijs = (string)set.Tables[0].Rows[rowIndex][5],
+                    Soort = (string)set.Tables[0].Rows[rowIndex][6],
+                    Actief = (bool)set.Tables[0].Rows[rowIndex][7],
+                    Tweedehands = (bool)set.Tables[0].Rows[rowIndex][8],
+                    CategorieNaam = (string)set.Tables[0].Rows[rowIndex][9]
+                };
+            }
+            else
+            {
+                return new Product();
+            }
         }
         public static Filiaal DataSetToFiliaal(DataSet set, int rowIndex)
         {
