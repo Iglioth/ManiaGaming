@@ -3,42 +3,50 @@
     ViewData["Title"] = "Detail";
 }
 <body>
-    <h2>Game Details</h2>
+    <h2 style="margin-left:30%">@Model.Naam</h2>
 </body>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Game Details</title>
+    
     <link rel="stylesheet" href="site.css">
 </head>
 
 <body>
 
 
-    
 
-    <h3 class="hheader">@Model.Naam</h3>
+
+    
 
 
     <div style="float:left; width:45%; margin-left:1.5%;">
         <img style="float:right; width:200px; height:250px" src="~/images/super mario galaxy.jpg">
     </div>
-    <div style="float:right; width:20%; margin-left:1.5%; margin-right:30%; position:center; border-style:solid; border-color:mediumspringgreen;">
-        <p style="white-space:pre-line; margin-left:1.5%">
-            <strong>Beschrijving</strong>
-            @Model.Omschrijving
+    <div style="float:right; width:20%; margin-left:1.5%; margin-right:30%; position:center;">
+        <p style="margin-left:1.5%">
+            <div class="product-title"><p><strong>Naam:       </strong>@Model.Naam</p></div>
+            <div class="product-desc"><p><strong>Beschrijving: </strong>@Model.Omschrijving</p></div>
 
-            <strong>Prijs:</strong>@Model.Prijs
-            <button>Kopen</button>
+            <hr>
+            <div class="product-price"><p><strong>Prijs: </strong>@Model.Prijs</p></div>
+            <div class="product-stock"><p><strong>Aantal: </strong>@Model.Aantal</p></div>
+            <hr>
+            <div class="btn-group cart">
+                <button type="button" class="btn btn-success">
+                    Voeg toe aan winkelwagen
+                </button>
+            </div>
         </p>
     </div>
 
-    <div style="height:100%; margin-top:35%;">
+    <div style="height:100%; margin-top:20%;">
         <button><a asp-action="Index">Terug naar lijst</a></button>
     </div>
+   
+   
 
-    
 
 
 

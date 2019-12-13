@@ -4,45 +4,33 @@
     ViewData["Title"] = "Detail";
 }
 
-<h2>Detail</h2>
 
-<div>
-    <h4>OrderDetailViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Datum)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Datum)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.WerknemerID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.WerknemerID)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FiliaalID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FiliaalID)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Ontvangen)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Ontvangen)
-        </dd>
-    </dl>
+
+<div class="container-fluid">
+    <h2>Order Detail</h2>
+
+    <div class="col-lg-6 table-bordered">
+        <div>
+            <strong>Order ID: </strong>@Html.DisplayFor(model => model.Id)
+        </div>
+        <div>
+            <strong>Datum: </strong>@Html.DisplayFor(model => model.Datum)
+        </div>
+        <div>
+            <strong>Werknemer ID: </strong>@Html.DisplayFor(model => model.WerknemerID)
+        </div>
+        <div>
+            <strong>Filiaal ID: </strong>@Html.DisplayFor(model => model.FiliaalID)
+        </div>
+        <div>
+            <strong>Ontvangen: </strong>@Html.DisplayFor(model => model.Ontvangen)
+        </div>
+        <div>
+            @Html.ActionLink("Aanpassen", "Aanpassen", new { id = Model.Id })
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+
