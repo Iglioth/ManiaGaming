@@ -102,7 +102,7 @@ namespace ManiaGaming.Controllers
             {
                 Product product = productConverter.ViewModelToModel(vm);
                 long Id = productRepository.Insert(product);
-                return RedirectToAction("Aanpassen", Id );
+                return RedirectToAction("Index");
             }
             else
             {

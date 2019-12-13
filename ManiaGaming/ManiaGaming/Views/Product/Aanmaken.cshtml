@@ -30,7 +30,7 @@
                 <select asp-for="CategorieId" class="form-control">
                     @for (int i = 1; i - 1 < Model.CategorieList.Count(); i++)
                     {
-                        <option value="@i">@Model.CategorieList[i - 1].Naam</option>
+                        <option value="@Model.CategorieList[i - 1].Id">@Model.CategorieList[i - 1].Naam</option>
                     }
                 </select>
                 <span asp-validation-for="CategorieId" class="text-danger"></span>
