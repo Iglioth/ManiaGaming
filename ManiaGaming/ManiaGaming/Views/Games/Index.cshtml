@@ -3,45 +3,35 @@
 <html>
 
 <head>
-    @model ManiaGaming.Models.ProductViewModel;
-    @{
-        ViewData["Title"] = "Index";
-    }
+    @model ManiaGaming.Models.ProductViewModel; 
+    @{ ViewData["Title"] = "Index"; }
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
     <title></title>
 
-
 </head>
-
 
 <body>
 
-
-
-    @*<div class="container-product">
-            @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
-
-            {
-                if (item.Actief == true)
-                {
-                    <div>
-                        <a href='@Url.Action("Detail", "Games", new { id = item.Id })'>
-                            <div class="containers-products">
-                                <img src="~/images/Games.png" alt="Paris">
-                                <p class="product-font"> @Html.DisplayFor(modelItem => item.Naam)  </p><p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
-                            </div>
-                        </a>
-
+    @*
+        <div class="container-product">
+            @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels) { if (item.Actief == true) {
+            <div>
+                <a href='@Url.Action("Detail", "Games", new { id = item.Id })'>
+                    <div class="containers-products">
+                        <img src="~/images/Games.png" alt="Paris">
+                        <p class="product-font"> @Html.DisplayFor(modelItem => item.Naam) </p>
+                        <p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
                     </div>
-                }
-            }
+                </a>
+
+            </div>
+            } }
         </div>*@
     <div class="container">
         <div id="carouselGames" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
-
                 {
                     if (item.Actief == true)
                     {
@@ -52,7 +42,8 @@
 
                                     <img src="~/images/Games.png" class="d-block w-100" alt="Paris">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <p> @Html.DisplayFor(modelItem => item.Naam)  </p><p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
+                                        <p> @Html.DisplayFor(modelItem => item.Naam) </p>
+                                        <p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
                                     </div>
 
                                 </a>
@@ -65,14 +56,14 @@
 
                                     <img src="~/images/Games.png" class="d-block w-100" alt="Paris">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <p> @Html.DisplayFor(modelItem => item.Naam)  </p><p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
+                                        <p> @Html.DisplayFor(modelItem => item.Naam) </p>
+                                        <p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
                                     </div>
                                 </a>
                             </div>
                         }
                     }
                 }
-
 
             </div>
             <a class="carousel-control-prev" href="#carouselGames" role="button" data-slide="prev">
@@ -84,24 +75,22 @@
                 <span class="sr-only">Next</span>
             </a>
 
-            <script>
+            <!---<script>
                 $("#carouselGames").carousel(
                     {
                         interval: 2000
                     });
-            </script>
+            </script>-->
+
         </div>
     </div>
-    
+
 </body>
 
 </html>
 
-
-
-
-
-@*<div id="productContainer">
+@*
+    <div id="productContainer">
         <table class="table table-striped table-hover" id="productTable" style="width:100%;">
             <thead>
                 <tr>
@@ -111,14 +100,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Naam)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
-                        <td>
-                            @Html.ActionLink("Detail", "Detail", new { id = item.ProductId })
-                    </tr>
+                @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels) {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
+                    <td>
+                        @Html.ActionLink("Detail", "Detail", new { id = item.ProductId })
+                </tr>
                 }
             </tbody>
         </table>

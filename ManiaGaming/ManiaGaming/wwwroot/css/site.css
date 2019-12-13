@@ -177,7 +177,7 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 .product-font {
     font-size: 19px;
-    font-family:;
+    
 }
 
     /*games/detail*/
@@ -380,9 +380,6 @@ footer {
     cursor: pointer;
 }
 
-.navbar {
-   
-    position: absolute;
-}
+
 
    
