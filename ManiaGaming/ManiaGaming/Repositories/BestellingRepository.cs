@@ -35,9 +35,9 @@ namespace ManiaGaming.Repositories
             return context.Update(obj);
         }
 
-        public bool Bestellen(List<Product> Producten, long KlantID, int aantal)
+        public bool Bestellen(List<Product> Producten, long KlantID)
         {
-            return context.Bestellen(Producten,  KlantID,  aantal);
+            return context.Bestellen(Producten,  KlantID);
         }
 
     }

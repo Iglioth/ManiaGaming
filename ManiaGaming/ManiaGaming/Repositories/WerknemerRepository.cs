@@ -11,7 +11,7 @@ namespace ManiaGaming.Repositories
     {
         protected IWerknemerContext context;
 
-        public WerknemerRepository()
+        public WerknemerRepository(IWerknemerContext context)
         {
             this.context = context ?? throw new NullReferenceException("De WerknemerContext is leeg!");
         }

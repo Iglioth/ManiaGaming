@@ -161,10 +161,10 @@ namespace ManiaGaming.Controllers
             
             foreach(Order o in TemporaryOrders)
             {
-                if (o.FiliaalID == /*w.FiliaalID*/)
-                {
-                    orders.Add(o); 
-                }
+                //if (o.FiliaalID == /*w.FiliaalID*/)
+                //{
+                //    orders.Add(o); 
+                //}
             }
             vm.Orders = orderConverter.ModelsToViewModels(orders);
         

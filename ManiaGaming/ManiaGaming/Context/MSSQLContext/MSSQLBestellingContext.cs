@@ -89,7 +89,7 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
-        public bool Bestellen(List<Product> Producten,long KlantID,int aantal)
+        public bool Bestellen(List<Product> Producten,long KlantID)
         {
             try
             {
@@ -114,11 +114,15 @@ namespace ManiaGaming.Context.MSSQLContext
                             {
                                 new KeyValuePair<string, string>("bestellingId",bestelling.Id.ToString()),
                                 new KeyValuePair<string, string>("productId",p.Id.ToString()),
-                                new KeyValuePair<string, string>("aantal",aantal.ToString())
+                                new KeyValuePair<string, string>("aantal",p.Aantal.ToString())
                             };
 
                         ExecuteSql(query, Parameters);
                     }
+                }
+                else
+                {
+                    return false;
                 }
                 
             }

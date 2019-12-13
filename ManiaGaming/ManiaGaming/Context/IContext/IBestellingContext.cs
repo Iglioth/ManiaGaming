@@ -10,6 +10,6 @@ namespace ManiaGaming.Context.IContext
     public interface IBestellingContext : IGenericQueries<Bestelling>
     {
 
-        bool Bestellen(List<Product> Producten, long KlantID, int aantal);
+        bool Bestellen(List<Product> Producten, long KlantID);
     }
 }
