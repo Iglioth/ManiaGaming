@@ -24,6 +24,7 @@
             </tr>
         </thead>
         <tbody>
+            @{var count = 0;}
             @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
             {
                 <tr>
@@ -36,7 +37,7 @@
                     </td>
                     <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
                     <td>
-                        @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |                        
+                        @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |
                         @if (!item.Actief)
                         {
                             @Html.ActionLink("Activeren", "Activeren", new { id = item.Id })
@@ -47,16 +48,16 @@
                         }
                     </td>
                     <td>
-                        
-                        <!-- Trigger/Open The Modal -->
-                        <button id="buttonId-@item.Id">Aanpassen</button>
 
-                            <!-- The Modal -->
-                        <div id="modalId-@item.Id" class="modal">
+                        <!-- Trigger/Open The Modal -->
+                        <button id="buttonId-@count">Aanpassen</button>
+
+                        <!-- The Modal -->
+                        <div id="modalId-@count" class="modal">
                             <!-- Modal content -->
                             <div class="modal-content">
 
-                                <span id="closeId-@item.Id">&times;</span>
+                                <span id="closeId-@count">&times;</span>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <form asp-action="Aanpassen">
@@ -67,17 +68,17 @@
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="@item.Naam" class="control-label"></label>
-                                                <input asp-for="@item.Naam" class="form-control" name="Naam"/>
+                                                <input asp-for="@item.Naam" class="form-control" name="Naam" />
                                                 <span asp-validation-for="@item.Naam" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="@item.Omschrijving" class="control-label"></label>
-                                                <input asp-for="@item.Omschrijving" class="form-control" name="Omschrijving"/>
+                                                <input asp-for="@item.Omschrijving" class="form-control" name="Omschrijving" />
                                                 <span asp-validation-for="@item.Omschrijving" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="@item.Prijs" class="control-label"></label>
-                                                <input asp-for="@item.Prijs" class="form-control" name="Prijs"/>
+                                                <input asp-for="@item.Prijs" class="form-control" name="Prijs" />
                                                 <span asp-validation-for="@item.Prijs" class="text-danger"></span>
                                             </div>
                                             <div class="form-group">
@@ -87,11 +88,11 @@
                                                     {
                                                         if (i == @item.CategorieId)
                                                         {
-                                                            <option selected value="@i">@Model.CategorieList[i].Naam</option>
+                                                            <option selected value="@Model.CategorieList[i].Id">@Model.CategorieList[i].Naam</option>
                                                         }
                                                         else
                                                         {
-                                                            <option value="@i">@Model.CategorieList[i].Naam</option>
+                                                            <option value="@Model.CategorieList[i].Id">@Model.CategorieList[i].Naam</option>
                                                         }
                                                     }
                                                 </select>
@@ -114,9 +115,9 @@
                                                 </select>
                                                 <span asp-validation-for="@item.Soort" class="text-danger"></span>
                                             </div>
-                                            <input type="submit" value="Opslaan" class="btn btn-default"/>
-                                    
-                                            </form>
+                                            <input type="submit" value="Opslaan" class="btn btn-default" />
+
+                                        </form>
                                     </div>
                                 </div>
                                 @*<p> @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id })</p>*@
@@ -128,6 +129,7 @@
                         @Html.ActionLink("Verander Stock", "VeranderStock", new { id = item.Id })
                     </td>
                 </tr>
+                count = count + 1;
             }
         </tbody>
     </table>
@@ -138,39 +140,44 @@
         var modals = [];
         var btns = [];
         var spans = [];
+        @{var count2 = 0;}
         window.onload = function(){
         @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
-                {
+        {
                     <text>
             // Get the modal
-            modals.push(document.getElementById("modalId-@item.Id"));
-            var modal = modals[-1 + @item.Id];
+            modals.push(document.getElementById("modalId-@count2"));
+            var modal = modals[@count2];
 
             // Get the button that opens the modal
-            btns.push(document.getElementById("buttonId-@item.Id"));
-            var btn = btns[-1 + @item.Id];
+            btns.push(document.getElementById("buttonId-@count2"));
+            var btn = btns[@count2];
          
             // Get the <span> element that closes the modal
-            spans.push(document.getElementById("closeId-@item.Id"));
-            var span = spans[-1 + @item.Id];
+            spans.push(document.getElementById("closeId-@count2"));
+            var span = spans[@count2];
             // When the user clicks on the button, open the modal
             btn.onclick = function () {
-                modals[-1 + @item.Id].style.display = "block";
+                modals[parseInt(@count2)].style.display = "block";
             }
 
             // When the user clicks on <span> (x), close the modal
             span.onclick = function () {
-                modals[-1 + @item.Id].style.display = "none";
+                modals[parseInt(@count2)].style.display = "none";
             }
 
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function (event) {
                 if (event.target == modal) {
-                    modals[-1 + @item.Id].style.display = "none";
+                    modals[@count2].style.display = "none";
                 }
             }
+            
         </text>
+            count2 = count2 + 1;
         }
+
+            console.log(modals[2]);
             }
     </script>
 
