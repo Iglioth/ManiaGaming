@@ -4,11 +4,11 @@
     ViewData["Title"] = "Aanpassen";
 }
 
-<h2>Aanpassen</h2>
 
-<h4>OrderDetailViewModel</h4>
-<hr />
-<div class="row">
+
+
+<div class="row container">
+    <h2 class="col-md-12">Aanpassen</h2>
     <div class="col-md-4">
         <form asp-action="Aanpassen">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -20,38 +20,43 @@
             </div>*@
             <div class="form-group">
                 <label asp-for="Datum" class="control-label"></label>
-                <input type="text" asp-for="Datum" class="form-control" data-provide="datepicker"
+                <input type="text" asp-for="Datum" class="form-control border-dark" data-provide="datepicker"
                        data-date-autoclose="true" data-date-format="yyyy-mm-dd">
                 @*<input asp-for="Datum" class="form-control" />*@
                 <span asp-validation-for="Datum" class="text-danger"></span>
             </div>
             @*<div class="form-group">
                 <label asp-for="WerknemerID" class="control-label"></label>
-                <input asp-for="WerknemerID" class="form-control" />
+                <input asp-for="WerknemerID" class="form-control border-dark" />
                 <span asp-validation-for="WerknemerID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FiliaalID" class="control-label"></label>
-                <input asp-for="FiliaalID" class="form-control" />
+                <input asp-for="FiliaalID" class="form-control border-dark" />
                 <span asp-validation-for="FiliaalID" class="text-danger"></span>
             </div>*@
             @*<div class="form-group">
-            <div class="checkbox">
-                <label>
-                    <input asp-for="Ontvangen" /> @Html.DisplayNameFor(model => model.Ontvangen)
-                </label>
-            </div>
-        </div>*@
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Ontvangen" /> @Html.DisplayNameFor(model => model.Ontvangen)
+                    </label>
+                </div>
+            </div>*@
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+
+                <input type="submit" value="Save" class="btn btn-outline-dark my-2 my-sm-0" />
+
+
+                <button class="btn btn-outline-dark my-2 my-sm-0"><a asp-action="Index">Back to List</a></button>
+
             </div>
+
         </form>
+       
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

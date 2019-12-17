@@ -1,6 +1,12 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 
+.layout-head {
+    width: 100%;
+    height: 150px;
+    position: absolute;
+}
+
 .header {
     width: 100%;
     height: 150px;
@@ -171,7 +177,7 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 .product-font {
     font-size: 19px;
-    font-family: 'Permanent Marker', cursive;
+    
 }
 
     /*games/detail*/
@@ -358,5 +364,22 @@ footer {
  top:110px;
  width:100%;
 }
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+    .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+        color: #28a745;
+    }
+
+.close:hover,
+.close:focus {
+    color: lightgreen;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
 
    
