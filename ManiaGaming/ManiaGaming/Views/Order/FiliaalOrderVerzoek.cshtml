@@ -1,0 +1,47 @@
+﻿@model ManiaGaming.Models.OrderViewModel;
+@{
+    ViewData["Title"] = "FiliaalOrderVerzoek";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Hier staan de orders die de ingelogde filiaal "moet" Versturen</h2>
+
+<body>
+    <div class="table-products" style="margin-bottom:500px;">
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th>OrderNummer</th>
+                    <th>Datum</th>
+                    @*<th>Acties</th>*@
+                    <th>Aantal</th>
+                </tr>
+            </thead>
+
+            @foreach (OrderDetailViewModel item in Model.Orders)
+            {
+                <tbody>
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ProductId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Datum)</td>
+
+                        <td>@Html.DisplayFor(modelItem => item.Aantal)</td>
+                    </tr>
+                </tbody>
+            }
+
+        </table>
+    </div>
+
+</body>
+
+
+@*<td>
+        @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |
+        @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id }) |
+        @if (item.Ontvangen == false)
+        {
+            @Html.ActionLink("Ontvangen", "Ontvangen", new { id = item.Id })
+        }
+    </td>*@

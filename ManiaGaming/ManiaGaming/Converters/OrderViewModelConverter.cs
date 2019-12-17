@@ -66,9 +66,11 @@ namespace ManiaGaming.Converters
             {
                 Id = vm.Id,
                 FiliaalID = vm.FiliaalID,
+                ProductID = vm.ProductId,
                 WerknemerID = vm.WerknemerID,
-
-                Datum = vm.Datum
+                Aantal = vm.Aantal,
+                Datum = vm.Datum,
+                Ontvangen = vm.Ontvangen
             };
             return o;
         }

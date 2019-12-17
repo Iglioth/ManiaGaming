@@ -91,16 +91,37 @@ namespace ManiaGaming.Context.MSSQLContext
         public long Insert(Order obj)
         {
             try
-            {
-                string sql = "INSERT INTO [Order](Datum, WerknemerID, FiliaalID) VALUES (@Datum, @werknemerID, @filiaalID)";
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+            {  
+
+
+                string sql = "INSERT INTO[Order](Datum, FiliaalID, WerknemerID, Ontvangen, Aantal, ProductID) VALUES (@Datum,@FiliaalID,@WerknemerID,@Ontvangen,@Aantal,@ProductID) SELECT SCOPE_IDENTITY() ";
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Datum", obj.Datum.ToString());
-                    new KeyValuePair<string, string>("werknemerID", obj.WerknemerID.ToString());
-                    new KeyValuePair<string, string>("filiaalID", obj.FiliaalID.ToString());
-                }
-                long results = ExecuteInsert(sql, parameters);
-                return results;
+                    new KeyValuePair<string, string>("Datum", obj.Datum.ToString("yyyy-MM-dd H:mm:ss")),
+                    new KeyValuePair<string, string>("FiliaalID", obj.FiliaalID.ToString()),
+                    new KeyValuePair<string, string>("WerknemerID", obj.WerknemerID.ToString()),
+                    new KeyValuePair<string, string>("Ontvangen", obj.Ontvangen.ToString()),
+                    new KeyValuePair<string, string>("Aantal", obj.Aantal.ToString()),
+                    new KeyValuePair<string, string>("ProductID", obj.ProductID.ToString())
+                };
+               
+                DataSet results = ExecuteSql(sql, parameters);
+                obj.Id = (int)(decimal)results.Tables[0].Rows[0][0];
+
+                string query = "INSERT INTO ProductOrder (OrderID,ProductID,aantal) VALUES (@OrderID,@ProductID,@aantal); ";
+                List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>
+                {
+                    
+                    
+                    new KeyValuePair<string, string>("OrderID", obj.Id.ToString()),
+                    new KeyValuePair<string, string>("ProductID", obj.ProductID.ToString()),
+                    new KeyValuePair<string, string>("aantal", obj.Aantal.ToString())
+                    
+                };
+                ExecuteSql(query, Parameters);
+                long OrderID;
+                OrderID = (long)obj.Id;
+                return OrderID;
             }
             catch (Exception e)
             {

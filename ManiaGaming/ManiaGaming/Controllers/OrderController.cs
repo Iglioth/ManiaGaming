@@ -17,11 +17,16 @@ namespace ManiaGaming.Controllers
         private readonly FiliaalRepository filiaalRepository;
         private readonly ProductRepository productRepository;
 
+        private readonly WerknemerRepository werknemerRepo;
+
+
+
         //converters
         private readonly OrderViewModelConverter orderConverter = new OrderViewModelConverter();
 
-        public OrderController(OrderRepository orderRepository, FiliaalRepository filiaalRepository, ProductRepository productRepository)
+        public OrderController(OrderRepository orderRepository, FiliaalRepository filiaalRepository, ProductRepository productRepository, WerknemerRepository werknemerRepo)
         {
+            this.werknemerRepo = werknemerRepo;
             this.orderRepository = orderRepository;
             this.filiaalRepository = filiaalRepository;
             this.productRepository = productRepository;
@@ -60,12 +65,16 @@ namespace ManiaGaming.Controllers
         [HttpPost]
         public IActionResult Aanmaken(OrderDetailViewModel vm, long id)
         {
-            Product product = new Product();
+            
             Order order = new Order();
             order = orderConverter.ViewModelToModel(vm);
-            orderRepository.Insert(order); // DE INSERT KLOPT VOOR GEEN METER
+            order.FiliaalID = 9; // Graag ontvangen via Session
+            order.WerknemerID = 4; // Graag ontvangen via Session
+            order.Datum = DateTime.Now;
+            orderRepository.Insert(order);
             return RedirectToAction("Index");
-            
+            //int OrderID = (int)orderRepository.Insert(order);
+            //return RedirectToAction("Detail",OrderID ); Werkt niet want id wordt niet door detail ontvangen      
         }
 
         [HttpGet]
@@ -110,7 +119,7 @@ namespace ManiaGaming.Controllers
             }
             else
             {
-
+                // Het is niet gelukt om de product op ontvangen true  te zetten
             }
             return RedirectToAction("Index");
         }
@@ -133,6 +142,35 @@ namespace ManiaGaming.Controllers
             return View(vm); 
         }
 
+        [HttpPost]
+        public IActionResult FiliaalOrderVerzoek(long id)
+        {
+         
+
+            return View();
+        }
+        [HttpGet]
+        public IActionResult FiliaalOrderVerzoek()
+        {
+            OrderViewModel vm = new OrderViewModel();
+            List<Order> TemporaryOrders = new List<Order>();
+            List<Order> orders = new List<Order>();
+            TemporaryOrders = orderRepository.GetAll();
+            //long id = GetUserId();
+            //Werknemer w = werknemerRepo.GetById(id);
+            
+            foreach(Order o in TemporaryOrders)
+            {
+                //if (o.FiliaalID == /*w.FiliaalID*/)
+                //{
+                //    orders.Add(o); 
+                //}
+            }
+            vm.Orders = orderConverter.ModelsToViewModels(orders);
+        
+
+            return View(vm);
+        }
     }
 }  
 

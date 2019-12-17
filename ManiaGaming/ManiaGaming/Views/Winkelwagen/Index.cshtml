@@ -12,6 +12,8 @@
 <body>
 
     <h3>Cart Page</h3>
+    <a asp-controller="Games" asp-action="index">Continue Shopping</a>
+    @Html.ActionLink("Bestel","Index","Bestelling")
     <div class="table-products">
         <table class="content-table">
             <thead>
@@ -30,24 +32,24 @@
                 @foreach (Product p in Model.producten)
                 {
 
-                <tr>
-                  
-                    <td>@p.Id</td>
-                    <td>@p.Naam</td>
-                    <td>@p.Prijs</td>
-                    <td>@p.Aantal</td>
-                    @*<td>@(p.Prijs * p.Aantal)</td>*@
-                    <td>@Html.ActionLink("Delete", "Delete", "Winkelwagen", new { id = p.Id })</td>
+                    <tr>
+
+                        <td>@p.Id</td>
+                        <td>@p.Naam</td>
+                        <td>@p.Prijs</td>
+                        <td>@p.Aantal</td>
+                        @*<td>@(p.Prijs * p.Aantal)</td>*@
+                        <td>@Html.ActionLink("Delete", "Remove", "Winkelwagen", new { id = p.Id })</td>
 
 
-                </tr>
+                    </tr>
                 }
-              
+
             </tbody>
         </table>
-        </div>
-        <br>
-        <a asp-controller="Games" asp-action="index">Continue Shopping</a>
+    </div>
+    <br>
+
 
 </body>
 </html>

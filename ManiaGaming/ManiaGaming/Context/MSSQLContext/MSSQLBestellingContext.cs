@@ -89,6 +89,49 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
+        public bool Bestellen(List<Product> Producten,long KlantID)
+        {
+            try
+            {
+                Bestelling bestelling = new Bestelling();
+                bestelling.Datum = DateTime.Now;
+
+                string sql = "INSERT INTO Bestelling (Datum,KlantID) values (@Datum,@KlantID) SELECT Scope_Identity()";
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+                {
+                        parameters.Add(new KeyValuePair<string, string>("Datum", bestelling.Datum.ToString("yyyy-MM-dd H:mm:ss")));
+                        parameters.Add(new KeyValuePair<string, string>("KlantID", KlantID.ToString()));
+                };
+                DataSet results = ExecuteSql(sql, parameters);
+                bestelling.Id = (int)results.Tables[0].Rows[0][0];
+
+                if(Producten != null)
+                {
+                    foreach (Product p in Producten)
+                    {
+                        string query = "INSERT INTO ProductBestelling (BestellingID,ProductID,aantal) values (@bestellingId,@productId ,@aantal)  ";
+                        List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>
+                            {
+                                new KeyValuePair<string, string>("bestellingId",bestelling.Id.ToString()),
+                                new KeyValuePair<string, string>("productId",p.Id.ToString()),
+                                new KeyValuePair<string, string>("aantal",p.Aantal.ToString())
+                            };
+
+                        ExecuteSql(query, Parameters);
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+                
+            }
+            catch
+            {
+
+            }
+            return true;
+        }
         public bool Update(Bestelling obj)
         {
             throw new NotImplementedException();
