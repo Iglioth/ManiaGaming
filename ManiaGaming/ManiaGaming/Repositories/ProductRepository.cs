@@ -50,7 +50,7 @@ namespace ManiaGaming.Repositories
         }
         public bool UpdateVoorraad(int id, int aantal)
         {
-            return context.UpdateVoorraad(id,aantal);
+             return context.UpdateVoorraad(id,aantal);
         }
 
     }

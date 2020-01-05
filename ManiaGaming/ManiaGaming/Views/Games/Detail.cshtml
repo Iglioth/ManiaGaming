@@ -32,13 +32,13 @@
             <strong>Prijs:</strong>@Model.Prijs
 
         </p>
-        @Html.ActionLink("Voeg toe aan winkelwagen","AddWinkelwagen", "Winkelwagen", new { id = @Model.Id })
-            <button>Kopen</button>
+            @Html.ActionLink("Voeg toe aan winkelwagen", "AddWinkelwagen", "Winkelwagen", new { id = @Model.Id })
+       
         
     </div>
 
     <div style="height:100%; margin-top:20%;">
-        <button><a asp-action="Index">Terug naar lijst</a></button>
+        <button class="btn btn-outline-success my-2 my-sm-0"><a asp-action="Index">Terug naar lijst</a></button>
     </div>
    
    

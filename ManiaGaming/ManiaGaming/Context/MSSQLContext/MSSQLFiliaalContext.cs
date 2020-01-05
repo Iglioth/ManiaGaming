@@ -105,7 +105,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "insert into Filiaal (stad,Huisnummer,Postcode,Telefoonnummer) values (@stad,@Huisnummer,@Postcode,@Telefoonnummer)";
+                string sql = "insert into Filiaal (stad,Huisnummer,Postcode,Telefoonnummer, Actief) values (@stad,@Huisnummer,@Postcode,@Telefoonnummer,1)";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("stad",obj.Stad),

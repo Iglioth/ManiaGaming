@@ -35,7 +35,7 @@ namespace ManiaGaming.Controllers
 
             return View(cart);
         }
-
+        [HttpGet]
         public IActionResult AddWinkelwagen(int id)
         {
            
