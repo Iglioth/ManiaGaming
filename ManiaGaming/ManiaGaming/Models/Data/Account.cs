@@ -7,8 +7,8 @@ namespace ManiaGaming.Models.Data
 {
     public class Account
     {
-        public Account()
-        { }
+        
+        
 
         public int Id { get; set; }
         public string Email { get; set; }
@@ -19,6 +19,8 @@ namespace ManiaGaming.Models.Data
         public int RoleId { get; set; }
         public string NormalizedEmail { get; set; }
         public string NormalizedUserName { get { return Naam.ToUpper(); } set { Naam = value.ToUpper(); } }
+
+        public Account() { }
 
         public Account(int id, string userName, string email, string password, int roleid)
         {

@@ -56,11 +56,11 @@ namespace ManiaGaming.Context.MSSQLContext
         {
              try
             {
-                string sql = "SELECT Naam, Achternaam, Email, Postcode, Huisnummer, Geboortedatum, Punten, AccountID FROM Klant INNER JOIN Account ON klant.klantID = account.AccountID WHERE klantID = @klantID";
+                string sql = "SELECT KlantID, Postcode, Huisnummer, Geboortedatum, Punten, Account.AccountID, Email, Naam, Achternaam FROM Klant INNER JOIN Account ON klant.AccountID = Account.AccountID WHERE Account.AccountID = @AccountID;";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("klantID", id.ToString()),
+                    new KeyValuePair<string, string>("AccountID", id.ToString()),
                 };
 
                 DataSet results = ExecuteSql(sql, parameters);
@@ -82,7 +82,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "UPDATE Klant SET Postcode = @postcode, Huisnummer = @huisnummer, Geboordedatum = @geboortedatum";
+                string sql = "UPDATE Klant SET Postcode = @postcode, Huisnummer = @huisnummer, Geboortedatum = @geboortedatum";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 { 

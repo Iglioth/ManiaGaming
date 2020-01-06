@@ -21,9 +21,8 @@ namespace ManiaGaming.Context.Parsers
                 
                 Id = (int)set.Tables[0].Rows[rowIndex][5],
                 Email = (string)set.Tables[0].Rows[rowIndex][6],
-                Password = (string)set.Tables[0].Rows[rowIndex][7],
-                Naam = (string)set.Tables[0].Rows[rowIndex][8],
-                AchterNaam = (string)set.Tables[0].Rows[rowIndex][9]
+                Naam = (string)set.Tables[0].Rows[rowIndex][7],
+                AchterNaam = (string)set.Tables[0].Rows[rowIndex][8]
             };
         }
         public static Account DataSetToAccount(DataSet set, int rowIndex)

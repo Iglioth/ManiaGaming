@@ -1,17 +1,17 @@
 ﻿@model ManiaGaming.Models.KlantDetailViewModel
 
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>View</h2>
+<h2>Edit</h2>
 
-<h4>KlantDetailViewModel</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Aanpassen">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="Aanpassen" asp-antiforgery="true">
             <div class="form-group">
                 <label asp-for="Postcode" class="control-label"></label>
                 <input asp-for="Postcode" class="form-control" />
@@ -27,9 +27,7 @@
                 <input asp-for="Geboortedatum" class="form-control" />
                 <span asp-validation-for="Geboortedatum" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+            <input type="submit" value="Opslaan" class="btn btn-default" />
         </form>
     </div>
 </div>
@@ -38,6 +36,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
