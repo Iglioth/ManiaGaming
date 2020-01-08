@@ -358,9 +358,9 @@ namespace ManiaGaming.Context.Authentication
             throw new NotImplementedException();
         }
 
-        public Task SetNormalizedUserNameAsync(Account user, string normalizedName, CancellationToken cancellationToken)
+        public Task SetNormalizedUserNameAsync(Account user, string userName, CancellationToken cancellationToken)
         {
-            user.NormalizedUserName = normalizedName;
+            
             return Task.FromResult(0);
         }
     }
