@@ -158,12 +158,12 @@ namespace ManiaGaming.Controllers
             List<Order> TemporaryOrders = new List<Order>();
             List<Order> orders = new List<Order>();
             TemporaryOrders = orderRepository.GetAll();
-            long id = GetUserId();
+            int id = werknemerRepo.GetWerknemerID(GetUserId());
             Werknemer w = werknemerRepo.GetById(id);
 
             foreach (Order o in TemporaryOrders)
             {
-                if (o.FiliaalID == w.FiliaalID)
+                if (o.FiliaalID == w.FiliaalID && o.Ontvangen == false)
                 {
                     orders.Add(o);
                 }

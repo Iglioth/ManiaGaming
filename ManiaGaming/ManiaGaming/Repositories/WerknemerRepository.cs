@@ -39,5 +39,9 @@ namespace ManiaGaming.Repositories
         {
             return context.Actief(id, active);
         }
+        public int GetWerknemerID(long id)
+        {
+            return context.GetWerknemerID(id);
+        }
     }
 }

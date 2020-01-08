@@ -68,6 +68,26 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
+        public int  GetWerknemerID(long id)
+        {
+            try
+            {
+                string sql = "SELECT WerknemerID FROM Werknemer WHERE AccountID = @AccountID";
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("AccountID", id.ToString())
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+                int werknemerid = (int)(decimal)results.Tables[0].Rows[0][0];
+                return werknemerid;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public long Insert(Werknemer obj)
         {
             try
