@@ -40,14 +40,11 @@ namespace ManiaGaming.Context.Parsers
         {
             return new Werknemer()
             {
-                WerknemerId = (int)set.Tables[0].Rows[rowIndex][0],
-                Functie = (string)set.Tables[0].Rows[rowIndex][1],
-
-                Id = (int)set.Tables[0].Rows[rowIndex][2],
+                Id = (int)set.Tables[0].Rows[rowIndex][0],
+                Naam = (string)set.Tables[0].Rows[rowIndex][1],
+                AchterNaam = (string)set.Tables[0].Rows[rowIndex][2],
                 Email = (string)set.Tables[0].Rows[rowIndex][3],
-                Password = (string)set.Tables[0].Rows[rowIndex][4],
-                Naam = (string)set.Tables[0].Rows[rowIndex][5],
-                AchterNaam = (string)set.Tables[0].Rows[rowIndex][6]
+                FiliaalNaam = (string)set.Tables[0].Rows[rowIndex][4],
             };
         }
         public static Bestelling DataSetToBestelling(DataSet set, int rowIndex)
@@ -134,6 +131,16 @@ namespace ManiaGaming.Context.Parsers
             {
                 Id = (int)set.Tables[0].Rows[rowIndex][0],
                 Naam = (string)set.Tables[0].Rows[rowIndex][1],
+            };
+        }
+        public static Werknemer DataSetToWerknemerIndex(DataSet set, int rowIndex)
+        {
+            return new Werknemer()
+            {
+                Id = (int)set.Tables[0].Rows[rowIndex][0],
+                Naam = (string)set.Tables[0].Rows[rowIndex][1],
+                AchterNaam = (string)set.Tables[0].Rows[rowIndex][2],
+                FiliaalNaam = (string)set.Tables[0].Rows[rowIndex][3],
             };
         }
     }

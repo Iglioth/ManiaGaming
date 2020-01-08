@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,7 +27,8 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Werknemer> werknemerList = new List<Werknemer>();
             try
             {
-                string sql = "SELECT Functie, FiliaalID FROM Werknemer";
+                string sql = "SELECT A.AccountId, A.Naam, A.Achternaam, A.Email, F.Stad FROM Account AS a INNER JOIN Werknemer on A.Accountid = Werknemer.AccountID " +
+                "INNER JOIN Filiaal AS F on Werknemer.FiliaalId = f.FiliaalId ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
@@ -52,7 +54,8 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "SELECT Functie, FiliaalID FROM Werknemer WHERE WerknemerID = @WerknemerID";
+                string sql = "SELECT A.AccountId, A.Naam, A.Achternaam, A.Email, F.Stad FROM Account AS a INNER JOIN Werknemer on Account.id = Werknemer.AccountID " +
+                "INNER JOIN Filiaal AS F on Werknemer.FiliaalId = Filiaal.Id ";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("WerknemerID", id.ToString())
@@ -92,17 +95,26 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "INSERT INTO Werknemer (Functie, FiliaalID) VALUES(@functie, @FiliaalID)";
+                string query = "exec InsertWerknemer " +
+                               "@Naam = @naam, " +
+                               "@Achternaam = @achternaam, " +
+                               "@Password = @password, " +
+                               "@Email = @email, " +
+                               "@filiaalid = @filiaalid";
 
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Functie", obj.Functie),
-                    new KeyValuePair<string, string>("FiliaalID", obj.Id.ToString())
+                    new KeyValuePair<string, string>("naam", obj.Naam),
+                    new KeyValuePair<string, string>("achternaam", obj.AchterNaam),
+                    new KeyValuePair<string, string>("email", obj.Email),
+                    new KeyValuePair<string, string>("password", obj.Password),
+                    new KeyValuePair<string, string>("filiaalid", obj.FiliaalID.ToString()),
                 };
-                long result = ExecuteInsert(sql, parameters);
+                ExecuteSql(query, parameters);
+                long result = 1;
                 return result;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }

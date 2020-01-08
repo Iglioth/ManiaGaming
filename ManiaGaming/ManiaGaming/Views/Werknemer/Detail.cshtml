@@ -1,0 +1,20 @@
+﻿@model ManiaGaming.Models.ProductDetailViewModel
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole("beheerder"))
+    {
+        @Html.ActionLink("Aanpassen", "Aanpassen", new { id = Model.Id }) @: |
+    }
+    <a asp-action="Index">Terug naar lijst</a>
+</div>

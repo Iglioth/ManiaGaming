@@ -7,6 +7,8 @@ namespace ManiaGaming.Models
 {
     public class WerknemerViewModel
     {
-        List<WerknemerDetailViewModel> Werknemers { get; set; }
+        public List<WerknemerDetailViewModel> WerknemerDetailViewModels { get; set; }
+
+        public List<FiliaalDetailViewModel> FiliaalList { get; set; }
     }
 }

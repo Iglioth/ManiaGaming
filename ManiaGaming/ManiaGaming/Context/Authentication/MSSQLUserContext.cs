@@ -39,7 +39,10 @@ namespace ManiaGaming.Context.Authentication
                                "@Naam = @naam, " +
                                "@Achternaam = @achternaam, " +
                                "@Password = @password, " +
-                               "@Email = @email ";
+                               "@Email = @email, " +
+                               "@Huisnummer = @huisnummer, " +
+                               "@Postcode = @postcode, " +
+                               "@Geboortedatum = @geboortedatum";
 
                 SqlCommand sqlCommand = new SqlCommand(query, connection);
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
@@ -48,6 +51,9 @@ namespace ManiaGaming.Context.Authentication
                     new KeyValuePair<string, string>("achternaam", user.AchterNaam),
                     new KeyValuePair<string, string>("email", user.Email),
                     new KeyValuePair<string, string>("password", user.Password),
+                    new KeyValuePair<string, string>("huisnummer", user.Huisnummer),
+                    new KeyValuePair<string, string>("postcode", user.Postcode),
+                    new KeyValuePair<string, string>("geboortedatum", user.Geboortedatum.ToString("yyyy-MM-dd")),
                 };
                 ExecuteInsert(query, parameters);
                 return Task.FromResult<IdentityResult>(IdentityResult.Success);
@@ -327,6 +333,12 @@ namespace ManiaGaming.Context.Authentication
         }
 
         public Task SetPasswordHashAsync(Account user, string passwordHash, CancellationToken cancellationToken)
+        {
+            user.Password = passwordHash;
+            return Task.FromResult(0);
+        }
+
+        public Task SetPasswordHashAsync(Werknemer user, string passwordHash, CancellationToken cancellationToken)
         {
             user.Password = passwordHash;
             return Task.FromResult(0);

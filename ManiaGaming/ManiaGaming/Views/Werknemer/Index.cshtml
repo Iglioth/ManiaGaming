@@ -1,0 +1,124 @@
+﻿@model ManiaGaming.Models.WerknemerViewModel
+
+@{
+    ViewData["Title"] = "Productenlijst";
+}
+
+<h2>Product Lijst</h2>
+
+<p>
+    <a asp-action="Aanmaken">Nieuwe toevoegen</a>
+</p>
+
+<div id="productContainer">
+    <table class="table table-striped table-hover" id="productTable" style="width:100%;">
+        <thead>
+            <tr>
+                <th>Naam</th>
+                <th>Achternaam</th>
+                <th>Functie</th>
+                <th>Filiaan Locatie</th>
+                <th>Acties</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (WerknemerDetailViewModel item in Model.WerknemerDetailViewModels)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AchterNaam)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.FiliaalLocatie)</td>
+                    <td>
+                        @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |
+                        @if (!item.Actief)
+                        {
+                            @Html.ActionLink("Activeren", "Activeren", new { id = item.Id })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Deactiveren", "Activeren", new { id = item.Id })
+                        }
+                    </td>
+                    <td>
+                        <!-- Trigger/Open The Modal -->
+                        <button id="buttonId-@item.Id">Aanpassen</button>
+
+                        <!-- The Modal -->
+                        <div id="modalId-@item.Id" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+
+                                <span id="closeId-@item.Id">&times;</span>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <form asp-action="Aanpassen">
+
+                                            <div class="form-group">
+                                                <label asp-for="@item.Naam" class="control-label"></label>
+                                                <input asp-for="@item.Naam" class="form-control" />
+                                                <span asp-validation-for="@item.Naam" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="@item.AchterNaam" class="control-label"></label>
+                                                <input asp-for="@item.AchterNaam" class="form-control" />
+                                                <span asp-validation-for="@item.AchterNaam" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="@item.Email" class="control-label"></label>
+                                                <input asp-for="@item.Email" class="form-control" />
+                                                <span asp-validation-for="@item.Email" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="@item.FiliaalLocatie" class="control-label"></label>
+                                                <input asp-for="@item.FiliaalLocatie" class="form-control" />
+                                                <span asp-validation-for="@item.FiliaalLocatie" class="text-danger"></span>
+                                            </div>
+                                            <input type="submit" value="Opslaan" class="btn btn-default" itemscope itemid="@item.Id" />
+
+                                        </form>
+                                    </div>
+                                </div>
+                                @*<p> @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id })</p>*@
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+        @foreach (WerknemerDetailViewModel item in Model.WerknemerDetailViewModels)
+                {
+                    <text>
+                    // Get the modal
+                    var modal = document.getElementById("modalId-@item.Id");
+
+                    // Get the button that opens the modal
+                    var btn = document.getElementById("buttonId-@item.Id");
+
+                    // Get the <span> element that closes the modal
+                    var span = document.getElementById("closeId-@item.Id");
+                    // When the user clicks on the button, open the modal
+                    btn.onclick = function() {
+                        modal.style.display = "block";
+                    }
+
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                    }
+
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function(event) {
+                if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        </text>
+        }
+</script>
+

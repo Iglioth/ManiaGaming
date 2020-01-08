@@ -7,8 +7,8 @@ namespace ManiaGaming.Models.Data
 {
     public class Account
     {
-        
-        
+
+
 
         public int Id { get; set; }
         public string Email { get; set; }
@@ -17,6 +17,9 @@ namespace ManiaGaming.Models.Data
         public string AchterNaam { get; set; }
         public bool Actief { get; set; }
         public int RoleId { get; set; }
+        public DateTime Geboortedatum { get; set; }
+        public string Postcode { get; set; }
+        public string Huisnummer { get; set; }
         public string NormalizedEmail { get; set; }
         public string NormalizedUserName { get { return Naam.ToUpper(); } set { Naam = value.ToUpper(); } }
 
@@ -52,10 +55,13 @@ namespace ManiaGaming.Models.Data
             switch (RoleId)
             {
                 case 1:
-                    role = "Beheerder";
+                    role = "Werknemer";
                     break;
                 case 2:
                     role = "Klant";
+                    break;
+                case 3:
+                    role = "Beheerder";
                     break;
                 default:
                     break;

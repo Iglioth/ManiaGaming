@@ -77,7 +77,9 @@ namespace ManiaGaming.Controllers
             if (ModelState.IsValid)
             {
                 Account baseaccount = new Account(-1, model.Naam, model.Achternaam, model.Email);
-                baseaccount.Naam = model.Naam;
+                baseaccount.Huisnummer = model.Huisnummer;
+                baseaccount.Postcode = model.Postcode;
+                baseaccount.Geboortedatum = model.Geboortedatum;
                 var result = await _userManager.CreateAsync(baseaccount, model.Password);
                 if (result.Succeeded)
                 {

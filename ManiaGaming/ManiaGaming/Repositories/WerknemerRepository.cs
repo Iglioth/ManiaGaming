@@ -28,7 +28,7 @@ namespace ManiaGaming.Repositories
 
         public long Insert(Werknemer obj)
         {
-            return Insert(obj);
+            return context.Insert(obj);
         }
        public bool Update(Werknemer obj)
         {
