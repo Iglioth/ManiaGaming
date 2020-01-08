@@ -7,46 +7,78 @@
 
 <html>
 <head>
- 
+
 </head>
 <body>
 
-    <h3>Cart Page</h3>
-    <a asp-controller="Games" asp-action="index">Continue Shopping</a>
-    @Html.ActionLink("Bestel","Index","Bestelling")
-    <div class="table-products">
-        <table class="content-table">
-            <thead>
-                <tr>
+  
 
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    @*<th>Total</th>*@
-                    <th>Delete</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (Product p in Model.producten)
+    <div class="table-products" style="margin-top:50px;">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2"><a asp-controller="Games" asp-action="index" class="btn btn-default">Continue Shopping</a></div>
+            <div class="col-md-7"></div>
+            @{ if (Model == null)
                 {
 
-                    <tr>
+                }
+                else
+                {
+                    <div class="col-md-2"><a asp-controller="Bestelling" asp-action="Bestel" class="btn btn-default">Bestel</a></div>@*Alleen laten zien als model != aan null*@
+                }
+            }
 
-                        <td>@p.Id</td>
-                        <td>@p.Naam</td>
-                        <td>@p.Prijs</td>
-                        <td>@p.Aantal</td>
-                        @*<td>@(p.Prijs * p.Aantal)</td>*@
-                        <td>@Html.ActionLink("Delete", "Remove", "Winkelwagen", new { id = p.Id })</td>
+        </div>
 
 
-                    </tr>
+        @{ if (Model == null)
+            { <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2" style="margin-top:50px;">De winkelwagen is leeg</div>
+            <div class="col-md-9"></div>
+        </div>
                 }
 
-            </tbody>
-        </table>
+                else
+                {
+              <table class="content-table">
+                  <thead>
+                      <tr>
+
+                          <th>Id</th>
+                          <th>Name</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                          @*<th>Total</th>*@
+                          <th>Delete</th>
+
+                      </tr>
+                  </thead>
+
+                  @foreach (Product p in Model.producten)
+                  {
+                      <tbody>
+
+                          <tr>
+
+                              <td>@p.Id</td>
+                              <td>@p.Naam</td>
+                              <td>@p.Prijs</td>
+                              <td>@p.Aantal</td>
+                              @*<td>@(p.Prijs * p.Aantal)</td>*@
+                              <td>@Html.ActionLink("Delete", "Remove", "Winkelwagen", new { id = p.Id })</td>
+
+
+                          </tr>
+
+
+                      </tbody>}
+              </table>
+
+
+                }
+            }  
     </div>
     <br>
 
@@ -54,3 +86,4 @@
 </body>
 </html>
 
+@*@Html.ActionLink("Bestel", "Index", "Bestelling")*@

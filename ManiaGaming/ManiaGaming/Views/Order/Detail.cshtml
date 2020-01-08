@@ -13,18 +13,23 @@
         <div>
             <strong>Order ID: </strong>@Html.DisplayFor(model => model.Id)
         </div>
+
         <div>
-            <strong>Datum: </strong>@Html.DisplayFor(model => model.Datum)
+            <strong>Product ID: </strong>@Html.DisplayFor(model => model.ProductId)
         </div>
         <div>
             <strong>Werknemer ID: </strong>@Html.DisplayFor(model => model.WerknemerID)
         </div>
         <div>
             <strong>Filiaal ID: </strong>@Html.DisplayFor(model => model.FiliaalID)
+        </div> 
+        <div>
+            <strong>Datum: </strong>@Html.DisplayFor(model => model.Datum)
         </div>
         <div>
             <strong>Ontvangen: </strong>@Html.DisplayFor(model => model.Ontvangen)
         </div>
+
         <div>
             @Html.ActionLink("Aanpassen", "Aanpassen", new { id = Model.Id })
         </div>

@@ -9,38 +9,40 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ManiaGaming.Controllers
 {
-    public class BestellingController : Controller
+    public class BestellingController : BaseController
     {
         BestellingRepository bestellingRepository;
         ProductRepository productRepository;
         AccountRepository accountRepository;
-
-        public BestellingController(BestellingRepository bestellingRepository, ProductRepository productRepository, AccountRepository accountRepository)
+        KlantRepository klantRepository;
+        public BestellingController(BestellingRepository bestellingRepository, ProductRepository productRepository, AccountRepository accountRepository, KlantRepository klantRepository)
         {
+            this.klantRepository = klantRepository;
             this.accountRepository = accountRepository;
             this.productRepository = productRepository;
             this.bestellingRepository = bestellingRepository;
         }
+
 
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Bestel(AccountDetailViewModel vm)
+ 
+        public IActionResult Bestel()
         {
 
             // Controlleren of klant ingelogt is en juiste gegevens zijn
-            if(ControlUser(vm) == true)
-            {
+            //if (GetUserId() != -1)
+            //{
 
-           
                 List<Product> cart = CartProducten();
                 if (cart != null)
                 {
-                    Klant k = new Klant();
-                    k.Id = 1; //Moet een Session worden 
+                    long id = GetUserId();
+                    klantRepository.GetKlantID(id);
+                    Klant k = klantRepository.GetById(id);
 
                     if (bestellingRepository.Bestellen(cart, k.Id) == true)
                     {
@@ -56,17 +58,18 @@ namespace ManiaGaming.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index","WinkelWagen");
+                    //aangeven dat de winkelwagen leeg is  
+                    return RedirectToAction("Index", "WinkelWagen");
                 }
 
-            }
-            else
-            {
-              
-                //Bestelling mislukt, want wachtwoord of/en email zijn fout. DIRK VRAGEN OM ERRORCODE
-                return RedirectToAction("Index");
+            //}
+            //else
+            //{
 
-            }
+            //    //Bestelling mislukt, want er is niemand ingelogd ERRORCODE
+            //    return RedirectToAction("Index", "LoginController");
+
+            //}
         }
 
         public IActionResult BestellingBevestiging()

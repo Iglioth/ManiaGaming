@@ -73,6 +73,27 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
+        public int GetKlantID(long id)
+        {
+            try
+            {
+                string sql = "Select Klant.KlantID from Account inner join Klant on Account.AccountID = Klant.AccountID where Account.AccountID = @AccountID;";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("AccountID", id.ToString()),
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+                int klantid = (int)results.Tables[0].Rows[0][0];
+                return klantid;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public long Insert(Klant obj)
         {
             throw new NotImplementedException();

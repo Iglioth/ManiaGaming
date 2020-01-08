@@ -24,6 +24,11 @@ namespace ManiaGaming.Context.ITestContext
             throw new NotImplementedException();
         }
 
+        public int GetKlantID(long id)
+        {
+            throw new NotImplementedException();
+        }
+
         public long Insert(Klant obj)
         {
             throw new NotImplementedException();

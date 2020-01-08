@@ -26,14 +26,29 @@ namespace ManiaGaming.Controllers
         }
         public IActionResult Index()
         {
-            WinkelwagenDetailViewModel cart = new WinkelwagenDetailViewModel();
-
-            foreach (Product p in SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart"))
-            {
-                cart.producten.Add(p);
-            }
-
-            return View(cart);
+            
+            //if (SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart") == null)
+            //{
+              
+            //    return View();
+            //}
+            //else
+            //{
+                WinkelwagenDetailViewModel cart = new WinkelwagenDetailViewModel();
+                if (SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart") == null)
+                {
+                ViewBag.Error = "Inloggegevens zijn incorrect";
+                return View();
+                }
+                else
+                {
+                    foreach (Product p in SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart"))
+                    {
+                        cart.producten.Add(p);
+                    }
+                }
+                return View(cart);
+            
         }
         [HttpGet]
         public IActionResult AddWinkelwagen(int id)

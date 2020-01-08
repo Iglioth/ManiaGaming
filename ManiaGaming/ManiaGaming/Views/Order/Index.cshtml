@@ -13,14 +13,22 @@
 </head>
 
 <body>
-    <h2>Hier staan de orders die nog geleverd moeten worden door een filiaal</h2>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-5">  <h2 style="margin-top:20px;">Te ontvangen order verzoeken</h2></div>
+        <div class="col-md-3"></div>
+    </div>
 
-    <p>
-        <a asp-action="Aanmaken">Create New</a>
-    </p>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-7"><p><a asp-action="Aanmaken" style="margin-left:22px;">Create New</a></p></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3"><a asp-action="FiliaalOrderVerzoek" style="margin-left: 49px;">Te verzenden orders </a></div>
+    </div>
+   
 
     <div class="table-products" style="margin-bottom:500px;">
-        <table class="content-table" >
+        <table class="content-table">
             <thead>
                 <tr>
                     <th>OrderNummer</th>
@@ -29,26 +37,27 @@
                     <th>Aantal</th>
                 </tr>
             </thead>
-            
-                @foreach (OrderDetailViewModel item in Model.Orders)
-                {<tbody>
-                     <tr>
-                         <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                         <td>@Html.DisplayFor(modelItem => item.Datum)</td>
-                         <td>
-                             @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |
-                             @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id }) |
-                             @if (item.Ontvangen == false)
-                             {
-                                 @Html.ActionLink("Ontvangen", "Ontvangen", new { id = item.Id })
-                             }
-                         </td>
-                         <td>@Html.DisplayFor(modelItem => item.Aantal)</td>
-                     </tr>
-</tbody>
-    }
+
+            @foreach (OrderDetailViewModel item in Model.Orders)
+            {
+                <tbody>
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Datum)</td>
+                        <td>
+                            @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |
+                            @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id }) |
+                            @if (item.Ontvangen == false)
+                            {
+                                @Html.ActionLink("Ontvangen", "Ontvangen", new { id = item.Id })
+                            }
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.Aantal)</td>
+                    </tr>
+                </tbody>
+            }
 
         </table>
-        </div>
+    </div>
 
 </body>

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ManiaGaming.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         //repos
         private readonly OrderRepository orderRepository;
@@ -18,8 +18,8 @@ namespace ManiaGaming.Controllers
         private readonly ProductRepository productRepository;
 
         private readonly WerknemerRepository werknemerRepo;
-
-
+        //GetUserId();
+        
 
         //converters
         private readonly OrderViewModelConverter orderConverter = new OrderViewModelConverter();
@@ -36,6 +36,7 @@ namespace ManiaGaming.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            
             OrderViewModel vm = new OrderViewModel();
             List<Order> Orders = new List<Order>();
             List<Order> NietOntvangenOrders = new List<Order>();
@@ -68,13 +69,14 @@ namespace ManiaGaming.Controllers
             
             Order order = new Order();
             order = orderConverter.ViewModelToModel(vm);
-            order.FiliaalID = 9; // Graag ontvangen via Session
-            order.WerknemerID = 4; // Graag ontvangen via Session
+            order.FiliaalID = 9; // Is niet mogelijk om via de vm te ontvangen
+            long ID = GetUserId();
+            Werknemer w = werknemerRepo.GetById(ID);
+            order.WerknemerID = w.WerknemerId; 
             order.Datum = DateTime.Now;
             orderRepository.Insert(order);
             return RedirectToAction("Index");
-            //int OrderID = (int)orderRepository.Insert(order);
-            //return RedirectToAction("Detail",OrderID ); Werkt niet want id wordt niet door detail ontvangen      
+            
         }
 
         [HttpGet]
@@ -88,7 +90,7 @@ namespace ManiaGaming.Controllers
             List<Product> filterproducts = new List<Product>();
             foreach (Product p in products)
             {
-                //o.producten.RemoveAll(r => r.Tweedehands == true);
+               
                 if (!p.Tweedehands)
                 {
                     filterproducts.Add(p);
@@ -156,21 +158,32 @@ namespace ManiaGaming.Controllers
             List<Order> TemporaryOrders = new List<Order>();
             List<Order> orders = new List<Order>();
             TemporaryOrders = orderRepository.GetAll();
-            //long id = GetUserId();
-            //Werknemer w = werknemerRepo.GetById(id);
-            
-            foreach(Order o in TemporaryOrders)
+            long id = GetUserId();
+            Werknemer w = werknemerRepo.GetById(id);
+
+            foreach (Order o in TemporaryOrders)
             {
-                //if (o.FiliaalID == /*w.FiliaalID*/)
-                //{
-                //    orders.Add(o); 
-                //}
+                if (o.FiliaalID == w.FiliaalID)
+                {
+                    orders.Add(o);
+                }
             }
             vm.Orders = orderConverter.ModelsToViewModels(orders);
         
 
             return View(vm);
         }
+
+        [HttpGet]
+        public IActionResult FiliaalOrderVerzoekDetail(long id)
+        {
+            OrderDetailViewModel vm = new OrderDetailViewModel();
+            Order o = new Order();
+            o = orderRepository.GetById(id);
+            vm = orderConverter.ModelToViewModel(o);
+            return View(vm);
+        }
+
     }
 }  
 

@@ -13,8 +13,9 @@
                 <tr>
                     <th>OrderNummer</th>
                     <th>Datum</th>
-                    @*<th>Acties</th>*@
+
                     <th>Aantal</th>
+                    <th>Detail</th>
                 </tr>
             </thead>
 
@@ -27,6 +28,7 @@
                         <td>@Html.DisplayFor(modelItem => item.Datum)</td>
 
                         <td>@Html.DisplayFor(modelItem => item.Aantal)</td>
+                        <td>@Html.ActionLink("Detail", "Details", new { id = item.Id })</td>
                     </tr>
                 </tbody>
             }

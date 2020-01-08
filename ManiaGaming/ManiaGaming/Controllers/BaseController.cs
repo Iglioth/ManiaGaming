@@ -11,13 +11,15 @@ namespace ManiaGaming.Controllers
     {
         protected virtual long GetUserId()
         {
-            string rawValue = HttpContext.User.Identities.First().Claims.First().Value;
-            if (string.IsNullOrEmpty(rawValue))
+            
+            if (string.IsNullOrEmpty(HttpContext.User.Identities.First().Claims.First().Value))
                 return -1;
 
-            if (long.TryParse(rawValue, out long id))
+            if (long.TryParse(HttpContext.User.Identities.First().Claims.First().Value, out long id))
                 return id;
             return -1;
         }
+
+       
     }
 }

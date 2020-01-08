@@ -31,6 +31,10 @@ namespace ManiaGaming.Repositories
         {
             return context.Update(obj);
         }
+        public int GetKlantID(long id)
+        {
+            return context.GetKlantID(id);
+        }
 
 
 

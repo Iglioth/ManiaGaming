@@ -103,12 +103,13 @@ namespace ManiaGaming.Context.MSSQLContext
                         parameters.Add(new KeyValuePair<string, string>("KlantID", KlantID.ToString()));
                 };
                 DataSet results = ExecuteSql(sql, parameters);
-                bestelling.Id = (int)results.Tables[0].Rows[0][0];
+                bestelling.Id = (int)(decimal)results.Tables[0].Rows[0][0];
 
                 if(Producten != null)
                 {
                     foreach (Product p in Producten)
                     {
+
                         string query = "INSERT INTO ProductBestelling (BestellingID,ProductID,aantal) values (@bestellingId,@productId ,@aantal)  ";
                         List<KeyValuePair<string, string>> Parameters = new List<KeyValuePair<string, string>>
                             {
@@ -126,9 +127,9 @@ namespace ManiaGaming.Context.MSSQLContext
                 }
                 
             }
-            catch
+            catch(Exception ex)
             {
-
+                throw ex;
             }
             return true;
         }

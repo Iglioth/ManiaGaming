@@ -9,6 +9,6 @@ namespace ManiaGaming.Context.IContext
 {
     public interface IKlantContext : IGenericQueries<Klant>
     {
-        
+        int GetKlantID(long id);
     }
 }
