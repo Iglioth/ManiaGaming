@@ -77,6 +77,7 @@ namespace ManiaGaming.Controllers
             if (ModelState.IsValid)
             {
                 Account baseaccount = new Account(-1, model.Naam, model.Achternaam, model.Email);
+                baseaccount.Naam = model.Naam;
                 var result = await _userManager.CreateAsync(baseaccount, model.Password);
                 if (result.Succeeded)
                 {
@@ -86,7 +87,8 @@ namespace ManiaGaming.Controllers
                 }
                 ModelState.AddModelError(string.Empty, result.Errors.FirstOrDefault().Description);
             }
-            return View(model);
+            await _signInManager.SignOutAsync();
+            return RedirectToAction(nameof(HomeController.Logout), "Home"); 
         }
 
         //[HttpPost]
