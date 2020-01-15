@@ -13,21 +13,8 @@
 
 <body>
 
-    @*
-        <div class="container-product">
-            @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels) { if (item.Actief == true) {
-            <div>
-                <a href='@Url.Action("Detail", "Games", new { id = item.Id })'>
-                    <div class="containers-products">
-                        <img src="~/images/Games.png" alt="Paris">
-                        <p class="product-font"> @Html.DisplayFor(modelItem => item.Naam) </p>
-                        <p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
-                    </div>
-                </a>
 
-            </div>
-            } }
-        </div>*@
+
     <div class="container">
         <div id="carouselGames" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -85,6 +72,24 @@
         </div>
     </div>
 
+    <div class="container-product">
+        @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
+        {
+            if (item.Actief == true)
+            {
+                <div>
+                    <a href='@Url.Action("Detail", "Games", new { id = item.Id })'>
+                        <div class="containers-products">
+                            <img src="~/images/Games.png" alt="Paris">
+                            <p class="product-font"> @Html.DisplayFor(modelItem => item.Naam) </p>
+                            <p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
+                        </div>
+                    </a>
+
+                </div>
+            }
+        }
+    </div>
 </body>
 
 </html>

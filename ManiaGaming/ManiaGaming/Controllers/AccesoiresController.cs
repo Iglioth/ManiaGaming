@@ -1,4 +1,7 @@
-﻿using ManiaGaming.Repositories;
+﻿using ManiaGaming.Converters;
+using ManiaGaming.Models;
+using ManiaGaming.Models.Data;
+using ManiaGaming.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,9 +14,13 @@ namespace ManiaGaming.Controllers
     {
         // Repos
         private readonly ProductRepository productRepository;
+        private readonly CategorieRepository categorieRepository ;
 
         // Converter 
-        //private readonly ProductViewModelConverter converter = new ProductViewModelConverter();
+        private readonly ProductViewModelConverter converter = new ProductViewModelConverter();
+        private readonly CategorieViewModelConverter categorieViewModelConverter = new CategorieViewModelConverter();
+     
+        
 
         public AccesoiresController
             (
@@ -25,8 +32,15 @@ namespace ManiaGaming.Controllers
 
         public IActionResult Index()
         {
-            return View("Index");
+            ProductViewModel vm = new ProductViewModel
+            {
+                ProductDetailViewModels = converter.ModelsToViewModels(productRepository.GetAllAccesoires())
+            };
+
+            return View(vm);
         }
+
+
 
         public IActionResult Aanmaken()
         {

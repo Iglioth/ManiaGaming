@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ManiaGaming.Models;
 using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ManiaGaming.Controllers
@@ -29,14 +30,9 @@ namespace ManiaGaming.Controllers
             return View();
         }
 
- 
+        [Authorize(Roles ="Klant")]
         public IActionResult Bestel()
         {
-
-            // Controlleren of klant ingelogt is en juiste gegevens zijn
-            //if (GetUserId() != -1)
-            //{
-
                 List<Product> cart = CartProducten();
                 if (cart != null)
                 {
@@ -58,18 +54,9 @@ namespace ManiaGaming.Controllers
                 }
                 else
                 {
-                    //aangeven dat de winkelwagen leeg is  
+                     
                     return RedirectToAction("Index", "WinkelWagen");
                 }
-
-            //}
-            //else
-            //{
-
-            //    //Bestelling mislukt, want er is niemand ingelogd ERRORCODE
-            //    return RedirectToAction("Index", "LoginController");
-
-            //}
         }
 
         public IActionResult BestellingBevestiging()
@@ -78,18 +65,16 @@ namespace ManiaGaming.Controllers
         }
        
 
-
-
-        public bool ControlUser(AccountDetailViewModel vm)
-        {
-            Account a = accountRepository.GetById(1/*Hier komt SessionID te staan*/);
-            if(a.Email == vm.Email && a.Password == vm.Password)
-            {
-                return true;
-            }
+        //public bool ControlUser(AccountDetailViewModel vm)
+        //{
+        //    Account a = accountRepository.GetById(1/*Hier komt SessionID te staan*/);
+        //    if(a.Email == vm.Email && a.Password == vm.Password)
+        //    {
+        //        return true;
+        //    }
            
-            return false;
-        }
+        //    return false;
+        //}
 
         public List<Product> CartProducten()
         {

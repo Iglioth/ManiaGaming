@@ -140,7 +140,7 @@ namespace ManiaGaming.Controllers
             OrderDetailViewModel vm = new OrderDetailViewModel();
             Order o = orderRepository.GetById(id);
             vm = orderConverter.ModelToViewModel(o);
-
+             
             return View(vm); 
         }
 

@@ -56,7 +56,116 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "SELECT Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Categorie.Naam FROM Product INNER JOIN Categorie ON Product.CategorieID = Categorie.CategorieID ";
+                string sql = "SELECT Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam FROM Product INNER JOIN Categorie ON Product.CategorieID = Categorie.CategorieID ";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+
+                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+                {
+                    Product p = DataSetParser.DataSetToProduct(results, x);
+                    productList.Add(p);
+                }
+                return productList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public List<Product> GetAllGames()
+        {
+            List<Product> productList = new List<Product>();
+            try
+            {
+                string sql = "select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam from Product where CategorieId <= 9";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+
+                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+                {
+                    Product p = DataSetParser.DataSetToProduct(results, x);
+                    productList.Add(p);
+                }
+                return productList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public List<Product> GetAllAccesoires()
+        {
+            List<Product> productList = new List<Product>();
+            try
+            {
+                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam from Product where CategorieId = 14 ";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+
+                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+                {
+                    Product p = DataSetParser.DataSetToProduct(results, x);
+                    productList.Add(p);
+                }
+                return productList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        
+
+              public List<Product> GetAllConsole()
+        {
+            List<Product> productList = new List<Product>();
+            try
+            {
+                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam from Product where CategorieId = 11 ";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+
+                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+                {
+                    Product p = DataSetParser.DataSetToProduct(results, x);
+                    productList.Add(p);
+                }
+                return productList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public List<Product> GetAllMerchandise()
+        {
+            List<Product> productList = new List<Product>();
+            try
+            {
+                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam from Product where CategorieId = 13";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {

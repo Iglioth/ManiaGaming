@@ -19,6 +19,26 @@ namespace ManiaGaming.Context.ITestContext
             throw new NotImplementedException();
         }
 
+        public List<Product> GetAllAccesoires()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Product> GetAllConsole()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Product> GetAllGames()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Product> GetAllMerchandise()
+        {
+            throw new NotImplementedException();
+        }
+
         public Product GetById(long id)
         {
             throw new NotImplementedException();

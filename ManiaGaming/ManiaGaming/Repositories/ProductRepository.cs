@@ -52,6 +52,23 @@ namespace ManiaGaming.Repositories
         {
              return context.UpdateVoorraad(id,aantal);
         }
+        public List<Product> GetAllGames()
+        {
+            return context.GetAllGames();
+        }
+        public List<Product> GetAllAccesoires()
+        {
+            return context.GetAllAccesoires();
+        }
+        public List<Product> GetAllMerchandise()
+        {
+            return context.GetAllMerchandise();
+        }
+
+        public List<Product> GetAllConsole()
+        {
+            return context.GetAllConsole();
+        }
 
     }
 }
