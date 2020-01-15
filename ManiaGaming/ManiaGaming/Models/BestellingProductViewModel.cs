@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Models
 {
-    public class BestellingProductViewModel
+    public class BestellingProductViewModel : ZoekViewModel
     {
         public List<BestellingProductDetailViewModel> BestellingProductDetailViewModels { get; set; } = new List<BestellingProductDetailViewModel>();
     }

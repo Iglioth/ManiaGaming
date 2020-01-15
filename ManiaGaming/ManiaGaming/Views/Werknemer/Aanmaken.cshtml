@@ -37,11 +37,11 @@
                     {
                         if (Model.FiliaalList[i].Id == Model.FiliaalId)
                         {
-                            <option selected value="@i">@Model.FiliaalList[i].Stad</option>
+                            <option selected value="@Model.FiliaalList[i].Id">@Model.FiliaalList[i].Stad</option>
                         }
                         else
                         {
-                            <option value="@i">@Model.FiliaalList[i].Stad</option>
+                            <option value="@Model.FiliaalList[i].Id">@Model.FiliaalList[i].Stad</option>
                         }
                     }
                 </select>

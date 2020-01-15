@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model ManiaGaming.Models.ZoekViewModel
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -27,8 +29,8 @@
             <a asp-area="" asp-controller="Home" asp-action="Index"><h1>Mania Gaming</h1></a>
         </div>
         <div>
-            <form class="form-inline my-2 my-lg-0" style="margin-left:20px">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form asp-controller="Product" asp-action="Zoeken" class="form-inline my-2 my-lg-0" style="margin-left:20px">
+                <input asp-for="Zoekterm" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -43,8 +45,8 @@
                 <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Merchandise" asp-action="Index">Merchandise</a></li>
                 <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Detail">Contact</a></li>
                 <!--<li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>
-    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Order" asp-action="Index">Orderbeheer</a></li>
-    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Filiaal" asp-action="Index">Filiaalbeheer</a></li>-->
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Order" asp-action="Index">Orderbeheer</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Filiaal" asp-action="Index">Filiaalbeheer</a></li>-->
                 @if (User.IsInRole("Klant"))
                 {
                     <li class="nav-item">
@@ -63,7 +65,7 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
                     </li>
-                    
+
                 }
                 else
                 {
@@ -73,60 +75,60 @@
                 }
             </ul>
         </div>
-    </nav>  
+    </nav>
 
     @RenderBody()
 
     @RenderSection("Scripts", required: false)
 
-    
 
-    
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Games" asp-action="Index">Games</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Consoles" asp-action="Index">Consoles</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Accesoires" asp-action="Index">Accessoires</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Merchandise" asp-action="Index">Merchandise</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Detail">Contact</a></li>
-                    @if (User.IsInRole("Klant"))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Klant" asp-action="Index">Instellingen</a>
-                        </li>
-                    }
-                    @if (User.IsInRole("Beheerder"))
-                    {
-                        <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Order" asp-action="Index">Orderbeheer</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Filiaal" asp-action="Index">Filiaalbeheer</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>
-                    }
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
-                        </li>
 
-                    }
-                    else
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
-                        </li>
-                    }
 
-                </ul>
-            </div>
-            <div class="copyrights">
-                <p>&copy; 2019 - ManiaGaming</p>
-            </div>
-        </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Games" asp-action="Index">Games</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Consoles" asp-action="Index">Consoles</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Accesoires" asp-action="Index">Accessoires</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Merchandise" asp-action="Index">Merchandise</a></li>
+                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Detail">Contact</a></li>
+                @if (User.IsInRole("Klant"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Klant" asp-action="Index">Instellingen</a>
+                    </li>
+                }
+                @if (User.IsInRole("Beheerder"))
+                {
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Order" asp-action="Index">Orderbeheer</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Filiaal" asp-action="Index">Filiaalbeheer</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>
+                }
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                    </li>
 
-        
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                    </li>
+                }
 
-    
+            </ul>
+        </div>
+        <div class="copyrights">
+            <p>&copy; 2019 - ManiaGaming</p>
+        </div>
+    </nav>
+
+
+
+
 
 
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Models
 {
-    public class WinkelwagenDetailViewModel
+    public class WinkelwagenDetailViewModel : ZoekViewModel
     {
         public int WinkelWagenId { get; set; }
         public int TotalPrijs { get; set; }

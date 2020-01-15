@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Models
 {
-    public class OrderDetailViewModel
+    public class OrderDetailViewModel : ZoekViewModel
     {
         public int Id { get; set; }
         public DateTime Datum { get; set; }

@@ -53,6 +53,7 @@ namespace ManiaGaming.Converters
                 Password = viewModel.Password,
                 Actief = viewModel.Actief,
                 WerknemerId = viewModel.WerknemerId,
+                FiliaalID = viewModel.FiliaalId,
             };
 
             return model;

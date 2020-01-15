@@ -1,0 +1,25 @@
+﻿@model ManiaGaming.Models.ProductViewModel
+
+@{
+    ViewData["Title"] = "Resultaat";
+}
+
+<h2>Resultaat</h2>
+<div class="container-product">
+    @foreach (ProductDetailViewModel item in Model.ProductDetailViewModels)
+    {
+        if (item.Actief == true)
+        {
+            <div>
+                <a href='@Url.Action("Detail", "Games", new { id = item.Id })'>
+                    <div class="containers-products">
+                        <img src="~/images/Games.png" alt="Paris">
+                        <p class="product-font"> @Html.DisplayFor(modelItem => item.Naam) </p>
+                        <p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
+                    </div>
+                </a>
+
+            </div>
+        }
+    }
+</div>

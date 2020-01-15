@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Models
 {
-    public class AccountDetailViewModel
+    public class AccountDetailViewModel : ZoekViewModel
     {
         public int Id { get; set; }
         [Required]

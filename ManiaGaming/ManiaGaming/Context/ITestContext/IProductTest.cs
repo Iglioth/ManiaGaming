@@ -63,5 +63,10 @@ namespace ManiaGaming.Context.ITestContext
         {
             throw new NotImplementedException();
         }
+
+        public List<Product> Zoeken(string Zoekterm)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

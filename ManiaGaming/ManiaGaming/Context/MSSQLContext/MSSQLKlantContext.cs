@@ -109,7 +109,7 @@ namespace ManiaGaming.Context.MSSQLContext
                 { 
                     new KeyValuePair<string, string>("postcode", obj.Postcode),
                     new KeyValuePair<string, string>("huisnummer", obj.Huisnummer),
-                    new KeyValuePair<string, string>("geboortedatum", obj.Geboortedatum.ToString()),
+                    new KeyValuePair<string, string>("geboortedatum", obj.Geboortedatum.ToString("yyyy/M/dd")),
                 };
 
                 ExecuteSql(sql, parameters);

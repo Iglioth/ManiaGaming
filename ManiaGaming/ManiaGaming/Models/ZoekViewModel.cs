@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Models
 {
-    public class KlantViewModel : ZoekViewModel
+    public class ZoekViewModel
     {
-
-        public List<KlantDetailViewModel> Klanten { get; set; }
-
+        public string Zoekterm { get; set; }
     }
 }

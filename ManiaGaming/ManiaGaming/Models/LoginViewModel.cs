@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Models
 {
-    public class LoginViewModel
+    public class LoginViewModel : ZoekViewModel
     {
         [Required]
         [EmailAddress]

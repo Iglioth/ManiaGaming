@@ -302,5 +302,32 @@ namespace ManiaGaming.Context.MSSQLContext
                 return false;
             }
         }
+
+        public List<Product> Zoeken(string zoekterm)
+        {
+            List<Product> productList = new List<Product>();
+            try
+            {
+                string sql = "SELECT Product.ProductID , Product.CategorieId, Product.Omschrijving, Product.naam, Product.Aantal, Product.Prijs, Product.Soort, Product.Actief, Product.Tweedehands, Categorie.Naam FROM Product INNER JOIN Categorie ON Product.CategorieID = Categorie.CategorieID WHERE CHARINDEX(@zoekterm, Product.Naam) > 0";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("Zoekterm", zoekterm),
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+
+                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+                {
+                    Product p = DataSetParser.DataSetToProduct(results, x);
+                    productList.Add(p);
+                }
+                return productList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

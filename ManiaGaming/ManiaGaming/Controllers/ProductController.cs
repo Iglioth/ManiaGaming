@@ -109,6 +109,7 @@ namespace ManiaGaming.Controllers
                 return RedirectToAction("Index");
             }
         }
+
         [HttpGet]
         public IActionResult Deactiveren(long id)
         {
@@ -137,24 +138,29 @@ namespace ManiaGaming.Controllers
                 return RedirectToAction("Index");
             }
         }
-        [HttpGet]
-        public IActionResult VeranderStock(long id)
+
+        [HttpPost]
+        public IActionResult Zoeken(string zoekterm)
         {
-            if (ModelState.IsValid)
+            return RedirectToAction("Resultaat", new { zoekterm});
+        }
+
+        [HttpGet]
+        public IActionResult Resultaat(string zoekterm)
+        {
+            if(zoekterm == null)
             {
-                ProductDetailViewModel vm = new ProductDetailViewModel
-                {
-                    SoortList = productConverter.GetSoorten()
-                };
-                Product product = productRepository.GetById(id);
-                vm = productConverter.ModelToViewModel(product);
-                vm.CategorieList = categorieConverter.ModelsToViewModels(categorieRepository.GetAll());
-                return View(vm);
+                return RedirectToAction("Index", "Home");
             }
-            else
+            ProductViewModel vm = new ProductViewModel()
             {
-                return RedirectToAction("Index");
-            }
+                SoortList = productConverter.GetSoorten()
+            };
+            List<Product> products = new List<Product>();
+            products = productRepository.Zoeken(zoekterm);
+            vm.ProductDetailViewModels = productConverter.ModelsToViewModels(products);
+            vm.CategorieList = categorieConverter.ModelsToViewModels(categorieRepository.GetAll());
+            return View(vm);
         }
     }
 }

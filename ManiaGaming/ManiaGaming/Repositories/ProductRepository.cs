@@ -70,5 +70,9 @@ namespace ManiaGaming.Repositories
             return context.GetAllConsole();
         }
 
+        public List<Product> Zoeken(string zoekterm)
+        {
+            return context.Zoeken(zoekterm);
+        }
     }
 }
