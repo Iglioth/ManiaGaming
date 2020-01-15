@@ -27,7 +27,7 @@
                             <div class="carousel-item active">
                                 <a href='@Url.Action("Detail", "Games", new { id = item.Id })'>
 
-                                    <img src="~/images/Games.png" class="d-block w-100" alt="Paris">
+                                    <img style="float:right; width:50px; height:700px" src="~/images/@item.ImagePath" class="d-block w-100" alt="Paris">
                                     <div class="carousel-caption d-none d-md-block">
                                         <p> @Html.DisplayFor(modelItem => item.Naam) </p>
                                         <p>@Html.DisplayFor(modelItem => item.Prijs),-</p>
@@ -41,7 +41,7 @@
                             <div class="carousel-item">
                                 <a href='@Url.Action("Detail", "Games", new { id = item.Id })'>
 
-                                    <img src="~/images/Games.png" class="d-block w-100" alt="Paris">
+                                    <img style="float:right; width 50px; height:700px" src="~/images/@item.ImagePath" class="d-block w-100" alt="Paris">
                                     <div class="carousel-caption d-none d-md-block">
                                         <p> @Html.DisplayFor(modelItem => item.Naam) </p>
                                         <p>@Html.DisplayFor(modelItem => item.Prijs),-</p>

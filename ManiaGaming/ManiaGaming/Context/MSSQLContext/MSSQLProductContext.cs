@@ -56,7 +56,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "SELECT Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam FROM Product INNER JOIN Categorie ON Product.CategorieID = Categorie.CategorieID ";
+                string sql = "SELECT Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Categorie.Naam, Product.ImagePath FROM Product INNER JOIN Categorie ON Product.CategorieID = Categorie.CategorieID ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -191,7 +191,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "SELECT Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Categorie.Naam FROM Product INNER JOIN Categorie ON Product.CategorieID = Categorie.CategorieID WHERE ProductID =  @productID";
+                string sql = "SELECT Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Categorie.Naam, Product.ImagePath FROM Product INNER JOIN Categorie ON Product.CategorieID = Categorie.CategorieID WHERE ProductID =  @productID";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -213,7 +213,7 @@ namespace ManiaGaming.Context.MSSQLContext
             
             try
             {
-                string sql = "INSERT INTO Product(Aantal, Naam, Soort, CategorieId, Omschrijving, Prijs, Tweedehands, Actief) OUTPUT INSERTED.ProductId VALUES(0, @naam, @soort, @categorieId, @omschrijving, @prijs, @tweedehands, 1)";
+                string sql = "INSERT INTO Product(Aantal, Naam, Soort, CategorieId, Omschrijving, Prijs, Tweedehands, Actief, ImagePath) OUTPUT INSERTED.ProductId VALUES(0, @naam, @soort, @categorieId, @omschrijving, @prijs, @tweedehands, 1, @ImagePath)";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -222,7 +222,8 @@ namespace ManiaGaming.Context.MSSQLContext
                     new KeyValuePair<string, string>("CategorieId", obj.CategorieId.ToString()),
                     new KeyValuePair<string, string>("Omschrijving", obj.Omschrijving),
                     new KeyValuePair<string, string>("Prijs", obj.Prijs.ToString()),
-                    new KeyValuePair<string, string>("Tweedehands", obj.Tweedehands.ToString())
+                    new KeyValuePair<string, string>("Tweedehands", obj.Tweedehands.ToString()),
+                    new KeyValuePair<string, string>("ImagePath", obj.ImagePath)
                 };
 
                 int result = ExecuteInsert(sql, parameters);
@@ -238,7 +239,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "UPDATE Product SET Naam = @naam, Soort = @soort, CategorieID = @categorieID, Omschrijving = @omschrijving, Prijs = @prijs WHERE Productid = @productID ";
+                string sql = "UPDATE Product SET Naam = @naam, Soort = @soort, CategorieID = @categorieID, Omschrijving = @omschrijving, Prijs = @prijs, ImagePath = @ImagePath WHERE Productid = @productID ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
@@ -247,6 +248,7 @@ namespace ManiaGaming.Context.MSSQLContext
                     new KeyValuePair<string, string>("categorieID", obj.CategorieId.ToString()),
                     new KeyValuePair<string, string>("omschrijving", obj.Omschrijving),
                     new KeyValuePair<string, string>("prijs", obj.Prijs.ToString()),
+                    new KeyValuePair<string, string>("ImagePath", obj.ImagePath),
                     new KeyValuePair<string, string>("productID", obj.Id.ToString()),
                 }; 
 

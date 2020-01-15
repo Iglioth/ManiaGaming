@@ -50,8 +50,9 @@
                           <th>Name</th>
                           <th>Price</th>
                           <th>Quantity</th>
-                          @*<th>Total</th>*@
+                          <th>Total</th>
                           <th>Delete</th>
+
 
                       </tr>
                   </thead>
@@ -66,7 +67,7 @@
                               <td>@p.Naam</td>
                               <td>@p.Prijs</td>
                               <td>@p.Aantal</td>
-                              @*<td>@(p.Prijs * p.Aantal)</td>*@
+                              <td>@(Convert.ToDecimal(p.Prijs) * p.Aantal)</td>
                               <td>@Html.ActionLink("Delete", "Remove", "Winkelwagen", new { id = p.Id })</td>
 
 

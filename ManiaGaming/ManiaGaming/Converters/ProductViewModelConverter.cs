@@ -27,8 +27,8 @@ namespace ManiaGaming.Converters
                     Omschrijving = p.Omschrijving,
                     Actief = p.Actief,
                     CategorieNaam = p.CategorieNaam,
-                    Tweedehands = p.Tweedehands
-                    
+                    Tweedehands = p.Tweedehands,
+                    ImagePath = p.ImagePath
                 };
                 productDetailViewModels.Add(vm);
             }
@@ -50,7 +50,8 @@ namespace ManiaGaming.Converters
                 SoortList = GetSoorten(),
                 Actief = p.Actief,
                 CategorieNaam = p.CategorieNaam,
-                Tweedehands = p.Tweedehands
+                Tweedehands = p.Tweedehands,
+                ImagePath = p.ImagePath
             };
 
             return vm;
@@ -74,7 +75,8 @@ namespace ManiaGaming.Converters
                 Prijs = vm.Prijs,
                 Actief = vm.Actief,
                 CategorieNaam = vm.CategorieNaam,
-                Tweedehands = vm.Tweedehands
+                Tweedehands = vm.Tweedehands,
+                ImagePath = vm.ImagePath
             };
             return p;
         }

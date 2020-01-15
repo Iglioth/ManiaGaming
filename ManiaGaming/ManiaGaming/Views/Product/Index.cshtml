@@ -115,7 +115,11 @@
                                                 </select>
                                                 <span asp-validation-for="@item.Soort" class="text-danger"></span>
                                             </div>
-                                            <input type="submit" value="Opslaan" class="btn btn-default" />
+                                            <div class="form-group">
+                                                <label asp-for="@item.ImagePath" class="control-label"></label>
+                                                <input asp-for="@item.ImagePath" class="form-control" name="Image Path" />
+                                                <span asp-validation-for="@item.ImagePath" class="text-danger"></span>
+                                            </div><input type="submit" value="Opslaan" class="btn btn-default" />
 
                                         </form>
                                     </div>
