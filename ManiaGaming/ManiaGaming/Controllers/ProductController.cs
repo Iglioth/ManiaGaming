@@ -125,22 +125,36 @@ namespace ManiaGaming.Controllers
         [HttpPost]
         public IActionResult VeranderStock(ProductDetailViewModel vm, long Id)
         {
-            vm.CategorieList = new List<CategorieDetailViewModel>();
-            Product product = productConverter.ViewModelToModel(vm);
-            bool check = productRepository.VeranderStock(Id,product);
-            return RedirectToAction("VeranderStock", new { Id });
+            if (ModelState.IsValid)
+            {
+                vm.CategorieList = new List<CategorieDetailViewModel>();
+                Product product = productConverter.ViewModelToModel(vm);
+                bool check = productRepository.VeranderStock(Id, product);
+                return RedirectToAction("VeranderStock", new { Id });
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
         [HttpGet]
         public IActionResult VeranderStock(long id)
         {
-            ProductDetailViewModel vm = new ProductDetailViewModel
+            if (ModelState.IsValid)
             {
-                SoortList = productConverter.GetSoorten()
-            };
-            Product product = productRepository.GetById(id);
-            vm = productConverter.ModelToViewModel(product);
-            vm.CategorieList = categorieConverter.ModelsToViewModels(categorieRepository.GetAll());
-            return View(vm);
+                ProductDetailViewModel vm = new ProductDetailViewModel
+                {
+                    SoortList = productConverter.GetSoorten()
+                };
+                Product product = productRepository.GetById(id);
+                vm = productConverter.ModelToViewModel(product);
+                vm.CategorieList = categorieConverter.ModelsToViewModels(categorieRepository.GetAll());
+                return View(vm);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
     }
 }

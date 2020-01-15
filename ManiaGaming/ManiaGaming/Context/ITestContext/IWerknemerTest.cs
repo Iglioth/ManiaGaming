@@ -24,6 +24,11 @@ namespace ManiaGaming.Context.ITestContext
             throw new NotImplementedException();
         }
 
+        public int GetWerknemerID(long id)
+        {
+            throw new NotImplementedException();
+        }
+
         public long Insert(Werknemer obj)
         {
             throw new NotImplementedException();

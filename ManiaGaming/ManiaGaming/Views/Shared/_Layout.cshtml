@@ -91,11 +91,32 @@
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Accesoires" asp-action="Index">Accessoires</a></li>
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Merchandise" asp-action="Index">Merchandise</a></li>
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Detail">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>
-                    
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Order" asp-action="Index">Orderbeheer</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Filiaal" asp-action="Index">Filiaalbeheer</a></li>
-                    <!--<li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>-->
+                    @if (User.IsInRole("Klant"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Klant" asp-action="Index">Instellingen</a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Beheerder"))
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Order" asp-action="Index">Orderbeheer</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Filiaal" asp-action="Index">Filiaalbeheer</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                        </li>
+                    }
+
                 </ul>
             </div>
             <div class="copyrights">
