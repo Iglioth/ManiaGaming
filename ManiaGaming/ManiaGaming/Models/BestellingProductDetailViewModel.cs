@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ManiaGaming.Models.Data
+namespace ManiaGaming.Models
 {
-    public class BestellingProduct : Product
+    public class BestellingProductDetailViewModel : ProductDetailViewModel
     {
         public int BestellingId { get; set; }
         public DateTime Datum { get; set; }

@@ -43,6 +43,11 @@ namespace ManiaGaming.Context.ITestContext
             return ListTestBestelling;
         }
 
+        public List<BestellingProduct> GetAllById(long id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Bestelling GetById(long id)
         {
             if (id > 0 && id != 0)

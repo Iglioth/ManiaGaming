@@ -1,8 +1,20 @@
-﻿
+﻿@model ManiaGaming.Models.BestellingProductViewModel
 @{
     ViewData["Title"] = "Geschiedenis";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Geschiedenis</h2>
+@foreach (BestellingProductDetailViewModel item in Model.BestellingProductDetailViewModels)
+{
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Naam)</td>
+            <td>@Html.DisplayFor(modelItem => item.Omschrijving)</td>
+            <td>@Html.DisplayFor(modelItem => item.Aantal)</td>
+            <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
+            <td>@Html.DisplayFor(modelItem => item.Datum)</td>
+            <td>@Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id })</td>
+        </tr>
+    </tbody>
+}
 

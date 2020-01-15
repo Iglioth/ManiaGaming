@@ -143,5 +143,16 @@ namespace ManiaGaming.Context.Parsers
                 FiliaalNaam = (string)set.Tables[0].Rows[rowIndex][3],
             };
         }
+        public static BestellingProduct DataSetToBestellingProduct(DataSet set, int rowIndex)
+        {
+            return new BestellingProduct()
+            {
+                Naam = (string)set.Tables[0].Rows[rowIndex][0],
+                Omschrijving = (string)set.Tables[0].Rows[rowIndex][1],
+                Aantal = (int)set.Tables[0].Rows[rowIndex][2],
+                Prijs = (string)set.Tables[0].Rows[rowIndex][3],
+                Datum = (DateTime)set.Tables[0].Rows[rowIndex][4],
+            };
+        }
     }
 }

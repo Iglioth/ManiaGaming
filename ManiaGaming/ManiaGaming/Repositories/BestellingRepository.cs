@@ -39,6 +39,9 @@ namespace ManiaGaming.Repositories
         {
             return context.Bestellen(Producten,  KlantID);
         }
-
+        public List<BestellingProduct> GetAllById(long id)
+        {
+            return context.GetAllById(id);
+        }
     }
 }

@@ -84,9 +84,12 @@ namespace ManiaGaming.Controllers
             return View("Gegevens");
         }
 
-        public IActionResult Geschiedenis()
+        public IActionResult Geschiedenis(long id)
         {
-            return View("Geschiedenis");
+            
+            BestellingProductViewModel vm = new BestellingProductViewModel();
+            vm.BestellingProductDetailViewModels = bestellingConverter.ModelsToViewModels(bestellingRepositorys.GetAllById(id));
+            return View(vm);
         }
 
         public IActionResult Bestellen()

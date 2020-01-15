@@ -11,5 +11,8 @@ namespace ManiaGaming.Context.IContext
     {
 
         bool Bestellen(List<Product> Producten, long KlantID);
+        List<BestellingProduct> GetAllById(long id);
     }
+   
+    
 }

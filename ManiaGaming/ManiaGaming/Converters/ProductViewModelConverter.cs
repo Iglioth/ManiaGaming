@@ -28,6 +28,7 @@ namespace ManiaGaming.Converters
                     Actief = p.Actief,
                     CategorieNaam = p.CategorieNaam,
                     Tweedehands = p.Tweedehands
+                    
                 };
                 productDetailViewModels.Add(vm);
             }

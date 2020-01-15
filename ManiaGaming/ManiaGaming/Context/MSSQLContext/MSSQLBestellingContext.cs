@@ -137,5 +137,31 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             throw new NotImplementedException();
         }
+
+        public List<BestellingProduct> GetAllById(long id)
+        {
+            List<BestellingProduct> BestelList = new List<BestellingProduct>();
+            try
+            {
+                string sql = "SELECT Product.Naam, Product.Omschrijving, ProductBestelling.aantal, Product.Prijs, Bestelling.Datum FROM ((ProductBestelling INNER JOIN Product ON ProductBestelling.ProductId = Product.ProductId) INNER JOIN Bestelling ON ProductBestelling.BestellingID = Bestelling.BestellingID) WHERE KlantID = @klantID";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("klantID", id.ToString()),
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+                {
+                    BestellingProduct p = DataSetParser.DataSetToBestellingProduct(results, x);
+                    BestelList.Add(p);
+                }
+                return BestelList;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }
