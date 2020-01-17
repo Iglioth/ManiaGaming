@@ -31,7 +31,7 @@ namespace ManiaGaming.Controllers
         {
             ProductViewModel vm = new ProductViewModel
             {
-                ProductDetailViewModels = converter.ModelsToViewModels(productRepository.GetAll())
+                ProductDetailViewModels = converter.ModelsToViewModels(productRepository.GetAllGames())
             };
 
             return View(vm);

@@ -83,7 +83,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam from Product where CategorieId <= 9";
+                string sql = "select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam, Product.ImagePath from Product where CategorieId <= 9";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -110,7 +110,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam from Product where CategorieId = 14 ";
+                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam, Product.ImagePath from Product where CategorieId = 14 ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -138,7 +138,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam from Product where CategorieId = 11 ";
+                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam, Product.ImagePath from Product where CategorieId = 11 ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -165,7 +165,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam from Product where CategorieId = 13";
+                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam, Product.ImagePath from Product where CategorieId = 13";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -308,7 +308,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "SELECT Product.ProductID , Product.CategorieId, Product.Omschrijving, Product.naam, Product.Aantal, Product.Prijs, Product.Soort, Product.Actief, Product.Tweedehands, Categorie.Naam FROM Product INNER JOIN Categorie ON Product.CategorieID = Categorie.CategorieID WHERE CHARINDEX(@zoekterm, Product.Naam) > 0 ORDER BY Product.Naam";
+                string sql = "SELECT Product.ProductID , Product.CategorieId, Product.Omschrijving, Product.naam, Product.Aantal, Product.Prijs, Product.Soort, Product.Actief, Product.Tweedehands, Categorie.Naam, Product.ImagePath FROM Product INNER JOIN Categorie ON Product.CategorieID = Categorie.CategorieID WHERE CHARINDEX(@zoekterm, Product.Naam) > 0 ORDER BY Product.Naam";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
