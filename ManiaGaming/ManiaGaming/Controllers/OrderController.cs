@@ -147,10 +147,9 @@ namespace ManiaGaming.Controllers
         [HttpPost]
         public IActionResult FiliaalOrderVerzoek(long id)
         {
-         
-
             return View();
         }
+
         [HttpGet]
         public IActionResult FiliaalOrderVerzoek()
         {
