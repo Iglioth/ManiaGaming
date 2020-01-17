@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ManiaGamingTest
+namespace ManiaGamingTestProject
 {
     [TestClass]
     public class AccountTest
@@ -16,11 +16,21 @@ namespace ManiaGamingTest
         [TestInitialize]
         public void SetUp()
         {
-            Context = new AccountTestContext();
-
+            Context = new IAccountTest();
+            Context.Insert(new Account()
+            {
+                Id = 5648,
+                AchterNaam = "TestAchternaam",
+                Actief = false,
+                Email = "Email@Test.com",
+                Naam = "TestNaam",
+                Password = "TestPassword",
+                NormalizedEmail = "TestNormalizedEmail",
+                NormalizedUserName = "TestNormalizedUserName",
+                RoleId = 1
+            });
         }
 
-        /*
         [TestMethod]
         public void InsertTest()
         {
@@ -46,7 +56,7 @@ namespace ManiaGamingTest
             long TestLong = Context.Insert(null);
             
             Assert.IsNull(TestLong);
-        }*/
+        }
 
         [TestMethod]
         public void GetAllTest()
@@ -112,7 +122,7 @@ namespace ManiaGamingTest
         {
             Account TestAccount = Context.GetById(0);
 
-            Assert.IsNull(TestAccount);
+            Assert.IsNull(TestAccount.Id);
         }
 
         [TestMethod]
