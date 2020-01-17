@@ -308,7 +308,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "SELECT Product.ProductID , Product.CategorieId, Product.Omschrijving, Product.naam, Product.Aantal, Product.Prijs, Product.Soort, Product.Actief, Product.Tweedehands, Categorie.Naam FROM Product INNER JOIN Categorie ON Product.CategorieID = Categorie.CategorieID WHERE CHARINDEX(@zoekterm, Product.Naam) > 0";
+                string sql = "SELECT Product.ProductID , Product.CategorieId, Product.Omschrijving, Product.naam, Product.Aantal, Product.Prijs, Product.Soort, Product.Actief, Product.Tweedehands, Categorie.Naam FROM Product INNER JOIN Categorie ON Product.CategorieID = Categorie.CategorieID WHERE CHARINDEX(@zoekterm, Product.Naam) > 0 ORDER BY Product.Naam";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
