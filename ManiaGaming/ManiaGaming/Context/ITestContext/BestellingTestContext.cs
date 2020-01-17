@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ManiaGaming.Context.ITestContext
 {
-    public class IBestellingTest : IBestellingContext
+    public class BestellingTestContext : IBestellingContext
     {
         public bool Actief(long id, bool actief)
         {

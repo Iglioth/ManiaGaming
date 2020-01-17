@@ -3,10 +3,6 @@ using ManiaGaming.Models;
 using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ManiaGaming.Controllers
 {
@@ -31,7 +27,7 @@ namespace ManiaGaming.Controllers
         {
             ProductViewModel vm = new ProductViewModel
             {
-                ProductDetailViewModels = converter.ModelsToViewModels(productRepository.GetAll())
+                ProductDetailViewModels = converter.ModelsToViewModels(productRepository.GetAllGames())
             };
 
             return View(vm);

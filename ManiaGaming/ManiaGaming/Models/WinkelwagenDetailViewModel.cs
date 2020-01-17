@@ -1,12 +1,9 @@
 ﻿using ManiaGaming.Models.Data;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ManiaGaming.Models
 {
-    public class WinkelwagenDetailViewModel
+    public class WinkelwagenDetailViewModel : ZoekViewModel
     {
         public int WinkelWagenId { get; set; }
         public int TotalPrijs { get; set; }

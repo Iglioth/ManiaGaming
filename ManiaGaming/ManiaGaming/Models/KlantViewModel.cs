@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ManiaGaming.Models
 {
-    public class KlantViewModel
+    public class KlantViewModel : ZoekViewModel
     {
 
         public List<KlantDetailViewModel> Klanten { get; set; }

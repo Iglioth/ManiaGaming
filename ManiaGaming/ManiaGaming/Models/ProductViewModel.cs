@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ManiaGaming.Models
 {
-    public class ProductViewModel
+    public class ProductViewModel : ZoekViewModel
     {
         public List<ProductDetailViewModel> ProductDetailViewModels { get; set; } = new List<ProductDetailViewModel>();
         public List<CategorieDetailViewModel> CategorieList { get; set; }

@@ -1,12 +1,10 @@
 ﻿using ManiaGaming.Models.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ManiaGaming.Models
 {
-    public class OrderDetailViewModel
+    public class OrderDetailViewModel : ZoekViewModel
     {
         public int Id { get; set; }
         public DateTime Datum { get; set; }

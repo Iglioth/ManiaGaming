@@ -2,7 +2,7 @@ using System;
 
 namespace ManiaGaming.Models
 {
-    public class ErrorViewModel
+    public class ErrorViewModel : ZoekViewModel
     {
         public string RequestId { get; set; }
 

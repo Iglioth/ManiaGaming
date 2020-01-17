@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using ManiaGaming.Models.Data;
-using ManiaGaming.Controllers;
 using System.Data;
 using ManiaGaming.Context.IContext;
 using ManiaGaming.Context.Parsers;
@@ -109,7 +105,7 @@ namespace ManiaGaming.Context.MSSQLContext
                 { 
                     new KeyValuePair<string, string>("postcode", obj.Postcode),
                     new KeyValuePair<string, string>("huisnummer", obj.Huisnummer),
-                    new KeyValuePair<string, string>("geboortedatum", obj.Geboortedatum.ToString()),
+                    new KeyValuePair<string, string>("geboortedatum", obj.Geboortedatum.ToString("yyyy/M/dd")),
                 };
 
                 ExecuteSql(sql, parameters);

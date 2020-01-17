@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ManiaGaming.Models
+﻿namespace ManiaGaming.Models
 {
-    public class FiliaalDetailViewModel
+    public class FiliaalDetailViewModel : ZoekViewModel
     {
         public int Id { get; set; }
         public string Stad { get; set; }

@@ -5,8 +5,6 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ManiaGaming.Context.MSSQLContext
 {
@@ -83,7 +81,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam from Product where CategorieId <= 9";
+                string sql = "select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam, Product.ImagePath from Product where CategorieId <= 9";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -110,7 +108,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam from Product where CategorieId = 14 ";
+                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam, Product.ImagePath from Product where CategorieId = 14 ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -138,7 +136,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam from Product where CategorieId = 11 ";
+                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam, Product.ImagePath from Product where CategorieId = 11 ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -165,7 +163,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Product> productList = new List<Product>();
             try
             {
-                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam from Product where CategorieId = 13";
+                string sql = "Select Product.ProductID , Product.CategorieId, Product.Omschrijving,Product.naam,Product.Aantal, Product.Prijs, Product.Soort,Product.Actief,Product.Tweedehands,Product.Naam, Product.ImagePath from Product where CategorieId = 13";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
@@ -239,7 +237,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "UPDATE Product SET Naam = @naam, Soort = @soort, CategorieID = @categorieID, Omschrijving = @omschrijving, Prijs = @prijs, ImagePath = @ImagePath WHERE Productid = @productID ";
+                string sql = "UPDATE Product SET Naam = @naam, Soort = @soort, CategorieID = @categorieID, Omschrijving = @omschrijving, Prijs = @prijs, ImagePath = @imagepath WHERE Productid = @productID ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
@@ -248,7 +246,7 @@ namespace ManiaGaming.Context.MSSQLContext
                     new KeyValuePair<string, string>("categorieID", obj.CategorieId.ToString()),
                     new KeyValuePair<string, string>("omschrijving", obj.Omschrijving),
                     new KeyValuePair<string, string>("prijs", obj.Prijs.ToString()),
-                    new KeyValuePair<string, string>("ImagePath", obj.ImagePath),
+                    new KeyValuePair<string, string>("imagepath", obj.ImagePath),
                     new KeyValuePair<string, string>("productID", obj.Id.ToString()),
                 }; 
 
@@ -300,6 +298,33 @@ namespace ManiaGaming.Context.MSSQLContext
             catch
             {
                 return false;
+            }
+        }
+
+        public List<Product> Zoeken(string zoekterm)
+        {
+            List<Product> productList = new List<Product>();
+            try
+            {
+                string sql = "SELECT Product.ProductID , Product.CategorieId, Product.Omschrijving, Product.naam, Product.Aantal, Product.Prijs, Product.Soort, Product.Actief, Product.Tweedehands, Categorie.Naam, Product.ImagePath FROM Product INNER JOIN Categorie ON Product.CategorieID = Categorie.CategorieID WHERE CHARINDEX(@zoekterm, Product.Naam) > 0 ORDER BY Product.Naam";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("Zoekterm", zoekterm),
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+
+                for (int x = 0; x < results.Tables[0].Rows.Count; x++)
+                {
+                    Product p = DataSetParser.DataSetToProduct(results, x);
+                    productList.Add(p);
+                }
+                return productList;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
     }

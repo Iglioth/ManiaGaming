@@ -20,9 +20,9 @@
             <p></p>
             <h4>@Model.Naam @Model.AchterNaam</h4>
             <p><strong>E-mail: </strong>@Model.Email</p>
-            <p><strong>Geboortedatum: </strong>@Model.Geboortedatum </p>
-            <p><strong>Postcode: </strong>@Model.Postcode </p>
-            <p><strong>Huisnummer: </strong>@Model.Huisnummer </p>
+            <p><strong>Geboortedatum: </strong>@Model.Geboortedatum.ToString("dd/M/yyyy")</p>
+            <p><strong>Postcode: </strong>@Model.Postcode</p>
+            <p><strong>Huisnummer: </strong>@Model.Huisnummer</p>
             <p>
                 <strong>Punten: </strong>
                 <span class="tags">@Model.Punten</span>

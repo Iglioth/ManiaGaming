@@ -3,8 +3,6 @@ using ManiaGaming.Models;
 using ManiaGaming.Models.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ManiaGaming.Converters
 {
@@ -53,6 +51,7 @@ namespace ManiaGaming.Converters
                 Password = viewModel.Password,
                 Actief = viewModel.Actief,
                 WerknemerId = viewModel.WerknemerId,
+                FiliaalID = viewModel.FiliaalId,
             };
 
             return model;

@@ -2,8 +2,6 @@
 using ManiaGaming.Models.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ManiaGaming.Repositories
 {
@@ -70,5 +68,9 @@ namespace ManiaGaming.Repositories
             return context.GetAllConsole();
         }
 
+        public List<Product> Zoeken(string zoekterm)
+        {
+            return context.Zoeken(zoekterm);
+        }
     }
 }

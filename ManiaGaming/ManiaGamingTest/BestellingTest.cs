@@ -2,20 +2,19 @@
 using ManiaGaming.Context.ITestContext;
 using ManiaGaming.Models.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace ManiaGaming.Test
+namespace ManiaGamingTest
 {
-    class BestellingTest
+    [TestClass]
+    public class BestellingTest
     {
         IBestellingContext Context;
 
         [TestInitialize]
         public void SetUp()
         {
-            Context = new IBestellingTest();
+            Context = new BestellingTestContext();
         }
 
         [TestMethod]
@@ -48,7 +47,7 @@ namespace ManiaGaming.Test
         {
             Bestelling TestBestelling = Context.GetById(0);
 
-            Assert.IsNull(TestBestelling.Id);
+            Assert.IsNull(TestBestelling);
         }
 
         [TestMethod]
@@ -64,7 +63,7 @@ namespace ManiaGaming.Test
         {
             long TestLong = Context.Insert(null);
 
-            Assert.AreEqual(0, TestLong);
+            Assert.AreEqual(TestLong, 0);
         }
 
         [TestMethod]

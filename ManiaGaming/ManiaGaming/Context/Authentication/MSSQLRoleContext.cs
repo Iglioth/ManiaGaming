@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -46,7 +44,8 @@ namespace ManiaGaming.Context.Authentication
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Role", connection);
+                    SqlCommand sqlCommand = new SqlCommand("" +
+                        "SELECT * FROM Role", connection);
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
                         Role role = default(Role);
