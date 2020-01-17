@@ -2,11 +2,13 @@
 using ManiaGaming.Models;
 using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
 namespace ManiaGaming.Controllers
 {
+    [Authorize(Roles = "Klant")]
     public class KlantController : Controller
     {
 

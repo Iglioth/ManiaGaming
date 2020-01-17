@@ -2,12 +2,14 @@
 using ManiaGaming.Models;
 using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 
 namespace ManiaGaming.Controllers
 {
+    [AllowAnonymous]
     public class WinkelwagenController : Controller
     {
         // Repos
