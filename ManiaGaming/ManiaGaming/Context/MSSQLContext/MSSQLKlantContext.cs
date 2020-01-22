@@ -95,6 +95,27 @@ namespace ManiaGaming.Context.MSSQLContext
             throw new NotImplementedException();
         }
 
+        public void UpdateKlantPunten(int punten,int id)
+        {
+            try
+            {
+                string sql = "UPDATE Klant SET Punten = @punten where Klant.KlantID = @id";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("punten", punten.ToString()) ,                  
+                    new KeyValuePair<string, string>("id", id.ToString())                   
+                };
+
+                ExecuteSql(sql, parameters);
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public bool Update(Klant obj)
         {
             try
