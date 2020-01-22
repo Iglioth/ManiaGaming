@@ -1,14 +1,14 @@
 ﻿using ManiaGaming.Models.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace ManiaGaming.Models
 {
     public class OrderDetailViewModel : ZoekViewModel
-    {
+    {   
         public int Id { get; set; }
+        [DataType(DataType.Date)]
         public DateTime Datum { get; set; }
         public int WerknemerID { get; set; }
         public int FiliaalID { get; set; }
@@ -17,5 +17,6 @@ namespace ManiaGaming.Models
         public List<Product> Producten { get; set; }
         public int ProductId { get; set; }
         public int Aantal { get; set; }
+        
     }
 }

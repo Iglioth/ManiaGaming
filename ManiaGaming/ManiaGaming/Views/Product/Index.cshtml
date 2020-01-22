@@ -7,10 +7,8 @@
 <h2>Product Lijst</h2>
 
 <p>
-    <a asp-action="Aanmaken">Nieuwe toevoegen</a>
-    <div align="right">
-        <a asp-area="" asp-controller="Categorie" asp-action="Index">Categorie</a>
-    </div>
+    <div><a asp-action="Aanmaken">Nieuwe toevoegen</a></div>
+    <div><a asp-area="" asp-controller="Categorie" asp-action="Index">Categorie</a></div>
 </p>
 
 <div id="productContainer">
@@ -71,6 +69,7 @@
                                                 <input asp-for="@item.Naam" class="form-control" name="Naam" />
                                                 <span asp-validation-for="@item.Naam" class="text-danger"></span>
                                             </div>
+
                                             <div class="form-group">
                                                 <label asp-for="@item.Omschrijving" class="control-label"></label>
                                                 <input asp-for="@item.Omschrijving" class="form-control" name="Omschrijving" />
@@ -117,9 +116,10 @@
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="@item.ImagePath" class="control-label"></label>
-                                                <input asp-for="@item.ImagePath" class="form-control" name="Image Path" />
+                                                <input asp-for="@item.ImagePath" class="form-control" name="ImagePath" />
                                                 <span asp-validation-for="@item.ImagePath" class="text-danger"></span>
-                                            </div><input type="submit" value="Opslaan" class="btn btn-default" />
+                                            </div>
+                                            <input type="submit" value="Opslaan" class="btn btn-default" />
 
                                         </form>
                                     </div>

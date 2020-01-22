@@ -5,9 +5,6 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ManiaGaming.Context.MSSQLContext
 {
@@ -54,8 +51,8 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "SELECT A.AccountId, A.Naam, A.Achternaam, A.Email, F.Stad FROM Account AS a INNER JOIN Werknemer on Account.id = Werknemer.AccountID " +
-                "INNER JOIN Filiaal AS F on Werknemer.FiliaalId = Filiaal.Id ";
+                string sql = "SELECT A.AccountId, A.Naam, A.Achternaam, A.Email, F.Stad FROM Account AS a INNER JOIN Werknemer on A.Accountid = Werknemer.AccountID " +
+                "INNER JOIN Filiaal AS F on Werknemer.FiliaalId = F.FiliaalId ";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("WerknemerID", id.ToString())
@@ -71,7 +68,7 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
-        public int  GetWerknemerID(long id)
+        public int GetWerknemerID(long id)
         {
             try
             {

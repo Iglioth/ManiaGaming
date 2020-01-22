@@ -6,15 +6,25 @@
 
 @foreach (BestellingProductDetailViewModel item in Model.BestellingProductDetailViewModels)
 {
-    <tbody>
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.Naam)</td>
-            <td>@Html.DisplayFor(modelItem => item.Omschrijving)</td>
-            <td>@Html.DisplayFor(modelItem => item.Aantal)</td>
-            <td>@Html.DisplayFor(modelItem => item.Prijs)</td>
-            <td>@Html.DisplayFor(modelItem => item.Datum)</td>
-            <td>@Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id })</td>
-        </tr>
-    </tbody>
-}
+    <div class="container">
+        <div>
+            <div class="col-lg-6 klant-profiel">
 
+                <p></p>
+                <h4>@Html.DisplayFor(modelItem => item.Naam)</h4>
+                <p><strong>Omschrijving: </strong>@Html.DisplayFor(modelItem => item.Omschrijving)</p>
+                <p><strong>Aantal: </strong>@Html.DisplayFor(modelItem => item.Aantal)</p>
+                <p><strong>Prijs: </strong>@Html.DisplayFor(modelItem => item.Prijs)</p>
+                <p><strong>Datum: </strong>@Html.DisplayFor(modelItem => item.Datum)</p>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <br>
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

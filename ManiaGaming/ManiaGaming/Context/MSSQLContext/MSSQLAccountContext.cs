@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ManiaGaming.Models.Data;
-using System.Data.SqlClient;
-using ManiaGaming.Controllers;
 using System.Data;
 using Microsoft.Extensions.Configuration;
 using ManiaGaming.Context.IContext;

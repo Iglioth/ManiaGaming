@@ -2,14 +2,13 @@
 using ManiaGaming.Models;
 using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ManiaGaming.Controllers
 {
+    [Authorize(Roles = "Beheerder, Werknemer")]
     public class ProductController : Controller
     {
         // Repos
@@ -139,12 +138,14 @@ namespace ManiaGaming.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Zoeken(string zoekterm)
         {
             return RedirectToAction("Resultaat", new { zoekterm});
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Resultaat(string zoekterm)
         {

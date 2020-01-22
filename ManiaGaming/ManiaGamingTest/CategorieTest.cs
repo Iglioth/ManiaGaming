@@ -2,9 +2,7 @@
 using ManiaGaming.Context.ITestContext;
 using ManiaGaming.Models.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ManiaGamingTest
 {

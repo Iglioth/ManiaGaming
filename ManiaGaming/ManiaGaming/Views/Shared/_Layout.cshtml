@@ -45,17 +45,19 @@
                 <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Merchandise" asp-action="Index">Merchandise</a></li>
                 <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Detail">Contact</a></li>
                 <!--<li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>
-                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Order" asp-action="Index">Orderbeheer</a></li>
-                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Filiaal" asp-action="Index">Filiaalbeheer</a></li>-->
+    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Order" asp-action="Index">Orderbeheer</a></li>
+    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Filiaal" asp-action="Index">Filiaalbeheer</a></li>-->
                 @if (User.IsInRole("Klant"))
                 {
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Klant" asp-action="Index">Instellingen</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Winkelwagen" asp-action="Index">Winkelwagen</a>
+                    </li>
                 }
-                @if (User.IsInRole("Beheerder"))
+                @if (User.IsInRole("Beheerder") || User.IsInRole("Werknemer"))
                 {
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Order" asp-action="Index">Orderbeheer</a></li>
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Filiaal" asp-action="Index">Filiaalbeheer</a></li>
@@ -65,7 +67,7 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
                     </li>
-
+                     
                 }
                 else
                 {
@@ -97,6 +99,9 @@
                 {
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Klant" asp-action="Index">Instellingen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Winkelwagen" asp-action="Index">Winkelwagen</a>
                     </li>
                 }
                 @if (User.IsInRole("Beheerder"))

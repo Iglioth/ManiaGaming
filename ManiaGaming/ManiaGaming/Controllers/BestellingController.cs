@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ManiaGaming.Models;
+﻿using System.Collections.Generic;
 using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
 using Microsoft.AspNetCore.Authorization;

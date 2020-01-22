@@ -5,8 +5,6 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ManiaGaming.Context.MSSQLContext
 {
@@ -239,7 +237,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "UPDATE Product SET Naam = @naam, Soort = @soort, CategorieID = @categorieID, Omschrijving = @omschrijving, Prijs = @prijs, ImagePath = @ImagePath WHERE Productid = @productID ";
+                string sql = "UPDATE Product SET Naam = @naam, Soort = @soort, CategorieID = @categorieID, Omschrijving = @omschrijving, Prijs = @prijs, ImagePath = @imagepath WHERE Productid = @productID ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
@@ -248,7 +246,7 @@ namespace ManiaGaming.Context.MSSQLContext
                     new KeyValuePair<string, string>("categorieID", obj.CategorieId.ToString()),
                     new KeyValuePair<string, string>("omschrijving", obj.Omschrijving),
                     new KeyValuePair<string, string>("prijs", obj.Prijs.ToString()),
-                    new KeyValuePair<string, string>("ImagePath", obj.ImagePath),
+                    new KeyValuePair<string, string>("imagepath", obj.ImagePath),
                     new KeyValuePair<string, string>("productID", obj.Id.ToString()),
                 }; 
 
