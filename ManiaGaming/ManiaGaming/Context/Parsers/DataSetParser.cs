@@ -42,6 +42,7 @@ namespace ManiaGaming.Context.Parsers
                 AchterNaam = (string)set.Tables[0].Rows[rowIndex][2],
                 Email = (string)set.Tables[0].Rows[rowIndex][3],
                 FiliaalNaam = (string)set.Tables[0].Rows[rowIndex][4],
+                FiliaalID = (int)set.Tables[0].Rows[rowIndex][5],
             };
         }
         public static Bestelling DataSetToBestelling(DataSet set, int rowIndex)
@@ -110,7 +111,7 @@ namespace ManiaGaming.Context.Parsers
                 {
                     Id = (int)set.Tables[0].Rows[rowIndex][0],
                     Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
-                    FiliaalID = (int)set.Tables[0].Rows[rowIndex][2],
+                    OntvangerID = (int)set.Tables[0].Rows[rowIndex][2],
                     WerknemerID = (int)set.Tables[0].Rows[rowIndex][3],
                     Ontvangen = (bool)set.Tables[0].Rows[rowIndex][4],
                     Aantal = (int)set.Tables[0].Rows[rowIndex][5],

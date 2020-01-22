@@ -8,19 +8,21 @@ namespace ManiaGaming.Models.Data
         public int Id { get; set; }
         public DateTime Datum { get; set; }
         public int WerknemerID { get; set; }
-        public int FiliaalID { get; set; }
+        public int VerzenderID { get; set; }
+        public int OntvangerID { get; set; }
         public bool Ontvangen { get; set; }
+        public bool Verzonden { get; set; }
         public List<Filiaal> Filialen { get; set; }
         public List<Product> Producten { get; set; }
         public int Aantal { get; set; }
         public int ProductID { get; set; }
 
-        public Order(int id, DateTime datum, int werknermerid, int filiaalid, bool ontvangen)
+        public Order(int id, DateTime datum, int werknermerid, int ontvangerID, bool ontvangen)
         {
             this.Id = id;
             this.Datum = datum;
             this.WerknemerID = werknermerid;
-            this.FiliaalID = filiaalid;
+            this.OntvangerID = ontvangerID;
             this.Ontvangen = ontvangen;
         } 
 

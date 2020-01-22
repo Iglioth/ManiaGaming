@@ -28,21 +28,14 @@
                 <span asp-validation-for="Aantal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Filiaal</label>
-                <select asp-for="FiliaalID" class="form-control border-dark">
+                <label>Ontvanger</label>
+                <select asp-for="OntvangerID" class="form-control border-dark">
                     @for (int i = 1; i - 1 < Model.Filialen.Count(); i++)
                     {
                         <option value="@i">@Model.Filialen[i - 1].Stad</option>
                     }
                 </select>
-                <span asp-validation-for="FiliaalID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Ontvangen" /> @Html.DisplayNameFor(model => model.Ontvangen)
-                    </label>
-                </div>
+                <span asp-validation-for="OntvangerID" class="text-danger"></span>
             </div>
             <div class="form-group">
 

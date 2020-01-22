@@ -44,7 +44,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Order> orderList = new List<Order>();
             try
             {
-                string sql = "SELECT * FROM [Order] where Ontvangen = 0";
+                string sql = "SELECT o.OrderID, o.Datum, o.OntvangerId, o.WerknemerID, o.Ontvangen, o.Aantal, o.ProductID, o.VerzenderID, o.Verzonden FROM [Order] AS o where Ontvangen = 0";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
 
@@ -68,7 +68,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "SELECT * FROM [Order] WHERE OrderID = @OrderID";
+                string sql = "SELECT o.OrderID, o.Datum, o.OntvangerId, o.WerknemerID, o.Ontvangen, o.Aantal, o.ProductID, o.VerzenderID, o.Verzonden FROM [Order] WHERE OrderID = @OrderID";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("OrderID", id.ToString())
@@ -90,15 +90,15 @@ namespace ManiaGaming.Context.MSSQLContext
             {  
 
 
-                string sql = "INSERT INTO[Order](Datum, FiliaalID, WerknemerID, Ontvangen, Aantal, ProductID) VALUES (@Datum,@FiliaalID,@WerknemerID,@Ontvangen,@Aantal,@ProductID) SELECT SCOPE_IDENTITY() ";
+                string sql = "INSERT INTO[Order](Datum, OntvangerId, WerknemerID, Ontvangen, Aantal, ProductID, Verzonden, VerzenderID) VALUES (@Datum, @VerzenderID, @OntvangerID, @WerknemerID, 0, @Aantal, @ProductID, 0, @VerzenderID) SELECT SCOPE_IDENTITY() ";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("Datum", obj.Datum.ToString("yyyy-MM-dd H:mm:ss")),
-                    new KeyValuePair<string, string>("FiliaalID", obj.FiliaalID.ToString()),
+                    new KeyValuePair<string, string>("OntvangerID", obj.OntvangerID.ToString()),
                     new KeyValuePair<string, string>("WerknemerID", obj.WerknemerID.ToString()),
-                    new KeyValuePair<string, string>("Ontvangen", obj.Ontvangen.ToString()),
                     new KeyValuePair<string, string>("Aantal", obj.Aantal.ToString()),
-                    new KeyValuePair<string, string>("ProductID", obj.ProductID.ToString())
+                    new KeyValuePair<string, string>("ProductID", obj.ProductID.ToString()),
+                    new KeyValuePair<string, string>("VerzenderID", obj.VerzenderID.ToString())
                 };
                
                 DataSet results = ExecuteSql(sql, parameters);
