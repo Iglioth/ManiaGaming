@@ -3,10 +3,12 @@ using ManiaGaming.Converters;
 using ManiaGaming.Models;
 using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ManiaGaming.Controllers
 {
+    [Authorize(Roles = "Beheerder, Werknemer")]
     public class FiliaalController : Controller
     {
         FiliaalRepository repo;

@@ -72,7 +72,7 @@ namespace ManiaGaming
             services.ConfigureApplicationCookie(options =>
             {
                 // TODO: access denied pagina maken
-                options.AccessDeniedPath = "/Home/Index";
+                options.AccessDeniedPath = "/Home/AccessDenied";
                 options.Cookie.Name = "Cookie";
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(720);
@@ -91,7 +91,7 @@ namespace ManiaGaming
             }
             else
             {
-                app.UseExceptionHandler("/Home/Index");
+                app.UseExceptionHandler("/Home/AccessDenied");
                 app.UseHsts();
             }
 

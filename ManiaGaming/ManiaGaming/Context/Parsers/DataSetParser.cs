@@ -99,21 +99,28 @@ namespace ManiaGaming.Context.Parsers
                 Postcode = (string)set.Tables[0].Rows[rowIndex][3],
                 Huisnummer = (string)set.Tables[0].Rows[rowIndex][2],
                 Telefoonnummer = (string)set.Tables[0].Rows[rowIndex][4],
-                Actief = (bool)set.Tables[0].Rows[0][5]
+                Actief = (bool)set.Tables[0].Rows[rowIndex][5]
             };
         }
         public static Order DataSetToOrder(DataSet set, int rowIndex)
         {
-            return new Order()
+            if (set.Tables[0].Rows.Count > 0)
             {
-                Id = (int)set.Tables[0].Rows[rowIndex][0],
-                Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
-                FiliaalID = (int)set.Tables[0].Rows[rowIndex][2],
-                WerknemerID = (int)set.Tables[0].Rows[rowIndex][3],
-                Ontvangen = (bool)set.Tables[0].Rows[rowIndex][4],
-                Aantal = (int)set.Tables[0].Rows[rowIndex][5],
-                ProductID = (int)set.Tables[0].Rows[rowIndex][6]
-            };
+                return new Order()
+                {
+                    Id = (int)set.Tables[0].Rows[rowIndex][0],
+                    Datum = (DateTime)set.Tables[0].Rows[rowIndex][1],
+                    FiliaalID = (int)set.Tables[0].Rows[rowIndex][2],
+                    WerknemerID = (int)set.Tables[0].Rows[rowIndex][3],
+                    Ontvangen = (bool)set.Tables[0].Rows[rowIndex][4],
+                    Aantal = (int)set.Tables[0].Rows[rowIndex][5],
+                    ProductID = (int)set.Tables[0].Rows[rowIndex][6]
+                };
+            }
+            else
+            {
+                return new Order();
+            }
         }
         public static ProductFoto DataSetToProductFoto(DataSet set, int rowIndex)
         {
@@ -133,13 +140,20 @@ namespace ManiaGaming.Context.Parsers
         }
         public static Werknemer DataSetToWerknemerIndex(DataSet set, int rowIndex)
         {
-            return new Werknemer()
+            if (set.Tables[0].Rows.Count > 0)
             {
-                Id = (int)set.Tables[0].Rows[rowIndex][0],
-                Naam = (string)set.Tables[0].Rows[rowIndex][1],
-                AchterNaam = (string)set.Tables[0].Rows[rowIndex][2],
-                FiliaalNaam = (string)set.Tables[0].Rows[rowIndex][3],
-            };
+                return new Werknemer()
+                {
+                    Id = (int)set.Tables[0].Rows[rowIndex][0],
+                    Naam = (string)set.Tables[0].Rows[rowIndex][1],
+                    AchterNaam = (string)set.Tables[0].Rows[rowIndex][2],
+                    FiliaalNaam = (string)set.Tables[0].Rows[rowIndex][3],
+                };
+            }
+            else
+            {
+                return new Werknemer();
+            }
         }
         public static BestellingProduct DataSetToBestellingProduct(DataSet set, int rowIndex)
         {

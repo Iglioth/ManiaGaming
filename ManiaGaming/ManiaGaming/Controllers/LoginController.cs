@@ -83,12 +83,12 @@ namespace ManiaGaming.Controllers
                 {
 
                     await _signInManager.SignInAsync(baseaccount, isPersistent: false);
-                    return RedirectToAction(returnUrl);
+                    await _signInManager.SignOutAsync();
+                    return RedirectToAction("Aangemaakt","Login");
                 }
                 ModelState.AddModelError(string.Empty, result.Errors.FirstOrDefault().Description);
             }
-            await _signInManager.SignOutAsync();
-            return RedirectToAction(nameof(HomeController.Logout), "Home"); 
+            return RedirectToAction(nameof(LoginController.Registreer), "Login"); 
         }
 
         //[HttpPost]
@@ -101,6 +101,11 @@ namespace ManiaGaming.Controllers
 
         //AccessDenied
         public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+        public IActionResult Aangemaakt()
         {
             return View();
         }

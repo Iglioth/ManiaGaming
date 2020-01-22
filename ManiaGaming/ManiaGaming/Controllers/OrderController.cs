@@ -4,10 +4,12 @@ using ManiaGaming.Converters;
 using ManiaGaming.Models;
 using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ManiaGaming.Controllers
 {
+    [Authorize(Roles = "Beheerder, Werknemer")]
     public class OrderController : BaseController
     {
         //repos
@@ -145,10 +147,9 @@ namespace ManiaGaming.Controllers
         [HttpPost]
         public IActionResult FiliaalOrderVerzoek(long id)
         {
-         
-
             return View();
         }
+
         [HttpGet]
         public IActionResult FiliaalOrderVerzoek()
         {

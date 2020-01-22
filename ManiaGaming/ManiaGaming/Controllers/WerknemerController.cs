@@ -2,12 +2,14 @@
 using ManiaGaming.Models;
 using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace ManiaGaming.Controllers
 {
+    [Authorize(Roles = "Beheerder, Werknemer")]
     public class WerknemerController : BaseController
     {
         // Repos
