@@ -64,18 +64,50 @@ namespace ManiaGaming.Controllers
         {
             return View();
         }
-       
 
-        //public bool ControlUser(AccountDetailViewModel vm)
-        //{
-        //    Account a = accountRepository.GetById(1/*Hier komt SessionID te staan*/);
-        //    if(a.Email == vm.Email && a.Password == vm.Password)
-        //    {
-        //        return true;
-        //    }
+
+        public IActionResult BestelMetPunten()
+        {
+
+            if(ControlleerKorting(CartProducten(), GetKlantPunten()) == false)
+            {
+                ViewBag.Error = "Helaas heeft u niet voldoende punten om korting te verkrijgen";
+                return View();
+            }
+            else
+            {
+                double totaalprijs = GetTotalePrijs(CartProducten());
+                int TotaleKortingInPunten = GetKlantPunten();
+                int totaalbedragInPunten = (int)totaalprijs * 100;
+                int berekening = totaalbedragInPunten - TotaleKortingInPunten;
+
+                if (berekening > 0)
+                {
+                    klantRepository.UpdateKlantPuntenNaBestelling(TotaleKortingInPunten, GetUserId());  
+                }
+                else
+                {
+                    klantRepository.UpdateKlantPuntenNaBestelling(totaalbedragInPunten, GetUserId());  
+                }
+                return View("BestellingBevestiging");
+            }
+
+            
+        }
+
+        public bool ControlleerKorting(List<Product> producten,int klantpunten)
+        { 
+            int Korting = klantpunten / 100;
            
-        //    return false;
-        //}
+            if (Korting == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            } 
+        }
 
         public List<Product> CartProducten()
         {
@@ -102,18 +134,41 @@ namespace ManiaGaming.Controllers
                 {
 
                     prijs = prijsperproduct * p.Aantal;
-                    punten = +prijs;
+                    punten += prijs;
                 }
                 else
                 {
-                    punten =+ Convert.ToDouble(p.Prijs);
-                }
+                    punten += prijsperproduct;
+                } 
                     
                
             }
             return punten;
         }
 
+        public int GetKlantPunten()
+        {
+            long id = GetUserId();
+            Klant k = klantRepository.GetById(id);
+            return k.Punten;
+        }
+        public double GetTotalePrijs(List<Product> producten)
+        {
+            double Totaleprijs = 0;
+            foreach (Product p in producten)
+            {
+                if (p.Aantal > 1)
+                {
+                    Totaleprijs += Convert.ToDouble(p.Prijs);
+                }
+                else
+                {
+                    Totaleprijs += (Convert.ToDouble(p.Prijs) * p.Aantal);
+                }
+                
+            }
+            return Totaleprijs;
+        }
 
     }
 }

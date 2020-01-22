@@ -7,5 +7,6 @@ namespace ManiaGaming.Context.IContext
     {
         int GetKlantID(long id);
         void UpdateKlantPunten(int punten, int id);
+        void UpdateKlantPuntenNaBestelling(int punten, long id);
     }
 }

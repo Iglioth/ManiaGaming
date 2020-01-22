@@ -9,5 +9,10 @@ namespace ManiaGaming.Models
         public int TotalPrijs { get; set; }
         public List<Product> producten = new List<Product>();
         public Account account = new Account();
+        public int klantPunten { get; set; }
+        public int KostenInPunten { get; set; }
+        public int ResterendeBedrag { get; set; }
+
+   
     }
 }

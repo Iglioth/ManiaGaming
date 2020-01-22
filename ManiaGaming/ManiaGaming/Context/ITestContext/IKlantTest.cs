@@ -43,5 +43,10 @@ namespace ManiaGaming.Context.ITestContext
         {
             throw new NotImplementedException();
         }
+
+        public void UpdateKlantPuntenNaBestelling(int punten, long id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
