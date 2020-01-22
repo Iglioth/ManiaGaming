@@ -82,7 +82,7 @@ namespace ManiaGaming.Context.MSSQLContext
                 };
 
                 DataSet results = ExecuteSql(sql, parameters);
-                int werknemerid = (int)(decimal)results.Tables[0].Rows[0][0];
+                int werknemerid = (int)results.Tables[0].Rows[0][0];
                 return werknemerid;
             }
             catch (Exception e)
