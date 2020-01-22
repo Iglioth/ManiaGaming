@@ -64,24 +64,25 @@ namespace ManiaGaming.Controllers
         }
 
         [HttpPost]
-        public IActionResult Aanmaken(OrderDetailViewModel vm, long id)
+        public IActionResult Aanmaken(OrderDetailViewModel vm)
         {
             
             Order order = new Order();
             order = orderConverter.ViewModelToModel(vm);
-            order.FiliaalID = 9; // Is niet mogelijk om via de vm te ontvangen
             long ID = GetUserId();
             Werknemer w = werknemerRepo.GetById(ID);
             order.WerknemerID = w.WerknemerId; 
             order.Datum = DateTime.Now;
+            order.VerzenderID = w.FiliaalID;
             orderRepository.Insert(order);
             return RedirectToAction("Index");
             
         }
 
         [HttpGet]
-        public IActionResult Aanmaken(OrderDetailViewModel vm)
+        public IActionResult Aanmaken()
         {
+            OrderDetailViewModel vm = new OrderDetailViewModel();
             Order o = new Order
             {
                 Filialen = filiaalRepository.GetAll()
@@ -162,7 +163,7 @@ namespace ManiaGaming.Controllers
 
             foreach (Order o in TemporaryOrders)
             {
-                if (o.FiliaalID == w.FiliaalID && o.Ontvangen == false)
+                if (o.OntvangerID == w.FiliaalID && o.Ontvangen == false)
                 {
                     orders.Add(o);
                 }

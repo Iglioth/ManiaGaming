@@ -14,19 +14,7 @@ namespace ManiaGaming.Converters
 
             foreach (Order p in models)
             {
-                OrderDetailViewModel vm = new OrderDetailViewModel()
-                {
-                    Id = p.Id,
-                    Datum = p.Datum,
-                    FiliaalID = p.FiliaalID,
-                    Ontvangen = p.Ontvangen,
-                    WerknemerID = p.WerknemerID,
-                    Filialen = p.Filialen,
-                    Aantal = p.Aantal,
-                    Producten = p.Producten,
-                    ProductId = p.ProductID
-                };
-                orderDetailViewModels.Add(vm);
+                orderDetailViewModels.Add(ModelToViewModel(p));
             }
 
             return orderDetailViewModels;
@@ -41,12 +29,13 @@ namespace ManiaGaming.Converters
                 Id = o.Id,
                 Datum = o.Datum,
                 WerknemerID = o.WerknemerID,
-                FiliaalID = o.FiliaalID,
+                VerzenderID = o.VerzenderID,
+                OntvangerID = o.OntvangerID,
                 Ontvangen = o.Ontvangen,
+                Verzonden = o.Verzonden,
                 Filialen = o.Filialen,
                 Producten = o.Producten,
-                ProductId = o.ProductID
-
+                ProductId = o.ProductID,
             };
 
             return vm;
@@ -63,12 +52,14 @@ namespace ManiaGaming.Converters
             Order o = new Order()
             {
                 Id = vm.Id,
-                FiliaalID = vm.FiliaalID,
+                OntvangerID = vm.OntvangerID,
                 ProductID = vm.ProductId,
                 WerknemerID = vm.WerknemerID,
                 Aantal = vm.Aantal,
                 Datum = vm.Datum,
-                Ontvangen = vm.Ontvangen
+                Ontvangen = vm.Ontvangen,
+                Verzonden = vm.Verzonden,
+                VerzenderID = vm.VerzenderID,
             };
             return o;
         }

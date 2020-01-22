@@ -51,7 +51,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "SELECT A.AccountId, A.Naam, A.Achternaam, A.Email, F.Stad FROM Account AS a INNER JOIN Werknemer on A.Accountid = Werknemer.AccountID " +
+                string sql = "SELECT A.AccountId, A.Naam, A.Achternaam, A.Email, F.Stad, Werknemer.FiliaalId FROM Account AS a INNER JOIN Werknemer on A.Accountid = Werknemer.AccountID " +
                 "INNER JOIN Filiaal AS F on Werknemer.FiliaalId = F.FiliaalId ";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
