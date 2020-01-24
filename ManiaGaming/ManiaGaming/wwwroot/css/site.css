@@ -287,16 +287,21 @@ p .btn btn-default a {
     text-decoration: none;
     color: black;
 }
-
+.Winkelwagenpunten {
+    
+    margin: auto;
+    
+    width: 80%;
+    border: 3px solid green;
+    padding: 10px;
+}
 /*Footer*/
-
-
 footer {
     background: linear-gradient(to right, #00cc66 0%, #ccffff 99%);
     position: relative;
     height: 120px;
-    display:block;
-    margin-top:100px;
+    display: block;
+    margin-top: 100px;
 }
 
 
@@ -389,7 +394,7 @@ footer {
     text-decoration: none;
     cursor: pointer;
 }
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+/*@import url(http://fonts.googleapis.com/css?family=Lato:400,700);*/
 
 
 .profile {

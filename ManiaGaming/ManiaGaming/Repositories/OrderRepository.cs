@@ -41,5 +41,9 @@ namespace ManiaGaming.Repositories
             return context.Actief(id, active);
         }
 
+        public bool Verzenden(long id)
+        {
+            return context.Verzenden(id);
+        }
     }
 }

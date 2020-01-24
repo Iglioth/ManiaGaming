@@ -24,7 +24,7 @@ namespace ManiaGaming.Context.MSSQLContext
             List<Werknemer> werknemerList = new List<Werknemer>();
             try
             {
-                string sql = "SELECT A.AccountId, A.Naam, A.Achternaam, A.Email, F.Stad FROM Account AS A INNER JOIN Werknemer on A.Accountid = Werknemer.AccountID " +
+                string sql = "SELECT A.AccountId, A.Naam, A.Achternaam, A.Email, F.Stad, Werknemer.FiliaalId, Werknemer.WerknemerId FROM Account AS A INNER JOIN Werknemer on A.Accountid = Werknemer.AccountID " +
                 "INNER JOIN Filiaal AS F on Werknemer.FiliaalId = f.FiliaalId ";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
@@ -51,8 +51,8 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "SELECT A.AccountId, A.Naam, A.Achternaam, A.Email, F.Stad FROM Account AS a INNER JOIN Werknemer on A.Accountid = Werknemer.AccountID " +
-                "INNER JOIN Filiaal AS F on Werknemer.FiliaalId = F.FiliaalId ";
+                string sql = "SELECT A.AccountId, A.Naam, A.Achternaam, A.Email, F.Stad, Werknemer.FiliaalId, Werknemer.WerknemerId FROM Account AS a INNER JOIN Werknemer on A.Accountid = Werknemer.AccountID " +
+                "INNER JOIN Filiaal AS F on Werknemer.FiliaalId = F.FiliaalId WHERE A.AccountID = @WerknemerID";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("WerknemerID", id.ToString())
@@ -104,7 +104,7 @@ namespace ManiaGaming.Context.MSSQLContext
                     new KeyValuePair<string, string>("naam", obj.Naam),
                     new KeyValuePair<string, string>("achternaam", obj.AchterNaam),
                     new KeyValuePair<string, string>("email", obj.Email),
-                    new KeyValuePair<string, string>("password", obj.Password),
+                    new KeyValuePair<string, string>("password", "AQAAAAEAACcQAAAAEPPM9G/VYE4sVxaIJ8PTaOvnhNlR/t15rjfGWMvTEgR2PJIVs+1uCkYuQQOMx4nKDQ=="),
                     new KeyValuePair<string, string>("filiaalid", obj.FiliaalID.ToString()),
                 };
                 ExecuteSql(query, parameters);

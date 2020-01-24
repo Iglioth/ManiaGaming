@@ -1,9 +1,7 @@
 ﻿@model ManiaGaming.Models.WinkelwagenDetailViewModel;
 @using ManiaGaming.Models.Data;
 @using Microsoft.AspNetCore.Http;
-@{
-    ViewData["Title"] = "Index";
-}
+
 
 <html>
 <head>
@@ -11,7 +9,8 @@
 </head>
 <body>
 
-  
+
+   
 
 
     <div class="table-products" style="margin-top:50px;">
@@ -19,7 +18,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-2"><a asp-controller="Games" asp-action="index" class="btn btn-default">Continue Shopping</a></div>
             <div class="col-md-7"></div>
-            @{ if (Model == null )
+            @{ if (Model == null)
                 {
 
                 }
@@ -34,50 +33,58 @@
 
         @{ if (Model == null)
             { <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-2" style="margin-top:50px;">De winkelwagen is leeg</div>
-            <div class="col-md-9"></div>
-        </div>
-                }
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2" style="margin-top:50px;">De winkelwagen is leeg</div>
+                    <div class="col-md-9"></div>
+                </div>
+            }
 
-                else
-                {
-              <table class="content-table">
-                  <thead>
-                      <tr>
+            else
+            {
+                <table class="content-table">
+                    <thead>
+                        <tr>
 
-                          <th>Name</th>
-                          <th>Price</th>
-                          <th>Quantity</th>
-                          <th>Total</th>
-                          <th>Delete</th>
-
-
-                      </tr>
-                  </thead>
-
-                  @foreach (Product p in Model.producten)
-                  {
-                      <tbody>
-
-                          <tr>
-
-                              <td>@p.Naam</td>
-                              <td>@p.Prijs</td>
-                              <td>@p.Aantal</td>
-                              <td>@(Convert.ToDecimal(p.Prijs) * p.Aantal)</td>
-                              <td>@Html.ActionLink("Delete", "Remove", "Winkelwagen", new { id = p.Id })</td>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Delete</th>
 
 
-                          </tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Product p in Model.producten)
+                        {
 
 
-                      </tbody>}
-              </table>
+                            <tr>
+
+                                <td>@p.Naam</td>
+                                <td>@p.Prijs</td>
+                                <td>@p.Aantal</td>
+                                <td>@(Convert.ToDecimal(p.Prijs) * p.Aantal)</td>
+                                <td>@Html.ActionLink("Delete", "Remove", "Winkelwagen", new { id = p.Id })</td>
+
+                                
+                            </tr>
 
 
-                }
-            }  
+                        }
+                        <tr>
+                            <td>Totaal:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>@Model.TotaalPrijs</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            }
+        }
     </div>
     <br>
 

@@ -26,12 +26,7 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FiliaalId" class="control-label"></label>
+                <label asp-for="FiliaalLocatie" class="control-label"></label>
                 <select asp-for="FiliaalId" class="form-control">
                     @for (int i = 0; i < Model.FiliaalList.Count(); i++)
                     {

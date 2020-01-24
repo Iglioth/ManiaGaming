@@ -33,5 +33,10 @@ namespace ManiaGaming.Context.ITestContext
         {
             throw new NotImplementedException();
         }
+
+        public bool Verzenden(long id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

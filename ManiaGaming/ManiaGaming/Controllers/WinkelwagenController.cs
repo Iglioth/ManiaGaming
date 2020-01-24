@@ -10,48 +10,53 @@ using System.Collections.Generic;
 namespace ManiaGaming.Controllers
 {
     [AllowAnonymous]
-    public class WinkelwagenController : Controller
+    public class WinkelwagenController : BaseController
     {
         // Repos
         private readonly ProductRepository productRepository;
-
+        private readonly KlantRepository klantRepository;
         // Converter 
         private readonly ProductViewModelConverter converter = new ProductViewModelConverter();
 
 
         public WinkelwagenController
             (
-                ProductRepository productRepository
+                ProductRepository productRepository,KlantRepository klantRepository
             )
         {
+            this.klantRepository = klantRepository;
             this.productRepository = productRepository;
         }
         public IActionResult Index()
         {
             
-            //if (SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart") == null)
-            //{
-              
-            //    return View();
-            //}
-            //else
-            //{
                 WinkelwagenDetailViewModel cart = new WinkelwagenDetailViewModel();
+                cart.klantPunten = GetKlantPunten();
+                
                 if (SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart") == null)
                 {
-                ViewBag.Error = "Inloggegevens zijn incorrect";
+                ViewBag.Error = "Cart is leeg";
                 return View();
                 }
                 else
                 {
+                    cart.KostenInPunten = ((int)GetKostenInPunten(CartProducten()) * 100);
+                     
+                    cart.ResterendeBedrag = ((int)GetKostenInPunten(CartProducten()) - (GetKlantPunten() / 100));
+                    if(cart.ResterendeBedrag < 0)
+                    {
+                    cart.ResterendeBedrag = 0;
+                    }
                     foreach (Product p in SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart"))
                     {
                         cart.producten.Add(p);
+                        cart.TotaalPrijs = cart.TotaalPrijs + Convert.ToDecimal(p.Prijs);
                     }
                 }
-                return View(cart);
-            
+
+                return View(cart);  
         }
+
         [HttpGet]
         public IActionResult AddWinkelwagen(int id)
         {
@@ -124,6 +129,36 @@ namespace ManiaGaming.Controllers
            
         }
 
+
+        public int GetKlantPunten()
+        {
+            long id = GetUserId();
+            Klant k = klantRepository.GetById(id);
+            return k.Punten;
+        }
+            
+        public double GetKostenInPunten(List<Product> producten)
+        {
+            double Totaleprijs = 0;
+            foreach (Product p in producten)
+            {
+                if (p.Aantal == 1)
+                {
+                    Totaleprijs += Convert.ToDouble(p.Prijs);
+                }
+                else
+                {
+                    Totaleprijs += (Convert.ToDouble(p.Prijs) * p.Aantal);
+                }
+
+            }
+
+            return Totaleprijs;
+        }
+        public List<Product> CartProducten()
+        {
+            return SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart"); ;
+        }
 
     }
 }

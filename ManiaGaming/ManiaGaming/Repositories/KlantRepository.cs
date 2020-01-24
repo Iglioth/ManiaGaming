@@ -33,7 +33,14 @@ namespace ManiaGaming.Repositories
         {
             return context.GetKlantID(id);
         }
-
+        public void UpdateKlantPunten(int punten, int id)
+        {
+            context.UpdateKlantPunten(punten,id);
+        }
+        public void UpdateKlantPuntenNaBestelling(int punten, long id)
+        {
+             context.UpdateKlantPuntenNaBestelling(punten,id);
+        }
 
 
 
