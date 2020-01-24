@@ -88,7 +88,7 @@ namespace ManiaGaming.Controllers
                 }
                 ModelState.AddModelError(string.Empty, result.Errors.FirstOrDefault().Description);
             }
-            return RedirectToAction(nameof(LoginController.Registreer), "Login"); 
+            return RedirectToAction("Mislukt", "Login");
         }
 
         //[HttpPost]

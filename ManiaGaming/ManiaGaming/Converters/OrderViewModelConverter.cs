@@ -36,6 +36,7 @@ namespace ManiaGaming.Converters
                 Filialen = o.Filialen,
                 Producten = o.Producten,
                 ProductId = o.ProductID,
+                Aantal = o.Aantal,
             };
 
             return vm;

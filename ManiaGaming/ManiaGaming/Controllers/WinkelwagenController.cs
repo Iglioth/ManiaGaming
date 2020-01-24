@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace ManiaGaming.Controllers
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "Klant")]
     public class WinkelwagenController : BaseController
     {
         // Repos
