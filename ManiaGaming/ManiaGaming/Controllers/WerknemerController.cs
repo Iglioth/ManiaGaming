@@ -4,6 +4,7 @@ using ManiaGaming.Models.Data;
 using ManiaGaming.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -62,6 +63,14 @@ namespace ManiaGaming.Controllers
             werknemer = werknemerConverter.ViewModelToModel(vm);
             werknemerRepository.Insert(werknemer);
             return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult Aanpassen(WerknemerDetailViewModel vm)
+        {
+            Werknemer werknemer = werknemerConverter.ViewModelToModel(vm);
+            werknemer.FiliaalID = Convert.ToInt32(vm.FiliaalLocatie);
+            bool check = werknemerRepository.Update(werknemer);
+            return RedirectToAction("Index", new { vm.Id });
         }
     }
 }

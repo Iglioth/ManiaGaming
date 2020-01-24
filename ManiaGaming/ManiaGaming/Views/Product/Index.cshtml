@@ -85,7 +85,7 @@
                                                 <select asp-for="@item.CategorieId" class="form-control" name="CategorieId">
                                                     @for (int i = 0; i < Model.CategorieList.Count(); i++)
                                                     {
-                                                        if (i == @item.CategorieId)
+                                                        if (Model.CategorieList[i].Id == @item.CategorieId)
                                                         {
                                                             <option selected value="@Model.CategorieList[i].Id">@Model.CategorieList[i].Naam</option>
                                                         }
@@ -173,7 +173,7 @@
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function (event) {
                 if (event.target == modal) {
-                    modals[@count2].style.display = "none";
+                    modals[parseInt(@count2)].style.display = "none";
                 }
             }
             
@@ -181,7 +181,6 @@
             count2 = count2 + 1;
         }
 
-            console.log(modals[2]);
             }
     </script>
 

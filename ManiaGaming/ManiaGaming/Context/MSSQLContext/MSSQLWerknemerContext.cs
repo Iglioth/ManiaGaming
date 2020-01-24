@@ -122,13 +122,23 @@ namespace ManiaGaming.Context.MSSQLContext
             Werknemer werknemer = new Werknemer();
             try
             {
-                string sql = "UPDATE Werknemer SET Functie = @Functie, FiliaalID = @FiliaalID";
+                string sql = "UPDATE Werknemer SET FiliaalID = @FiliaalID WHERE AccountId = @WerknemerId";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("Functie", obj.Functie),
-                    new KeyValuePair<string, string>("FiliaalID", obj.FiliaalID.ToString())
-                    
+                    new KeyValuePair<string, string>("FiliaalID", obj.FiliaalID.ToString()),
+                    new KeyValuePair<string, string>("WerknemerId", obj.Id.ToString())
+                };
+
+                ExecuteSql(sql, parameters);
+
+                sql = "UPDATE Account SET Naam = @Naam, AchterNaam = @AchterNaam, Email = @Email WHERE AccountID = @AccountId";
+                parameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("Naam", obj.Naam),
+                    new KeyValuePair<string, string>("AchterNaam", obj.AchterNaam),
+                    new KeyValuePair<string, string>("Email", obj.Email),
+                    new KeyValuePair<string, string>("AccountId", obj.Id.ToString()),
                 };
 
                 ExecuteSql(sql, parameters);
