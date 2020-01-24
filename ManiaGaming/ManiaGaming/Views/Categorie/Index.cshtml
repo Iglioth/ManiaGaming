@@ -21,7 +21,7 @@
         <thead>
             <tr>
                 <th>Naam</th>
-                <th>Acties</th>
+                <th>Actie</th>
             </tr>
         </thead>
         <tbody>
@@ -30,8 +30,7 @@
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.Naam)</td>   
                     <td>
-                            @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id }) |
-                            @Html.ActionLink("Deactiveren", "Deactiveren", new { id = item.Id })
+                            @Html.ActionLink("Aanpassen", "Aanpassen", new { id = item.Id })
                     </td>
                 </tr>
             }
