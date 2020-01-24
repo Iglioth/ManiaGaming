@@ -6,5 +6,7 @@ namespace ManiaGaming.Context.IContext
     public interface IKlantContext : IGenericQueries<Klant>
     {
         int GetKlantID(long id);
+        void UpdateKlantPunten(int punten, int id);
+        void UpdateKlantPuntenNaBestelling(int punten, long id);
     }
 }
