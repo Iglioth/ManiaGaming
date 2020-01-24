@@ -36,19 +36,22 @@ namespace ManiaGaming.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            
+
             OrderViewModel vm = new OrderViewModel();
-            List<Order> Orders = new List<Order>();
-            List<Order> NietOntvangenOrders = new List<Order>();
-            Orders = orderRepository.GetAll();
-            foreach(Order o in Orders)
+            List<Order> TemporaryOrders = new List<Order>();
+            List<Order> orders = new List<Order>();
+            TemporaryOrders = orderRepository.GetAll();
+            Werknemer w = werknemerRepo.GetById(GetUserId());
+
+            foreach (Order o in TemporaryOrders)
             {
-                if(o.Ontvangen == false)
+                if (o.OntvangerID == w.FiliaalID && o.Ontvangen == false && o.Verzonden == true)
                 {
-                    NietOntvangenOrders.Add(o);
+                    orders.Add(o);
                 }
             }
-            vm.Orders = orderConverter.ModelsToViewModels(NietOntvangenOrders);
+            vm.Orders = orderConverter.ModelsToViewModels(orders);
+
 
             return View(vm);
         }
@@ -73,7 +76,7 @@ namespace ManiaGaming.Controllers
             Werknemer w = werknemerRepo.GetById(ID);
             order.WerknemerID = w.WerknemerId; 
             order.Datum = DateTime.Now;
-            order.VerzenderID = w.FiliaalID;
+            order.OntvangerID = w.FiliaalID;
             orderRepository.Insert(order);
             return RedirectToAction("Index");
             
@@ -145,25 +148,18 @@ namespace ManiaGaming.Controllers
             return View(vm); 
         }
 
-        [HttpPost]
-        public IActionResult FiliaalOrderVerzoek(long id)
-        {
-            return View();
-        }
-
         [HttpGet]
-        public IActionResult FiliaalOrderVerzoek()
+        public IActionResult OrdersVerzenden()
         {
             OrderViewModel vm = new OrderViewModel();
             List<Order> TemporaryOrders = new List<Order>();
             List<Order> orders = new List<Order>();
             TemporaryOrders = orderRepository.GetAll();
-            int id = werknemerRepo.GetWerknemerID(GetUserId());
-            Werknemer w = werknemerRepo.GetById(id);
+            Werknemer w = werknemerRepo.GetById(GetUserId());
 
             foreach (Order o in TemporaryOrders)
             {
-                if (o.OntvangerID == w.FiliaalID && o.Ontvangen == false)
+                if (o.VerzenderID == w.FiliaalID && o.Verzonden == false)
                 {
                     orders.Add(o);
                 }
@@ -172,6 +168,14 @@ namespace ManiaGaming.Controllers
         
 
             return View(vm);
+        }
+
+        [HttpGet]
+        public IActionResult Verzenden(long id)
+        {
+            orderRepository.Verzenden(id);
+
+            return RedirectToAction("OrdersVerzenden");
         }
 
         [HttpGet]

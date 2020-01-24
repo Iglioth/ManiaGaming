@@ -15,9 +15,9 @@
             <div class="form-group">
                 <label>Product</label>
                 <select asp-for="ProductId" class="form-control border-dark">
-                    @for (int i = 1; i - 1 < Model.Producten.Count(); i++)
+                    @for (int i = 0; i < Model.Producten.Count(); i++)
                     {
-                        <option value="@i">@Model.Producten[i - 1].Naam</option>
+                        <option value="@Model.Producten[i].Id">@Model.Producten[i].Naam</option>
                     }
                 </select>
                 <span asp-validation-for="ProductId" class="text-danger"></span>
@@ -28,14 +28,14 @@
                 <span asp-validation-for="Aantal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Ontvanger</label>
-                <select asp-for="OntvangerID" class="form-control border-dark">
-                    @for (int i = 1; i - 1 < Model.Filialen.Count(); i++)
+                <label>Verzender</label>
+                <select asp-for="VerzenderID" class="form-control border-dark">
+                    @for (int i = 0; i < Model.Filialen.Count(); i++)
                     {
-                        <option value="@i">@Model.Filialen[i - 1].Stad</option>
+                        <option value="@Model.Filialen[i].Id">@Model.Filialen[i].Stad</option>
                     }
                 </select>
-                <span asp-validation-for="OntvangerID" class="text-danger"></span>
+                <span asp-validation-for="VerzenderID" class="text-danger"></span>
             </div>
             <div class="form-group">
 

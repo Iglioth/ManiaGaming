@@ -68,7 +68,7 @@ namespace ManiaGaming.Context.MSSQLContext
         {
             try
             {
-                string sql = "SELECT o.OrderID, o.Datum, o.OntvangerId, o.WerknemerID, o.Ontvangen, o.Aantal, o.ProductID, o.VerzenderID, o.Verzonden FROM [Order] WHERE OrderID = @OrderID";
+                string sql = "SELECT o.OrderID, o.Datum, o.OntvangerId, o.WerknemerID, o.Ontvangen, o.Aantal, o.ProductID, o.VerzenderID, o.Verzonden FROM [Order] AS o WHERE OrderID = @OrderID";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("OrderID", id.ToString())
@@ -90,7 +90,7 @@ namespace ManiaGaming.Context.MSSQLContext
             {  
 
 
-                string sql = "INSERT INTO[Order](Datum, OntvangerId, WerknemerID, Ontvangen, Aantal, ProductID, Verzonden, VerzenderID) VALUES (@Datum, @VerzenderID, @OntvangerID, @WerknemerID, 0, @Aantal, @ProductID, 0, @VerzenderID) SELECT SCOPE_IDENTITY() ";
+                string sql = "INSERT INTO[Order](Datum, OntvangerId, WerknemerID, Ontvangen, Aantal, ProductID, Verzonden, VerzenderID) VALUES (@Datum, @OntvangerID, @WerknemerID, 0, @Aantal, @ProductID, 0, @VerzenderID) SELECT SCOPE_IDENTITY() ";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
                     new KeyValuePair<string, string>("Datum", obj.Datum.ToString("yyyy-MM-dd H:mm:ss")),
@@ -146,6 +146,22 @@ namespace ManiaGaming.Context.MSSQLContext
             }
         }
 
-        
+        public bool Verzenden(long id)
+        {
+            try
+            {
+                string sql = "UPDATE [Order] SET Verzonden = 1 where OrderID = @OrderID";
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("OrderID", id.ToString()),
+                };
+                ExecuteInsert(sql, parameters);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

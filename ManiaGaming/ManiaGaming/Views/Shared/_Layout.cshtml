@@ -58,12 +58,13 @@
                 }
                 @if (User.IsInRole("Beheerder") || User.IsInRole("Werknemer"))
                 {
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Beheer</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">ProductBeheer</a></li>
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Order" asp-action="Index">Orderbeheer</a></li>
                 }
                 @if (User.IsInRole("Beheerder"))
                 {
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Filiaal" asp-action="Index">Filiaalbeheer</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Werknemer" asp-action="Index">Werknemerbeheer</a></li>
                 }
                 @if (User.Identity.IsAuthenticated)
                 {

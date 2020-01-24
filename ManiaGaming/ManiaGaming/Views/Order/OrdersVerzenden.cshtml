@@ -13,9 +13,9 @@
                 <tr>
                     <th>OrderNummer</th>
                     <th>Datum</th>
-
                     <th>Aantal</th>
                     <th>Detail</th>
+                    <th>Verzenden</th>
                 </tr>
             </thead>
 
@@ -24,11 +24,10 @@
                 <tbody>
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                        <td>@Html.DisplayFor(modelItem => item.ProductId)</td>
                         <td>@Html.DisplayFor(modelItem => item.Datum)</td>
-
                         <td>@Html.DisplayFor(modelItem => item.Aantal)</td>
-                        <td>@Html.ActionLink("Detail", "Details", new { id = item.Id })</td>
+                        <td>@Html.ActionLink("Detail", "FiliaalOrderVerzoekDetail", new { id = item.Id })</td>
+                        <td>@Html.ActionLink("Verzenden", "Verzenden", new { id = item.Id })</td>
                     </tr>
                 </tbody>
             }
