@@ -50,6 +50,7 @@ namespace ManiaGaming.Controllers
                     foreach (Product p in SessionHelper.GetObjectFromJson<List<Product>>(HttpContext.Session, "cart"))
                     {
                         cart.producten.Add(p);
+                        cart.TotaalPrijs = cart.TotaalPrijs + Convert.ToDecimal(p.Prijs);
                     }
                 }
 

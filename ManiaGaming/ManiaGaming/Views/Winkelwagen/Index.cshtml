@@ -9,21 +9,9 @@
 </head>
 <body>
 
-    <div style="margin-top: 30px;"></div>
-    @if (Model != null)
-    {<div class="Winkelwagenpunten">
-            <div class="row">
-                <div class="col-md-2"> <p style="margin-top: 9px;">KlantPunten : @Model.klantPunten</p></div>
-                <div class="col-md-2"> <p style="margin-top: 9px;">Kosten in punten : @Model.KostenInPunten</p></div>
-                <div class="col-md-2"> <p style="margin-top: 9px;">Te betalen bedrag : @Model.ResterendeBedrag,-</p></div>
-                <div class="col-md-2"><a asp-controller="Bestelling" asp-action="BestelMetPunten" class="btn btn-default">Bestel met punten</a></div>
-            </div>
-        </div>}
 
    
 
-
-    
 
     <div class="table-products" style="margin-top:50px;">
         <div class="row">
@@ -66,10 +54,10 @@
 
                         </tr>
                     </thead>
+                    <tbody>
+                        @foreach (Product p in Model.producten)
+                        {
 
-                    @foreach (Product p in Model.producten)
-                    {
-                        <tbody>
 
                             <tr>
 
@@ -79,11 +67,19 @@
                                 <td>@(Convert.ToDecimal(p.Prijs) * p.Aantal)</td>
                                 <td>@Html.ActionLink("Delete", "Remove", "Winkelwagen", new { id = p.Id })</td>
 
-
+                                
                             </tr>
 
 
-                        </tbody>}
+                        }
+                        <tr>
+                            <td>Totaal:</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>@Model.TotaalPrijs</td>
+                        </tr>
+                    </tbody>
                 </table>
 
 
