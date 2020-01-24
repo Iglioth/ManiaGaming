@@ -10,7 +10,20 @@
 <body>
 
 
-   
+    <div style="margin-top: 30px;"></div>
+    @if (Model == null)
+    {
+
+    }else
+    {<div class="Winkelwagenpunten">
+            <div class="row">
+                <div class="col-md-2"> <p style="margin-top: 9px;">KlantPunten : @Model.klantPunten</p></div>
+                <div class="col-md-2"> <p style="margin-top: 9px;">Kosten in punten : @Model.KostenInPunten</p></div>
+                <div class="col-md-2"> <p style="margin-top: 9px;">Te betalen bedrag : @Model.ResterendeBedrag,-</p></div>
+                @if (Model.klantPunten != 0) {<div class="col-md-2"><a asp-controller="Bestelling" asp-action="BestelMetPunten" class="bestelknopp">Bestel met punten</a></div>}
+                else { }
+            </div>
+        </div>}
 
 
     <div class="table-products" style="margin-top:50px;">
@@ -48,8 +61,9 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>Quantity</th>
-                            <th>Total</th>
                             <th>Delete</th>
+                            <th>Total</th>
+                            
 
 
                         </tr>
@@ -67,18 +81,19 @@
                                 <td>@(Convert.ToDecimal(p.Prijs) * p.Aantal)</td>
                                 <td>@Html.ActionLink("Delete", "Remove", "Winkelwagen", new { id = p.Id })</td>
 
-                                
+
                             </tr>
 
 
                         }
-                        <tr>
-                            <td>Totaal:</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>@Model.TotaalPrijs</td>
-                        </tr>
+                            <tr>
+                                <td>Totaal:</td>
+                                <td></td>
+                                <td></td>
+                                <td>@Model.TotaalPrijs</td>
+                                <td></td>
+
+                            </tr>
                     </tbody>
                 </table>
 

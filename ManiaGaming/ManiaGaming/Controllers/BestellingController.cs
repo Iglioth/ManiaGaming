@@ -27,37 +27,37 @@ namespace ManiaGaming.Controllers
             return View();
         }
 
-        [Authorize(Roles ="Klant")]
+        [Authorize(Roles = "Klant")]
         public IActionResult Bestel()
         {
-                List<Product> cart = CartProducten();
-                if (cart != null)
-                {
-                   
-                    long id = GetUserId();
-                    klantRepository.GetKlantID(id);
-                    Klant k = klantRepository.GetById(id);
-                    
-                    if (bestellingRepository.Bestellen(cart, k.Id) == true)
-                    {
-                    int punten = Convert.ToInt32(BerekenPoints(cart));
-                    klantRepository.UpdateKlantPunten(punten,Convert.ToInt32(GetUserId()));
-                    //update klant punten
-                        DeleteCartProducts(cart);
+            List<Product> cart = CartProducten();
+            if (cart != null)
+            {
 
-                        return View("BestellingBevestiging");
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "WinkelWagen");
-                    }
-                   
+                long id = GetUserId();
+                klantRepository.GetKlantID(id);
+                Klant k = klantRepository.GetById(id);
+
+                if (bestellingRepository.Bestellen(cart, k.Id) == true)
+                {
+                    int punten = Convert.ToInt32(BerekenPoints(cart));
+                    klantRepository.UpdateKlantPunten(punten, Convert.ToInt32(GetUserId()));
+                    //update klant punten
+                    DeleteCartProducts(cart);
+
+                    return View("BestellingBevestiging");
                 }
                 else
                 {
-                     
                     return RedirectToAction("Index", "WinkelWagen");
                 }
+
+            }
+            else
+            {
+
+                return RedirectToAction("Index", "WinkelWagen");
+            }
         }
 
         public IActionResult BestellingBevestiging()
@@ -69,10 +69,10 @@ namespace ManiaGaming.Controllers
         public IActionResult BestelMetPunten()
         {
 
-            if(ControlleerKorting(CartProducten(), GetKlantPunten()) == false)
+            if (ControlleerKorting(CartProducten(), GetKlantPunten()) == false)
             {
                 ViewBag.Error = "Helaas heeft u niet voldoende punten om korting te verkrijgen";
-                return View();
+                return RedirectToAction("Index", "WinkelWagen");
             }
             else
             {
@@ -83,22 +83,32 @@ namespace ManiaGaming.Controllers
 
                 if (berekening > 0)
                 {
-                    klantRepository.UpdateKlantPuntenNaBestelling(TotaleKortingInPunten, GetUserId());  
+                    klantRepository.UpdateKlantPuntenNaBestelling(TotaleKortingInPunten, GetUserId());
                 }
                 else
                 {
-                    klantRepository.UpdateKlantPuntenNaBestelling(totaalbedragInPunten, GetUserId());  
+                    klantRepository.UpdateKlantPuntenNaBestelling(totaalbedragInPunten, GetUserId());
                 }
+                if (bestellingDoorVoeren() == true)
+                {
+                    return View("BestellingBevestiging");
+                }
+                else
+                {
+                    return View("BestellingBevestiging");
+                }
+
+
                 return View("BestellingBevestiging");
             }
 
-            
+
         }
 
-        public bool ControlleerKorting(List<Product> producten,int klantpunten)
-        { 
+        public bool ControlleerKorting(List<Product> producten, int klantpunten)
+        {
             int Korting = klantpunten / 100;
-           
+
             if (Korting == 0)
             {
                 return false;
@@ -106,7 +116,7 @@ namespace ManiaGaming.Controllers
             else
             {
                 return true;
-            } 
+            }
         }
 
         public List<Product> CartProducten()
@@ -139,9 +149,9 @@ namespace ManiaGaming.Controllers
                 else
                 {
                     punten += prijsperproduct;
-                } 
-                    
-               
+                }
+
+
             }
             return punten;
         }
@@ -165,10 +175,38 @@ namespace ManiaGaming.Controllers
                 {
                     Totaleprijs += (Convert.ToDouble(p.Prijs) * p.Aantal);
                 }
-                
+
             }
             return Totaleprijs;
         }
 
+        public bool bestellingDoorVoeren()
+        {
+            List<Product> cart = CartProducten();
+            if (cart != null)
+            {
+
+                long id = GetUserId();
+                klantRepository.GetKlantID(id);
+                Klant k = klantRepository.GetById(id);
+
+                if (bestellingRepository.Bestellen(cart, k.Id) == true)
+                {
+                    int punten = Convert.ToInt32(BerekenPoints(cart));
+                    klantRepository.UpdateKlantPunten(punten, Convert.ToInt32(GetUserId()));
+                    //update klant punten
+                    DeleteCartProducts(cart);
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            else { return false; }
+
+        }
     }
 }
