@@ -279,6 +279,19 @@ for details on configuring this project to bundle and minify static web assets. 
         }
 
 /*Wikelwagen Index*/
+.bestelknopp {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 1px 1px;
+    cursor: pointer;
+    text-decoration:none;
+}
 .btn btn-default a {
     text-decoration: none;
     color: black;
@@ -288,11 +301,10 @@ p .btn btn-default a {
     color: black;
 }
 .Winkelwagenpunten {
-    
     margin: auto;
-    
     width: 80%;
-    border: 3px solid green;
+    border-bottom: 6px solid green;
+    background-color: lightgrey;
     padding: 10px;
 }
 /*Footer*/

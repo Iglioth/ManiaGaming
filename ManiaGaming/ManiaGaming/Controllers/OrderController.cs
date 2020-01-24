@@ -92,6 +92,7 @@ namespace ManiaGaming.Controllers
             };
             List<Product> products = productRepository.GetAll();
             List<Product> filterproducts = new List<Product>();
+            Werknemer w = werknemerRepo.GetById(GetUserId());
             foreach (Product p in products)
             {
                
@@ -102,7 +103,13 @@ namespace ManiaGaming.Controllers
             }
 
             o.Producten = filterproducts;
-
+            for(int i = 0; i < o.Filialen.Count; i++)
+            { 
+                if(o.Filialen[i].Id == w.FiliaalID)
+                {
+                    o.Filialen.RemoveAt(i);
+                }
+            }
             vm = orderConverter.ModelToViewModel(o);
             return View(vm);
         }
