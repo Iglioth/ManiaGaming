@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    @model ManiaGaming.Models.ProductViewModel; 
+    @model ManiaGaming.Models.ProductViewModel;
     @{ ViewData["Title"] = "Index"; }
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
@@ -19,15 +19,18 @@
         <div id="carouselGames" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 
+                @for (int i = 0; i < Model.ProductDetailViewModels.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        Model.carousel = 0;
+                    }
+                    if (Model.ProductDetailViewModels[i].Actief == true)
+                    {
 
-                @for(int i = 0; i < Model.ProductDetailViewModels.Count; i++)
-                            {
-                                if (Model.ProductDetailViewModels[i].Actief == true)
-                                {
-                                
-                                if (i == 0)
-                                {
-                                <div class="carousel-item active">
+                        if (Model.carousel == 0)
+                        {
+                            <div class="carousel-item active">
                                 <a href='@Url.Action("Detail", "Games", new { id = Model.ProductDetailViewModels[i].Id })'>
 
                                     <img style="float:right; width:50px; height:700px" src="~/images/@Model.ProductDetailViewModels[i].ImagePath" class="d-block w-100" alt="Paris">
@@ -37,21 +40,26 @@
                                     </div>
 
                                 </a>
-                                </div>
-                                }
-                                else if (i >= 1)
-                                {
-                                <div class="carousel-item">
-                                <a href='@Url.Action("Detail", "Games", new { id = Model.ProductDetailViewModels[i].Id })'>
-
-                                    <img style="float:right; width:50px; height:700px" src="~/images/@Model.ProductDetailViewModels[i].ImagePath" class="d-block w-100" alt="Paris">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <p> @Html.DisplayFor(modelItem => Model.ProductDetailViewModels[i].Naam) </p>
-                                        <p>@Html.DisplayFor(modelItem => Model.ProductDetailViewModels[i].Prijs),-</p>
-                                    </div>
-                                </a>
-                                </div>
+                            </div>
                         }
+                        else if (Model.carousel >= 1)
+                        {
+                            <div class="carousel-item">
+                                <a href='@Url.Action("Detail", "Games", new { id = Model.ProductDetailViewModels[i].Id })'>
+
+                                    <img style="float:right; width:50px; height:700px" src="~/images/@Model.ProductDetailViewModels[i].ImagePath" class="d-block w-100" alt="Paris">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <p> @Html.DisplayFor(modelItem => Model.ProductDetailViewModels[i].Naam) </p>
+                                        <p>@Html.DisplayFor(modelItem => Model.ProductDetailViewModels[i].Prijs),-</p>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    }
+                    Model.carousel++;
+                    if (Model.ProductDetailViewModels[i].Actief == false)
+                    {
+                        Model.carousel--;
                     }
                 }
 
