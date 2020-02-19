@@ -17,7 +17,7 @@
     }else
     {<div class="Winkelwagenpunten">
             <div class="row">
-                <div class="col-md-2"> <p style="margin-top: 9px;">KlantPunten : @Model.klantPunten</p></div>
+                <div class="col-md-2"> <p style="margin-top: 9px;">Klant Punten : @Model.klantPunten</p></div>
                 <div class="col-md-2"> <p style="margin-top: 9px;">Kosten in punten : @Model.KostenInPunten</p></div>
                 <div class="col-md-2"> <p style="margin-top: 9px;">Te betalen bedrag : @Model.ResterendeBedrag,-</p></div>
                 @if (Model.klantPunten != 0) {<div class="col-md-2"><a asp-controller="Bestelling" asp-action="BestelMetPunten" class="bestelknopp">Bestel met punten</a></div>}
@@ -58,11 +58,11 @@
                     <thead>
                         <tr>
 
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Naam</th>
+                            <th>Prijs</th>
+                            <th>Aantal</th>
+                            <th>Totaal</th>
                             <th>Delete</th>
-                            <th>Total</th>
                             
 
 

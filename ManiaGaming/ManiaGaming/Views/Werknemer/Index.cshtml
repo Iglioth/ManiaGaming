@@ -29,17 +29,6 @@
                     <td>@Html.DisplayFor(modelItem => item.Email)</td>
                     <td>@Html.DisplayFor(modelItem => item.FiliaalLocatie)</td>
                     <td>
-                        @Html.ActionLink("Detail", "Detail", new { id = item.Id }) |
-                        @if (!item.Actief)
-                        {
-                            @Html.ActionLink("Activeren", "Activeren", new { id = item.Id })
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Deactiveren", "Activeren", new { id = item.Id })
-                        }
-                    </td>
-                    <td>
                         <!-- Trigger/Open The Modal -->
                         <button id="buttonId-@count">Aanpassen</button>
 
